@@ -1,3 +1,3 @@
 # TexGear
-Web technologies mini project
-Project startup
+Web technologies mini project <br>
+<b>Project start-up </b>
