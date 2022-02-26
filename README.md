@@ -1,3 +1,3 @@
 # TexGear
 Web technologies mini project <br>
-<b>Project start-up </b>
+<b>Project full startup</b>
