@@ -1,0 +1,22 @@
+:root{
+    --light-red: #FF304F;
+    --light-blue: #28C7FA;
+    --dark-blue: #002651;
+    --light-green: #90C418;
+    --light-orange: #F8C822;
+    --light-grey: #E2E2E2;
+    --earn-blue: #59ADFF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(res/bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+}
