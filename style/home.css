@@ -1,0 +1,130 @@
+:root{
+    --light-red: #FF304F;
+    --light-blue: #28C7FA;
+    --dark-blue: #002651;
+    --light-green: #90C418;
+    --light-orange: #F8C822;
+    --light-grey: #E2E2E2;
+    --light-black: #222222;
+    --earn-blue: #59ADFF;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../res/fonts/Cairo.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../res/bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Cairo;
+    height: 100vh;
+}
+
+header{
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background-color: var(--dark-blue);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    text-decoration: none;
+    margin-left: 40px;
+    font-weight: bold;
+    color: white;
+    font-size: 32px;
+}
+span{
+    color: var(--light-blue);
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+header ul li{
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+header ul li a{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s ease;
+}
+
+header ul li a:hover{
+    padding: calc(40px - 16px) 0;
+    background-color: var(--light-red);
+}
+
+.container{
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container h1{
+    color: var(--light-black);
+    font-size: 46px;
+    text-align: left;
+    padding: 16px;
+    width: 40%;
+    line-height: 1.4;
+    margin-top: 100px;
+    margin-left: 16px;
+    border-bottom: var(--light-blue) 4px solid;
+    border-bottom-left-radius: 24px;
+}
+
+.container img{
+    width: 35%;
+    margin: 50px 0;
+}
+
+footer{
+    height: 100px;
+    background-color: var(--dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 5px 0;
+}
+
+footer .social-media{
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+footer .social-media img{
+    margin: 0 12px;
+    transition: 0.3s ease-in;
+}
+
+footer .social-media img:hover{
+    cursor: pointer;
+    transform: translateY(-3px);
+}
+
+footer p{
+    color: var(--light-grey);
+    font-size: 12px;
+    margin-top: 6px;
+}
