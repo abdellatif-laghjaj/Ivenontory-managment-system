@@ -26,12 +26,13 @@ html{
 }
 
 body{
-    background: var(--dark-blue);
-    background-size: cover;
-    color: white;
+    background: url(../res/img/wave.svg);
+    background-position: center;
     background-repeat: no-repeat;
-    font-family: Cairo;
+    background-size: cover;
     height: 100vh;
+    color: white;
+    font-family: Cairo;
 }
 
 header .logo{
@@ -41,6 +42,7 @@ header .logo{
     color: white;
     font-size: 32px;
 }
+
 span{
     color: var(--light-blue);
 }
@@ -50,6 +52,10 @@ span{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.container h1{
+    letter-spacing: 2px;
 }
 
 hr{
@@ -87,6 +93,9 @@ hr{
     padding: 10px;
     outline: none;
     border: none;
+    font-family: Cairo;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .input-field:focus {
@@ -103,7 +112,7 @@ hr{
     border: none;
     cursor: pointer;
     width: 100%;
-    opacity: 0.8;
+    opacity: 0.9;
     margin-bottom: 4px;
 }
 

@@ -21,7 +21,7 @@
 }
 
 body{
-    background-image: url(../res/bg.svg);
+    background-image: url(../res/img/bg.svg);
     background-size: cover;
     background-repeat: no-repeat;
     font-family: Cairo;

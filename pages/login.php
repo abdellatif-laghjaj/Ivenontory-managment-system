@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="../style/login.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <title>Login</title>
 </head>
@@ -19,12 +19,12 @@
 
         <form action="login.php">
             <div class="input-container">
-                <i class="icon"><img src="res/user.png" alt=""></i>
+                <i class="icon"><img src="../res/img/user.png" alt=""></i>
                 <input class="input-field" type="text" placeholder="Username" name="usrnm">
             </div>
 
             <div class="input-container">
-                <i class="icon"><img src="res/password.png" alt=""></i>
+                <i class="icon"><img src="../res/img/password.png" alt=""></i>
                 <input class="input-field" type="password" placeholder="Password" name="psw">
             </div>
 
