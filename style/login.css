@@ -1,0 +1,132 @@
+:root{
+    --light-red: #FF304F;
+    --light-blue: #28C7FA;
+    --dark-blue: #002651;
+    --light-green: #90C418;
+    --light-orange: #F8C822;
+    --light-grey: #E2E2E2;
+    --light-black: #222222;
+    --earn-blue: #59ADFF;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../res/fonts/Cairo.ttf');
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--dark-blue);
+    background-size: cover;
+    color: white;
+    background-repeat: no-repeat;
+    font-family: Cairo;
+    height: 100vh;
+}
+
+header .logo{
+    text-decoration: none;
+    margin-left: 40px;
+    font-weight: bold;
+    color: white;
+    font-size: 32px;
+}
+span{
+    color: var(--light-blue);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+hr{
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+
+/* Style the form icons */
+.icon {
+    padding: 10px;
+    background: var(--light-red);
+    color: white;
+    min-width: 36px;
+    min-height: 36px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container img{
+    width: 30px;
+}
+
+/* Style the input fields */
+.input-field {
+    width: 400px;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+.input-field:focus {
+    border: 2px solid var(--light-red);
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: var(--light-red);
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-family: Cairo;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+.container a{
+    text-decoration: none;
+    color: var(--light-blue);
+}
+
+.container a:hover{
+    text-decoration: underline 2px;
+}
+
+footer{
+    margin-top: auto;
+    color: white;
+    height: 200px;
+    padding: 0;
+}
+
+footer center p{
+    font-size: 12px;
+}
