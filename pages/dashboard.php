@@ -64,8 +64,22 @@
     </nav>
 
     <!-- MAIN CONTENT -->
-    <main>
+    <main class="content">
         <h1>Main content</h1>
     </main>
+
+    <script>
+        let nav = document.querySelector('.navbar');
+        let mainContent = document.querySelector('.content');
+        let width = nav.offsetWidth;
+
+        console.log(width);
+
+        if(width > 90){
+            mainContent.classList.add("active");
+        }else{
+            mainContent.classList.remove("active");
+        }
+    </script>
 </body>
 </html>
