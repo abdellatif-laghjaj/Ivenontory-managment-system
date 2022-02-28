@@ -14,23 +14,23 @@
     </header>
 
     <div class="container">
-        <h1>IDETIFICATION</h1>
+        <h1>RESET PASSWORD</h1>
         <hr color="#FF304F" width="250" size="4">
 
         <form action="login.php">
             <div class="input-container">
-                <i class="icon"><img src="../res/img/user.png" alt=""></i>
-                <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                <i class="icon"><img src="../res/img/password.png" alt=""></i>
+                <input class="input-field" type="text" placeholder="New password" name="usrnm">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/password.png" alt=""></i>
-                <input class="input-field" type="password" placeholder="Password" name="psw">
+                <input class="input-field" type="password" placeholder="Confirm password" name="psw">
             </div>
 
-            <button type="submit" class="btn">LOGIN</button>
+            <button type="submit" class="btn">RESET PASSWORD</button>
 
-            <a href="verification.php">Forgot password ?</a>
+            <a href="reset_password.php">Forgot password ?</a>
         </form> 
     </div>
 
