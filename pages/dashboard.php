@@ -10,12 +10,12 @@
     <title>Admin Page</title>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" onresize="addClass()">
         <ul class="navbar-nav">
             <li class="logo">
                 <a href="#" class="nav-link">
-                <span class="link-text logo-text">Tex<font color="#fff">GEAR</font></span>
-                <img src="../res/img/logo.svg" alt="">
+                    <span class="link-text logo-text">Tex<font color="#fff">GEAR</font></span>
+                    <img src="../res/img/logo.svg" alt="">
                 </a>
             </li>
 
@@ -65,20 +65,23 @@
 
     <!-- MAIN CONTENT -->
     <main class="content">
-        <h1>Main content</h1>
+        <h1>Dashboard</h1>
+        <hr color="#FF304F" width="90%" size="4">
     </main>
 
     <script>
-        let nav = document.querySelector('.navbar');
+        let tergets = document.querySelector('.nav-item');
         let mainContent = document.querySelector('.content');
-        let width = nav.offsetWidth;
+        
+        targets.addEventListener("mouseover", mOver, false);
+        targets.addEventListener("mouseout", mOut, false);
 
-        console.log(width);
+        function mOver() {
+            mainContent.classList.add(active);
+        }
 
-        if(width > 90){
-            mainContent.classList.add("active");
-        }else{
-            mainContent.classList.remove("active");
+        function mOut() {  
+            mainContent.classList.remove(active);
         }
     </script>
 </body>
