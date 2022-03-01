@@ -1,0 +1,162 @@
+:root{
+    font-size: 16px;
+    --light-red: #FF304F;
+    --light-blue: #28C7FA;
+    --dark-blue: #002651;
+    --light-green: #90C418;
+    --light-orange: #F8C822;
+    --light-grey: #E2E2E2;
+    --light-black: #222222;
+    --earn-blue: #59ADFF;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../res/fonts/Cairo.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 111vh;
+    color: var(--dark-blue);
+    font-family: Cairo;
+}  
+
+.logo span{
+    color: var(--light-blue);
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+    transition: 0.2s ease;
+}
+
+
+.active{
+    margin-left: 16rem;
+}
+
+.navbar{
+    position: fixed;
+    width: 5rem;
+    height: 100vh;
+    background-color: var(--dark-blue);
+    transition: 0.2s ease;
+}
+
+.navbar-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-text{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.logo-text{
+    display: inline;
+    position: absolute;
+    left: -999px;
+    transition: 0.4s;
+}
+
+.navbar:hover .logo-text {
+    left: 0;
+}
+
+.navbar:hover .logo img {
+    display: none;
+}
+
+.nav-item{
+    width: 100%;
+}
+
+.nav-item:last-child{
+    margin-top: auto;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.nav-link img{
+    width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.link-text{
+    display: none;
+    margin-left: 0.5rem;
+}
+
+.navbar:hover{
+    width: 16rem;
+}
+
+.navbar:hover .link-text{
+    display: block;
+}
+
+.nav-link:hover{
+    background-color: var(--light-red);
+}
+
+/*FOR SMALL SCREENS */
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+      bottom: 0;
+      width: 100vw;
+      height: 5rem;
+    }
+  
+    .logo {
+      display: none;
+    }
+  
+    .navbar-nav {
+      flex-direction: row;
+    }
+  
+    .nav-link {
+      justify-content: center;
+    }
+
+    .navbar:hover{
+        width: 100%;
+    }
+
+    .navbar:hover .link-text{
+        display: none;
+    }
+  
+    main {
+      margin: 0;
+    }
+
+    .active{
+        margin-left: 0;
+    }
+}

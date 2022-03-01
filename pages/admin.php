@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/sidebar.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <title>Admin Page</title>
 </head>
@@ -99,13 +100,44 @@
 
         <div class="charts-container">
             <div class="chart circle-chart">
-                <canvas id="myChart-circle"></canvas>
+                <canvas id="myChart-circle" class="chart-design circle"></canvas>
             </div>
             
             <div class="chart">
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart" class="chart-design"></canvas>
             </div>
         </div>
+
+        <!-- LATEST PRODUCTS -->
+        
+        <h1>Latest products</h1>
+        <hr color="#FF304F" width="90%" size="4">
+
+        <table id="customers">
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>IPhone 12</td>
+                <td>Mobile</td>
+                <td>1</td>
+                <td>1499</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Lenovo</td>
+                <td>Laptops</td>
+                <td>1</td>
+                <td>3488</td>
+            </tr>
+        </table>
     </main>
 
     <script src="../js/app.js">
