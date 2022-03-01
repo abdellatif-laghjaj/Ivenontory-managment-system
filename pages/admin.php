@@ -20,7 +20,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()">
+                <a href="#" class="nav-link active-link" onmouseover="mouseEnter()" onmouseout="mouseOut()">
                     <img class="nav-icon" src="../res/img/chart.png" alt="">
                     <span class="link-text">Dashboard</span>
                 </a>

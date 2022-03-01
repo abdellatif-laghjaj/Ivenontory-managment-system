@@ -75,3 +75,20 @@ const myCircleChart = new Chart(circleChart, {
         }
     }
 });
+
+// For make links active
+
+// Get the container element
+var linksContainer = document.querySelector(".navbar-nav");
+
+// Get all buttons inside the container
+var btns = linksContainer.getElementsByClassName("nav-link");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active-link");
+        current[0].className = current[0].className.replace(" active-link", "");
+        this.className += " active-link";
+  });
+}

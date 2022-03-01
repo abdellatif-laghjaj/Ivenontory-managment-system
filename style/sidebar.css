@@ -118,7 +118,9 @@ main{
 .navbar:hover .link-text{
     display: block;
 }
-
+.active-link{
+    background-color: var(--light-red);
+}
 .nav-link:hover{
     background-color: var(--light-red);
 }
