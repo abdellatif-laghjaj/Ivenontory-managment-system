@@ -73,7 +73,7 @@ const myCircleChart = new Chart(circleChart, {
         plugins: {
             title: {
                 display: true,
-                text: 'Product total'
+                text: 'Product'
             }
         }
     }
