@@ -33,11 +33,12 @@ body{
 main{
     margin-left: 5rem;
     padding: 1rem;
+    transition: 0.2s ease;
 }
 
 
-main .active{
-    left: 16rem;
+.active{
+    margin-left: 16rem;
 }
 
 .navbar{
@@ -122,6 +123,74 @@ main .active{
     background-color: var(--light-red);
 }
 
+/* MAIN CONTENT*/
+
+.cards-container{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    margin: 16px;
+    margin-left: 0;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    background-color: var(--light-orange);
+    margin-right: 1rem;
+}
+
+.sales{
+    background-color: var(--light-blue);
+}
+
+.earnings{
+    background-color: var(--light-green);
+}
+
+.card img{
+    transform: scale(0.8);
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 1rem;
+}
+
+.info h3{
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.info p{
+    font-weight: 600;
+    margin-top: -0.6rem;
+    font-size: 1.2rem;
+}
+
+/*CHARTS CONATINER*/
+
+.charts-container{
+    display: flex;
+}
+
+.chart{
+    flex-basis: 50%;
+    border-radius: 8px;
+    background: var(--light-grey);
+    height: 400px;
+    margin-right: 10px;
+}
+
+.circle-chart{
+    flex-basis: 30%;
+}
+
 /*FOR SMALL SCREENS */
 
 @media only screen and (max-width: 600px) {
@@ -153,6 +222,27 @@ main .active{
   
     main {
       margin: 0;
+    }
+
+    .active{
+        margin-left: 0;
+    }
+
+    /*FOR CARDS*/
+
+    .cards-container{
+        flex-direction: column;
+    }
+
+    .card{
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    /*FOR CHARTS*/
+
+    .charts-container{
+        flex-direction: column;
     }
   }
 
