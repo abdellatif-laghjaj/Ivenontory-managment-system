@@ -25,42 +25,42 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link active-link" onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToDashboard()">
+                <a href="#dashboard" class="nav-link active-link" onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToDashboard()">
                     <img class="nav-icon" src="../res/img/chart.png" alt="">
                     <span class="link-text">Dashboard</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToProfile()" >
+                <a href="#profile" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToProfile()" >
                     <img class="nav-icon" src="../res/img/profile1.png" alt="">
                     <span class="link-text">Profile</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToCategory()">
+                <a href="#category" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToCategory()">
                     <img class="nav-icon" src="../res/img/categories.png" alt="">
                     <span class="link-text">Category</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToProducts()">
+                <a href="#products" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToProducts()">
                     <img class="nav-icon" src="../res/img/product.png" alt="">
                     <span class="link-text">Products</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToReports()">
+                <a href="#reports" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()" onclick="changeToReports()">
                     <img class="nav-icon" src="../res/img/reports.png" alt="">
                     <span class="link-text">Reports</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()">
+                <a href="login.php" class="nav-link"  onmouseover="mouseEnter()" onmouseout="mouseOut()">
                     <img class="nav-icon" src="../res/img/logout.png" alt="">
                     <span class="link-text">Logout</span>
                 </a>

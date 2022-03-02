@@ -95,6 +95,7 @@ let reports = `
 `;
 function changeToDashboard() {
     let content = document.querySelector(".content");
+    window.location.reload();
     content.innerHTML = dashboard;
 }
 
