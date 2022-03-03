@@ -41,6 +41,12 @@
     </div>
 </div>
 
+<div class="line-chart-container">
+    <div class="chart">
+        <canvas id="myChart-line" class="chart-design line"></canvas>
+    </div>
+</div>
+
 <!-- LATEST PRODUCTS -->
 
 <h1>Latest products</h1>

@@ -74,6 +74,7 @@
     </main>
 
     <script src="../js/app.js"></script>
+    <script src="../js/charts.js"></script>
     <script src="../js/change_content.js"></script>
 </body>
 </html>
