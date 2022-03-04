@@ -1,0 +1,158 @@
+.container {
+    margin: 30px;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7fr 1fr;
+}
+
+.container form {
+    background-color: #EFEFEF;
+    border-radius: 10px;
+    padding-bottom: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.container form legend {
+    display: flex;
+    background-color: #FF304F;
+    border-radius: 10px 10px 0 0;
+    padding: 15px 20px 15px 20px;
+    color: white;
+    font-family: "roboto", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container form .field {
+    margin: 25px 20px 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.container form .field .label {
+    background-color: #28C7FA;
+    border-radius: 8px 0 0 8px;
+    color: white;
+    padding: 10px 15px;
+}
+
+.container form .field input {
+    background-color: #E6E2E2;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 2px 15px 2px 15px;
+    font-size: 20px;
+}
+
+.container form .field input:focus {
+    border: 0.5px solid #28C7FA;
+}
+
+.container form .field #category {
+    background-color: #E6E2E2;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 2px 15px 2px 15px;
+    font-size: 20px;
+}
+
+.container form .field #category:focus {
+    border: 0.5px solid #28C7FA;
+}
+
+.container .ActionButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "reset" "submit";
+    margin-left: 50%;
+    margin-top: 25px;
+}
+
+.container .ActionButtons .reset {
+    grid-area: "reset";
+    border: 1px solid #28C7FA;
+    border-radius: 8px;
+    background-color: white;
+    color: #28C7FA;
+    font-size: 20px;
+    margin-right: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.container .ActionButtons .reset:hover {
+    background-color: #28C7FA;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.container .ActionButtons .submit {
+    grid-area: "reset";
+    background-color: #FF304F;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 20px;
+    margin-left: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.container .ActionButtons .submit:hover {
+    letter-spacing: 2px;
+}
+
+@media (max-width: 800px) {
+
+    .container {
+        margin: 16px 4px;
+        margin-bottom: 5rem;
+    }
+
+    .container form .field {
+        margin: 16px 8px 0 8px;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+
+    .container form .field .label {
+        background-color: #28C7FA;
+        border-radius: 5px 0 0 5px;
+        color: white;
+        padding: 8px 12px;
+    }
+
+    .container form .field input {
+        background-color: #E6E2E2;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        padding: 2px 12px 2px 12px;
+        font-size: 16px;
+    }
+    
+    .container .ActionButtons {
+        margin-left: 0;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .container form .field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container form .field .label {
+        border-radius: 4px 4px 0 0;
+        padding: 5px 15px;
+        font-size: 16px;
+    }
+
+    .container form .field input {
+        border-radius: 0 0 4px 4px;
+        padding: 5px 15px;
+    }
+}

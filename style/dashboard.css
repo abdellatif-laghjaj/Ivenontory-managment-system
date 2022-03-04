@@ -1,3 +1,4 @@
+@import url(style.css);
 :root{
     font-size: 16px;
     --light-red: #FF304F;
@@ -134,6 +135,7 @@ body{
 #customers tr:hover {
     background-color: var(--light-grey);
 }
+
 
 /*FOR SMALL SCREENS */
 

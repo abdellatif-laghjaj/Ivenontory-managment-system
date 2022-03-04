@@ -1,0 +1,88 @@
+.content hr {
+    margin-bottom: 30px;
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        "box box box"
+        "card1 card2 card3"
+    ;
+}
+
+.container .SelectBox {
+    grid-area: box;
+}
+
+.container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.container #report {
+    background-color: #002651;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 50px 15px 5px;
+}
+
+.container .block {
+    display: flex;
+    flex-direction: column;
+}
+
+.container .block #pdf {background-color: #FF304F; grid-area: card1;}
+
+.container .block #csv {background-color: #28C7FA; grid-area: card2;}
+
+.container .block #json {background-color: #90C418; grid-area: card3;}
+
+.container .block .card {
+    display: grid;
+    place-items: center;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.container .block .card img {
+    width: 80px;
+    height: 80px;
+}
+
+.container .block .card label {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.container .block .btn {
+    background-color: #002651;
+    border: none;
+    border-radius: 4px;
+    margin-top: 25px;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        margin-bottom: 5rem;
+    }
+
+    .container .block {
+        margin-bottom: 25px;
+    }
+}

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/alert.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <title>Login</title>
 </head>
@@ -14,6 +15,9 @@
     </header>
 
     <div class="container">
+
+        <?php include('error_message.php')?>
+        
         <img src="../res/img/avatar.png" alt="" width="5%">
         <h1>Identification</h1>
         <hr color="#FF304F" width="250" size="4">
@@ -40,5 +44,14 @@
             <p>Tex-GEAR, All rights reserved @2022</p>
         </center>
     </footer>
+
+    <script>
+        var closeBtn = document.querySelector(".closebtn");
+        closeBtn.onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+    </script>
 </body>
 </html>
