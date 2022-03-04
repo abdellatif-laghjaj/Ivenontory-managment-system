@@ -1,6 +1,9 @@
 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; 
-
 let data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // the data of each month
+
+//data for circle chart
+let categories = ['Mobile', 'Laptops', 'Mouse', 'Keyboard', 'EarPhone']; 
+let dataCategories = [12, 5, 19, 10, 8];
 
 let mainContent = document.querySelector(".content");
 
@@ -51,10 +54,10 @@ const circleChart = document.getElementById('myChart-circle').getContext('2d');
 const myCircleChart = new Chart(circleChart, {
     type: 'polarArea',
     data: {
-        labels: months,
+        labels: categories,
         datasets: [{
-            label: 'Earnings',
-            data: data,
+            label: 'Products',
+            data: dataCategories,
             backgroundColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
@@ -70,7 +73,7 @@ const myCircleChart = new Chart(circleChart, {
         plugins: {
             title: {
                 display: true,
-                text: 'Number of sales'
+                text: 'Product'
             }
         }
     }

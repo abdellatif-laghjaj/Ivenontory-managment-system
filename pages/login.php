@@ -14,7 +14,8 @@
     </header>
 
     <div class="container">
-        <h1>IDETIFICATION</h1>
+        <img src="../res/img/avatar.png" alt="" width="5%">
+        <h1>Identification</h1>
         <hr color="#FF304F" width="250" size="4">
 
         <form action="login.php">

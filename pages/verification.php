@@ -10,11 +10,12 @@
 </head>
 <body>
     <header>
-        <a href="" class="logo"><span>Tex</span>GEAR<span></span></a>
+        <a href="login.php" class="logo"><span>Tex</span>GEAR<span></span></a>
     </header>
 
     <div class="container">
-        <h1>VERIFY YOUR IDENTITY</h1>
+        <img src="../res/img/verify_identity.png" alt="" width="5%">
+        <h1>Verify your identity</h1>
         <hr color="#FF304F" width="250" size="4">
 
         <form action="verification.php">
