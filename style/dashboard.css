@@ -136,7 +136,6 @@ body{
     background-color: var(--light-grey);
 }
 
-
 /*FOR SMALL SCREENS */
 
 @media only screen and (max-width: 600px) {

@@ -253,21 +253,21 @@ let reports = `
         
         <div class="block">
             <div class="card" id="pdf">
-                <img src="..\res\img\pdf.png" alt="">
+                <img src="../res/img/pdf.png" alt="">
                 <label for="">PDF Format</label>
             </div>
             <button class="btn">DOWNLOAD</button>
         </div>
         <div class="block">
             <div class="card" id="csv">
-                <img src="..\res\img\csv.png" alt="">
+                <img src="../res/img/csv.png" alt="">
                 <label for="">CSV Format</label>
             </div>
             <button class="btn">DOWNLOAD</button>
         </div>
         <div class="block">
             <div class="card" id="json">
-                <img src="..\res\img\Json icon.png" alt="">
+                <img src="../res/img/Json icon.png" alt="">
                 <label for="">JSON Format</label>
             </div>
             <button class="btn">DOWNLOAD</button>

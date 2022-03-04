@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="../style/product.css">
     <link rel="stylesheet" href="../style/report.css">
     <link rel="stylesheet" href="../style/forms.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    
     <title>Admin Page</title>
 </head>
 <body>
