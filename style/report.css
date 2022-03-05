@@ -89,9 +89,14 @@ p{
 @media (max-width: 900px) {
     .reports-container {
         display: grid;
-        place-items: center;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+            "box"
+            "card1" 
+            "card2" 
+            "card3"
+        ;
         margin-bottom: 5rem;
     }
 
