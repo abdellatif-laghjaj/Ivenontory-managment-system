@@ -1,6 +1,6 @@
 <h1>Products</h1>
 <hr color="#FF304F" width="90%" size="4">
-<div class="container">
+<div class="products-container">
     <div class="legend" id="legend">
         Add a product
         <button class="arrow" id="arrow" onclick="dropDown()"></button>
@@ -8,11 +8,11 @@
     <div class="form" id="form">
         <div class="field">
             <span class="label">Product ID</span>
-            <input type="text" name="product-id" value="123">
+            <input type="text" name="product-id" value="123" disabled>
         </div>
         <div class="field">
             <span class="label">Name</span>
-            <input type="text" name="product-name" value="HP EliteBook">
+            <input type="text" name="product-name" placeholder="e.g: HP EliteBook">
         </div>
         <div class="field">
             <span class="label">Category</span>
@@ -22,15 +22,15 @@
         </div>
         <div class="field">
             <span class="label">Quantity</span>
-            <input type="number" name="Quantity" value="10">
+            <input type="number" name="Quantity" placeholder="e.g: 10">
         </div>
         <div class="field">
             <span class="label">Sale price</span>
-            <input type="number" name="Sale-price" value="7000">
+            <input type="number" name="Sale-price" placeholder="e.g: 59">
         </div>
         <div class="field">
             <span class="label">Buy price</span>
-            <input type="number" name="Buy-price" value="5000">
+            <input type="number" name="Buy-price" placeholder="e.g: 42">
         </div>
         <div class="field">
             <span class="label">Image</span>

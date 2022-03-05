@@ -1,6 +1,6 @@
 <h1>Reports</h1>
 <hr color="#FF304F" width="90%" size="4">
-<div class="container">
+<div class="reports-container">
     <div class="SelectBox">
         <label for="Term">Select term: </label>
         <select name="report" id="report">

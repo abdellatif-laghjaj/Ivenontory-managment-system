@@ -1,18 +1,18 @@
 <h1>Category</h1>
 <hr color="#FF304F" width="90%" size="4">
-<div class="container">
+<div class="products-container">
     <div class="legend" id="legend">
         Add a new category
         <button class="arrow" id="arrow" onclick="dropDown()"></button>
     </div>
-    <div class="form" id="form">
+    <div class="form categories" id="form">
         <div class="field">
             <span class="label">Category ID</span>
-            <input type="text" name="product-id" value="123">
+            <input type="text" name="product-id" value="123" disabled>
         </div>
         <div class="field">
-            <span class="label">Name</span>
-            <input type="text" name="product-name" value="HP EliteBook">
+            <span class="label">Category Name</span>
+            <input type="text" name="product-name" placeholder="e.g: Laptops">
         </div>
         <div class="ActionButtons">
             <input type="reset" value="RESET" class="reset">

@@ -77,28 +77,28 @@ let dashboard = `
 let profile = `
     <h1>Profile</h1>
     <hr color="#FF304F" width="90%" size="4">
-    <div class="container">
+    <div class="profile-container">
         <form action="">
             <legend>Update Profile</legend>
             <div class="field">
                 <span class="label">Full name</span>
-                <input type="text" name="Full-name" value="omar lamine">
+                <input type="text" name="Full-name" placeholder="e.g: abdellatif laghjaj">
             </div>
             <div class="field">
                 <span class="label">Username</span>
-                <input type="text" name="username" value="omarlamin01">
+                <input type="text" name="username" placeholder="e.g: abdelatiflaghjaj">
             </div>
             <div class="field">
                 <span class="label">Email</span>
-                <input type="email" name="email" value="omarlamin272@gmail.com">
+                <input type="email" name="email" placeholder="e.g: abdelatiflagjaj@gmail.com">
             </div>
             <div class="field">
                 <span class="label">Phone</span>
-                <input type="phone" name="phone" value="06 16-944 666">
+                <input type="phone" name="phone" placeholder="e.g: 0657735082">
             </div>
             <div class="field">
                 <span class="label">Reg-date</span>
-                <input type="date" name="reg-date">
+                <input type="date" name="reg-date" disabled>
             </div>
         </form>
         <div class="ActionButtons">
@@ -111,19 +111,19 @@ let profile = `
 let category = `
     <h1>Category</h1>
     <hr color="#FF304F" width="90%" size="4">
-    <div class="container">
+    <div class="products-container">
         <div class="legend" id="legend">
             Add a new category
             <button class="arrow" id="arrow" onclick="dropDown()"></button>
         </div>
-        <div class="form" id="form">
+        <div class="form categories" id="form">
             <div class="field">
                 <span class="label">Category ID</span>
-                <input type="text" name="product-id" value="123">
+                <input type="text" name="product-id" value="123" disabled>
             </div>
             <div class="field">
-                <span class="label">Name</span>
-                <input type="text" name="product-name" value="HP EliteBook">
+                <span class="label">Category Name</span>
+                <input type="text" name="product-name" placeholder="e.g: Laptops">
             </div>
             <div class="ActionButtons">
                 <input type="reset" value="RESET" class="reset">
@@ -163,7 +163,7 @@ let category = `
 let products = `
     <h1>Products</h1>
     <hr color="#FF304F" width="90%" size="4">
-    <div class="container">
+    <div class="products-container">
         <div class="legend" id="legend">
             Add a product
             <button class="arrow" id="arrow" onclick="dropDown()"></button>
@@ -171,11 +171,11 @@ let products = `
         <div class="form" id="form">
             <div class="field">
                 <span class="label">Product ID</span>
-                <input type="text" name="product-id" value="123">
+                <input type="text" name="product-id" value="123" disabled>
             </div>
             <div class="field">
                 <span class="label">Name</span>
-                <input type="text" name="product-name" value="HP EliteBook">
+                <input type="text" name="product-name" placeholder="e.g: HP EliteBook">
             </div>
             <div class="field">
                 <span class="label">Category</span>
@@ -185,15 +185,15 @@ let products = `
             </div>
             <div class="field">
                 <span class="label">Quantity</span>
-                <input type="number" name="Quantity" value="10">
+                <input type="number" name="Quantity" placeholder="e.g: 10">
             </div>
             <div class="field">
                 <span class="label">Sale price</span>
-                <input type="number" name="Sale-price" value="7000">
+                <input type="number" name="Sale-price" placeholder="e.g: 59">
             </div>
             <div class="field">
                 <span class="label">Buy price</span>
-                <input type="number" name="Buy-price" value="5000">
+                <input type="number" name="Buy-price" placeholder="e.g: 42">
             </div>
             <div class="field">
                 <span class="label">Image</span>
@@ -240,7 +240,8 @@ let products = `
 let reports = `
     <h1>Reports</h1>
     <hr color="#FF304F" width="90%" size="4">
-    <div class="container">
+    <p>Download your reports and data as PDF, CSV or JSON format:</p>
+    <div class="reports-container">
         <div class="SelectBox">
             <label for="Term">Select term: </label>
             <select name="report" id="report">
