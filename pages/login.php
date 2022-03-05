@@ -18,7 +18,7 @@
 
         <?php include('error_message.php')?>
         
-        <img src="../res/img/avatar.png" alt="" width="5%">
+        <img src="../res/img/avatar.png" alt="" class="login-img">
         <h1>Identification</h1>
         <hr color="#FF304F" width="250" size="4">
 

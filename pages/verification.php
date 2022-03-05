@@ -14,7 +14,7 @@
     </header>
 
     <div class="container">
-        <img src="../res/img/verify_identity.png" alt="" width="5%">
+        <img src="../res/img/verify_identity.png" alt="" class="login-img">
         <h1>Verify your identity</h1>
         <hr color="#FF304F" width="250" size="4">
 

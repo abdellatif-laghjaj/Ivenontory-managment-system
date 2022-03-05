@@ -14,7 +14,7 @@
     </header>
 
     <div class="container">
-        <img src="../res/img/reset_password.png" alt="" width="5%"> 
+        <img src="../res/img/reset_password.png" alt="" class="login-img"> 
         <h1>Reset password</h1>
         <hr color="#FF304F" width="250" size="4">
 

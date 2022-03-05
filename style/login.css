@@ -50,6 +50,10 @@ span{
     flex-direction: column;
 }
 
+.login-img{
+    width: 70px;
+}
+
 .container h1{
     letter-spacing: 2px;
 }
@@ -137,4 +141,35 @@ footer {
   }
 footer center p{
     font-size: 12px;
+}
+
+@media (max-width: 600px) {
+
+    body{
+        background: var(--dark-blue);
+    }
+
+    .login-img{
+        margin-top: 26px;
+    }
+
+    .alert {
+        padding: 16px;
+        margin: 16px;
+    }
+
+    .input-container {
+        width: 400px;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        font-weight: bold;
+        margin-bottom: 4px;
+        font-size: 18px;
+    }
+
+    .container a{
+        font-size: 18px;
+    }
 }
