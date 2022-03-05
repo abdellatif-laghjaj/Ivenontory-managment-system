@@ -32,20 +32,20 @@ html{
 }
 
 body::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
   
   /* Track */
 body::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #002651;
 }
   
   /* Handle */
 body::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #FF304F;
 }
   
   /* Handle on hover */
 body::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #ff0127;
 }
