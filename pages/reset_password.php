@@ -20,13 +20,13 @@
 
         <form action="login.php">
             <div class="input-container">
-                <i class="icon"><img src="../res/img/password.png" alt=""></i>
-                <input class="input-field" type="text" placeholder="New password" name="usrnm">
+                <i class="icon" ><img src="../res/img/password.png" alt=""></i>
+                <input class="input-field" type="text" placeholder="New password" name="new_password">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/password.png" alt=""></i>
-                <input class="input-field" type="password" placeholder="Confirm password" name="psw">
+                <input class="input-field" type="password" placeholder="Confirm password" name="confirm_password">
             </div>
 
             <button type="submit" class="btn">RESET PASSWORD</button>

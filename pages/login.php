@@ -25,12 +25,12 @@
         <form action="login.php">
             <div class="input-container">
                 <i class="icon"><img src="../res/img/user.png" alt=""></i>
-                <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                <input class="input-field" type="text" placeholder="Username" name="usrname">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/password.png" alt=""></i>
-                <input class="input-field" type="password" placeholder="Password" name="psw">
+                <input class="input-field" type="password" placeholder="Password" name="password">
             </div>
 
             <button type="submit" class="btn">LOGIN</button>

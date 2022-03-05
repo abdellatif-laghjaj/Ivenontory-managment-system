@@ -106,9 +106,10 @@ hr{
 .btn {
     background-color: var(--light-red);
     color: white;
-    padding: 10px 20px;
+    padding: 8px 20px;
     font-weight: bold;
     font-family: Cairo;
+    font-size: 18px;
     border: none;
     cursor: pointer;
     width: 100%;
