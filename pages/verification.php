@@ -14,29 +14,29 @@
     </header>
 
     <div class="container">
-        <img src="../res/img/verify_identity.png" alt="" width="5%">
+        <img src="../res/img/verify_identity.png" alt="" class="login-img">
         <h1>Verify your identity</h1>
         <hr color="#FF304F" width="250" size="4">
 
         <form action="verification.php">
             <div class="input-container">
                 <i class="icon"><img src="../res/img/profile.png" alt=""></i>
-                <input class="input-field" type="text" placeholder="Full name" name="psw">
+                <input class="input-field" type="text" placeholder="Full name" name="full_name">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/user.png" alt=""></i>
-                <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                <input class="input-field" type="text" placeholder="Username" name="ver_username">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/email.png" alt=""></i>
-                <input class="input-field" type="email" placeholder="E-mail" name="psw">
+                <input class="input-field" type="email" placeholder="E-mail" name="email">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/phone.png" alt=""></i>
-                <input class="input-field" type="tel" placeholder="Phone number" name="psw">
+                <input class="input-field" type="tel" placeholder="Phone number" name="phone">
             </div>
 
             <button type="submit" class="btn">VERIFY</button>

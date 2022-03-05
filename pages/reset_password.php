@@ -14,19 +14,19 @@
     </header>
 
     <div class="container">
-        <img src="../res/img/reset_password.png" alt="" width="5%"> 
+        <img src="../res/img/reset_password.png" alt="" class="login-img"> 
         <h1>Reset password</h1>
         <hr color="#FF304F" width="250" size="4">
 
         <form action="login.php">
             <div class="input-container">
-                <i class="icon"><img src="../res/img/password.png" alt=""></i>
-                <input class="input-field" type="text" placeholder="New password" name="usrnm">
+                <i class="icon" ><img src="../res/img/password.png" alt=""></i>
+                <input class="input-field" type="text" placeholder="New password" name="new_password">
             </div>
 
             <div class="input-container">
                 <i class="icon"><img src="../res/img/password.png" alt=""></i>
-                <input class="input-field" type="password" placeholder="Confirm password" name="psw">
+                <input class="input-field" type="password" placeholder="Confirm password" name="confirm_password">
             </div>
 
             <button type="submit" class="btn">RESET PASSWORD</button>

@@ -1,0 +1,51 @@
+:root{
+  --light-red: #FF304F;
+  --light-blue: #28C7FA;
+  --dark-blue: #002651;
+  --bg-color: #023a7a;
+  --light-green: #90C418;
+  --light-orange: #F8C822;
+  --light-grey: #E2E2E2;
+  --light-black: #222222;
+  --earn-blue: #59ADFF;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('../res/fonts/Cairo.ttf');
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Cairo;
+}
+
+html{
+    overflow-y: scroll;
+    scrollbar-color: #FF304F #002651;
+    scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+  /* Handle */
+body::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+  /* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

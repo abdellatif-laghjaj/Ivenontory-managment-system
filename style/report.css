@@ -1,8 +1,6 @@
-.content hr {
-    margin-bottom: 30px;
-}
+@import url(style.css);
 
-.container {
+.reports-container {
     display: grid;
     place-items: center;
     grid-template-columns: 1fr 1fr 1fr;
@@ -13,68 +11,83 @@
     ;
 }
 
-.container .SelectBox {
-    grid-area: box;
+p{
+    margin-top: 20px;
+    margin-left: 5px;
 }
 
-.container label {
+.reports-container .SelectBox {
+    grid-area: box;
+    margin-top: -90px;
+}
+
+.reports-container label {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
 }
 
-.container #report {
-    background-color: #002651;
-    color: white;
-    font-size: 24px;
-    border: none;
+.reports-container .reports-periode {
+    width: 200px;
+    background-color: #fff;
+    color: #002651;
+    font-size: 18px;
+    border: 1px #002651 solid;
     border-radius: 4px;
-    padding: 15px 50px 15px 5px;
+    padding: 15px 5px;
 }
 
-.container .block {
+.reports-container .block {
     display: flex;
     flex-direction: column;
+    margin-top: -40px;
 }
 
-.container .block #pdf {background-color: #FF304F; grid-area: card1;}
+.reports-container .block #pdf {background-color: #FF304F; grid-area: card1;}
 
-.container .block #csv {background-color: #28C7FA; grid-area: card2;}
+.reports-container .block #csv {background-color: #28C7FA; grid-area: card2;}
 
-.container .block #json {background-color: #90C418; grid-area: card3;}
+.reports-container .block #json {background-color: #90C418; grid-area: card3;}
 
-.container .block .card {
+.reports-container .block .card {
     display: grid;
     place-items: center;
     padding: 40px;
+    height: 200px;
     border-radius: 8px;
 }
 
-.container .block .card img {
+.reports-container .block .card img {
     width: 80px;
     height: 80px;
 }
 
-.container .block .card label {
+.reports-container .block .card label {
     color: white;
     font-size: 32px;
     font-weight: bold;
 }
 
-.container .block .btn {
+.reports-container .block .btn {
     background-color: #002651;
     border: none;
+    outline: none;
     border-radius: 4px;
-    margin-top: 25px;
+    width: 95%;
+    margin-top: 12px;
     color: white;
     font-size: 20px;
-    padding: 10px;
+    padding: 10px; 
     cursor: pointer;
 }
 
+.reports-container .block .btn .fa-download{
+    padding-right: 18px;
+}
+
 @media (max-width: 900px) {
-    .container {
+    .reports-container {
         display: grid;
         place-items: center;
         grid-template-columns: 1fr;
@@ -82,7 +95,7 @@
         margin-bottom: 5rem;
     }
 
-    .container .block {
+    .reports-container .block {
         margin-bottom: 25px;
     }
 }
