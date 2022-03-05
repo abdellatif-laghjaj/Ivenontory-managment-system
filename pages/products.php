@@ -46,7 +46,18 @@
         List of products
         <button class="arrow" id="arrow1" onclick="dropDown2()"></button>
     </div>
+
     <div class="list" id="form1">
+
+        <div class="wrap">
+            <div class="search">
+                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
         <table id="customers">
             <tr>
                 <th>Product ID</th>

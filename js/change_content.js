@@ -136,6 +136,16 @@ let category = `
             <button class="arrow" id="arrow1" onclick="dropDown2()"></button>
         </div>
         <div class="list" id="form1">
+
+            <div class="wrap">
+                <div class="search">
+                    <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
             <table id="customers">
             <tr>
                 <th>Category ID</th>
@@ -209,7 +219,18 @@ let products = `
             List of products
             <button class="arrow" id="arrow1" onclick="dropDown2()"></button>
         </div>
+
         <div class="list" id="form1">
+
+            <div class="wrap">
+                <div class="search">
+                    <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
             <table id="customers">
             <tr>
                 <th>Product ID</th>
@@ -276,27 +297,27 @@ let reports = `
     </div>     
 `;
 function changeToDashboard() {
-    let content = document.querySelector(".content");
-    window.location.reload();
-    content.innerHTML = dashboard;
+  let content = document.querySelector(".content");
+  window.location.reload();
+  content.innerHTML = dashboard;
 }
 
 function changeToProfile() {
-    let content = document.querySelector(".content");
-    content.innerHTML = profile;
+  let content = document.querySelector(".content");
+  content.innerHTML = profile;
 }
 
 function changeToCategory() {
-    let content = document.querySelector(".content");
-    content.innerHTML = category;
+  let content = document.querySelector(".content");
+  content.innerHTML = category;
 }
 
 function changeToProducts() {
-    let content = document.querySelector(".content");
-    content.innerHTML = products;
+  let content = document.querySelector(".content");
+  content.innerHTML = products;
 }
 
 function changeToReports() {
-    let content = document.querySelector(".content");
-    content.innerHTML = reports;
+  let content = document.querySelector(".content");
+  content.innerHTML = reports;
 }

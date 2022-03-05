@@ -1,7 +1,7 @@
 <?php
-$productsTotal = 19;
-$salesTotal = 121;
-$earningsTotal = 139;
+    $productsTotal = 19;
+    $salesTotal = 121;
+    $earningsTotal = 139;
 ?>
 <!DOCTYPE html>
 <html lang="en">
