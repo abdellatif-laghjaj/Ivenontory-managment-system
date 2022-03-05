@@ -1,9 +1,5 @@
 @import url(style.css);
 
-.content hr {
-    margin-bottom: 30px;
-}
-
 .reports-container {
     display: grid;
     place-items: center;
@@ -15,8 +11,14 @@
     ;
 }
 
+p{
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
 .reports-container .SelectBox {
     grid-area: box;
+    margin-top: -90px;
 }
 
 .reports-container label {
@@ -26,18 +28,20 @@
     margin: 0 auto;
 }
 
-.reports-container #report {
-    background-color: #002651;
-    color: white;
-    font-size: 24px;
-    border: none;
+.reports-container .reports-periode {
+    width: 200px;
+    background-color: #fff;
+    color: #002651;
+    font-size: 18px;
+    border: 1px #002651 solid;
     border-radius: 4px;
-    padding: 15px 50px 15px 5px;
+    padding: 15px 5px;
 }
 
 .reports-container .block {
     display: flex;
     flex-direction: column;
+    margin-top: -40px;
 }
 
 .reports-container .block #pdf {background-color: #FF304F; grid-area: card1;}
@@ -50,6 +54,7 @@
     display: grid;
     place-items: center;
     padding: 40px;
+    height: 200px;
     border-radius: 8px;
 }
 
@@ -67,12 +72,18 @@
 .reports-container .block .btn {
     background-color: #002651;
     border: none;
+    outline: none;
     border-radius: 4px;
-    margin-top: 25px;
+    width: 95%;
+    margin-top: 12px;
     color: white;
     font-size: 20px;
-    padding: 10px;
+    padding: 10px; 
     cursor: pointer;
+}
+
+.reports-container .block .btn .fa-download{
+    padding-right: 18px;
 }
 
 @media (max-width: 900px) {

@@ -2,8 +2,8 @@
 <hr color="#FF304F" width="90%" size="4">
 <div class="reports-container">
     <div class="SelectBox">
-        <label for="Term">Select term: </label>
-        <select name="report" id="report">
+        <label for="Term">Select periode: </label>
+        <select name="report" class="reports-periode">
             <option value="1">Last day</option>
             <option value="2">Last week</option>
             <option value="3">Last month</option>

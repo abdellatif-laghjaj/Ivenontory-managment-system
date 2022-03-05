@@ -243,8 +243,8 @@ let reports = `
     <p>Download your reports and data as PDF, CSV or JSON format:</p>
     <div class="reports-container">
         <div class="SelectBox">
-            <label for="Term">Select term: </label>
-            <select name="report" id="report">
+            <label for="Term">Select periode: </label>
+            <select name="report" class="reports-periode">
                 <option value="1">Last day</option>
                 <option value="2">Last week</option>
                 <option value="3">Last month</option>
@@ -257,21 +257,21 @@ let reports = `
                 <img src="../res/img/pdf.png" alt="">
                 <label for="">PDF Format</label>
             </div>
-            <button class="btn">DOWNLOAD</button>
+            <button class="btn"><i class="fa fa-download"></i>DOWNLOAD</button>
         </div>
         <div class="block">
             <div class="card" id="csv">
                 <img src="../res/img/csv.png" alt="">
                 <label for="">CSV Format</label>
             </div>
-            <button class="btn">DOWNLOAD</button>
+            <button class="btn"><i class="fa fa-download"></i>DOWNLOAD</button>
         </div>
         <div class="block">
             <div class="card" id="json">
                 <img src="../res/img/Json icon.png" alt="">
                 <label for="">JSON Format</label>
             </div>
-            <button class="btn">DOWNLOAD</button>
+            <button class="btn"><i class="fa fa-download"></i>DOWNLOAD</button>
         </div>
     </div>     
 `;
