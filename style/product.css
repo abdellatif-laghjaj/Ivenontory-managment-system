@@ -188,11 +188,9 @@
 }
 
 /*Resize the wrap to see the search bar change!*/
-.wrap {
-    width: 30%;
-    /*align search bar to the right*/
-    /*margin-left: auto; 
-    margin-right: 0;*/
+
+.wrap{
+  width: 100%;
 }
 
 .searchTerm {

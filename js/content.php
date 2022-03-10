@@ -154,15 +154,6 @@
         </div>
         <div class="list" id="form1">
 
-            <div class="wrap">
-                <div class="search">
-                    <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
-                    <button type="submit" class="searchButton">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
             <table id="customers">
             <tr>
                 <th>Category ID</th>
@@ -255,6 +246,7 @@
                 <th>Category</th>
                 <th>Quantity</th>
                 <th>Price</th>
+                <th style="text-align: center;">Actions</th>
             </tr>
             <tr>
                 <td>4</td>
@@ -262,6 +254,11 @@
                 <td>Mobile</td>
                 <td>1</td>
                 <td>1499</td>
+                <td style="text-align: right;">
+                    <button style="background: green; margin-right: 6px; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-edit"></i></button>
+                    <button style="background: red; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-trash"></i></button>
+                </td>
+                
             </tr>
             <tr>
                 <td>5</td>
@@ -269,6 +266,10 @@
                 <td>Laptops</td>
                 <td>1</td>
                 <td>3488</td>
+                <td style="text-align: right;">
+                    <button style="background: green; margin-right: 6px; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-edit"></i></button>
+                    <button style="background: red; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-trash"></i></button>
+                </td>
             </tr>
             </table>
         </div>
