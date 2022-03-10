@@ -36,7 +36,7 @@
         <h1>Identification</h1>
         <hr color="#FF304F" width="250" size="4">
 
-        <form action="login.php" method="get">
+        <form action="login.php" method="POST">
             <div class="input-container">
                 <i class="icon"><img src="../res/img/user.png" alt=""></i>
                 <input class="input-field" type="text" placeholder="Username" name="username">

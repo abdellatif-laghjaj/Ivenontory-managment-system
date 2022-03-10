@@ -1,4 +1,21 @@
-let dashboard = `
+<?php
+    //code
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let dashboard = `
     <h1>Dashboard</h1>
     <hr color="#FF304F" width="90%" size="4">
 
@@ -74,7 +91,7 @@ let dashboard = `
     </table>
 `;
 
-let profile = `
+        let profile = `
     <h1>Profile</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="profile-container">
@@ -98,7 +115,7 @@ let profile = `
             </div>
             <div class="field">
                 <span class="label">Reg-date</span>
-                <input type="date" name="reg-date" disabled>
+                <input type="date" name="reg-date">
             </div>
         </form>
         <div class="ActionButtons">
@@ -108,7 +125,7 @@ let profile = `
     </div>
 `;
 
-let category = `
+        let category = `
     <h1>Category</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="products-container">
@@ -170,7 +187,7 @@ let category = `
     </div>
 `;
 
-let products = `
+        let products = `
     <h1>Products</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="products-container">
@@ -258,7 +275,7 @@ let products = `
     </div>
 `;
 
-let reports = `
+        let reports = `
     <h1>Reports</h1>
     <hr color="#FF304F" width="90%" size="4">
     <p>Download your reports and data as PDF, CSV or JSON format:</p>
@@ -296,28 +313,33 @@ let reports = `
         </div>
     </div>     
 `;
-function changeToDashboard() {
-  let content = document.querySelector(".content");
-  window.location.reload();
-  content.innerHTML = dashboard;
-}
 
-function changeToProfile() {
-  let content = document.querySelector(".content");
-  content.innerHTML = profile;
-}
+        function changeToDashboard() {
+            let content = document.querySelector(".content");
+            window.location.reload();
+            content.innerHTML = dashboard;
+        }
 
-function changeToCategory() {
-  let content = document.querySelector(".content");
-  content.innerHTML = category;
-}
+        function changeToProfile() {
+            let content = document.querySelector(".content");
+            content.innerHTML = profile;
+        }
 
-function changeToProducts() {
-  let content = document.querySelector(".content");
-  content.innerHTML = products;
-}
+        function changeToCategory() {
+            let content = document.querySelector(".content");
+            content.innerHTML = category;
+        }
 
-function changeToReports() {
-  let content = document.querySelector(".content");
-  content.innerHTML = reports;
-}
+        function changeToProducts() {
+            let content = document.querySelector(".content");
+            content.innerHTML = products;
+        }
+
+        function changeToReports() {
+            let content = document.querySelector(".content");
+            content.innerHTML = reports;
+        }
+    </script>
+</body>
+
+</html>

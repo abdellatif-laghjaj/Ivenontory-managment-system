@@ -23,6 +23,11 @@
 </head>
 
 <body>
+
+    <!-- include the change content fontionality -->
+
+    <?php include('../js/content.php');?>
+    
     <nav class="navbar" onmouseover="mouseEnter()" onmouseout="mouseOut()">
         <ul class="navbar-nav">
             <li class="logo">
@@ -161,7 +166,6 @@
 
     <script src="../js/app.js"></script>
     <script src="../js/charts.js"></script>
-    <script src="../js/change_content.js"></script>
 </body>
 
 </html>
