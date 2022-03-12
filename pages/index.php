@@ -66,7 +66,7 @@
                     <i class="fa fa-shopping-basket"></i>
 
                     <!-- NUMBER OF ORDERS -->
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="NbOrders">
                         99+
                     </span>
                 </button>
@@ -99,7 +99,7 @@
             <div class="row">
                 <!-- Gallery item -->
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-dark text-white rounded shadow p-3 mb-5">
+                    <div class="bg-dark text-white rounded shadow p-3 mb-5" id="product">
                         <img src="../res/img/website.png" class="img-fluid card-img-top product-img"/>
                         <div class="p-4">
                             <h5 class="text-white fw-bold">Red paint cup</h5>
@@ -110,12 +110,12 @@
                             <table class="table table-borderless">
                                 <tr>
                                   <td class="text-white">Category:</td>
-                                  <td class="fw-bold text-white">Phone</td>
+                                  <td class="fw-bold text-white product-title">Phone</td>
                                 </tr>
       
                                 <tr>
                                   <td class="text-white">Price:</td>
-                                  <td class="fw-bold text-white">$1299</span> </td>
+                                  <td class="fw-bold text-white product-price">$1299</span> </td>
                                 </tr>
                             </table>
 

@@ -5,7 +5,7 @@
     <title>Shopping Cart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link href=" https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="shopping_cart.css">
 </head>
@@ -24,7 +24,7 @@
                 <div class="modal-body cartProducts">
                     <table class="table table-image">
                         <div class="d-flex justify-content-end">
-                            <h5>Total: <span class="price text-success cart-total-container">0$</span></h5>
+                            <h5>Total: <span class="totale-price text-success cart-total-container">0$</span></h5>
                         </div>
                         <thead>
                             <tr>
