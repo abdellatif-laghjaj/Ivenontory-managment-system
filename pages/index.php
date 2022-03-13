@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/index.css">
+    <!---<script src="../js/addToCart.js"></script>--->
     <title>TexGear</title>
 </head>
 <body>
@@ -202,7 +203,6 @@
     </div>
 </div>
 <script language="JavaScript">
-
     //pop-up show
 
     function showLogin() {
@@ -289,32 +289,30 @@
     }
 
     //change quantity input
-    for (let i = 0; i < cartElements.length; i++) {
-        var inputValue = cartElements[i].querySelector('.product-qnt').value;
-        var incrementBtn = cartElements[i].querySelector('.plusBtn');
-        var decrementBtn = cartElements[i].querySelector('.minusBtn');
+    function incrementValue (item) {
+        console.log("+");
+        console.log(item);
+        if (item.quantity < item.stock) {
+            item.quantity += 1;
+        } else {
+            item.quantity = item.stock;
+        }
+        updateQuantity();
+        updateTotalPrice();
+        updateBadge();
+    }
 
-        incrementBtn.addEventListener('click', function (e) {
-            if (inputValue < cartItems[i].stock) {
-                e.target.parentElement.querySelector('.product-qnt').value = inputValue + 1;
-            } else {
-                e.target.parentElement.querySelector('.product-qnt').value = cartItems[i].stock;
-            }
-            updateQuantity();
-            updateTotalPrice();
-            updateBadge();
-        })
-
-        decrementBtn.addEventListener('click', function (e) {
-            if (inputValue > 0) {
-                e.target.parentElement.querySelector('.product-qnt').value = inputValue - 1;
-            } else {
-                e.target.parentElement.querySelector('.product-qnt').value = 1;
-            }
-            updateQuantity();
-            updateTotalPrice();
-            updateBadge();
-        })
+    function decrementValue (item) {
+        console.log("-");
+        console.log(item);
+        if (item.quantity > 0) {
+            item.quantity -= 1;
+        } else {
+            item.quantity = 1;
+        }
+        updateQuantity();
+        updateTotalPrice();
+        updateBadge();
     }
 
     function updateQuantity() {
@@ -329,18 +327,18 @@
     function loadCartElements() {
         data = '';
         for (let i = 0; i < cartItems.length; i++) {
-            data += '<tr class="cart-element"><th><img src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><button class="minusBtn">-</button><input class="product-qnt" type="number" value="' + cartItems[i].quantity + '"><button class="plusBtn">+</button></th><th>' + cartItems[i].price + '</th><th><a href="#" onclick=Delete(cartItems[i]);>Remove</a></th></tr>'
+            data += '<tr class="cart-element"><th><img src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><button onclick=decrementValue(cartItems[i]); class="minusBtn">-</button><input class="product-qnt" type="text" value="' + cartItems[i].quantity + '"><button onclick=incrementValue(cartItems[i]); class="plusBtn">+</button></th><th>' + cartItems[i].price + '</th><th><a href="#" onclick=Delete(cartItems[i]);>Remove</a></th></tr>'
         }
         cartBody.innerHTML = data;
     }
 
     function Delete(element) {
+        console.log(element);
         cartItems.pop(element);
         updateTotalPrice();
         updateBadge();
         loadCartElements();
     }
-
 </script>
 </body>
 </html>
