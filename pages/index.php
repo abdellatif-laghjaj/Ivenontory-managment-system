@@ -59,8 +59,8 @@
                     <span>Price : </span><span id="base-price" style="font-weight: bold">$1299</span>
                 </div>
                 <hr>
-                <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                <div>
+                    <span>In Stock : </span><span class="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico">
@@ -81,8 +81,8 @@
                     <span>Price : </span><span id="base-price" style="font-weight: bold">$2000</span>
                 </div>
                 <hr>
-                <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                <div>
+                    <span>In Stock : </span><span class="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico">
@@ -104,7 +104,7 @@
                 </div>
                 <hr>
                 <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                    <span>In Stock : </span><span class="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico">
@@ -223,6 +223,7 @@
     var NbOrders = 0;
     var totalPrice = 0;
 
+    const cartElements = document.getElementsByClassName('cart-element');
     const addToCartButton = document.getElementsByClassName('addToCart');
     const badge = document.getElementById('Badge');
     const cartBody = document.getElementById('cart-pop').querySelector('table');
@@ -235,7 +236,8 @@
                 basePrice: parseFloat(e.target.parentElement.querySelector('#base-price').textContent.replace("$", "").trim()),
                 price: parseFloat(e.target.parentElement.querySelector('#base-price').textContent.replace("$", "").trim()),
                 quantity: parseInt("1"),
-                image: e.target.parentElement.querySelector('#product-image').src.replace("http://localhost/IMS", "..")
+                image: e.target.parentElement.querySelector('#product-image').src.replace("http://localhost/IMS", ".."),
+                stock: parseInt(e.target.parentElement.querySelector('.product-stock').textContent.trim())
             };
             if (cartItems.length > 0) {
                 //check if the cart contains the new element
@@ -287,27 +289,31 @@
     }
 
     //change quantity input
+    for (let i = 0; i < cartElements.length; i++) {
+        var inputValue = cartElements[i].querySelector('.product-qnt').value;
+        var incrementBtn = cartElements[i].querySelector('.plusBtn');
+        var decrementBtn = cartElements[i].querySelector('.minusBtn');
 
-    //minus function
-    const MinusButtons = cartBody.getElementsByClassName('minusBtn')
-    for (let i = 0; i < MinusButtons.length; i++) {
-        MinusButtons[i].addEventListener("click", function (e) {
-            e.parentElement.getElementsByClassName('product-qnt').value -= parseInt(1);
+        incrementBtn.addEventListener('click', function (e) {
+            if (inputValue < cartItems[i].stock) {
+                e.target.parentElement.querySelector('.product-qnt').value = inputValue + 1;
+            } else {
+                e.target.parentElement.querySelector('.product-qnt').value = cartItems[i].stock;
+            }
             updateQuantity();
-            console.log(e.parentElement.getElementsByClassName('product-qnt').value);
-            console.log(-1);
+            updateTotalPrice();
+            updateBadge();
         })
-    }
 
-    //Plus function
-    const PlusButtons = cartBody.getElementsByClassName('plusBtn');
-    for (let i = 0; i < MinusButtons.length; i++) {
-        MinusButtons[i].addEventListener("click", function (e) {
-            console.log(+1);
-            e.parentElement.getElementsByClassName('product-qnt').value += parseInt(1);
+        decrementBtn.addEventListener('click', function (e) {
+            if (inputValue > 0) {
+                e.target.parentElement.querySelector('.product-qnt').value = inputValue - 1;
+            } else {
+                e.target.parentElement.querySelector('.product-qnt').value = 1;
+            }
             updateQuantity();
-            console.log(e.parentElement.getElementsByClassName('product-qnt').value);
-            console.log(+1);
+            updateTotalPrice();
+            updateBadge();
         })
     }
 
@@ -323,7 +329,7 @@
     function loadCartElements() {
         data = '';
         for (let i = 0; i < cartItems.length; i++) {
-            data += '<tr><th><img src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><button class="minusBtn">-</button><input class="product-qnt" type="number" value="' + cartItems[i].quantity + '"><button class="plusBtn">+</button></th><th>' + cartItems[i].price + '</th><th><a href="#" onclick=Delete(cartItems[i]);>Remove</a></th></tr>'
+            data += '<tr class="cart-element"><th><img src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><button class="minusBtn">-</button><input class="product-qnt" type="number" value="' + cartItems[i].quantity + '"><button class="plusBtn">+</button></th><th>' + cartItems[i].price + '</th><th><a href="#" onclick=Delete(cartItems[i]);>Remove</a></th></tr>'
         }
         cartBody.innerHTML = data;
     }
