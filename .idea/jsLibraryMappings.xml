@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{Chart.js, bootstrap, font-awesome, jquery, jquery-3.2.1, jquery-3.5.1.slim, popper.js, sb-forms-latest}" />
+  </component>
+</project>
