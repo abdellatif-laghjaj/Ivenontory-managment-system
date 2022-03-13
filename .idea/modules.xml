@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Ivenontory-managment-system.iml" filepath="$PROJECT_DIR$/.idea/Ivenontory-managment-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IMS.iml" filepath="$PROJECT_DIR$/.idea/IMS.iml" />
     </modules>
   </component>
 </project>

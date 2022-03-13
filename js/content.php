@@ -1,5 +1,5 @@
 <?php
-    //code
+//code
 ?>
 
 
@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <script>
-        let dashboard = `
+<script>
+    let dashboard = `
     <h1>Dashboard</h1>
     <hr color="#FF304F" width="90%" size="4">
 
@@ -91,7 +91,7 @@
     </table>
 `;
 
-        let profile = `
+    let profile = `
     <h1>Profile</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="profile-container">
@@ -125,7 +125,7 @@
     </div>
 `;
 
-        let category = `
+    let category = `
     <h1>Category</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="products-container">
@@ -178,7 +178,7 @@
     </div>
 `;
 
-        let products = `
+    let products = `
     <h1>Products</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="products-container">
@@ -276,7 +276,7 @@
     </div>
 `;
 
-        let reports = `
+    let reports = `
     <h1>Reports</h1>
     <hr color="#FF304F" width="90%" size="4">
     <p>Download your reports and data as PDF, CSV or JSON format:</p>
@@ -315,32 +315,32 @@
     </div>     
 `;
 
-        function changeToDashboard() {
-            let content = document.querySelector(".content");
-            window.location.reload();
-            content.innerHTML = dashboard;
-        }
+    function changeToDashboard() {
+        let content = document.querySelector(".content");
+        window.location.reload();
+        content.innerHTML = dashboard;
+    }
 
-        function changeToProfile() {
-            let content = document.querySelector(".content");
-            content.innerHTML = profile;
-        }
+    function changeToProfile() {
+        let content = document.querySelector(".content");
+        content.innerHTML = profile;
+    }
 
-        function changeToCategory() {
-            let content = document.querySelector(".content");
-            content.innerHTML = category;
-        }
+    function changeToCategory() {
+        let content = document.querySelector(".content");
+        content.innerHTML = category;
+    }
 
-        function changeToProducts() {
-            let content = document.querySelector(".content");
-            content.innerHTML = products;
-        }
+    function changeToProducts() {
+        let content = document.querySelector(".content");
+        content.innerHTML = products;
+    }
 
-        function changeToReports() {
-            let content = document.querySelector(".content");
-            content.innerHTML = reports;
-        }
-    </script>
+    function changeToReports() {
+        let content = document.querySelector(".content");
+        content.innerHTML = reports;
+    }
+</script>
 </body>
 
 </html>

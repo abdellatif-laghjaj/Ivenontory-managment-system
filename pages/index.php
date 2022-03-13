@@ -1,149 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"            rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <style>
-        span {
-            color: #28C7FA;
-        }
-
-        .logo{
-            font-size: 36px;
-        }
-
-        .product-img{
-            transition: all 0.5s ease;
-        }
-        
-        .product-img:hover{
-            transform: scale(1.2);
-        }
-    </style>
-    <title>IMS</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/index.css">
+    <title>TexGear</title>
 </head>
-
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a href="#" class="logo navbar-brand fw-bold"><span>Tex</span>GEAR<span></span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
+<header>
+    <div class="logo">
+        <a href="#" class=""><span style="color: #28C7FA">Tex</span><span>GEAR</span></a>
+    </div>
+    <div class="nav-elements">
+        <ul>
+            <li>
+                <a href="login.php">Admin</a>
+            </li>
+            <li>
+                <a href="contact.php">Contact Us</a>
+            </li>
+        </ul>
+        <form>
+            <input type="text" id="search-area" placeholder="search...">
+            <button type="submit" id="search-button" value="">
+                <img src="../res/img/search.png">
             </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" style="font-size: 18px;" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="font-size: 18px;" href="login.php">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="font-size: 18px;" href="contact.php" target="_blank">Contact Us</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="btn btn-primary" type="button">
-                        <img src="../res/img/search.png" alt="" style="width: 22px;">
-                    </button>
-                </form>
-                
-                <!-- CART -->
-                <button class="btn btn-warning ms-2 me-2 py-2 px-3 text-white position-relative"
-                data-bs-toggle="modal" data-bs-target="#cartModal">
-                    <i class="fa fa-shopping-basket"></i>
-
-                    <!-- NUMBER OF ORDERS -->
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="NbOrders">
-                        99+
-                    </span>
+        </form>
+    </div>
+    <div class="basket">
+        <button class="closebtn" onclick="showCart()">
+            <img src="../res/img/shoppingcart.ico">
+            <div class="NbOrders hidden" id="Badge">0</div>
+        </button>
+    </div>
+    <div class="toggle"></div>
+</header>
+<main>
+    <div class="banner">
+        <h1 class="">Inventory managment system</h1>
+        <p class="">Enjoy a safe, convenient shopping experience</p>
+        <button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>
+        <button id="register" class="" style="width: 100px;" onclick="showRegistration()">Register</button>
+    </div>
+    <div class="categories">
+        <h1 class="category-title">Mobiles</h1>
+        <div class="products">
+            <div class="card">
+                <div class="product-image">
+                    <img id="product-image" src="../res/img/cellPhone.png">
+                </div>
+                <h1 class="product-name">
+                    Galaxy S20+
+                </h1>
+                <p>Here's some description...</p>
+                <hr>
+                <div class="product-price">
+                    <span>Price : </span><span id="base-price" style="font-weight: bold">$1299</span>
+                </div>
+                <hr>
+                <div class="product-stock">
+                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                </div>
+                <button class="addToCart">
+                    <img src="../res/img/cart.ico">
                 </button>
             </div>
         </div>
-    </nav>
-
-
-    <div class="container-fluid">
-        <div class="px-lg-5">
-            <!-- For demo purpose -->
-            <div class="row py-5">
-                <div class="col-lg-12 mx-auto">
-                    <div class="text-white p-5 shadow-sm rounded banner">
-                        <h1 class="display-4">Inventory managment system</h1>
-                        <p class="lead">Enjoy a safe, convenient shopping experience</p>
-                        
-                        <button type="button" class="btn btn-danger text-white mt-5"  data-bs-toggle="modal" data-bs-target="#userLogin" style="width: 100px;">Login</button>
-                        <button type="button" class="btn btn-primary text-white mt-5"
-                        data-bs-toggle="modal" data-bs-target="#userRegister" style="width: 100px;">Register</button>
-                    </div>
+        <div class="products">
+            <div class="card">
+                <div class="product-image">
+                    <img id="product-image" src="../res/img/box.png">
                 </div>
+                <h1 class="product-name">
+                    Iphone 12
+                </h1>
+                <p>Here's some description...</p>
+                <hr>
+                <div class="product-price">
+                    <span>Price : </span><span id="base-price" style="font-weight: bold">$2000</span>
+                </div>
+                <hr>
+                <div class="product-stock">
+                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                </div>
+                <button class="addToCart">
+                    <img src="../res/img/cart.ico">
+                </button>
             </div>
-
-            <?php include('../client/user_login.php')?>
-            <?php include('../client/user_register.php')?>
-            <?php include('../client/shopping_cart.php')?>
-            <!-- End -->
-
-            <div class="row">
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-dark text-white rounded shadow p-3 mb-5" id="product">
-                        <img src="../res/img/website.png" class="img-fluid card-img-top product-img"/>
-                        <div class="p-4">
-                            <h5 class="text-white fw-bold">Red paint cup</h5>
-                            <p class="small text-muted mb-1">
-                                Here's some description...
-                            </p>
-
-                            <table class="table table-borderless">
-                                <tr>
-                                  <td class="text-white">Category:</td>
-                                  <td class="fw-bold text-white product-title">Phone</td>
-                                </tr>
-      
-                                <tr>
-                                  <td class="text-white">Price:</td>
-                                  <td class="fw-bold text-white product-price">$1299</span> </td>
-                                </tr>
-                            </table>
-
-                            <button class="text-white rounded-pill py-2 mt-1 addToCart"  id="addToCart">
-                                <i class="fa fa-cart-plus"></i>
-                            </button>
-                        </div>
-                    </div>
+        </div>
+        <div class="products">
+            <div class="card">
+                <div class="product-image">
+                    <img id="product-image" src="../res/img/avatar.png">
                 </div>
-                <!-- End -->
+                <h1 class="product-name">
+                    Redmi Note 7
+                </h1>
+                <p>Here's some description...</p>
+                <hr>
+                <div class="product-price">
+                    <span>Price : </span><span id="base-price" style="font-weight: bold">$1099</span>
+                </div>
+                <hr>
+                <div class="product-stock">
+                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                </div>
+                <button class="addToCart">
+                    <img src="../res/img/cart.ico">
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="pop-up">
+    <div id="log-in-pop" class="log-in-pop hidden">
+        <div class="overlay">
+            <div class="pop-content">
+                <form>
+                    <legend>
+                        <span>Login</span>
+                        <button onclick="showLogin()">
+                            <img src="../res/img/close.png">
+                        </button>
+                    </legend>
+                    <div class="field">
+                        <label>Username</label>
+                        <input type="text" placeholder="username">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="field">
+                        <input type="submit" value="LOGIN" class="button">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="register-pop" class="register-pop hidden">
+        <div class="overlay">
+            <div class="pop-content">
+                <form>
+                    <legend>
+                        <span>Register</span>
+                        <button onclick="showRegistration()">
+                            <img src="../res/img/close.png">
+                        </button>
+                    </legend>
+                    <div class="field">
+                        <label>Username</label>
+                        <input type="text" placeholder="username">
+                    </div>
+                    <div class="field">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="Phone">
+                    </div>
+                    <div class="field">
+                        <label>Adresse</label>
+                        <input type="text" placeholder="Adresse">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="field">
+                        <label>Confirm password</label>
+                        <input type="password" placeholder="Confirm password">
+                    </div>
+                    <div class="field">
+                        <input type="submit" value="LOGIN" class="button">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="cart-pop" class="cart-pop hidden">
+        <div class="overlay">
+            <div class="pop-content">
+                <legend>
+                    <h5 class="" id="">
+                        Your Shopping Cart
+                    </h5>
+                    <button class="closebtn" onclick="showCart()">
+                        <img src="../res/img/close.png">
+                    </button>
+                </legend>
+                <div id="total-price">
 
-                <div class="py-5 text-right">
-                    <a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a>
+                </div>
+                <table>
+
+                </table>
+                <div class="actionbtn">
+                    <button type="button" id="close" onclick="showCart()">Close</button>
+                    <button type="button" id="buy-now">Buy now</button>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<script language="JavaScript">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-            integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
-            crossorigin="anonymous"></script>
+    //pop-up show
 
-    <script src="../js/addToCart.js"></script>
+    function showLogin() {
+        document.getElementById("log-in-pop").classList.toggle("hidden");
+    }
+
+    function showRegistration() {
+        document.getElementById("register-pop").classList.toggle("hidden");
+    }
+
+    function showCart() {
+        document.getElementById("cart-pop").classList.toggle("hidden");
+    }
+
+    //add to cart
+    let cartItems = [];
+    let data = '';
+    var NbOrders = 0;
+    var totalPrice = 0;
+
+    const addToCartButton = document.getElementsByClassName('addToCart');
+    const badge = document.getElementById('Badge');
+    const cartBody = document.getElementById('cart-pop').querySelector('table');
+
+
+    for (var i = 0; i < addToCartButton.length; i++) {
+        addToCartButton[i].addEventListener("click", function (e) {
+            let item = {
+                name: e.target.parentElement.querySelector('.product-name').textContent.trim(),
+                basePrice: parseFloat(e.target.parentElement.querySelector('#base-price').textContent.replace("$", "").trim()),
+                price: parseFloat(e.target.parentElement.querySelector('#base-price').textContent.replace("$", "").trim()),
+                quantity: parseInt("1"),
+                image: e.target.parentElement.querySelector('#product-image').src.replace("http://localhost/IMS", "..")
+            };
+            if (cartItems.length > 0) {
+                //check if the cart contains the new element
+                for (var j = 0; j < cartItems.length; j++) {
+                    if (cartItems[j].name.localeCompare(item.name) == 0) {
+                        cartItems[j].quantity += 1;
+                        cartItems[j].price = cartItems[j].basePrice * cartItems[j].quantity;
+                        break;
+                    } else {
+                        cartItems.push(item);
+                    }
+                }
+            } else {
+                cartItems.push(item);
+            }
+            updateTotalPrice()
+            updateBadge();
+            loadCartElements();
+        })
+    }
+
+    //change badge content
+    function updateBadge() {
+        NbOrders = 0;
+        for (let k = 0; k < cartItems.length; k++) {
+            NbOrders += cartItems[k].quantity;
+        }
+        if (NbOrders == 0) {
+            badge.classList.add('hidden');
+            badge.classList.remove('NbOrders');
+        } else if (NbOrders < 100) {
+            badge.classList.remove('hidden');
+            badge.classList.add('NbOrders');
+            badge.innerText = NbOrders;
+        } else {
+            badge.classList.remove('hidden');
+            badge.classList.add('NbOrders');
+            badge.innerText = "+99"
+        }
+    }
+
+    //update totale price
+    function updateTotalPrice() {
+        totalPrice = 0;
+        for (let k = 0; k < cartItems.length; k++) {
+            totalPrice += cartItems[k].price;
+        }
+        document.getElementById('total-price').innerText = totalPrice + "$";
+    }
+
+    //change quantity input
+
+    //minus function
+    const MinusButtons = cartBody.getElementsByClassName('minusBtn')
+    for (let i = 0; i < MinusButtons.length; i++) {
+        MinusButtons[i].addEventListener("click", function (e) {
+            e.parentElement.getElementsByClassName('product-qnt').value -= parseInt(1);
+            updateQuantity();
+            console.log(e.parentElement.getElementsByClassName('product-qnt').value);
+            console.log(-1);
+        })
+    }
+
+    //Plus function
+    const PlusButtons = cartBody.getElementsByClassName('plusBtn');
+    for (let i = 0; i < MinusButtons.length; i++) {
+        MinusButtons[i].addEventListener("click", function (e) {
+            console.log(+1);
+            e.parentElement.getElementsByClassName('product-qnt').value += parseInt(1);
+            updateQuantity();
+            console.log(e.parentElement.getElementsByClassName('product-qnt').value);
+            console.log(+1);
+        })
+    }
+
+    function updateQuantity() {
+        const quantityInput = cartBody.getElementsByClassName('product-qnt');
+        for (let i = 0; i < quantityInput.length; i++) {
+            cartItems[i].quantity = parseFloat(quantityInput[i].value);
+            cartItems[i].price = cartItems[i].basePrice * cartItems[i].quantity;
+        }
+        updateTotalPrice();
+    }
+
+    function loadCartElements() {
+        data = '';
+        for (let i = 0; i < cartItems.length; i++) {
+            data += '<tr><th><img src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><button class="minusBtn">-</button><input class="product-qnt" type="number" value="' + cartItems[i].quantity + '"><button class="plusBtn">+</button></th><th>' + cartItems[i].price + '</th><th><a href="#" onclick=Delete(cartItems[i]);>Remove</a></th></tr>'
+        }
+        cartBody.innerHTML = data;
+    }
+
+    function Delete(element) {
+        cartItems.pop(element);
+        updateTotalPrice();
+        updateBadge();
+        loadCartElements();
+    }
+
+</script>
 </body>
-
 </html>

@@ -1,55 +1,65 @@
-let productsInCart = [];
-const parentElement = querySelector(".table");
-const cartSumPrice = document.querySelector(".totale-price");
-const products = document.querySelector("#product");
-const ordersInCart = document.querySelector("#NbOrders");
+window.onload = function(){
+    //add to cart
 
-const countSumPrice = function() {
-    let sumPrice = 0;
-    productsInCart.forEach(product => {
-        sumPrice += product.price;
-    })
-    return sumPrice;
-}
+    const iconShopping = document.querySelector('.basket');
+    const cartCloseBtn = document.querySelector('.closebtn');
+    const cartBox = document.querySelector('.cart-pop');
 
-const updateShoppingCartHTML = function() {
-    if(productsInCart.length > 0) {
-        let result = productsInCart.map(product => {
-            return ' <table class="table table-image"> <thead> </thead> <tbody> <tr class="cartProduct"> <td class="w-25"> <img src="${product.image}" class="img-fluid img-thumbnail" alt="Sheep"> </td> <td>${product.name}</td> <td class="Element-Price">${product.price}$</td> <td class="Element-Quantity"><input type="text" class="form-control" id="input1" value="1"></td> <td> <a href="#" class="btn btn-danger btn-sm"> <i class="fa fa-times"></i> </a> </td> </tr> </tbody> </table> '
-        });
-        parentElement.innerHTML = result.join('');
-        ordersInCart.innerHTML = productsInCart.length;
-    } else {
-        ordersInCart.innerHTML = "";
-    }
-}
-
-function updateProductInCart(product) {
-    for (let i = 0; i < productsInCart.length; i++) {
-        if(productsInCart[i].name == product.name) {
-            productsInCart[i].count += 1;
-            productsInCart[i].price = productsInCart[i].basePrice * productsInCart[i].count;
-            return;
-        }
-    }
-    productsInCart.push(product);
-}
-
-products.forEach(product => {
-    product.addEventListener('click', (e) => {
-        if(e.target.classList.contains('addToCart')) {
-            const productName = product.querySelector('.product-title').innerText;
-            const productPrice = product.querySelector('.product-price').innerText;    
-            const productImage = product.querySelector('.product-img').src;
-            let productToCart = {
-                name : productName,
-                image : productImage,
-                count : 1,
-                price : +productPrice,
-                basePrice : +productPrice
+    // adding data to localstorage
+    const attToCartBtn = document.getElementsByClassName('addToCart');
+    let items = [];
+    for(let i=0; i<attToCartBtn.length; i++){
+        attToCartBtn[i].addEventListener("click",function(e){
+            console.log("111");
+            if(typeof(Storage) !== 'undefined'){
+                let item = {
+                    id:i+1,
+                    name:e.target.parentElement.querySelector('.product-name').textContent,
+                    price:e.target.parentElement.querySelector('.product-price').textContent,
+                    no:1
+                };
+                if(JSON.parse(localStorage.getItem('items')) === null){
+                    items.push(item);
+                    localStorage.setItem("items",JSON.stringify(items));
+                    window.location.reload();
+                }else{
+                    const localItems = JSON.parse(localStorage.getItem("items"));
+                    localItems.map(data=>{
+                        if(item.id == data.id){
+                            item.no = data.no + 1;
+                        }else{
+                            items.push(data);
+                        }
+                    });
+                    items.push(item);
+                    localStorage.setItem('items',JSON.stringify(items));
+                    window.location.reload();
+                }
+            }else{
+                alert('local storage is not working on your browser');
             }
-            updateProductInCart(productToCart);
-            updateShoppingCartHTML();
+        });
+
+        // adding data to shopping cart
+        const iconShoppingP = document.querySelector('.NbOrders');
+        let no = 0;
+        JSON.parse(localStorage.getItem('items')).map(data=>{
+            no = no+data.no
+            ;	});
+        iconShoppingP.innerHTML = no;
+
+
+        //adding cartbox data in table
+        const cardBoxTable = cartBox.querySelector('table');
+        let tableData = '';
+        tableData += '<tr><th>S no.</th><th>Item Name</th><th>Item No</th><th>item Price</th><th></th></tr>';
+        if(JSON.parse(localStorage.getItem('items'))[0] === null){
+            tableData += '<tr><td colspan="5">No items found</td></tr>'
+        }else{
+            JSON.parse(localStorage.getItem('items')).map(data=>{
+                tableData += '<tr><th>'+data.id+'</th><th>'+data.name+'</th><th>'+data.no+'</th><th>'+data.price+'</th><th><a href="#" onclick=Delete(this);>Delete</a></th></tr>';
+            });
         }
-    })
-});
+        cardBoxTable.innerHTML = tableData;
+    }
+}

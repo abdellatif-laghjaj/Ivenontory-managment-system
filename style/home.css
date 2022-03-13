@@ -148,15 +148,3 @@ nav .menu {
   background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
   background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
 }
-
-#addToCart {
-  width: 94%;
-  transition: all 0.5s ease;
-  background-color: #ffc000;
-  outline: none;
-  border: none;
-}
-
-#addToCart:hover {
-  background-color: red;
-}

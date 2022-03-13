@@ -1,0 +1,482 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+.hidden {
+    display: none;
+}
+
+/**********************************************/
+
+header {
+    background-color: #343a40;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    position: relative;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+header .logo {
+    font: 20px Cairo;
+    font-weight: bold;
+    margin: 0 16px 0 0;
+    padding: 5px;
+}
+
+header .nav-elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .nav-elements ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+header .nav-elements ul li a {
+    margin: 0 16px 0 0;
+    font: 18px Cairo;
+    color: #ffffff80;
+    padding: 8px;
+}
+
+header .nav-elements form {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    right: 120px;
+}
+
+header .nav-elements form #search-area {
+    border: 0.5px solid #daebea;
+    border-right: none;
+    padding: 5px;
+}
+
+header .nav-elements form #search-area:focus {
+    outline: none;
+}
+
+header .nav-elements form #search-button {
+    width: 36px;
+    border: 0.5px solid #007bff;
+    background-color: #007bff;
+    border-left: none;
+    padding: 4px 5px;
+    cursor: pointer;
+}
+
+header .nav-elements form #search-button img {
+    width: 24px;
+    height: 24px;
+}
+
+header .basket button {
+    position: absolute;
+    width: 42px;
+    height: 36px;
+    margin-left: 20px;
+    outline: none;
+    background: none;
+    right: 30px;
+    cursor: pointer;
+    border: none;
+}
+
+header .basket .NbOrders {
+    position: absolute;
+    top: -1px;
+    right: -2px;
+    background-color: #dc3545;
+    border-radius: 40%;
+    color: white;
+    font-weight: 700;
+    font-size: 75%;
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline
+}
+
+header .basket .hidden {
+    display: none;
+}
+
+    /******************************************/
+
+main {
+    margin: 48px;
+}
+
+main .banner {
+    background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+    padding: 48px;
+    color: white;
+    border-radius: 10px;
+}
+
+main .banner h1 {
+    font: 56px Cairo;
+    margin-bottom: 10px;
+}
+
+main .banner p {
+    font: 20px Cairo;
+    margin-bottom: 16px;
+}
+
+main .banner button {
+    font: 16px Cairo;
+    margin-top: 48px;
+    padding: 6px 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+main .banner #log-in {
+    background-color: #dc3545;
+}
+
+main .banner #register {
+    background-color: #007bff;
+}
+
+/********************************************************/
+
+main .categories {
+    margin-top: 40px;
+}
+
+main .categories .category-title {
+    font: 48px Cairo;
+    color: #111111;
+}
+
+main .categories .products {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+main .categories .products .card {
+    background-color: #343a40;
+    padding: 16px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+main .categories .products .card .product-image {
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+}
+
+main .categories .products .card .product-image img {
+    width: 240px;
+    height: 240px;
+    transition: all 0.5s ease;
+}
+
+main .categories .products .card .product-image:hover {
+    transform: scale(1.2);
+}
+
+main .categories .products .card .product-name {
+    font: 20px Cairo;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+main .categories .products .card p {
+    color: #6c757d;
+    font: 12px Cairo;
+    margin-bottom: 4px;
+}
+
+main .categories .products .card .product-price {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    margin: 10px 0 10px 0;
+}
+
+main .categories .products .card .product-stock {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    margin: 10px 0 10px 0;
+}
+
+main .categories .products .card button {
+    border-radius: 18px;
+    background-color: #ffc000;
+    border: none;
+    margin: 10px 0 10px 0;
+    padding: 4px;
+    cursor: pointer;
+    transition: 0.5s ease all;
+}
+
+main .categories .products .card button:hover {
+    background-color: red;
+}
+
+/*********************************************/
+
+.pop-up .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/******************************************/
+
+.pop-up .log-in-pop .pop-content {
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+}
+
+.pop-up .log-in-pop .pop-content form legend {
+    background-color: #dc3545;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+}
+
+.pop-up .log-in-pop .pop-content form legend button {
+    background: none;
+    border: none;
+}
+
+.pop-up .log-in-pop .pop-content form legend button:hover {cursor: pointer}
+
+.pop-up .log-in-pop .pop-content form legend button img {
+    width: 24px;
+    height: 24px;
+}
+
+.pop-up .log-in-pop .pop-content form .field {
+    margin: 15px 30px 10px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up .log-in-pop .pop-content form .field label {font: 16px Cairo; color: #111111; margin-bottom: 4px;}
+
+.pop-up .log-in-pop .pop-content form .field input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.pop-up .log-in-pop .pop-content form .field input:focus {outline: none;}
+
+.pop-up .log-in-pop .pop-content form .field .button {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    background-color: #dc3545;
+    cursor: pointer;
+    border: none;
+}
+
+/*******************************************/
+
+.pop-up .register-pop .pop-content {
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+}
+
+.pop-up .register-pop .pop-content form legend {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+}
+
+.pop-up .register-pop .pop-content form legend button {
+    background: none;
+    border: none;
+}
+
+.pop-up .register-pop .pop-content form legend button:hover {cursor: pointer}
+
+.pop-up .register-pop .pop-content form legend button img {
+    width: 24px;
+    height: 24px;
+}
+
+.pop-up .register-pop .pop-content form .field {
+    margin: 15px 30px 10px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up .register-pop .pop-content form .field label {font: 16px Cairo; color: #111111; margin-bottom: 4px;}
+
+.pop-up .register-pop .pop-content form .field input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.pop-up .register-pop .pop-content form .field input:focus {outline: none;}
+
+.pop-up .register-pop .pop-content form .field .button {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    border: none;
+}
+
+/**************************************/
+
+.pop-up .cart-pop .pop-content {
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+}
+
+.pop-up .cart-pop .pop-content legend {
+    background-color: #ffc107;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+}
+
+.pop-up .cart-pop .pop-content legend h5 {
+    color: #212529;
+    font: 20px Cairo;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.pop-up .cart-pop .pop-content legend button {
+    background: none;
+    border: none;
+}
+
+.pop-up .cart-pop .pop-content button:hover {cursor: pointer;}
+
+.pop-up .cart-pop .pop-content legend button img {
+    width: 24px;
+    height: 24px;
+}
+
+.pop-up .cart-pop .pop-content .cart-products {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up .cart-pop .pop-content .cart-products table {
+    display: table;
+    color: #212529;
+}
+
+.pop-up .cart-pop .pop-content .cart-products table thead {
+    font-weight: bold;
+}
+
+.pop-up .cart-pop .pop-content .actionbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+    color: white;
+}
+
+.pop-up .cart-pop .pop-content .actionbtn #close {
+    background-color: #6c757d;
+    padding: 6px 12px;
+    margin: 4px;
+    font: 16px Cairo;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.pop-up .cart-pop .pop-content .actionbtn #buy-now {
+    background-color: #28a745;
+    padding: 6px 12px;
+    margin: 4px;
+    font: 16px Cairo;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+/****************************************/

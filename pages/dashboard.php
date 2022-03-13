@@ -7,7 +7,7 @@
     <div class="card">
         <img src="../res/img/box.png" alt="box icon">
         <div class="info">
-            <h3><?php echo $productsTotal?></h3>  
+            <h3><?php echo $productsTotal ?></h3>
             <p>Products</p>
         </div>
     </div>
@@ -15,7 +15,7 @@
     <div class="card sales">
         <img src="../res/img/sales.png" alt="box icon">
         <div class="info">
-            <h3><?php echo $salesTotal?></h3>
+            <h3><?php echo $salesTotal ?></h3>
             <p>Sales</p>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="card earnings">
         <img src="../res/img/dollar.png" alt="box icon">
         <div class="info">
-            <h3><?php echo $earningsTotal?></h3>
+            <h3><?php echo $earningsTotal ?></h3>
             <p>Earnings</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="chart circle-chart">
         <canvas id="myChart-circle" class="chart-design circle"></canvas>
     </div>
-    
+
     <div class="chart">
         <canvas id="myChart" class="chart-design"></canvas>
     </div>
