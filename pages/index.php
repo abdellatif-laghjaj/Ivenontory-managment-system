@@ -60,7 +60,7 @@
                     <span>Price : </span><span id="base-price" style="font-weight: bold">$1299</span>
                 </div>
                 <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                    <span>In Stock : </span><span id="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico" alt="">
@@ -75,14 +75,14 @@
                     <img id="product-image" src="../res/img/cellPhone.png" alt="product image">
                 </div>
                 <h1 class="product-name">
-                    Galaxy S20+
+                    Huawei Y7
                 </h1>
                 <p>Here's some description...</p>
                 <div class="product-price">
                     <span>Price : </span><span id="base-price" style="font-weight: bold">$1299</span>
                 </div>
                 <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                    <span>In Stock : </span><span id="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico" alt="">
@@ -97,14 +97,14 @@
                     <img id="product-image" src="../res/img/cellPhone.png" alt="product image">
                 </div>
                 <h1 class="product-name">
-                    Galaxy S20+
+                    Redmi note 7
                 </h1>
                 <p>Here's some description...</p>
                 <div class="product-price">
                     <span>Price : </span><span id="base-price" style="font-weight: bold">$1299</span>
                 </div>
                 <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                    <span>In Stock : </span><span id="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico" alt="">
@@ -119,14 +119,14 @@
                     <img id="product-image" src="../res/img/cellPhone.png" alt="product image">
                 </div>
                 <h1 class="product-name">
-                    Galaxy S20+
+                    Iphone 12
                 </h1>
                 <p>Here's some description...</p>
                 <div class="product-price">
                     <span>Price : </span><span id="base-price" style="font-weight: bold">$1299</span>
                 </div>
                 <div class="product-stock">
-                    <span>In Stock : </span><span style="font-weight: bold">20</span>
+                    <span>In Stock : </span><span id="product-stock" style="font-weight: bold">20</span>
                 </div>
                 <button class="addToCart">
                     <img src="../res/img/cart.ico" alt="">
@@ -173,13 +173,19 @@
                 basePrice: parseFloat(e.target.parentElement.querySelector('#base-price').textContent.replace("$", "").trim()),
                 price: parseFloat(e.target.parentElement.querySelector('#base-price').textContent.replace("$", "").trim()),
                 quantity: parseInt("1"),
+                stock: parseInt(e.target.parentElement.querySelector('#product-stock').textContent.trim()),
                 image: e.target.parentElement.querySelector('#product-image').src.replace("http://localhost/IMS", "..")
             };
             if (cartItems.length > 0) {
                 //check if the cart contains the new element
                 for (let j = 0; j < cartItems.length; j++) {
                     if (cartItems[j].name.localeCompare(item.name) === 0) {
-                        cartItems[j].quantity += 1;
+                        if (cartItems[j].quantity < cartItems[j].stock) {
+                            cartItems[j].quantity += 1;
+                        } else {
+                            cartItems[j].quantity = cartItems[j].stock;
+                            alert('Product out of stock');
+                        }
                         cartItems[j].price = cartItems[j].basePrice * cartItems[j].quantity;
                         break;
                     } else {
@@ -224,31 +230,6 @@
         document.getElementById('total-price').innerText = "Total: " + totalPrice + "$";
     }
 
-    //change quantity input
-
-    //minus function
-    const MinusButtons = cartBody.getElementsByClassName('minusBtn')
-    for (let i = 0; i < MinusButtons.length; i++) {
-        MinusButtons[i].addEventListener("click", function (e) {
-            e.parentElement.getElementsByClassName('product-qnt').value -= parseInt(1);
-            updateQuantity();
-            console.log(e.parentElement.getElementsByClassName('product-qnt').value);
-            console.log(-1);
-        })
-    }
-
-    //Plus function
-    const PlusButtons = cartBody.getElementsByClassName('plusBtn');
-    for (let i = 0; i < MinusButtons.length; i++) {
-        MinusButtons[i].addEventListener("click", function (e) {
-            console.log(+1);
-            e.parentElement.getElementsByClassName('product-qnt').value += parseInt(1);
-            updateQuantity();
-            console.log(e.parentElement.getElementsByClassName('product-qnt').value);
-            console.log(+1);
-        })
-    }
-
     function updateQuantity() {
         const quantityInput = cartBody.getElementsByClassName('product-qnt');
         for (let i = 0; i < quantityInput.length; i++) {
@@ -256,14 +237,60 @@
             cartItems[i].price = cartItems[i].basePrice * cartItems[i].quantity;
         }
         updateTotalPrice();
+        updateBadge();
     }
 
     function loadCartElements() {
         data = '';
         for (let i = 0; i < cartItems.length; i++) {
-            data += '<tr><th><img class="shopping-cart-img" src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><input class="product-qnt" type="number" value="' + cartItems[i].quantity + '"></th><th>' + cartItems[i].price + '</th><th><a href="#" class="removeBtn" onclick=Delete(cartItems[i]);><i class="fa fa-trash"></i></a></th></tr>'
+            data += '<tr><th><img class="shopping-cart-img" src="' + cartItems[i].image + '"></th><th>' + cartItems[i].name + '</th><th><button class="dec">-</button><input class="product-qnt" type="text" value="' + cartItems[i].quantity + '"><button class="inc">+</button></th><th>' + cartItems[i].basePrice + '</th><th><a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a></th></tr>'
         }
         cartBody.innerHTML = data;
+
+        //change quantity input
+        var incrementButtons = cartBody.getElementsByClassName('inc');
+        var decrementButtons = cartBody.getElementsByClassName('dec');
+
+        //increase input value
+        for (var i = 0; i < incrementButtons.length; i++) {
+            var button = incrementButtons[i];
+            button.addEventListener('click', function (e) {
+                var buttonClicked = e.target;
+                var input = buttonClicked.parentElement.querySelector('.product-qnt');
+                var inputValue = input.value;
+                var newValue = parseInt(inputValue) + 1;
+                console.log(cartItems);
+                console.log(i);
+                console.log(cartItems[i-1].basePrice);
+                var productsInStock = parseInt(cartItems[i-1].stock);
+                if (newValue < productsInStock) {
+                    input.value = newValue;
+                    updateQuantity();
+                } else {
+                    input.value = productsInStock;
+                    updateQuantity();
+                    alert('Product out of stock');
+                }
+            })
+        }
+
+        //decrease input value
+        for (var i = 0; i < decrementButtons.length; i++) {
+            var button = decrementButtons[i];
+            button.addEventListener('click', function (e) {
+                var buttonClicked = e.target;
+                var input = buttonClicked.parentElement.querySelector('.product-qnt');
+                var inputValue = input.value;
+                var newValue = parseInt(inputValue) - 1;
+                if (newValue > 0) {
+                    input.value = newValue;
+                    updateQuantity();
+                } else {
+                    input.value = 1;
+                    updateQuantity();
+                }
+            })
+        }
     }
 
     function Delete(element) {
