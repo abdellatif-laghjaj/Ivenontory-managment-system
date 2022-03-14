@@ -1,11 +1,29 @@
+:root {
+    --light-red: #ff304f;
+    --light-blue: #28c7fa;
+    --dark-blue: #002651;
+    --light-green: #90c418;
+    --light-orange: #f8c822;
+    --light-grey: #e2e2e2;
+    --light-black: #222222;
+    --earn-blue: #59adff;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../res/fonts/Cairo.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Cairo;
 }
 
 body {
-
+    height: 100vh;
+    background: #fff url("../res/img/homepage.svg") no-repeat center center fixed;
 }
 
 .hidden {
@@ -18,7 +36,6 @@ header {
     background-color: #343a40;
     display: flex;
     flex-direction: row;
-    padding: 15px;
     position: relative;
 }
 
@@ -28,29 +45,37 @@ header a {
 }
 
 header .logo {
-    font: 20px Cairo;
+    font: 26px Cairo;
     font-weight: bold;
-    margin: 0 16px 0 0;
-    padding: 5px;
+    margin: 0 16px;
 }
 
 header .nav-elements {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 header .nav-elements ul {
     list-style: none;
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 5px;
 }
 
 header .nav-elements ul li a {
-    margin: 0 16px 0 0;
+    margin-right: 16px;
     font: 18px Cairo;
     color: #ffffff80;
+    padding: 8px;
+}
+
+header .nav-elements ul li a:hover {
+    margin: 0 16px 0 0;
+    font: 18px Cairo;
+    color: #fff;
     padding: 8px;
 }
 
@@ -61,38 +86,14 @@ header .nav-elements form {
     right: 120px;
 }
 
-header .nav-elements form #search-area {
-    border: 0.5px solid #daebea;
-    border-right: none;
-    padding: 5px;
-}
-
-header .nav-elements form #search-area:focus {
-    outline: none;
-}
-
-header .nav-elements form #search-button {
-    width: 36px;
-    border: 0.5px solid #007bff;
-    background-color: #007bff;
-    border-left: none;
-    padding: 4px 5px;
-    cursor: pointer;
-}
-
-header .nav-elements form #search-button img {
-    width: 24px;
-    height: 24px;
-}
-
 header .basket button {
     position: absolute;
     width: 42px;
-    height: 36px;
-    margin-left: 20px;
     outline: none;
-    background: none;
-    right: 30px;
+    right: 38px;
+    background: var(--light-orange) none;
+    padding: 6px;
+    border-radius: 6px;
     cursor: pointer;
     border: none;
 }
@@ -120,7 +121,7 @@ header .basket .hidden {
     display: none;
 }
 
-    /******************************************/
+/******************************************/
 
 main {
     margin: 48px;
@@ -165,6 +166,10 @@ main .banner #register {
 
 main .categories {
     margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 main .categories .category-title {
@@ -176,6 +181,7 @@ main .categories .products {
     margin-top: 30px;
     display: flex;
     flex-direction: row;
+    margin: 16px;
 }
 
 main .categories .products .card {
@@ -187,15 +193,13 @@ main .categories .products .card {
 }
 
 main .categories .products .card .product-image {
-    width: 300px;
-    height: 300px;
-    padding: 30px;
+    padding: 20px;
+    transition: all 0.5s ease;
 }
 
 main .categories .products .card .product-image img {
-    width: 240px;
-    height: 240px;
-    transition: all 0.5s ease;
+    width: 180px;
+    height: 180px;
 }
 
 main .categories .products .card .product-image:hover {
@@ -250,7 +254,7 @@ main .categories .products .card button:hover {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 100;
     display: flex;
     justify-content: center;
@@ -267,12 +271,15 @@ main .categories .products .card button:hover {
     z-index: 101;
 }
 
+.pop-up .log-in-pop .pop-content form {
+    width: 500px;
+}
+
 .pop-up .log-in-pop .pop-content form legend {
     background-color: #dc3545;
     color: white;
     display: flex;
     justify-content: space-between;
-    height: 40px;
     border-radius: 4px 4px 0 0;
     padding: 10px;
 }
@@ -282,7 +289,9 @@ main .categories .products .card button:hover {
     border: none;
 }
 
-.pop-up .log-in-pop .pop-content form legend button:hover {cursor: pointer}
+.pop-up .log-in-pop .pop-content form legend button:hover {
+    cursor: pointer
+}
 
 .pop-up .log-in-pop .pop-content form legend button img {
     width: 24px;
@@ -295,7 +304,11 @@ main .categories .products .card button:hover {
     flex-direction: column;
 }
 
-.pop-up .log-in-pop .pop-content form .field label {font: 16px Cairo; color: #111111; margin-bottom: 4px;}
+.pop-up .log-in-pop .pop-content form .field label {
+    font: 16px Cairo;
+    color: #111111;
+    margin-bottom: 4px;
+}
 
 .pop-up .log-in-pop .pop-content form .field input {
     display: block;
@@ -308,10 +321,13 @@ main .categories .products .card button:hover {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.pop-up .log-in-pop .pop-content form .field input:focus {outline: none;}
+.pop-up .log-in-pop .pop-content form .field input:focus {
+    outline: none;
+    border: 1px solid #dc3545;
+}
 
 .pop-up .log-in-pop .pop-content form .field .button {
     display: block;
@@ -334,6 +350,7 @@ main .categories .products .card button:hover {
     display: flex;
     flex-direction: column;
     z-index: 101;
+    width: 500px;
 }
 
 .pop-up .register-pop .pop-content form legend {
@@ -341,7 +358,6 @@ main .categories .products .card button:hover {
     color: white;
     display: flex;
     justify-content: space-between;
-    height: 40px;
     border-radius: 4px 4px 0 0;
     padding: 10px;
 }
@@ -351,7 +367,9 @@ main .categories .products .card button:hover {
     border: none;
 }
 
-.pop-up .register-pop .pop-content form legend button:hover {cursor: pointer}
+.pop-up .register-pop .pop-content form legend button:hover {
+    cursor: pointer
+}
 
 .pop-up .register-pop .pop-content form legend button img {
     width: 24px;
@@ -364,7 +382,11 @@ main .categories .products .card button:hover {
     flex-direction: column;
 }
 
-.pop-up .register-pop .pop-content form .field label {font: 16px Cairo; color: #111111; margin-bottom: 4px;}
+.pop-up .register-pop .pop-content form .field label {
+    font: 16px Cairo;
+    color: #111111;
+    margin-bottom: 4px;
+}
 
 .pop-up .register-pop .pop-content form .field input {
     display: block;
@@ -377,10 +399,13 @@ main .categories .products .card button:hover {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.pop-up .register-pop .pop-content form .field input:focus {outline: none;}
+.pop-up .register-pop .pop-content form .field input:focus {
+    outline: none;
+    border: 1px solid #007bff;
+}
 
 .pop-up .register-pop .pop-content form .field .button {
     display: block;
@@ -403,6 +428,9 @@ main .categories .products .card button:hover {
     display: flex;
     flex-direction: column;
     z-index: 101;
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 90vh;
 }
 
 .pop-up .cart-pop .pop-content legend {
@@ -410,9 +438,9 @@ main .categories .products .card button:hover {
     color: white;
     display: flex;
     justify-content: space-between;
-    height: 40px;
     border-radius: 4px 4px 0 0;
-    padding: 10px;
+    padding: 14px;
+    margin-right: 24px;
 }
 
 .pop-up .cart-pop .pop-content legend h5 {
@@ -427,7 +455,41 @@ main .categories .products .card button:hover {
     border: none;
 }
 
-.pop-up .cart-pop .pop-content button:hover {cursor: pointer;}
+.product-qnt {
+    width: 100px;
+    margin: 0 20px;
+}
+
+
+#total-price {
+    color: #fff;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 2px 12px;
+    margin-bottom: 8px;
+}
+
+.fa-trash {
+    margin-right: 2px;
+    background-color: var(--light-red);
+    border-radius: 6px;
+    margin: 0 12px;
+    padding: 8px;
+    color: #fff;
+}
+
+
+.shopping-cart-img {
+    width: 60px;
+    height: 60px;
+    margin: 0 12px;
+}
+
+.pop-up .cart-pop .pop-content button:hover {
+    cursor: pointer;
+}
 
 .pop-up .cart-pop .pop-content legend button img {
     width: 24px;
