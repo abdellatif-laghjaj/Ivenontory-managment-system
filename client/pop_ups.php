@@ -78,16 +78,20 @@
                         <img src="../res/img/close.png">
                     </button>
                 </legend>
-                <div id="total-price">
+                <form action="../pages/payment.php">
+                    <div id="total-price">
+                        <span>total :</span>
+                        <input type="text" name="total" value="0" disabled>
+                        <span>$</span>
+                    </div>
+                    <table>
 
-                </div>
-                <table>
-
-                </table>
-                <div class="actionbtn">
-                    <button type="button" id="close" onclick="showCart()">Close</button>
-                    <button type="button" id="buy-now">Buy now</button>
-                </div>
+                    </table>
+                    <div class="actionbtn">
+                        <button type="button" id="close" onclick="showCart()">Close</button>
+                        <input type="submit" id="buy-now" value="Buy now">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

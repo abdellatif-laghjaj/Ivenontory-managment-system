@@ -3,51 +3,64 @@
 <head>
     <title>TexGear - Payment Gateway</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/PaymentCard.css">
 </head>
 <body>
-<div class="container mt-4 d-flex justify-content-center main">
-    <div class="card">
-        <div class="d-flex justify-content-between px-3 pt-4">
-            <span class="pay">Pay amount</span>
-            <div class="amount">
-                <div class="inner">
-                    <span class="dollar">$</span>
-                    <span class="total">999</span>
-                </div>
+    <form method="post">
+        <div class="card">
+            <div class="logo">
+                <span style="color: #28C7FA">Tex</span>
+                <span>Gear</span>
+            </div>
+            <div class="empty"></div>
+            <div class="total">
+                <label>
+                    <span>$ </span>
+                    <span>1299</span>
+                </label>
+            </div>
+            <div class="ship">
+                <img src="../res/img/chip.png">
+            </div>
+            <div class="empty2"></div>
+            <div class="cvv">
+                <input id="CVV" type="text" name="CVV" placeholder="CVV" maxlength="3" onkeypress="return onlyNumberKey(event)">
+            </div>
+            <div class="card-number">
+                <input id="card-number" type="text" name="card-number" placeholder="Card number">
+            </div>
+            <div class="holder-name">
+                <input id="holder-name" type="text" name="holder-name" placeholder="Holder name">
+            </div>
+            <div class="valid-thru">
+                <label>
+                    <span>VALID</span>
+                    <span>THRU</span>
+                </label>
+                <input id="valid-thru" type="text" name="valid-thru" placeholder="MM/YY">
+            </div>
+            <div class="operator-logo">
+                <img id="operator-logo" src="">
             </div>
         </div>
-        <div class="px-3 pt-3">
-            <label for="card number" class="d-flex justify-content-between">
-                <span class="labeltxt">CARD NUMBER</span>
-                <img src="../res/img/download (4).png" width="25" class="image">
-            </label>
-            <input type="number" name="number" class="form-control inputtxt" placeholder="8881 2545 2545 2245">
-        </div>
-        <div class="d-flex justify-content-between px-3 pt-4">
-            <div>
-                <label for="date" class="exptxt">Expiry</label>
-                <input type="number" name="number" class="form-control expiry" placeholder="MM / YY">
-            </div>
-            <div>
-                <label for="cvv" class="cvvtxt">CVV /CVC</label>
-                <input type="number" name="number" class="form-control cvv" placeholder="123">
-            </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-between px-3 py-4">
-            <div>
-                <button type="button" class="btn cancel">Cancel</button>
-            </div>
-            <div>
-                <button type="button" class="btn payment">Make Payment</button>
-            </div>
-        </div>
-    </div>
-</div>
+        <input type="submit" value="PAY" class="submit">
+    </form>
 
+    <script language="JavaScript">
+        const cvvInput = document.getElementById('CVV');
+        const cardNumberInput = document.getElementById('card-number');
+        const holderNameInput = document.getElementById('holder-name');
+        const expiryDateInput = document.getElementById('valid-thru');
+        const operatorLogo = document.getElementById('operator-logo');
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        //format CVV input
+        function onlyNumberKey(event) {
+            var ASCIIcode = (event.wich) ? event.wich : event.keyCode;
+            if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57))
+                return false;
+            return true;
+        }
+    </script>
+    
 </body>
 </html>

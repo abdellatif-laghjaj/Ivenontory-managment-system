@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Economica&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to bottom, #98DAE8 ,#8ED5E7);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-image: url("../res/img/BankCard.jpg");
+    background-repeat: no-repeat;
+    height: 354px;
+    max-height: 354px;
+    min-height: 354px;
+    width: 631px;
+    max-width: 631px;
+    min-width: 631px;
+    padding: 10px 16px 16px 16px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    grid-auto-rows: 1fr 1.5fr 1fr 1.5fr;
+    grid-template-areas:
+        "logo empty total"
+        "ship empty2 cvv"
+        "number number number"
+        "name vthru operator"
+    ;
+}
+
+.card div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card input {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 8px;
+    font-size: 24px;
+    font-family: "Economica", sans-serif;
+    text-align: center;
+}
+
+.card input:hover {
+    outline: #f2b807 solid 1px;
+}
+
+.card input:focus {
+    background-color: #f2b807;
+}
+
+.card .logo {
+    grid-area: logo;
+    font: 28px cairo;
+    font-weight: bold;
+}
+
+.card .empty {
+    grid-area: empty;
+}
+
+.card .total {
+    grid-area: total;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    background-color: #ffcb06;
+    margin-top: 25px;
+    margin-right: -15px;
+    font-weight: bold;
+}
+
+.card .total:hover {
+    outline: #f2b807 solid 1px;
+}
+
+.card .chip {
+    grid-area: ship;
+}
+
+.card .empty2 {
+    grid-area: empty2;
+}
+
+.card .cvv {
+    grid-area: cvv;
+}
+
+.card .cvv input {
+    width: 70px;
+    margin-right: 85px;
+}
+
+.card .card-number {
+    grid-area: number;
+}
+
+.card .card-number input {
+    width: 80%;
+    margin-right: 15px;
+}
+
+.card .card-number input { font-family: "Cutive", sans-serif; }
+
+.card .holder-name {
+    grid-area: name;
+}
+
+.card .holder-name input {
+    margin-left: 15px;
+}
+
+.card .valid-thru {
+    grid-area: vthru;
+}
+
+.card .valid-thru label {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+
+.card .valid-thru input {
+    width: 80px;
+}
+
+.card .operator-logo {
+    grid-area: operator;
+}
+
+.card .operator-logo img {
+    width: 150px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.submit {
+    background-color: #f2b807;
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    width: 90%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

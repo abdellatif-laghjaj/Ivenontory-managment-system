@@ -227,7 +227,7 @@
         for (let k = 0; k < cartItems.length; k++) {
             totalPrice += cartItems[k].price;
         }
-        document.getElementById('total-price').innerText = "Total: " + totalPrice + "$";
+        document.getElementById('total-price').querySelector("input").value = totalPrice;
     }
 
     function updateQuantity() {
