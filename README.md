@@ -1,2 +1,10 @@
-# Ivenontory-managment-system
-A invrntory managment system with Html, CSS, JS, PHP and MySQL
+# TexGEAR, and online shopping web app
+Web technologies mini project <br>
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JS</li>
+  <li>Bootsrap 5</li>
+  <li>PHP</li>
+  <li>MySQL</li>
+</ul>

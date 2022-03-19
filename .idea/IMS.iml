@@ -10,7 +10,8 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="sb-forms-latest" level="application" />
     <orderEntry type="library" name="jquery-3.2.1" level="application" />
-    <orderEntry type="library" name="jquery-3.5.1.slim" level="application" />
-    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="twitter-bootstrap" level="application" />
+    <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="66aa7c98b3" level="application" />
   </component>
 </module>
