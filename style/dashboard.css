@@ -1,5 +1,6 @@
 @import url(style.css);
-:root{
+
+:root {
     font-size: 16px;
     --light-red: #FF304F;
     --light-blue: #28C7FA;
@@ -16,27 +17,27 @@
     src: url('../res/fonts/Cairo.ttf');
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     height: 111vh;
     color: var(--dark-blue);
     font-family: Cairo;
-}  
+}
+
 /* MAIN CONTENT*/
 
-.cards-container{
+.cards-container {
     display: flex;
     justify-content: start;
     flex-direction: row;
-    margin: 16px;
-    margin-left: 0;
+    margin: 16px 16px 16px 0;
 }
 
-.card{
+.card {
     display: flex;
     flex-direction: row;
     width: 300px;
@@ -46,31 +47,31 @@ body{
     margin-right: 1rem;
 }
 
-.sales{
+.sales {
     background-color: var(--earn-blue);
 }
 
-.earnings{
+.earnings {
     background-color: var(--light-green);
 }
 
-.card img{
+.card img {
     transform: scale(0.8);
 }
 
-.info{
+.info {
     display: flex;
     flex-direction: column;
     color: white;
     margin-left: 1rem;
 }
 
-.info h3{
+.info h3 {
     margin-top: 0.5rem;
     font-size: 1.8rem;
 }
 
-.info p{
+.info p {
     font-weight: 600;
     margin-top: -0.6rem;
     font-size: 1.2rem;
@@ -78,12 +79,12 @@ body{
 
 /*CHARTS CONATINER*/
 
-.charts-container{
+.charts-container {
     display: flex;
     margin-bottom: 16px;
 }
 
-.chart{
+.chart {
     flex-basis: 60%;
     display: flex;
     justify-content: center;
@@ -96,15 +97,15 @@ body{
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
 }
 
-.circle-chart{
+.circle-chart {
     flex-basis: 40%;
 }
 
-.chart-design{
+.chart-design {
     max-height: 300px;
 }
 
-.circle{
+.circle {
     max-height: 400px;
 }
 
@@ -128,7 +129,7 @@ body{
     padding: 8px;
 }
 
-#customers tr:nth-child(even){
+#customers tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
@@ -140,31 +141,29 @@ body{
 
 @media only screen and (max-width: 600px) {
     /*FOR CARDS*/
-
-    .cards-container{
+    .cards-container {
         flex-direction: column;
     }
 
-    .card{
-        width: 90%;
+    .card {
+        width: 100%;
         margin-bottom: 10px;
     }
 
     /*FOR CHARTS*/
-
-    .charts-container{
+    .charts-container {
         flex-direction: column;
     }
 
-    .chart{
+    .chart {
         margin-bottom: 20px;
     }
-  }
+}
 
 /*FOR LARGE SCREENS */
 
 @media only screen and(min-width: 600px) {
-    
+
 }
 
 

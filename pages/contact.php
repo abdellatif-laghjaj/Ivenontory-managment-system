@@ -27,18 +27,29 @@
 
         body {
             height: 100vh;
-            /* fallback for old browsers */
-            background: #2193b0;
-            background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0); /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera*/
+            background: #0093E9 linear-gradient(160deg, #0093E9 0%, #80D0C7 100%) fixed no-repeat;
+        }
+
+        .form-control {
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease-in-out;
         }
 
         .form-control:hover {
-            border: 1px solid blue;
+            border: 1px solid rgba(0, 147, 233, 1);
         }
 
         .form-control:focus {
-            border: 1px solid blue;
+            border: 1px solid rgba(0, 147, 233, 1);
+        }
+
+        .btn {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .btn .fa-send {
+            margin-right: 10px;
         }
     </style>
     <title>Contact</title>
@@ -58,7 +69,7 @@
                                 <div id="form-message-success" class="mb-4">
                                     Your message was sent, thank you!
                                 </div>
-                                <form method="POST" id="contactForm" name="contactForm">
+                                <form method="POST" id="contactForm" name="contactForm" action="contact.php">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -86,7 +97,9 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="submit" value="Send Message" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-send"></i> Send message
+                                                </button>
                                                 <div class="submitting"></div>
                                             </div>
                                         </div>
@@ -102,7 +115,7 @@
                                         <span class="fa fa-map-marker"></span>
                                     </div>
                                     <div class="text pl-3">
-                                        <p><span>Address:</span>Hay Ouled Ali Sebt El Guerdane Ouled Teima</p>
+                                        <p><span>Address:</span>Derb Fokara, n°55 rue 37, Grand Casablanca</p>
                                     </div>
                                 </div>
                                 <div class="dbox w-100 d-flex align-items-center">
@@ -110,7 +123,8 @@
                                         <span class="fa fa-phone"></span>
                                     </div>
                                     <div class="text pl-3">
-                                        <p><span>Phone:</span> <a href="https://wa.me/21257735082">+21257735082</a></p>
+                                        <p><span>Phone:</span> <a href="https://wa.me/212657735082">+2126-6700-0000</a>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="dbox w-100 d-flex align-items-center">
@@ -119,7 +133,7 @@
                                     </div>
                                     <div class="text pl-3">
                                         <p><span>Email:</span> <a href="mailto:abdelatiflaghjaj@gmail.com"
-                                                                  target="_blank">abdelatiflaghjaj@gmail.com</a>
+                                                                  target="_blank">contactus@TexGear.com</a>
                                         </p>
                                     </div>
                                 </div>
@@ -128,8 +142,10 @@
                                         <span class="fa fa-globe"></span>
                                     </div>
                                     <div class="text pl-3">
-                                        <p><span>Website</span> <a href="#"
-                                                                   target="_blank">https://devx1.netlify.app/</a></p>
+                                        <p><span>Website</span>
+                                            <a href="https://devx1.netlify.app/"
+                                               target="_blank">TexGear.com</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -147,5 +163,32 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+
+    var form = document.querySelector('#contactForm');
+
+    function sendEmail(e) {
+        e.preventDefault();
+        var fullname = document.querySelector('#name');
+        var email = document.querySelector('#email');
+        var message = document.querySelector('#message');
+        var subject = document.querySelector('#subject');
+
+        Email.send({
+            SecureToken: "256820d4-e320-44aa-8809-5781e8144381",
+            To: 'laghjajabdelatif@gmail.com',
+            From: email.value,
+            Subject: subject.value,
+            Body: message.value
+        }).then(
+            message => alert(message + ", Your message has been sent successfully 🙂")
+        );
+    };
+
+    form.addEventListener('submit', sendEmail);
+
+</script>
 </body>
 </html>

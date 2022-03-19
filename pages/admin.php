@@ -19,6 +19,16 @@ $earningsTotal = 139;
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
+    <style>
+        .card {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            box-shadow: 0 0 0 0;
+            border: 0;
+        }
+    </style>
+
     <title>Admin Page</title>
 </head>
 
