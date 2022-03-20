@@ -1,0 +1,179 @@
+@import url(style.css);
+
+:root {
+    font-size: 16px;
+    --light-red: #FF304F;
+    --light-blue: #28C7FA;
+    --dark-blue: #002651;
+    --light-green: #90C418;
+    --light-orange: #F8C822;
+    --light-grey: #E2E2E2;
+    --light-black: #222222;
+    --earn-blue: #59ADFF;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../res/fonts/Cairo.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 111vh;
+    color: var(--dark-blue);
+    font-family: Cairo;
+}
+
+/* MAIN CONTENT*/
+
+.cards-container {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    margin: 16px 16px 16px 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    background-color: var(--light-orange);
+    margin-right: 1rem;
+}
+
+.sales {
+    background-color: var(--earn-blue);
+}
+
+.earnings {
+    background-color: var(--light-green);
+}
+
+.card img {
+    transform: scale(0.8);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 1rem;
+}
+
+.info h3 {
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.info p {
+    font-weight: 600;
+    margin-top: -0.6rem;
+    font-size: 1.2rem;
+}
+
+/*CHARTS CONATINER*/
+
+.charts-container {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.chart {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 12px;
+    background: #fff;
+    height: 380px;
+    margin-right: 16px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+}
+
+.circle-chart {
+    flex-basis: 40%;
+}
+
+.chart-design {
+    max-height: 300px;
+}
+
+.circle {
+    max-height: 400px;
+}
+
+#customers {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 5rem;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--light-blue);
+    color: white;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+    background-color: var(--light-grey);
+}
+
+/*FOR SMALL SCREENS */
+
+@media only screen and (max-width: 600px) {
+    /*FOR CARDS*/
+    .cards-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /*FOR CHARTS*/
+    .charts-container {
+        flex-direction: column;
+    }
+
+    .chart {
+        margin-bottom: 20px;
+    }
+}
+
+/*FOR LARGE SCREENS */
+
+@media only screen and(min-width: 600px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

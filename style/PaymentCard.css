@@ -1,0 +1,300 @@
+/* basic */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+}
+body {
+    font: 16px/1.2 "Roboto", sans-serif;
+    color: #333;
+}
+
+/* ui_btn */
+.ui_btn {
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    background-color: crimson;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #fff;
+}
+
+.b_lg {
+    padding: 8px 20px;
+    font-size: 14px;
+}
+
+/* formfield */
+input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: snow;
+}
+
+/* custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* container */
+.container {
+    display: flex;
+    width: 700px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: snow;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* box */
+.box {
+    padding: 24px;
+}
+.box .head {
+    margin-bottom: 16px;
+    color: orangered;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* order_box */
+.order_box {
+    width: 350px;
+}
+
+/* order_list */
+.order_list {
+    height: 307px;
+    overflow: auto;
+}
+.order_list li {
+    display: flex;
+    padding: 8px 0;
+}
+.order_list li + li {
+    border-top: 1px solid #ccc;
+}
+.order_list .prod_img {
+    font-size: 0;
+}
+.order_list .prod_info {
+    padding: 0 8px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.order_list .prod_info .name {
+    flex-grow: 1;
+}
+.order_list .prod_info .price {
+    color: crimson;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* total_price */
+.total_price dd {
+    text-align: right;
+    color: crimson;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* payment_box */
+.payment_box {
+    width: 360px;
+    box-shadow: -1px 0 5px 1px #ccc;
+    background: linear-gradient(
+            0deg,
+            rgba(230, 100, 101, 0.5),
+            rgba(145, 152, 229, 0.5)
+    );
+    position: relative;
+}
+
+ul, button{
+    list-style: none;
+    width: 100%;
+}
+
+.bar_tool{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bar_tool .cancel {
+    padding: 8px 16px;
+}
+
+.bar_tool .cancel a {
+    text-decoration: none;
+    color: white;
+}
+
+#orders-list {
+    padding-inline-start: 0;
+}
+
+.operator_logo {
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+}
+
+.operator_logo img {
+}
+
+.bar_tool .cancel a:hover {
+    text-decoration: underline;
+}
+
+#cvv-input {
+    margin-left: 4px;
+}
+
+.card_box{
+    padding: 0;
+}
+
+.payment_box .card_img {
+    height: 180px;
+    padding: 16px;
+    margin-bottom: 16px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color: crimson;
+    overflow: hidden;
+}
+.payment_box .card_img:before,
+.payment_box .card_img:after {
+    content: "";
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: rgba(20, 0, 0, 0.1);
+    position: absolute;
+    z-index: 1;
+}
+.payment_box .card_img:before {
+    top: 40%;
+    right: -40%;
+}
+.payment_box .card_img:after {
+    top: -40%;
+    left: -40%;
+}
+.payment_box .card_info {
+    margin-top: 40px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    position: relative;
+    z-index: 2;
+}
+.payment_box .card_info dt {
+    margin-bottom: 4px;
+    color: lightgray;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.payment_box .card_info li {
+    display: inline-block;
+}
+.payment_box .card_info li + li {
+    margin-left: 4px;
+}
+.payment_box .number {
+    margin-bottom: 12px;
+}
+
+.payment_box .number dd,
+.payment_box .number dd ul {
+    padding-left: 0;
+}
+
+.payment_box .expiration,
+.payment_box .cvc {
+    display: inline-block;
+    width: calc(50% - 2px);
+    float: left;
+}
+
+.payment_box .expiration dd,
+.payment_box .cvc dd {
+    margin-left: 0;
+}
+
+/*************************/
+
+.payment_box #expiration-input ul {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.payment_box #expiration-input #month {
+    width: 40%;
+}
+
+.payment_box #expiration-input #separator {
+    width: 15%;
+    max-height: 38px;
+    font-weight: bold;
+    font-size: 26px;
+    padding: 5px;
+}
+
+.payment_box #expiration-input #year {
+    width: 45%;
+}
+
+/********************************/
+
+.payment_box .card_form {
+    flex-grow: 1;
+}
+.payment_box .card_form .footer {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+}
