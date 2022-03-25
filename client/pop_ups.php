@@ -7,9 +7,9 @@
                 <form>
                     <legend>
                         <span>Login</span>
-                        <button onclick="showLogin()">
-                            <img src="../res/img/close.png">
-                        </button>
+                        <a onclick="showLogin()">
+                            <img src="../res/img/close.png"  style="cursor: pointer;">
+                        </a>
                     </legend>
                     <div class="field">
                         <label>Username</label>
@@ -34,9 +34,9 @@
                 <form>
                     <legend>
                         <span>Register</span>
-                        <button onclick="showRegistration()">
-                            <img src="../res/img/close.png">
-                        </button>
+                        <a onclick="showRegistration()">
+                            <img src="../res/img/close.png" style="cursor: pointer;">
+                        </a>
                     </legend>
                     <div class="field">
                         <label>Username</label>
