@@ -74,9 +74,9 @@
                     <h5 class="fw-bold" id="">
                         Your Shopping Cart
                     </h5>
-                    <button class="closebtn" onclick="showCart()">
-                        <img src="../res/img/close.png">
-                    </button>
+                    <a class="closebtn" onclick="showCart()">
+                        <img src="../res/img/close.png" style="cursor: pointer;">
+                    </a>
                 </legend>
                 <form action="../pages/payment.php">
                     <div id="total-price">
