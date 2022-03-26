@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-dark text-muted">
+<footer class="text-center text-lg-start bg-dark text-muted" id="about">
     <!-- Section: Social media -->
     <section
             class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
@@ -113,7 +113,7 @@
     <!-- Copyright -->
     <div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.1);">
         © 2022 Copyright:
-        <a class="text-reset fw-bold" style="text-decoration: none" href="#">TexGEAR</a>
+        <a class="text-reset fw-bold" style="text-decoration: none" href="#">Tex<span style="color: #28C7FA">GEAR</span></a>
     </div>
     <!-- Copyright -->
 </footer>

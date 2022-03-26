@@ -99,7 +99,7 @@
     <div class="text-center mt-5">
         <h1>Our Services</h1>
         <center>
-            <hr size="3">
+            <hr size="6">
         </center>
     </div>
     <div class="row">

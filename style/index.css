@@ -452,6 +452,8 @@ main .categories .products .card button:hover {
 
 
 #total-price {
+    width: 200px;
+    text-align: center;
     color: #fff;
     background-color: #2a2a2a;
     padding: 10px;
@@ -464,7 +466,6 @@ main .categories .products .card button:hover {
     margin-right: 2px;
     background-color: var(--light-red);
     border-radius: 6px;
-    margin: 0 12px;
     padding: 8px;
     color: #fff;
 }

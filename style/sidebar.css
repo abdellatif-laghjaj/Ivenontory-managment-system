@@ -3,6 +3,7 @@
     --light-red: #FF304F;
     --light-blue: #28C7FA;
     --dark-blue: #002651;
+    --dark-blue-2: #003975;
     --light-green: #90C418;
     --light-orange: #F8C822;
     --light-grey: #E2E2E2;
@@ -95,7 +96,7 @@ main{
 .nav-link{
     display: flex;
     align-items: center;
-    height: 5rem;
+    height: 4rem;
     color: white;
     text-decoration: none;
     transition: 0.3s ease;
@@ -131,7 +132,7 @@ main{
     .navbar {
       bottom: 0;
       width: 100vw;
-      height: 5rem;
+      height: 4rem;
     }
   
     .logo {
@@ -144,6 +145,10 @@ main{
   
     .nav-link {
       justify-content: center;
+    }
+
+    .nav-link img{
+        width: 1rem;
     }
 
     .navbar:hover{

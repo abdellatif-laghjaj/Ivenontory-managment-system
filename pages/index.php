@@ -21,6 +21,50 @@
             height: 100vh;
         }
 
+        .dec, .inc {
+            background: #1f7dff;
+            color: #fff;
+            padding: 4px 8px;
+            display: inline-block;
+            font-size: 12px;
+            outline: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .dec:hover, .inc:hover {
+            background: #5a9eff;
+            cursor: pointer;
+        }
+
+        .dec {
+            margin-left: 12px;
+        }
+
+        .inc {
+            margin-right: 12px;
+        }
+
+        .total-input-cart {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 100px;
+            text-align: center;
+        }
+
+        .full-input-qnt {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .product-qnt {
+            margin: 0 4px;
+            width: 60px;
+            text-align: center;
+        }
+
         main .banner {
             background: linear-gradient(to right, #7ceaff, #65C7F7, #0052D4);
         }
@@ -89,7 +133,7 @@
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="#" class="logo navbar-brand fw-bold"><span>Tex</span>GEAR<span></span></a>
+        <a href="#" class="logo navbar-brand fw-bold"><span>Tex</span><span style="color: #28C7FA">GEAR</span></a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">

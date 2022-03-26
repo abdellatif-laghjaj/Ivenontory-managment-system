@@ -81,7 +81,7 @@
                 <form action="../pages/payment.php">
                     <div id="total-price">
                         <span>total :</span>
-                        <input type="text" name="total" value="0" disabled>
+                        <input class="total-input-cart" type="text" name="total" value="0" disabled>
                         <span>$</span>
                     </div>
                     <table>

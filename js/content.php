@@ -53,7 +53,7 @@
         <div class="chart circle-chart">
             <canvas id="myChart-circle" class="chart-design circle"></canvas>
         </div>
-        
+
         <div class="chart">
             <canvas id="myChart" class="chart-design"></canvas>
         </div>
@@ -61,9 +61,16 @@
 
     <!-- LATEST PRODUCTS -->
 
-    <h1>Latest products</h1>
+    <h1>All Products</h1>
     <hr color="#FF304F" width="90%" size="4">
-
+    <div class="wrap" style="margin: 20px 0;">
+            <div class="search">
+                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
     <table id="customers">
         <tr>
             <th>Product ID</th>
@@ -113,17 +120,83 @@
                 <span class="label">Phone</span>
                 <input type="phone" name="phone" placeholder="e.g: 0657735082">
             </div>
-            <div class="field">
-                <span class="label">Reg-date</span>
-                <input type="date" name="reg-date">
+            <div class="ActionButtons" style="margin-right: 16px;">
+                <input type="reset" value="RESET" class="reset">
+                <input type="submit" value="UPDATE" class="submit">
             </div>
         </form>
-        <div class="ActionButtons">
-            <input type="reset" value="RESET" class="reset">
-            <input type="submit" value="UPDATE" class="submit">
-        </div>
     </div>
 `;
+
+    let customers = `
+        <h1>Customers</h1>
+        <hr color="#FF304F" width="90%" size="4">
+        <div class="wrap" style="margin: 20px 0;">
+            <div class="search">
+                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <table id="customers">
+            <tr>
+                <th style="text-align: center;">Customer</th>
+                <th>Customer ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+            <tr>
+                <td align="center"><img src="../res/img/customer.png" alt="customer" style="width: 48px;"></td>
+                <td>4</td>
+                <td>omarlamine</td>
+                <td>omarlamine@gmail.com</td>
+                <td>+212345678</td>
+                <td>Some random location</td>
+            </tr>
+            <tr>
+                <td align="center"><img src="../res/img/customer.png" alt="customer" style="width: 48px"></td>
+                <td>6</td>
+                <td>abdelatiflaghjaj</td>
+                <td>abdelatiflaghjaj@gmail.com</td>
+                <td>+21276723683</td>
+                <td>Some random location</td>
+            </tr>
+        </table>
+    `;
+
+    let sales = `
+        <h1>Customers</h1>
+        <hr color="#FF304F" width="90%" size="4">
+        <table id="customers">
+            <tr>
+                <th>Sale ID</th>
+                <th>Customer ID</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Earnings</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>51</td>
+                <td>2</td>
+                <td>12</td>
+                <td>1990</td>
+                <td>12-2-2022</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>21</td>
+                <td>5</td>
+                <td>9</td>
+                <td>654</td>
+                <td>22-2-2022</td>
+            </tr>
+        </table>
+    `;
 
     let category = `
     <h1>Category</h1>
@@ -174,19 +247,19 @@
                 <td>25</td>
             </tr>
             </table>
-        </div> 
+        </div>
     </div>
 `;
 
     let products = `
-    <h1>Products</h1>
+    <h1>Add Product</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="products-container">
-        <div class="legend" id="legend">
+        <div class="legend show" id="legend">
             Add a product
             <button class="arrow" id="arrow" onclick="dropDown()"></button>
         </div>
-        <div class="form" id="form">
+        <div class="form show" id="form">
             <div class="field">
                 <span class="label">Product ID</span>
                 <input type="text" name="product-id" value="123" disabled>
@@ -222,57 +295,6 @@
                 <input type="submit" value="ADD" class="submit">
             </div>
         </div>
-        <!------------------------------------>
-        <div class="legend" id="legend1">
-            List of products
-            <button class="arrow" id="arrow1" onclick="dropDown2()"></button>
-        </div>
-
-        <div class="list" id="form1">
-
-            <div class="wrap">
-                <div class="search">
-                    <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
-                    <button type="submit" class="searchButton">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
-            <table id="customers">
-            <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th style="text-align: center;">Actions</th>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>IPhone 12</td>
-                <td>Mobile</td>
-                <td>1</td>
-                <td>1499</td>
-                <td style="text-align: right;">
-                    <button style="background: green; margin-right: 6px; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-edit"></i></button>
-                    <button style="background: red; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-trash"></i></button>
-                </td>
-                
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Lenovo</td>
-                <td>Laptops</td>
-                <td>1</td>
-                <td>3488</td>
-                <td style="text-align: right;">
-                    <button style="background: green; margin-right: 6px; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-edit"></i></button>
-                    <button style="background: red; padding: 6px; color: #fff; border: none; outline: none; border-radius: 4px;"><i class="fa fa-trash"></i></button>
-                </td>
-            </tr>
-            </table>
-        </div>
     </div>
 `;
 
@@ -290,7 +312,7 @@
                 <option value="4">Last year</option>
             </select>
         </div>
-        
+
         <div class="block">
             <div class="card" id="pdf">
                 <img src="../res/img/pdf.png" alt="">
@@ -312,7 +334,7 @@
             </div>
             <button class="btn"><i class="fa fa-download"></i>DOWNLOAD</button>
         </div>
-    </div>     
+    </div>
 `;
 
     function changeToDashboard() {
@@ -324,6 +346,16 @@
     function changeToProfile() {
         let content = document.querySelector(".content");
         content.innerHTML = profile;
+    }
+
+    function changeToUsers() {
+        let content = document.querySelector(".content");
+        content.innerHTML = customers;
+    }
+
+    function changeToSales() {
+        let content = document.querySelector(".content");
+        content.innerHTML = sales;
     }
 
     function changeToCategory() {
