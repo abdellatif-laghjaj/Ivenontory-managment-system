@@ -8,7 +8,7 @@ Web technologies mini project <br>
   <li>PHP</li>
   <li>MySQL</li>
 </ul>
-<br><hr style="height: 10px; background: red;"><br>
+<hr style="height: 10px; background: red;">
 <b>How to use database !?<b>
 <ol>
   <li>Open db directory</li>
