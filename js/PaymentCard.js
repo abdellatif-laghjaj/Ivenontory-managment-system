@@ -74,7 +74,7 @@ cardNumberInput.addEventListener("keyup", function (e) {
             switch (firstDigitValue) {
                 case 3:
                     operatorLogo.src = AmericanExpressLogoPath;
-                    operatorLogo.style.width = '40px';
+                    operatorLogo.style.width = '80px';
                     operatorLogo.style.height = '40px';
                     break;
 
@@ -86,7 +86,7 @@ cardNumberInput.addEventListener("keyup", function (e) {
 
                 case 5:
                     operatorLogo.src = MasterCardLogoPath;
-                    operatorLogo.style.width = '40px';
+                    operatorLogo.style.width = '80px';
                     operatorLogo.style.height = '40px';
                     break;
 

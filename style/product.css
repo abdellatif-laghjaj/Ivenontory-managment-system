@@ -15,10 +15,10 @@
   border-radius: 10px;
   padding: 15px 20px 15px 20px;
   color: white;
+  margin-top: 22px;
   font-family: "roboto", sans-serif;
   font-size: 20px;
   font-weight: bold;
-  margin-top: 45px;
 }
 
 .products-container .legend.show {
@@ -105,9 +105,11 @@
 .products-container .form .field .label {
   background-color: #28c7fa;
   border-radius: 8px 0 0 8px;
-  font-size: 20px;
+  font-size: 14px;
   color: white;
   padding: 10px 15px;
+  height: 44px;
+  align-items: center;
 }
 
 .products-container .form .field input {
@@ -117,6 +119,7 @@
   border-radius: 0 8px 8px 0;
   padding: 2px 15px 2px 15px;
   font-size: 20px;
+  height: 44px;
 }
 
 .products-container .form .field input:focus {
@@ -128,7 +131,7 @@
   border: none;
   border-radius: 0 8px 8px 0;
   padding: 2px 15px 2px 15px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .products-container .form .field #category:focus {

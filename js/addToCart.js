@@ -3,6 +3,7 @@ let data = '';
 var NbOrders = 0;
 var totalPrice = 0;
 var cartIndex = parseInt(0);
+const errorSound = new Audio('../res/sounds/errorSound.wav');
 
 const addToCartButton = document.getElementsByClassName('addToCart');
 const badge = document.getElementById('Badge');
@@ -43,6 +44,7 @@ window.addEventListener("DOMContentLoaded", (evt) => {
                 } else {
                     //check if the product is not out of stock
                     if (exist(product).quantity >= exist(product).stock) {
+                        errorSound.play();
                         alert('product out of stock');
                     } else {
                         exist(product).quantity += 1;
@@ -115,118 +117,122 @@ function updateTotalPrice() {
 function loadCartElements() {
     data = '';
     var cartContent = JSON.parse(sessionStorage.getItem('Items'));
-    for (let i = 0; i < cartContent.length; i++) {
-        data += '<tr><th><img class="shopping-cart-img" src="' + cartContent[i].image + '"></th><th>' + cartContent[i].name + '</th><th class="full-input-qnt"><div class="dec"> <i class="fa fa-minus"></i> </div><input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)"><div class="inc"><i class="fa fa-plus"></i></div></th><th>' + Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(cartContent[i].basePrice) + '</th><th><a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a></th></tr>'
-    }
-    cartBody.innerHTML = data;
+    if (cartContent.length === 0) {
+        cartBody.innerHTML = '<img src="../res/img/empty_cart.png" alt="loading" style="width: 80px; margin-top: 20px; margin-left: 80px;">';
+    } else {
+        for (let i = 0; i < cartContent.length; i++) {
+            data += '<tr><th><img class="shopping-cart-img" src="' + cartContent[i].image + '"></th><th>' + cartContent[i].name + '</th><th class="full-input-qnt"><div class="dec"> <i class="fa fa-minus"></i> </div><input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)"><div class="inc"><i class="fa fa-plus"></i></div></th><th>' + Intl.NumberFormat('en-US', {
+                style: 'currency', currency: 'USD'
+            }).format(cartContent[i].basePrice) + '</th><th><a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a></th></tr>'
+        }
+        cartBody.innerHTML = data;
 
-    //change quantity input
-    var cartContent = JSON.parse(sessionStorage.getItem("Items"));
-    var quantityInput = cartBody.getElementsByClassName('product-qnt');
-    for (var i = 0; i < quantityInput.length; i++) {
-        quantityInput[i].setAttribute('index', i);
-        quantityInput[i].addEventListener("keyup", (evt) => {
-            var currentInput = evt.target;
-            var currentInputIndex = currentInput.getAttribute('index');
-            var currentInputValue = parseInt(currentInput.value);
-            var currentProduct = cartContent[currentInputIndex];
-            var productsInStock = currentProduct.stock;
-            if (currentInputValue >= 1 && currentInputValue <= productsInStock) {
-                currentProduct.quantity = currentInputValue;
-                currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-            } else if (currentInputValue < 1 || isNaN(currentInputValue)) {
-                currentProduct.quantity = 1;
-                currentProduct.price = currentProduct.basePrice;
-                currentInput.value = 1;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-            } else if (currentInputValue > productsInStock) {
-                currentProduct.quantity = productsInStock;
-                currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
-                currentInput.value = productsInStock;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-                alert('product out of stock');
-            }
-        })
-    }
+        //change quantity input
+        var cartContent = JSON.parse(sessionStorage.getItem("Items"));
+        var quantityInput = cartBody.getElementsByClassName('product-qnt');
+        for (var i = 0; i < quantityInput.length; i++) {
+            quantityInput[i].setAttribute('index', i);
+            quantityInput[i].addEventListener("keyup", (evt) => {
+                var currentInput = evt.target;
+                var currentInputIndex = currentInput.getAttribute('index');
+                var currentInputValue = parseInt(currentInput.value);
+                var currentProduct = cartContent[currentInputIndex];
+                var productsInStock = currentProduct.stock;
+                if (currentInputValue >= 1 && currentInputValue <= productsInStock) {
+                    currentProduct.quantity = currentInputValue;
+                    currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                } else if (currentInputValue < 1 || isNaN(currentInputValue)) {
+                    currentProduct.quantity = 1;
+                    currentProduct.price = currentProduct.basePrice;
+                    currentInput.value = 1;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                } else if (currentInputValue > productsInStock) {
+                    currentProduct.quantity = productsInStock;
+                    currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
+                    currentInput.value = productsInStock;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                    errorSound.play();
+                    alert('product out of stock');
+                }
+            })
+        }
 
-    //increase quantity
-    var cartContent = JSON.parse(sessionStorage.getItem("Items"));
-    var increaseButton = cartBody.getElementsByClassName('inc');
-    for (var i = 0; i < increaseButton.length; i++) {
-        increaseButton[i].setAttribute('index', i);
-        increaseButton[i].addEventListener("click", evt => {
-            var currentInput = evt.target.parentElement.children[1];
-            var currentInputIndex = currentInput.getAttribute('index');
-            var currentInputValue = parseInt(currentInput.value);
-            var currentInputNewValue = currentInputValue + 1;
-            var currentProduct = cartContent[currentInputIndex];
-            var productsInStock = currentProduct.stock;
-            if (currentInputNewValue >= 1 && currentInputNewValue <= productsInStock) {
-                currentProduct.quantity = currentInputNewValue;
-                currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
-                currentInput.value = currentInputNewValue;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-            } else if (currentInputNewValue > productsInStock) {
-                currentProduct.quantity = productsInStock;
-                currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
-                currentInput.value = productsInStock;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-                alert('product out of stock');
-            }
-        })
-    }
+        //increase quantity
+        var cartContent = JSON.parse(sessionStorage.getItem("Items"));
+        var increaseButton = cartBody.getElementsByClassName('inc');
+        for (var i = 0; i < increaseButton.length; i++) {
+            increaseButton[i].setAttribute('index', i);
+            increaseButton[i].addEventListener("click", evt => {
+                var currentInput = evt.target.parentElement.children[1];
+                var currentInputIndex = currentInput.getAttribute('index');
+                var currentInputValue = parseInt(currentInput.value);
+                var currentInputNewValue = currentInputValue + 1;
+                var currentProduct = cartContent[currentInputIndex];
+                var productsInStock = currentProduct.stock;
+                if (currentInputNewValue >= 1 && currentInputNewValue <= productsInStock) {
+                    currentProduct.quantity = currentInputNewValue;
+                    currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
+                    currentInput.value = currentInputNewValue;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                } else if (currentInputNewValue > productsInStock) {
+                    currentProduct.quantity = productsInStock;
+                    currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
+                    currentInput.value = productsInStock;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                    errorSound.play();
+                    alert('product out of stock');
+                }
+            })
+        }
 
-    //decrease quantity
-    var cartContent = JSON.parse(sessionStorage.getItem("Items"));
-    var decreaseButton = cartBody.getElementsByClassName('dec');
-    for (var i = 0; i < decreaseButton.length; i++) {
-        decreaseButton[i].setAttribute('index', i);
-        decreaseButton[i].addEventListener("click", evt => {
-            var currentInput = evt.target.parentElement.children[1];
-            var currentInputIndex = currentInput.getAttribute('index');
-            var currentInputValue = parseInt(currentInput.value);
-            var currentInputNewValue = currentInputValue - 1;
-            var currentProduct = cartContent[currentInputIndex];
-            var productsInStock = currentProduct.stock;
-            if (currentInputNewValue >= 1 && currentInputNewValue <= productsInStock) {
-                currentProduct.quantity = currentInputNewValue;
-                currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
-                currentInput.value = currentInputNewValue;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-            } else if (currentInputNewValue < 1 || isNaN(currentInputNewValue)) {
-                currentProduct.quantity = 1;
-                currentProduct.price = currentProduct.basePrice;
-                currentInput.value = 1;
-                cartItems = cartContent;
-                sessionStorage.setItem('Items', JSON.stringify(cartContent));
-                updateTotalPrice();
-                updateBadge();
-            }
-        })
+        //decrease quantity
+        var cartContent = JSON.parse(sessionStorage.getItem("Items"));
+        var decreaseButton = cartBody.getElementsByClassName('dec');
+        for (var i = 0; i < decreaseButton.length; i++) {
+            decreaseButton[i].setAttribute('index', i);
+            decreaseButton[i].addEventListener("click", evt => {
+                var currentInput = evt.target.parentElement.children[1];
+                var currentInputIndex = currentInput.getAttribute('index');
+                var currentInputValue = parseInt(currentInput.value);
+                var currentInputNewValue = currentInputValue - 1;
+                var currentProduct = cartContent[currentInputIndex];
+                var productsInStock = currentProduct.stock;
+                if (currentInputNewValue >= 1 && currentInputNewValue <= productsInStock) {
+                    currentProduct.quantity = currentInputNewValue;
+                    currentProduct.price = currentProduct.quantity * currentProduct.basePrice;
+                    currentInput.value = currentInputNewValue;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                } else if (currentInputNewValue < 1 || isNaN(currentInputNewValue)) {
+                    currentProduct.quantity = 1;
+                    currentProduct.price = currentProduct.basePrice;
+                    currentInput.value = 1;
+                    cartItems = cartContent;
+                    sessionStorage.setItem('Items', JSON.stringify(cartContent));
+                    updateTotalPrice();
+                    updateBadge();
+                }
+            })
+        }
     }
-
 }
 
 window.onload = function () {
@@ -236,7 +242,6 @@ window.onload = function () {
         loadCartElements();
         updateTotalPrice();
         updateBadge();
-
     }
 }
 
@@ -254,7 +259,6 @@ function Delete(element) {
 
 function onlyNumberKey(event) {
     var ASCIIcode = (event.wich) ? event.wich : event.keyCode;
-    if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57))
-        return false;
+    if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57)) return false;
     return true;
 }

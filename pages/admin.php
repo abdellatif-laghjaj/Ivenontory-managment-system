@@ -16,16 +16,118 @@ $earningsTotal = 139;
     <link rel="stylesheet" href="../style/forms.css">
     <link rel="stylesheet" href="../style/product.css">
     <link rel="stylesheet" href="../style/report.css">
+    <link rel="stylesheet" href="../style/product_details_modal.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
     <style>
+        .nav-link {
+            height: 4rem;
+        }
+
+        .nav-link img {
+            width: 2rem;
+        }
+
+        .wrap {
+            width: 400px;
+        }
+
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+            transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 1rem 1.5rem;
+            width: 24rem;
+            border-radius: 0.5rem;
+        }
+
+        .product-modal-btn {
+            float: right;
+            line-height: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            background-color: lightgray;
+            width: 32%;
+            height: 30px;
+            border: none;
+            margin-bottom: 12px;
+            margin-top: 12px;
+            margin-right: 4px;
+        }
+
+        .products-container .form .field .label {
+            font-size: 14px;
+            height: 44px;
+        }
+
+        .products-container .form .field input {
+            font-size: 20px;
+            height: 44px;
+        }
+
+        .products-container .form .field #category {
+            font-size: 16px;
+        }
+
+        .update-product-btn {
+            background: #006bff;
+            color: white;
+            transition: all 0.5s ease;
+        }
+
+        .delete-product-btn {
+            background: #ff1616;
+            color: white;
+            transition: all 0.5s ease;
+        }
+
+        .product-modal-btn:hover {
+            background-color: darkgray;
+        }
+
+        .show-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1.0);
+            transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+        }
+
         .card {
             width: 100%;
             height: 100%;
             border-radius: 0;
             box-shadow: 0 0 0 0;
             border: 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .navbar {
+                bottom: 0;
+                width: 100vw;
+                height: 4rem;
+            }
+
+            .nav-link img {
+                width: 1.5rem;
+            }
+
         }
     </style>
 
@@ -34,7 +136,7 @@ $earningsTotal = 139;
 
 <body>
 
-<!-- include the change content fontionality -->
+<!-- include the change content functionality -->
 
 <?php include('../js/content.php'); ?>
 
@@ -64,6 +166,14 @@ $earningsTotal = 139;
         </li>
 
         <li class="nav-item">
+            <a href="#users" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()"
+               onclick="changeToUsers()">
+                <img class="nav-icon" src="../res/img/users.png" alt="">
+                <span class="link-text">Users</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a href="#category" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()"
                onclick="changeToCategory()">
                 <img class="nav-icon" src="../res/img/categories.png" alt="">
@@ -76,6 +186,14 @@ $earningsTotal = 139;
                onclick="changeToProducts()">
                 <img class="nav-icon" src="../res/img/product.png" alt="">
                 <span class="link-text">Products</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#sales" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()"
+               onclick="changeToSales()">
+                <img class="nav-icon" src="../res/img/sales_sidebar.png" alt="">
+                <span class="link-text">Sales</span>
             </a>
         </li>
 
@@ -149,9 +267,16 @@ $earningsTotal = 139;
 
     <!-- LATEST PRODUCTS -->
 
-    <h1>Latest products</h1>
+    <h1>All Products</h1>
     <hr color="#FF304F" width="90%" size="4">
-
+    <div class="wrap" style="margin: 20px 0;">
+        <div class="search">
+            <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
     <table id="customers">
         <tr>
             <th>Product ID</th>
@@ -161,7 +286,7 @@ $earningsTotal = 139;
             <th>Price</th>
         </tr>
 
-        <tr>
+        <tr class="product-row">
             <td>4</td>
             <td>IPhone 12</td>
             <td>Mobile</td>
@@ -169,7 +294,7 @@ $earningsTotal = 139;
             <td>1499</td>
         </tr>
 
-        <tr>
+        <tr class="product-row">
             <td>5</td>
             <td>Lenovo</td>
             <td>Laptops</td>
@@ -179,8 +304,84 @@ $earningsTotal = 139;
     </table>
 </main>
 
+<!-- PRODUCT MODAL -->
+<div class="modal" id="details-modal">
+
+</div>
+<script src="../js/change_content.js"></script>
 <script src="../js/app.js"></script>
 <script src="../js/charts.js"></script>
+
+<script>
+    const modal = document.querySelector(".modal");
+    const closeButton = document.querySelector(".close-button");
+
+    const trs = document.querySelectorAll(".product-row");
+
+    for (let i = 0; i < trs.length; i++)
+        (function (e) {
+            trs[e].addEventListener("click", function () {
+                toggleModal(e)
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Product ID: ${this.children[0].textContent}</h2>
+                        </div>
+                        <div class="modal-body">
+                            <table>
+                                <tr class="product-row">
+                                    <td style="color: #292929; font-weight: bold">Product Name : &#160;</td>
+                                    <td class="namep">${this.children[1].textContent}</td>
+                                </tr>
+
+                                <tr class="product-row">
+                                    <td style="color: #292929; font-weight: bold">Category : </td>
+                                    <td class="categp">${this.children[2].textContent}</td>
+                                </tr>
+
+                                <tr class="product-row">
+                                    <td style="color: #292929; font-weight: bold">Quantity : </td>
+                                    <td class="qntp">${this.children[3].textContent}</td>
+                                </tr>
+
+                                <tr class="product-row">
+                                    <td style="color: #292929; font-weight: bold">Price : </td>
+                                    <td class="pricep">${this.children[4].textContent}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="product-modal-btn" onclick="toggleModal()">Close</button>
+                            <button class="product-modal-btn update-product-btn" onclick="updateProduct()">Update</button>
+                            <button class="product-modal-btn delete-product-btn" onclick="removeProduct(e)">Delete</button>
+                        </div>
+                    </div>`;
+            }, false);
+        })(i);
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function updateProduct() {
+        const id = document.querySelector("h2").textContent.replace("Product ID: ", "");
+        const name = document.querySelector(".namep").textContent;
+        const qnt = document.querySelector(".qntp").textContent;
+        const price = document.querySelector(".pricep").textContent;
+        window.location.href = "update_product.php?id=" + id + "&name=" + name + "&qnt=" + qnt + "&price=" + price;
+    }
+
+    function removeProduct(event) {
+        alert("Product removed");
+        document.getElementById("customers").deleteRow(event.target.rowIndex);
+    }
+
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.classList.remove("show-modal");
+        }
+    }
+</script>
 </body>
 
 </html>

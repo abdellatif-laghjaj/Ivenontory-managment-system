@@ -167,7 +167,7 @@
 <?php include 'loading.php' ?>
 <div id="toast">
     <div id="img"><i class="fa fa-warning"></i></div>
-    <div id="desc">Please fill the fields first 😑</div>
+    <div id="desc">Please fill the fields first !</div>
 </div>
 
 <div class="container">
