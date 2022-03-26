@@ -1,16 +1,15 @@
 CREATE TABLE Admin
 (
-    adminID           int PRIMARY KEY,
-    full_name         VARCHAR(20),
-    username          VARCHAR(20),
-    email             VARCHAR(20),
-    phone             VARCHAR(20),
-    registration_date Date
+    adminID   int PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(20),
+    username  VARCHAR(20),
+    email     VARCHAR(20),
+    phone     VARCHAR(20)
 );
 
 CREATE TABLE Customer
 (
-    customerID int PRIMARY KEY,
+    customerID int PRIMARY KEY AUTO_INCREMENT,
     full_name  VARCHAR(20),
     userName   VARCHAR(20),
     password   VARCHAR(20),
@@ -21,26 +20,25 @@ CREATE TABLE Customer
 
 CREATE TABLE Sale
 (
-    saleID     int PRIMARY KEY,
+    saleID     int PRIMARY KEY AUTO_INCREMENT,
     customerID int,
     CONSTRAINT FK_Per FOREIGN KEY (customerID) REFERENCES Customer (customerID),
     productID  int,
     quantity   int,
     earning    decimal,
-    date       Date,
-    heure      Date
+    sale_date  Date
 );
 
 CREATE TABLE Category
 (
-    categoryID     int PRIMARY KEY,
+    categoryID     int PRIMARY KEY AUTO_INCREMENT,
     category_name  VARCHAR(20),
     products_total int
 );
 
 CREATE TABLE Product
 (
-    productID     int PRIMARY KEY,
+    productID     int PRIMARY KEY AUTO_INCREMENT,
     name          VARCHAR(20),
     categoryID    int,
     CONSISTENT    FK_CI FOREIGN KEY (categoryID) REFERENCES Category(categoryID),
@@ -49,4 +47,3 @@ CREATE TABLE Product
     buy_price     decimal,
     product_image blob
 );
-
