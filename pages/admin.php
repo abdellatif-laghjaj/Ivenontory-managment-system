@@ -277,7 +277,7 @@ $earningsTotal = 139;
             </button>
         </div>
     </div>
-    <table id="customers">
+    <table id="customers" class="p-table">
         <tr>
             <th>Product ID</th>
             <th>Name</th>
@@ -353,7 +353,7 @@ $earningsTotal = 139;
                         <div class="modal-footer">
                             <button class="product-modal-btn" onclick="toggleModal()">Close</button>
                             <button class="product-modal-btn update-product-btn" onclick="updateProduct()">Update</button>
-                            <button class="product-modal-btn delete-product-btn" onclick="removeProduct(e)">Delete</button>
+                            <button class="product-modal-btn delete-product-btn" onclick="removeProduct(${i})">Delete</button>
                         </div>
                     </div>`;
             }, false);
@@ -371,9 +371,9 @@ $earningsTotal = 139;
         window.location.href = "update_product.php?id=" + id + "&name=" + name + "&qnt=" + qnt + "&price=" + price;
     }
 
-    function removeProduct(event) {
+    function removeProduct(i) {
         alert("Product removed");
-        document.getElementById("customers").deleteRow(event.target.rowIndex);
+        document.querySelector(".p-table").deleteRow(i + 1);
     }
 
     window.onclick = function (event) {
