@@ -32,7 +32,7 @@ CREATE TABLE Sale
 CREATE TABLE Category
 (
     categoryID     int PRIMARY KEY AUTO_INCREMENT,
-    category_name  VARCHAR(20),
+    category_name  VARCHAR(20) UNIQUE,
     products_total int
 );
 
@@ -40,8 +40,8 @@ CREATE TABLE Product
 (
     productID     int PRIMARY KEY AUTO_INCREMENT,
     name          VARCHAR(20),
-    categoryID    int,
-    CONSISTENT    FK_CI FOREIGN KEY (categoryID) REFERENCES Category(categoryID),
+    category      VARCHAR(20),
+    CONSISTENT    FK_CI FOREIGN KEY (category) REFERENCES Category(category_name),
     stock         int,
     sale_price    decimal,
     buy_price     decimal,
