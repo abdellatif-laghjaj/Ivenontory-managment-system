@@ -1,4 +1,8 @@
 *.vscode
 *.iml
 *.xml
-.idea/
+.idea/*
+.idea/workspace.xml
+.idea/jsLibraryMappings.xml
+.idea/Ivenontory-managment-system.iml
+.idea/inspectionProfiles/Project_Default.xml

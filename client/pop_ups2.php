@@ -6,14 +6,14 @@
             <div class="pop-content">
                 <form>
                     <legend>
-                        <span>Login</span>
-                        <a onclick="showLogin()">
-                            <img src="../res/img/close.png"  style="cursor: pointer;">
-                        </a>
+                        <span class="text-white">Login</span>
+                        <button onclick="showLogin()">
+                            <img src="../res/img/close.png">
+                        </button>
                     </legend>
                     <div class="field">
-                        <label>Username</label>
-                        <input type="text" placeholder="username">
+                        <label>Email</label>
+                        <input type="email" placeholder="E-mail">
                     </div>
                     <div class="field">
                         <label>Password</label>
@@ -33,21 +33,21 @@
             <div class="pop-content">
                 <form>
                     <legend>
-                        <span>Register</span>
-                        <a onclick="showRegistration()">
-                            <img src="../res/img/close.png" style="cursor: pointer;">
-                        </a>
+                        <span class="text-white">Register</span>
+                        <button onclick="showRegistration()">
+                            <img src="../res/img/close.png">
+                        </button>
                     </legend>
                     <div class="field">
-                        <label>Username</label>
-                        <input type="text" placeholder="username">
+                        <label>Email</label>
+                        <input type="email" placeholder="E-mail">
                     </div>
                     <div class="field">
                         <label>Phone</label>
                         <input type="tel" placeholder="Phone">
                     </div>
                     <div class="field">
-                        <label>Adresse</label>
+                        <label>Address</label>
                         <input type="text" placeholder="Adresse">
                     </div>
                     <div class="field">
@@ -74,24 +74,20 @@
                     <h5 class="fw-bold" id="">
                         Your Shopping Cart
                     </h5>
-                    <a class="closebtn" onclick="showCart()">
-                        <img src="../res/img/close.png" style="cursor: pointer;">
-                    </a>
+                    <button class="closebtn" onclick="showCart()">
+                        <img src="../res/img/close.png">
+                    </button>
                 </legend>
-                <form action="../pages/payment.php">
-                    <div id="total-price">
-                        <span>total :</span>
-                        <input class="total-input-cart" type="text" name="total" value="0" disabled>
-                        <span>$</span>
-                    </div>
-                    <table>
+                <div id="total-price">
 
-                    </table>
-                    <div class="actionbtn">
-                        <button type="button" id="close" onclick="showCart()">Close</button>
-                        <input type="submit" id="buy-now" value="Buy now">
-                    </div>
-                </form>
+                </div>
+                <table>
+
+                </table>
+                <div class="actionbtn">
+                    <button type="button" id="close" onclick="showCart()">Close</button>
+                    <button type="button" id="buy-now">Buy now</button>
+                </div>
             </div>
         </div>
     </div>

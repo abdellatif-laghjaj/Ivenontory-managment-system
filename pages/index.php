@@ -107,10 +107,6 @@
             font-weight: bold;
         }
 
-        span {
-            color: #fff;
-        }
-
         .nav-item {
             transition: all 0.3s ease-in-out;
             border-radius: 6px;
