@@ -12,6 +12,6 @@ Web technologies mini project <br>
 <b>How to use database !?<b>
 <ol>
   <li>Open db directory</li>
-  <li>Open connection.php file/li>
+  <li>Open connection.php file</li>
 </ol>
 
