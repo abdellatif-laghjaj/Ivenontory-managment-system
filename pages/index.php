@@ -63,10 +63,6 @@
             font-weight: bold;
         }
 
-        span {
-            color: var(--light-blue);
-        }
-
         .nav-item {
             transition: all 0.3s ease-in-out;
             border-radius: 6px;

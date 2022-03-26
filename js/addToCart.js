@@ -80,6 +80,22 @@ function showCart() {
     document.getElementById("cart-pop").classList.toggle("hidden");
 }
 
+const overlays = document.getElementsByClassName('overlay');
+const PopupsContent = document.getElementsByClassName('pop-content');
+
+for (var i = 0; i < PopupsContent.length; i++) {
+    PopupsContent[i].addEventListener("click", e => {
+        e.stopPropagation();
+    })
+}
+
+for (var i = 0; i < overlays.length; i++) {
+    overlays[i].addEventListener("click", e => {
+        var currentPopUp = e.target.parentElement;
+        currentPopUp.classList.add("hidden");
+    })
+}
+
 //change badge content
 function updateBadge() {
     NbOrders = 0;
