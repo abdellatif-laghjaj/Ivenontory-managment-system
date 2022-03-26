@@ -1,0 +1,52 @@
+CREATE TABLE Admin
+(
+    adminID           int PRIMARY KEY,
+    full_name         VARCHAR(20),
+    username          VARCHAR(20),
+    email             VARCHAR(20),
+    phone             VARCHAR(20),
+    registration_date Date
+);
+
+CREATE TABLE Customer
+(
+    customerID int PRIMARY KEY,
+    full_name  VARCHAR(20),
+    userName   VARCHAR(20),
+    password   VARCHAR(20),
+    addresse   VARCHAR(50),
+    email      VARCHAR(50),
+    phone      decimal
+);
+
+CREATE TABLE Sale
+(
+    saleID     int PRIMARY KEY,
+    customerID int,
+    CONSTRAINT FK_Per FOREIGN KEY (customerID) REFERENCES Customer (customerID),
+    productID  int,
+    quantity   int,
+    earning    decimal,
+    date       Date,
+    heure      Date
+);
+
+CREATE TABLE Category
+(
+    categoryID     int PRIMARY KEY,
+    category_name  VARCHAR(20),
+    products_total int
+);
+
+CREATE TABLE Product
+(
+    productID     int PRIMARY KEY,
+    name          VARCHAR(20),
+    categoryID    int,
+    CONSISTENT    FK_CI FOREIGN KEY (categoryID) REFERENCES Category(categoryID),
+    stock         int,
+    sale_price    decimal,
+    buy_price     decimal,
+    product_image blob
+);
+
