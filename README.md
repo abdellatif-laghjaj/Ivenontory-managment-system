@@ -14,6 +14,6 @@ Web technologies mini project <br>
   <li>Create a database and name it: <b>ecommerce<b></li>
   <li>Open db directory</li>
   <li>Open databse_tables.db file</li>
-  <li>copy querries and run them on your workbench or something</li>
+  <li>copy querries and run them on your favorite unified visual tool for database architects.</li>
 </ol>
 
