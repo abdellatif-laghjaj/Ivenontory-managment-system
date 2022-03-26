@@ -1,3 +1,6 @@
+use
+ecommerce;
+
 CREATE TABLE Admin
 (
     adminID   int PRIMARY KEY AUTO_INCREMENT,
@@ -18,17 +21,6 @@ CREATE TABLE Customer
     phone      decimal
 );
 
-CREATE TABLE Sale
-(
-    saleID     int PRIMARY KEY AUTO_INCREMENT,
-    customerID int,
-    CONSTRAINT FK_Per FOREIGN KEY (customerID) REFERENCES Customer (customerID),
-    productID  int,
-    quantity   int,
-    earning    decimal,
-    sale_date  Date
-);
-
 CREATE TABLE Category
 (
     categoryID     int PRIMARY KEY AUTO_INCREMENT,
@@ -41,9 +33,21 @@ CREATE TABLE Product
     productID     int PRIMARY KEY AUTO_INCREMENT,
     name          VARCHAR(20),
     category      VARCHAR(20),
-    CONSISTENT    FK_CI FOREIGN KEY (category) REFERENCES Category(category_name),
+    CONSTRAINT FK_CI FOREIGN KEY (category) REFERENCES Category (category_name),
     stock         int,
     sale_price    decimal,
     buy_price     decimal,
     product_image blob
+);
+
+CREATE TABLE Sale
+(
+    saleID     int PRIMARY KEY AUTO_INCREMENT,
+    customerID int,
+    productID  int,
+    CONSTRAINT FK_SC FOREIGN KEY (customerID) REFERENCES Customer (customerID),
+    CONSTRAINT FK_SP FOREIGN KEY (productID) REFERENCES Product (productID),
+    quantity   int,
+    earning    decimal,
+    sale_date  date
 );
