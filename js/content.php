@@ -278,22 +278,20 @@ if (isset($_POST['add_product'])) {
                 <th>Earnings</th>
                 <th>Date</th>
             </tr>
-            <tr>
-                <td>4</td>
-                <td>51</td>
-                <td>2</td>
-                <td>12</td>
-                <td>1990</td>
-                <td>12-2-2022</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>21</td>
-                <td>5</td>
-                <td>9</td>
-                <td>654</td>
-                <td>22-2-2022</td>
-            </tr>
+            <?php
+                $sql = "SELECT * FROM sale";
+                $result =mysqli_query($con, $sql);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['saleID'] . "</td>";
+                    echo "<td>" . $row['customerID'] . "</td>";
+                    echo "<td>" . $row['productID'] . "</td>";
+                    echo "<td>" . $row['quantity'] . "</td>";
+                    echo "<td>" . $row['earning'] . "</td>";
+                    echo "<td>" . $row['sale_date'] . "</td>";
+                    echo "</tr>";
+                }
+            ?>
         </table>
     `;
 

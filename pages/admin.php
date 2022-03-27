@@ -5,6 +5,16 @@ $sql = "SELECT * FROM product";
 $result = mysqli_query($con, $sql);
 $total_products = mysqli_num_rows($result);
 
+//remove product on click
+echo '<script>
+function removeProduct(id){
+    if(confirm("Are you sure you want to remove this product?")){
+        //remove product from database
+        window.location.href = "remove_product.php?id=" + id;
+    }
+}
+</script>';
+
 $productsTotal = 19;
 $salesTotal = 121;
 $earningsTotal = 139;
@@ -275,37 +285,46 @@ $earningsTotal = 139;
     <h1>All Products</h1>
     <hr color="#FF304F" width="90%" size="4">
     <div class="wrap" style="margin: 20px 0;">
-        <div class="search">
-            <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
-            <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
+        <form method="post">
+            <div class="search">
+                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                <button type="submit" class="searchButton" name="submit-search">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
     </div>
     <table id="customers" class="p-table">
         <tr>
+            <th style='text-align: center;'>Product Image</th>
             <th>Product ID</th>
             <th>Name</th>
             <th>Category</th>
             <th>Quantity</th>
-            <th>Price</th>
+            <th>Buy Price</th>
+            <th>Sale Price</th>
         </tr>
 
-        <tr class="product-row">
-            <td>4</td>
-            <td>IPhone 12</td>
-            <td>Mobile</td>
-            <td>1</td>
-            <td>1499</td>
-        </tr>
-
-        <tr class="product-row">
-            <td>5</td>
-            <td>Lenovo</td>
-            <td>Laptops</td>
-            <td>1</td>
-            <td>3488</td>
-        </tr>
+        <?php
+        if (isset($_POST['submit-search'])) {
+            $search = mysqli_real_escape_string($con, $_POST['search_bar']);
+            $sql = "SELECT * FROM product WHERE CONCAT(prodcutID, name, category, stock, sale_price, buy_price) LIKE '%$search%'";
+        } else {
+            $sql = "SELECT * FROM product";
+        }
+        $result = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr class='product-row'>";
+            echo "<td align='center'><img src='../uploads/" . $row['product_image'] . "' style='width: 60px;' alt='product image'></td>";
+            echo "<td>" . $row['productID'] . "</td>";
+            echo "<td>" . $row['name'] . "</td>";
+            echo "<td>" . $row['category'] . "</td>";
+            echo "<td>" . $row['stock'] . "</td>";
+            echo "<td>" . $row['buy_price'] . "</td>";
+            echo "<td>" . $row['sale_price'] . "</td>";
+            echo "</tr>";
+        }
+        ?>
     </table>
 </main>
 
@@ -316,7 +335,6 @@ $earningsTotal = 139;
 </div>
 <script src="../js/change_content.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/charts.js"></script>
 
 <script>
     const modal = document.querySelector(".modal");
@@ -331,35 +349,40 @@ $earningsTotal = 139;
                 modal.innerHTML = `
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2>Product ID: ${this.children[0].textContent}</h2>
+                            <h2>Product ID: ${this.children[1].textContent}</h2>
                         </div>
                         <div class="modal-body">
                             <table>
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Product Name : &#160;</td>
-                                    <td class="namep">${this.children[1].textContent}</td>
+                                    <td class="namep">${this.children[2].textContent}</td>
                                 </tr>
 
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Category : </td>
-                                    <td class="categp">${this.children[2].textContent}</td>
+                                    <td class="categp">${this.children[3].textContent}</td>
                                 </tr>
 
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Quantity : </td>
-                                    <td class="qntp">${this.children[3].textContent}</td>
+                                    <td class="qntp">${this.children[4].textContent}</td>
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td style="color: #292929; font-weight: bold">Price : </td>
-                                    <td class="pricep">${this.children[4].textContent}</td>
+                                    <td style="color: #292929; font-weight: bold">Buy Price : </td>
+                                    <td>$${this.children[5].textContent}</td>
+                                </tr>
+
+                                <tr class="product-row">
+                                    <td style="color: #292929; font-weight: bold">Sale Price : </td>
+                                    <td class="pricep">$${this.children[6].textContent}</td>
                                 </tr>
                             </table>
                         </div>
                         <div class="modal-footer">
                             <button class="product-modal-btn" onclick="toggleModal()">Close</button>
                             <button class="product-modal-btn update-product-btn" onclick="updateProduct()">Update</button>
-                            <button class="product-modal-btn delete-product-btn" onclick="removeProduct(${i})">Delete</button>
+                            <button class="product-modal-btn delete-product-btn" onclick="removeProduct(${this.children[1].textContent})">Delete</button>
                         </div>
                     </div>`;
             }, false);
@@ -375,11 +398,6 @@ $earningsTotal = 139;
         const qnt = document.querySelector(".qntp").textContent;
         const price = document.querySelector(".pricep").textContent;
         window.location.href = "update_product.php?id=" + id + "&name=" + name + "&qnt=" + qnt + "&price=" + price;
-    }
-
-    function removeProduct(i) {
-        alert("Product removed");
-        document.querySelector(".p-table").deleteRow(i + 1);
     }
 
     window.onclick = function (event) {
