@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
-      <change afterPath="$PROJECT_DIR$/res/products-images/01_QN55S95BAFXZA_013_L-Perspective2_Space-Carbon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/products-images/S22U-Recommendation-Card-400x300_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/products-images/c07983243.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/products-images/frame-gal_001_Front1_Black.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/categories_dropdown.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/categories_dropdown.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/logOut.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/logOut.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/addToCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/addToCart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +132,7 @@
       <workItem from="1647935345685" duration="2187000" />
       <workItem from="1648211381499" duration="381000" />
       <workItem from="1648236736158" duration="6339000" />
-      <workItem from="1648315179144" duration="36721000" />
+      <workItem from="1648315179144" duration="37559000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>

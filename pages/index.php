@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) > 0) {
         $product_stock = $row["stock"];
         $product_price = $row["buy_price"];
         $product_image = $row["product_image"];
+        echo '<img src="../res/products-images/'.$product_image.'">';
         echo '<script language="JavaScript">product.push("' . $product_name . '");product.push("' . $product_stock . '"); product.push("' . $product_price . '"); product.push("' . $product_image . '"); console.log(product);</script>';
         echo '<script language="JavaScript">products.push(product); product = [];</script>';
     }
