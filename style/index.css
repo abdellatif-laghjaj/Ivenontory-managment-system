@@ -276,16 +276,16 @@ main .categories .products .card button:hover {
     padding: 10px;
 }
 
-.pop-up .log-in-pop .pop-content form legend a {
+.pop-up .log-in-pop .pop-content form legend button {
     background: none;
     border: none;
 }
 
-.pop-up .log-in-pop .pop-content form legend a:hover {
+.pop-up .log-in-pop .pop-content form legend button:hover {
     cursor: pointer
 }
 
-.pop-up .log-in-pop .pop-content form legend a img {
+.pop-up .log-in-pop .pop-content form legend button img {
     width: 24px;
     height: 24px;
 }
@@ -356,16 +356,16 @@ main .categories .products .card button:hover {
     padding: 10px;
 }
 
-.pop-up .register-pop .pop-content form legend a {
+.pop-up .register-pop .pop-content form legend button {
     background: none;
     border: none;
 }
 
-.pop-up .register-pop .pop-content form legend a:hover {
+.pop-up .register-pop .pop-content form legend button:hover {
     cursor: pointer
 }
 
-.pop-up .register-pop .pop-content form legend a img {
+.pop-up .register-pop .pop-content form legend button img {
     width: 24px;
     height: 24px;
 }
@@ -478,11 +478,11 @@ main .categories .products .card button:hover {
     margin: 0 12px;
 }
 
-.pop-up .cart-pop .pop-content a:hover {
+.pop-up .cart-pop .pop-content button:hover {
     cursor: pointer;
 }
 
-.pop-up .cart-pop .pop-content legend a img {
+.pop-up .cart-pop .pop-content legend button img {
     width: 24px;
     height: 24px;
 }

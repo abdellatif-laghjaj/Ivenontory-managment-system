@@ -1,8 +1,26 @@
 <?php
-$user = $pass = "";
-if (isset($_GET['username']) && $_GET['password']) {
-    $user = $_GET['username'];
-    $pass = $_GET['password'];
+include '../db/connection.php';
+$username = "";
+$password = "";
+
+if (isset($_POST['login'])) {
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+
+    if (empty($username) || empty($password)) {
+        echo "<script>alert('Please fill in all the fields')</script>";
+    } else {
+        $admin = "SELECT username, password FROM admin WHERE adminID = 1";
+        $result = mysqli_query($con, $admin);
+        $row = mysqli_fetch_assoc($result);
+
+        //check if username and password match
+        if ($username == $row['username'] && $password == $row['password']) {
+            header("Location: admin.php");
+        } else {
+            echo "<script>alert('Username or password is incorrect')</script>";
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -15,6 +33,7 @@ if (isset($_GET['username']) && $_GET['password']) {
     <link rel="stylesheet" href="../style/loading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <title>Login</title>
 </head>
@@ -179,18 +198,6 @@ if (isset($_GET['username']) && $_GET['password']) {
 <?php include('loading.php'); ?>
 
 <div class="container">
-
-    <?php
-    if ($user != $pass) {
-        include('error_message.php');
-    }
-    ?>
-
-    <div id="toast">
-        <div id="img"><i class="fa fa-warning"></i></div>
-        <div id="desc">Please fill the fields first 😑</div>
-    </div>
-
     <img src="../res/img/avatar.png" alt="" class="login-img">
     <h1>Identification</h1>
     <hr color="#FF304F" width="250" size="4">
@@ -206,7 +213,7 @@ if (isset($_GET['username']) && $_GET['password']) {
             <input class="input-field" type="password" placeholder="Password" name="password">
         </div>
 
-        <button type="submit" class="btn">LOGIN</button>
+        <button type="submit" name="login" class="btn">LOGIN</button>
 
         <a href="verification.php">Forgot password ?</a>
     </form>
@@ -243,20 +250,6 @@ if (isset($_GET['username']) && $_GET['password']) {
         header.style.display = 'block';
         container.style.display = 'flex';
     }, 2000);
-
-    const loginBtn = document.querySelector(".btn");
-    loginBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        launch_toast();
-    });
-
-    function launch_toast() {
-        const x = document.getElementById("toast");
-        x.className = "show";
-        setTimeout(function () {
-            x.className = x.className.replace("show", "");
-        }, 3000);
-    }
 
 </script>
 </body>

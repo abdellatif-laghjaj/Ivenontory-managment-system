@@ -181,9 +181,9 @@
                 <form name="login" onsubmit="return checkLoginForm()" action="../client/validation.php" method="post">
                     <legend>
                         <span>Login</span>
-                        <a onclick="showLogin()">
-                            <img src="../res/img/close.png"  style="cursor: pointer;">
-                        </a>
+                        <button onclick="showLogin()">
+                            <img src="../res/img/close.png">
+                        </button>
                     </legend>
                     <div class="field">
                         <label>Username</label>
@@ -229,9 +229,9 @@
                 <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php" method="post">
                     <legend>
                         <span>Register</span>
-                        <a onclick="showRegistration()">
-                            <img src="../res/img/close.png" style="cursor: pointer;">
-                        </a>
+                        <button onclick="showRegistration()">
+                            <img src="../res/img/close.png">
+                        </button>
                     </legend>
                     <div class="field">
                         <label>Full name</label>
@@ -277,9 +277,9 @@
                     <h5 class="fw-bold" id="">
                         Your Shopping Cart
                     </h5>
-                    <a class="closebtn" onclick="showCart()">
-                        <img src="../res/img/close.png" style="cursor: pointer;">
-                    </a>
+                    <button class="closebtn" onclick="showCart()">
+                        <img src="../res/img/close.png">
+                    </button>
                 </legend>
                 <form action="../pages/payment.php">
                     <div id="total-price">

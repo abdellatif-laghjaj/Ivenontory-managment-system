@@ -1,3 +1,28 @@
+<?php
+include '../db/connection.php';
+//update product
+if (isset($_POST['submit'])) {
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $product_sale_price = $_POST['product_sale_price'];
+    $product_qnt = $_POST['product_qnt'];
+
+//check if the input is empty
+    if (empty($product_name) || empty($product_sale_price) || empty($product_qnt) || empty($product_id)) {
+        echo "<script>alert('Please fill all the fields')</script>";
+    } else {
+        $sql = "UPDATE product SET name = '$product_name', sale_price = '$product_sale_price', stock = '$product_qnt' WHERE productID = '$product_id'";
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+            echo "<script>alert('Product updated successfully')</script>";
+            echo "<script>window.location.href = 'admin.php'</script>";
+        } else {
+            echo "<script>alert('Product not updated')</script>";
+        }
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -267,21 +292,27 @@
         <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
             <div class="formbg-outer">
                 <div class="formbg">
-                    <div class="formbg-inner padding-horizontal--48">
-                        <span class="padding-bottom--15 title" style="font-weight: bold; font-size: 24px; color: #ff304f;">Update product of ID</span>
+                    <div class="formbg-inner" style="padding: 18px 28px;">
+                        <span class="padding-bottom--15 title"
+                              style="font-weight: bold; font-size: 24px; color: #ff304f;">Update product of ID</span>
                         <form action="update_product.php" method="post" id="stripe-login">
                             <div class="field padding-bottom--24">
-                                <label for="product_name">Product name</label>
-                                <input type="text" class="pname" name="product_name" placeholder="Enter product name">
+                                <label for="product_id">Product ID (not editable)</label>
+                                <input type="number" class="pid" name="product_id">
                             </div>
                             <div class="field padding-bottom--24">
-                                <label for="product_price">Product price</label>
-                                <input type="number" class="pprice" name="product_price" min="1"
+                                <label for="product_name">Product name</label>
+                                <input required type="text" class="pname" name="product_name"
+                                       placeholder="Enter product name">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="product_price">Product sale price</label>
+                                <input required type="number" class="pprice" name="product_sale_price" min="1"
                                        placeholder="Enter product price">
                             </div>
                             <div class="field padding-bottom--24">
                                 <label for="product_qnt">Product quantity</label>
-                                <input type="number" class="pqnt" name="product_qnt" min="0"
+                                <input required type="number" class="pqnt" name="product_qnt" min="0"
                                        placeholder="Enter product quantity">
                             </div>
                             <div class="field padding-bottom--24">
@@ -300,7 +331,7 @@
 <script>
 
     loadData();
-    
+
     //get data of the clicked product
     function loadData() {
         const url = window.location.href;
@@ -315,11 +346,13 @@
         const pname = document.querySelector('.pname');
         const pprice = document.querySelector('.pprice');
         const pqnt = document.querySelector('.pqnt');
+        const pid = document.querySelector('.pid');
 
         title.innerHTML = `Update product of ID ${id}`;
         pname.value = name;
-        pprice.value = price;
+        pprice.value = price.replace('$', '');
         pqnt.value = qnt;
+        pid.value = parseInt(id);
     }
 </script>
 </body>

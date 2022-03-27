@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{66aa7c98b3, Chart.js, bootstrap, font-awesome, ionicons, jquery, jquery-3.2.1, sb-forms-latest, twitter-bootstrap}" />
+    <file url="PROJECT" libraries="{excellentexport, jquery-1.12.4, jquery-3.3.1.slim, jquery-3.5.1, jquery-ui, jspdf, jspdf-autotable, sweetalert}" />
   </component>
 </project>
