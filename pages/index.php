@@ -1,14 +1,29 @@
 <?php
-    session_start();
-    include '../db/connection.php';
-    include '../client/functions.php';
+session_start();
+include '../db/connection.php';
+include '../client/functions.php';
 
-    $user_data = null;
+$user_data = null;
 
-    if(isset($_SESSION['customerID'])) {
-        $user_data = $_SESSION;
+if (isset($_SESSION['customerID'])) {
+    $user_data = $_SESSION;
+}
+
+$query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
+$result = mysqli_query($con, $query);
+
+echo '<script language="JavaScript">var products = []; var product = [];</script>';
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $product_name = $row["name"];
+        $product_stock = $row["stock"];
+        $product_price = $row["buy_price"];
+        $product_image = $row["product_image"];
+        echo '<script language="JavaScript">product.push("' . $product_name . '");product.push("' . $product_stock . '"); product.push("' . $product_price . '"); product.push("' . $product_image . '"); console.log(product);</script>';
+        echo '<script language="JavaScript">products.push(product); product = [];</script>';
     }
-
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -293,14 +308,14 @@
     function logedInBanner() {
         const banner = document.getElementById('banner');
         banner.innerHTML =
-                '<h1 class="">Welcome <?php
-                    if ($user_data !== null)
-                        echo $user_data['full_name'];
-                    else
-                        echo "NULL";
-                     ?></h1>' +
-                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
+            '<h1 class="">Welcome <?php
+                if ($user_data !== null)
+                    echo $user_data['full_name'];
+                else
+                    echo "NULL";
+                ?></h1>' +
+            '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+            '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
         ;
     }
 
@@ -309,15 +324,14 @@
     }
 </script>
 <?php
-    if ($user_data !== null) {
-        echo
-            '
+if ($user_data !== null) {
+    echo
+    '
                 <script type="text/JavaScript">
                     logedInBanner();
                 </script>
-            '
-        ;
-    }
+            ';
+}
 ?>
 </body>
 </html>

@@ -1,3 +1,19 @@
+<?php
+    include '../db/connection.php';
+    include '../client/functions.php';
+
+    $query = "SELECT * FROM `category` ORDER BY `category`.`category_name` ASC";
+    $result = mysqli_query($con, $query);
+
+    echo '<script language="JavaScript">var categories = [];</script>';
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($categories = mysqli_fetch_assoc($result)) {
+            $category_name = $categories["category_name"];
+            echo '<script language="JavaScript">categories.push("'.$category_name.'");</script>';
+        }
+    }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,14 +38,22 @@
                        data-bs-toggle="dropdown" aria-expanded="false">
                         categories
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item">All</a></li>
-                        <li><a class="dropdown-item">Phone</a></li>
-                        <li><a class="dropdown-item">Laptop</a></li>
-                        <li><a class="dropdown-item">Keyboard</a></li>
-                        <li><a class="dropdown-item">Mouse</a></li>
-                        <li><a class="dropdown-item">HeadPhone</a></li>
+                    <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdown">
                     </ul>
+                    <script language="JavaScript">
+                        const dropdown_menu = document.getElementById('dropdown-menu');
+                        var dropdown_menu_html = '<li><a class="dropdown-item">All</a></li>';
+                        if (categories.length == 0) {
+                            dropdown_menu.innerHTML = "";
+                        } else if(categories.length == 1) {
+                            dropdown_menu.innerHTML = '<li><a class="dropdown-item">'+categories[0]+'</a></li>';
+                        } else {
+                            for (var i = 0; i < categories.length; i++) {
+                                dropdown_menu_html += '<li><a class="dropdown-item">'+categories[i]+'</a></li>';
+                            }
+                            dropdown_menu.innerHTML = dropdown_menu_html;
+                        }
+                    </script>
                 </li>
 
                 <li class="nav-item dropdown">

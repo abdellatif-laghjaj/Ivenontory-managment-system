@@ -135,6 +135,8 @@ function loadCartElements() {
     data = '';
     var cartContent = JSON.parse(sessionStorage.getItem('Items'));
     if (cartContent.length === 0) {
+        updateTotalPrice();
+        updateBadge();
         cartBody.innerHTML = '<img src="../res/img/empty_cart.png" alt="loading" style="width: 80px; margin-top: 20px; margin-left: 80px;">';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
