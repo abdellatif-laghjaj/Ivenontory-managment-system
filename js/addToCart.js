@@ -81,23 +81,6 @@ function showCart() {
     document.getElementById("cart-pop").classList.toggle("hidden");
 }
 
-//hide pop-up when click outside
-const overlays = document.getElementsByClassName('overlay');
-const PopupsContent = document.getElementsByClassName('pop-content');
-
-for (var i = 0; i < PopupsContent.length; i++) {
-    PopupsContent[i].addEventListener("click", e => {
-        e.stopPropagation();
-    })
-}
-
-for (var i = 0; i < overlays.length; i++) {
-    overlays[i].addEventListener("click", e => {
-        var currentPopUp = e.target.parentElement;
-        currentPopUp.classList.add("hidden");
-    })
-}
-
 //change badge content
 function updateBadge() {
     NbOrders = 0;
@@ -276,7 +259,6 @@ function Delete(element) {
 
 function onlyNumberKey(event) {
     var ASCIIcode = (event.wich) ? event.wich : event.keyCode;
-    if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57))
-        return false;
+    if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57)) return false;
     return true;
 }

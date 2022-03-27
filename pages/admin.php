@@ -1,4 +1,10 @@
 <?php
+include '../db/connection.php';
+//get the total number of products
+$sql = "SELECT * FROM product";
+$result = mysqli_query($con, $sql);
+$total_products = mysqli_num_rows($result);
+
 $productsTotal = 19;
 $salesTotal = 121;
 $earningsTotal = 139;
@@ -137,7 +143,6 @@ $earningsTotal = 139;
 <body>
 
 <!-- include the change content functionality -->
-
 <?php include('../js/content.php'); ?>
 
 <nav class="navbar" onmouseover="mouseEnter()" onmouseout="mouseOut()">
@@ -225,7 +230,7 @@ $earningsTotal = 139;
         <div class="card">
             <img src="../res/img/box.png" alt="box icon">
             <div class="info">
-                <h3><?php echo $productsTotal ?></h3>
+                <h3><?php echo $total_products ?></h3>
                 <p>Products</p>
             </div>
         </div>
@@ -304,6 +309,7 @@ $earningsTotal = 139;
     </table>
 </main>
 
+<?php include '../js/charts.php' ?>
 <!-- PRODUCT MODAL -->
 <div class="modal" id="details-modal">
 

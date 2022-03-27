@@ -10,8 +10,7 @@ if (isset($_POST['login'])) {
     if (empty($username) || empty($password)) {
         echo "<script>alert('Please fill in all the fields')</script>";
     } else {
-
-        $admin = "SELECT username, password FROM admin";
+        $admin = "SELECT username, password FROM admin WHERE adminID = 1";
         $result = mysqli_query($con, $admin);
         $row = mysqli_fetch_assoc($result);
 
@@ -23,8 +22,6 @@ if (isset($_POST['login'])) {
         }
     }
 }
-
-if (isset($_POST['']))
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +33,7 @@ if (isset($_POST['']))
     <link rel="stylesheet" href="../style/loading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <title>Login</title>
 </head>
