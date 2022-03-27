@@ -1,6 +1,11 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "ecommerce");
-if (mysqli_connect_errno()) {
-    echo "Failed to connect: " . mysqli_connect_error();
+
+$serverName = "localhost";
+$DBusername = "root";
+$DBpassword = "";
+$DBname = "ecommerce";
+
+$con = new mysqli($serverName, $DBusername, $DBpassword, $DBname);
+if ($con->connect_error) {
+    echo "Failed to connect: " . $con->connect_error();
 }
-?>

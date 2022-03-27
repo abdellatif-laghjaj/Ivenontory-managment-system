@@ -1,4 +1,6 @@
-use
+CREATE DATABASE ecommerce;
+
+USE
 ecommerce;
 
 CREATE TABLE Admin
@@ -6,6 +8,7 @@ CREATE TABLE Admin
     adminID   int PRIMARY KEY AUTO_INCREMENT,
     full_name VARCHAR(20),
     username  VARCHAR(20),
+    password  VARCHAR(20),
     email     VARCHAR(20),
     phone     VARCHAR(20)
 );
@@ -18,7 +21,7 @@ CREATE TABLE Customer
     password   VARCHAR(20),
     addresse   VARCHAR(50),
     email      VARCHAR(50),
-    phone      decimal
+    phone      VARCHAR(20)
 );
 
 CREATE TABLE Category

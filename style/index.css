@@ -343,6 +343,8 @@ main .categories .products .card button:hover {
     flex-direction: column;
     z-index: 101;
     width: 500px;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 .pop-up .register-pop .pop-content form legend {
@@ -422,7 +424,6 @@ main .categories .products .card button:hover {
     z-index: 101;
     overflow: auto;
     overflow-x: hidden;
-    max-height: 90vh;
 }
 
 .pop-up .cart-pop .pop-content legend {

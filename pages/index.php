@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    include '../db/connection.php';
+    include '../client/functions.php';
+
+    $user_data = null;
+
+    if(isset($_SESSION['customerID'])) {
+        $user_data = $_SESSION;
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,7 +179,7 @@
 </nav>
 
 <main>
-    <div class="banner">
+    <div class="banner" id="banner">
         <h1 class="">Welcome to TexGEAR: E-commerce web app</h1>
         <p class="">Enjoy a safe, convenient shopping experience</p>
         <button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>
@@ -277,5 +289,35 @@
 <?php include 'footer.php' ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/addToCart.js"></script>
+<script language="JavaScript">
+    function logedInBanner() {
+        const banner = document.getElementById('banner');
+        banner.innerHTML =
+                '<h1 class="">Welcome <?php
+                    if ($user_data !== null)
+                        echo $user_data['full_name'];
+                    else
+                        echo "NULL";
+                     ?></h1>' +
+                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
+        ;
+    }
+
+    function showLogOut() {
+        document.getElementById("log-out-pop").classList.toggle("hidden");
+    }
+</script>
+<?php
+    if ($user_data !== null) {
+        echo
+            '
+                <script type="text/JavaScript">
+                    logedInBanner();
+                </script>
+            '
+        ;
+    }
+?>
 </body>
 </html>

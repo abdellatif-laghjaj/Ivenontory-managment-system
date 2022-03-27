@@ -128,7 +128,7 @@ function updateTotalPrice() {
     for (let k = 0; k < cartContent.length; k++) {
         totalPrice += cartContent[k].price;
     }
-    document.getElementById('total-price').querySelector("input").value = totalPrice;
+    document.getElementById('total-price').querySelector("input").value = Intl.NumberFormat('en-US').format(totalPrice);
 }
 
 function loadCartElements() {
@@ -138,9 +138,21 @@ function loadCartElements() {
         cartBody.innerHTML = '<img src="../res/img/empty_cart.png" alt="loading" style="width: 80px; margin-top: 20px; margin-left: 80px;">';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
-            data += '<tr><th><img class="shopping-cart-img" src="' + cartContent[i].image + '"></th><th>' + cartContent[i].name + '</th><th class="full-input-qnt"><div class="dec"> <i class="fa fa-minus"></i> </div><input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)"><div class="inc"><i class="fa fa-plus"></i></div></th><th>' + Intl.NumberFormat('en-US', {
-                style: 'currency', currency: 'USD'
-            }).format(cartContent[i].basePrice) + '</th><th><a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a></th></tr>'
+            data += '<tr>' +
+                        '<th>' +
+                            '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' +
+                        '</th>' +
+                        '<th>' + cartContent[i].name + '</th>' +
+                        '<th class="full-input-qnt">' +
+                            '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' +
+                            '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' +
+                            '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' +
+                        '</th>' +
+                        '<th>' + Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(cartContent[i].basePrice) + '</th>' +
+                        '<th>' +
+                            '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' +
+                        '</th>' +
+                    '</tr>'
         }
         cartBody.innerHTML = data;
 
