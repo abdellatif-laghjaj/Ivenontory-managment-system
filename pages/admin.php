@@ -5,6 +5,27 @@ $sql = "SELECT * FROM product";
 $result = mysqli_query($con, $sql);
 $total_products = mysqli_num_rows($result);
 
+//get the total number of sales
+$sql = "SELECT * FROM sale";
+$result = mysqli_query($con, $sql);
+$total_sales = mysqli_num_rows($result);
+
+//get the total of earnings
+
+//$sql = "SELECT product.buy_price, product.sale_price, sale.quantity FROM product, sale WHERE product.productID = sale.productID";
+//$result = mysqli_query($con, $sql);
+//$total_earnings = 0;
+//while ($row = mysqli_fetch_array($result)) {
+//    $total_earnings += ($row['sale_price'] - $row['buy_price']) * $row['quantity'];
+//}
+
+$sql = "SELECT * FROM sale";
+$result = mysqli_query($con, $sql);
+$total_earnings = 0;
+while ($row = mysqli_fetch_array($result)) {
+    $total_earnings += $row['earning'];
+}
+
 //remove product on click
 echo '<script>
 function removeProduct(id){
@@ -86,6 +107,14 @@ $earningsTotal = 139;
             margin-bottom: 12px;
             margin-top: 12px;
             margin-right: 4px;
+        }
+
+        .products-container {
+            display: inline;
+        }
+
+        .profile-container form .field {
+            height: 44px;
         }
 
         .products-container .form .field .label {
@@ -192,7 +221,7 @@ $earningsTotal = 139;
             <a href="#category" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()"
                onclick="changeToCategory()">
                 <img class="nav-icon" src="../res/img/categories.png" alt="">
-                <span class="link-text">Category</span>
+                <span class="link-text">Categories</span>
             </a>
         </li>
 
@@ -200,7 +229,7 @@ $earningsTotal = 139;
             <a href="#products" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()"
                onclick="changeToProducts()">
                 <img class="nav-icon" src="../res/img/product.png" alt="">
-                <span class="link-text">Products</span>
+                <span class="link-text">Add Product</span>
             </a>
         </li>
 
@@ -248,7 +277,7 @@ $earningsTotal = 139;
         <div class="card sales">
             <img src="../res/img/sales.png" alt="box icon">
             <div class="info">
-                <h3><?php echo $salesTotal ?></h3>
+                <h3><?php echo $total_sales ?></h3>
                 <p>Sales</p>
             </div>
         </div>
@@ -256,7 +285,7 @@ $earningsTotal = 139;
         <div class="card earnings">
             <img src="../res/img/dollar.png" alt="box icon">
             <div class="info">
-                <h3><?php echo $earningsTotal ?></h3>
+                <h3>$ <?php echo $total_earnings ?></h3>
                 <p>Earnings</p>
             </div>
         </div>
@@ -287,7 +316,8 @@ $earningsTotal = 139;
     <div class="wrap" style="margin: 20px 0;">
         <form method="post">
             <div class="search">
-                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . ."
+                       style="font-family: Cairo;">
                 <button type="submit" class="searchButton" name="submit-search">
                     <i class="fa fa-search"></i>
                 </button>
@@ -308,7 +338,7 @@ $earningsTotal = 139;
         <?php
         if (isset($_POST['submit-search'])) {
             $search = mysqli_real_escape_string($con, $_POST['search_bar']);
-            $sql = "SELECT * FROM product WHERE CONCAT(prodcutID, name, category, stock, sale_price, buy_price) LIKE '%$search%'";
+            $sql = "SELECT * FROM product WHERE CONCAT(productID, name, category, stock, sale_price, buy_price) LIKE '%$search%'";
         } else {
             $sql = "SELECT * FROM product";
         }
