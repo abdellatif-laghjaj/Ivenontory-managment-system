@@ -26,6 +26,10 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/js/content.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/generate_pdf.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -39,14 +43,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/res/libs" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\IMS\res\libs" />
       <recent name="C:\xampp\htdocs\IMS\js" />
       <recent name="C:\xampp\htdocs\IMS\res\sounds" />
     </key>
@@ -74,7 +79,11 @@
       <workItem from="1648247888307" duration="8423000" />
       <workItem from="1648297631245" duration="33580000" />
       <workItem from="1648392169598" duration="260000" />
-      <workItem from="1648392471156" duration="18062000" />
+      <workItem from="1648392471156" duration="22061000" />
+      <workItem from="1648468598036" duration="2119000" />
+      <workItem from="1648502105711" duration="14608000" />
+      <workItem from="1648546054700" duration="8488000" />
+      <workItem from="1648555187946" duration="7000" />
     </task>
     <servers />
   </component>

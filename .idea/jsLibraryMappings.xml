@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{excellentexport, jquery-1.12.4, jquery-3.3.1.slim, jquery-3.5.1, jquery-ui, jspdf, jspdf-autotable, sweetalert}" />
+    <file url="PROJECT" libraries="{easy-pie-chart, excellentexport, jquery-1.12.4, jquery-3.3.1.slim, jquery-3.5.1, jquery-ui, jspdf, jspdf-autotable, progressbar, sweetalert}" />
   </component>
 </project>

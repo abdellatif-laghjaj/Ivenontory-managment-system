@@ -62,7 +62,6 @@ if (isset($_POST['add_product'])) {
     $product_sale_price = $_POST['sale_price'];
     $product_buy_price = $_POST['buy_price'];
     $product_image = $upload_dir . basename($_FILES['product_image']['name']);
-
     //check if the inputs are empty
     if (empty($product_name)
         || empty($product_category)
@@ -163,7 +162,8 @@ if (isset($_POST['add_product'])) {
     <hr color="#FF304F" width="90%" size="4">
     <div class="wrap" style="margin: 20px 0;">
             <div class="search">
-                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
+                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . ."
+                style="font-family: Cairo;">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
                 </button>
@@ -229,13 +229,17 @@ if (isset($_POST['add_product'])) {
     let customers = `
         <h1>Customers</h1>
         <hr color="#FF304F" width="90%" size="4">
+        <img src="../res/img/undraw_users.svg" style="width: 300px; margin: 12px 36%; ">
         <div class="wrap" style="margin: 20px 0;">
-            <div class="search">
-                <input type="text" name="search_bar" class="searchTerm" placeholder="Search. . .">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
+             <form action="" method="post">
+                <div class="search">
+                    <input type="text" name="search_bar_customers" class="searchTerm" placeholder="Search. . ."
+                    style="font-family: Cairo;">
+                    <button type="submit" class="searchButton" name="submit-search-customers">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
         <table id="customers">
             <tr>
@@ -249,7 +253,12 @@ if (isset($_POST['add_product'])) {
             </tr>
 
             <?php
-    $sql = "SELECT * FROM customer";
+    if (isset($_POST['submit-search-customers'])) {
+        $search = mysqli_real_escape_string($con, $_POST['search_bar_customers']);
+        $sql = "SELECT * FROM customer WHERE CONCAT(customerID, full_name, username, email, phone, addresse) LIKE '%$search%'";
+    } else {
+        $sql = "SELECT * FROM customer";
+    }
     $result = mysqli_query($con, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
@@ -269,6 +278,8 @@ if (isset($_POST['add_product'])) {
     let sales = `
         <h1>Sales</h1>
         <hr color="#FF304F" width="90%" size="4">
+        <p>Check all verified sales:</p>
+        <img src="../res/img/undraw_data_reports.svg" style="width: 300px; margin: 12px 36%; ">
         <table id="customers">
             <tr>
                 <th>Sale ID</th>
@@ -279,19 +290,19 @@ if (isset($_POST['add_product'])) {
                 <th>Date</th>
             </tr>
             <?php
-                $sql = "SELECT * FROM sale";
-                $result =mysqli_query($con, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['saleID'] . "</td>";
-                    echo "<td>" . $row['customerID'] . "</td>";
-                    echo "<td>" . $row['productID'] . "</td>";
-                    echo "<td>" . $row['quantity'] . "</td>";
-                    echo "<td>" . $row['earning'] . "</td>";
-                    echo "<td>" . $row['sale_date'] . "</td>";
-                    echo "</tr>";
-                }
-            ?>
+    $sql = "SELECT * FROM sale";
+    $result = mysqli_query($con, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . $row['saleID'] . "</td>";
+        echo "<td>" . $row['customerID'] . "</td>";
+        echo "<td>" . $row['productID'] . "</td>";
+        echo "<td>" . $row['quantity'] . "</td>";
+        echo "<td>" . $row['earning'] . "</td>";
+        echo "<td>" . $row['sale_date'] . "</td>";
+        echo "</tr>";
+    }
+    ?>
         </table>
     `;
 
@@ -430,27 +441,26 @@ if (isset($_POST['add_product'])) {
                 <option value="4">Last year</option>
             </select>
         </div>
-
-        <div class="block">
-            <div class="card" id="pdf">
-                <img src="../res/img/pdf.png" alt="">
-                <label for="">PDF Format</label>
+            <div class="block">
+                <div class="card" id="pdf">
+                    <img src="../res/img/pdf.png" alt="">
+                    <label for="">PDF Format</label>
+                </div>
+                <button onclick="sendData('pdf')" class="btn"><i class="fa fa-download"></i>DOWNLOAD</button>
             </div>
-            <button class="btn" id="PDF"><i class="fa fa-download"></i>DOWNLOAD</button>
-        </div>
         <div class="block">
             <div class="card" id="csv">
                 <img src="../res/img/csv.png" alt="">
                 <label for="">CSV Format</label>
             </div>
-            <button class="btn" id="CSV"><i class="fa fa-download"></i>DOWNLOAD</button>
+            <button class="btn" onclick="sendData('csv')"><i class="fa fa-download"></i>DOWNLOAD</button>
         </div>
         <div class="block">
             <div class="card" id="json">
                 <img src="../res/img/Json icon.png" alt="">
                 <label for="">JSON Format</label>
             </div>
-            <button class="btn" id="JSON"><i class="fa fa-download"></i>DOWNLOAD</button>
+            <button class="btn" onclick="sendData('json')"><i class="fa fa-download"></i>DOWNLOAD</button>
         </div>
     </div>
 `;
@@ -490,6 +500,14 @@ if (isset($_POST['add_product'])) {
         let content = document.querySelector(".content");
         content.innerHTML = reports;
     }
+
+    //send periode to generate_pdf.php on click
+    function sendData(format) {
+        let periode = document.querySelector(".reports-periode").value;
+        let url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format;
+        window.open(url, "_blank");
+    }
+
 </script>
 </body>
 
