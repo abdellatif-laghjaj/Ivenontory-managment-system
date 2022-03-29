@@ -214,7 +214,7 @@
                     </legend>
                     <label>Are you sure you want log out?</label>
                     <div class="field">
-                        <input type="submit" value="LOG OUT" class="button">
+                        <input type="submit" onclick="clearSessionStorage()" value="LOG OUT" class="button">
                         <input type="reset" onclick="showLogOut()" value="CANCEL" class="button">
                     </div>
                 </form>
@@ -364,5 +364,9 @@
         setTimeout(function () {
             x.classList.toggle("show");
         }, 3000);
+    }
+
+    function clearSessionStorage() {
+        sessionStorage.clear();
     }
 </script>

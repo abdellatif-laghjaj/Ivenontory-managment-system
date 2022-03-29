@@ -2,7 +2,6 @@ let cartItems = [];
 let data = '';
 var NbOrders = 0;
 var totalPrice = 0;
-var cartIndex = parseInt(0);
 const errorSound = new Audio('../res/sounds/errorSound.wav');
 
 const addToCartButton = document.getElementsByClassName('addToCart');
@@ -12,22 +11,31 @@ const cartBody = document.getElementById('cart-pop').querySelector('table');
 window.addEventListener("DOMContentLoaded", (evt) => {
     //add to cart
     for (let i = 0; i < addToCartButton.length; i++) {
-        addToCartButton[i].addEventListener("click", function (e) {
+        var clickedButton = addToCartButton[i];
+        clickedButton.setAttribute('rank', i);
+        clickedButton.addEventListener("click", function (e) {
+            var currentButton;
+
+            if (e.target.tagName.toUpperCase() == 'BUTTON')
+                currentButton = e.target;
+            else
+                currentButton = e.target.parentElement;
+
+            var currentIndex = currentButton.getAttribute('rank');
+            var currentProduct = products[currentIndex];
             let product = {
-                id: cartIndex,
-                name: e.target.parentElement.children[1].textContent.trim(),
-                image: e.target.parentElement.children[0].children[0].src,
-                stock: parseInt(e.target.parentElement.children[4].children[1].textContent.trim()),
+                id: currentProduct[4],
+                name: currentProduct[0],
+                image: currentProduct[3],
+                stock: parseInt(currentProduct[1]),
                 quantity: parseInt(1),
-                basePrice: parseFloat(e.target.parentElement.children[3].children[1].textContent.trim().replace("$", "")),
-                price: parseFloat(e.target.parentElement.children[3].children[1].textContent.trim().replace("$", ""))
+                basePrice: parseFloat(currentProduct[2]),
+                price: parseFloat(currentProduct[2])
             };
             //if the cart is empty
             if (cartItems.length == 0) {
                 cartItems.push(product);
-                cartIndex += 1;
                 sessionStorage.setItem("Items", JSON.stringify(cartItems));
-                sessionStorage.setItem("Index", JSON.stringify(cartIndex));
                 updateTotalPrice();
                 updateBadge();
                 loadCartElements();
@@ -35,9 +43,7 @@ window.addEventListener("DOMContentLoaded", (evt) => {
                 //check if the product exist already in the cart or not
                 if (exist(product) === null) {
                     cartItems.push(product);
-                    cartIndex += 1;
                     sessionStorage.setItem("Items", JSON.stringify(cartItems));
-                    sessionStorage.setItem("Index", JSON.stringify(cartIndex));
                     updateTotalPrice();
                     updateBadge();
                     loadCartElements();
@@ -62,7 +68,7 @@ window.addEventListener("DOMContentLoaded", (evt) => {
 
 function exist(item) {
     for (let i = 0; i < cartItems.length; i++) {
-        if (item.name.localeCompare(cartItems[i].name) === 0) {
+        if ((item.name.localeCompare(cartItems[i].name) === 0) || (item.id === cartItems[i].id)) {
             return cartItems[i];
         }
     }
@@ -91,8 +97,6 @@ function updateBadge() {
     if (NbOrders === 0) {
         badge.classList.add('hidden');
         badge.classList.remove('NbOrders');
-        sessionStorage.removeItem("Index");
-        cartIndex = 0;
     } else if (NbOrders < 100) {
         badge.classList.remove('hidden');
         badge.classList.add('NbOrders');
@@ -252,7 +256,6 @@ function loadCartElements() {
 window.onload = function () {
     if (JSON.parse(sessionStorage.getItem("Items")) !== null) {
         cartItems = JSON.parse(sessionStorage.getItem("Items"));
-        cartIndex = JSON.parse(sessionStorage.getItem("Index"));
         loadCartElements();
         updateTotalPrice();
         updateBadge();

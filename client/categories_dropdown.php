@@ -1,8 +1,7 @@
 <?php
     include '../db/connection.php';
-    include '../client/functions.php';
 
-    $query = "SELECT * FROM `category` ORDER BY `category`.`category_name` ASC";
+    $query = "SELECT * FROM `category` WHERE `products_total` > 0 ORDER BY `category`.`category_name` ASC";
     $result = mysqli_query($con, $query);
 
     echo '<script language="JavaScript">var categories = [];</script>';
@@ -42,14 +41,14 @@
                     </ul>
                     <script language="JavaScript">
                         const dropdown_menu = document.getElementById('dropdown-menu');
-                        var dropdown_menu_html = '<li><a class="dropdown-item">All</a></li>';
+                        var dropdown_menu_html = "<li><a class='dropdown-item' onclick='filterBy("+false+");'>All</a></li>";
                         if (categories.length == 0) {
                             dropdown_menu.innerHTML = "";
                         } else if(categories.length == 1) {
                             dropdown_menu.innerHTML = '<li><a class="dropdown-item">'+categories[0]+'</a></li>';
                         } else {
                             for (var i = 0; i < categories.length; i++) {
-                                dropdown_menu_html += '<li><a class="dropdown-item">'+categories[i]+'</a></li>';
+                                dropdown_menu_html += "<li><a class='dropdown-item' onclick='filterBy("+(i+1)+");'>"+categories[i]+"</a></li>";
                             }
                             dropdown_menu.innerHTML = dropdown_menu_html;
                         }
@@ -62,10 +61,10 @@
                         Sort by
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item">Price ⬇</a></li>
-                        <li><a class="dropdown-item">Price ⬆</a></li>
-                        <li><a class="dropdown-item">Newest</a></li>
-                        <li><a class="dropdown-item">Oldest</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(1)">Price ⬇</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(2)">Price ⬆</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(3)">Newest</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(4)">Oldest</a></li>
                     </ul>
                 </li>
             </ul>
@@ -80,3 +79,14 @@
 </nav>
 </body>
 </html>
+<script language="JavaScript">
+    function filterBy(category) {
+        filterOpt = category;
+        loadProducts(filterOpt, sortOpt);
+    }
+
+    function sortBy(option) {
+        sortOpt = option;
+        loadProducts(filterOpt, sortOpt);
+    }
+</script>

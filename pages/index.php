@@ -9,22 +9,6 @@ if (isset($_SESSION['customerID'])) {
     $user_data = $_SESSION;
 }
 
-$query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
-$result = mysqli_query($con, $query);
-
-echo '<script language="JavaScript">var products = []; var product = [];</script>';
-
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $product_name = $row["name"];
-        $product_stock = $row["stock"];
-        $product_price = $row["buy_price"];
-        $product_image = $row["product_image"];
-        echo '<img src="../res/products-images/'.$product_image.'">';
-        echo '<script language="JavaScript">product.push("' . $product_name . '");product.push("' . $product_stock . '"); product.push("' . $product_price . '"); product.push("' . $product_image . '"); console.log(product);</script>';
-        echo '<script language="JavaScript">products.push(product); product = [];</script>';
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +23,9 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/index.css">
     <title>TexGear</title>
-
+    <?php
+    echo "<script language='JavaScript'>var products = [];\n var product = [];\n filterOpt = false; sortOpt = false</script>";
+    ?>
     <style>
         body {
             background-color: rgba(255, 255, 255, 0.95);
@@ -208,99 +194,125 @@ if (mysqli_num_rows($result) > 0) {
 
     <?php include '../client/categories_dropdown.php'; ?>
 
-    <div class="categories">
-        <!-- PRODUCT CARD -->
-        <div class="products shadow-lg mb-5 bg-body rounded">
-            <div class="card">
-                <div class="product-image">
-                    <img id="product-image" src="../res/img/website.png" alt="product image">
-                </div>
-                <h1 class="product-name">
-                    Galaxy S20+
-                </h1>
-                <p>Here's some description...</p>
-                <div class="product-price">
-                    <span class="txt">Price : </span><span class="txt" id="base-price"
-                                                           style="font-weight: bold;">$1299</span>
-                </div>
-                <div class="product-stock">
-                    <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">20</span>
-                </div>
-                <button class="addToCart btn btn-warning">
-                    <img src="../res/img/cart.ico" alt="">
-                </button>
-            </div>
-        </div>
+    <div class="categories" id="categories">
 
-        <!-- PRODUCT CARD -->
-        <div class="products shadow-lg mb-5 bg-body rounded">
-            <div class="card">
-                <div class="product-image">
-                    <img id="product-image" src="../res/img/website.png" alt="product image">
-                </div>
-                <h1 class="product-name">
-                    Huawei Y7
-                </h1>
-                <p>Here's some description...</p>
-                <div class="product-price">
-                    <span class="txt">Price : </span><span class="txt" id="base-price"
-                                                           style="font-weight: bold;">$599</span>
-                </div>
-                <div class="product-stock">
-                    <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold;">26</span>
-                </div>
-                <button class="addToCart btn btn-warning">
-                    <img src="../res/img/cart.ico" alt="">
-                </button>
-            </div>
-        </div>
-
-        <!-- PRODUCT CARD -->
-        <div class="products shadow-lg mb-5 bg-body rounded">
-            <div class="card">
-                <div class="product-image">
-                    <img id="product-image" src="../res/img/website.png" alt="product image">
-                </div>
-                <h1 class="product-name">
-                    EliteBook G360
-                </h1>
-                <p>Here's some description...</p>
-                <div class="product-price">
-                    <span class="txt">Price : </span><span class="txt" id="base-price"
-                                                           style="font-weight: bold">$899</span>
-                </div>
-                <div class="product-stock">
-                    <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">20</span>
-                </div>
-                <button class="addToCart btn btn-warning">
-                    <img src="../res/img/cart.ico" alt="">
-                </button>
-            </div>
-        </div>
-
-        <!-- PRODUCT CARD -->
-        <div class="products shadow-lg mb-5 bg-body rounded">
-            <div class="card">
-                <div class="product-image">
-                    <img id="product-image" src="../res/img/reset_password.png" alt="product image">
-                </div>
-                <h1 class="product-name">
-                    Lenovo IDEA PAD 320S
-                </h1>
-                <p>Here's some description...</p>
-                <div class="product-price">
-                    <span class="txt">Price : </span><span class="txt" id="base-price"
-                                                           style="font-weight: bold">$999</span>
-                </div>
-                <div class="product-stock">
-                    <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">20</span>
-                </div>
-                <button class="addToCart btn btn-warning">
-                    <img src="../res/img/cart.ico" alt="">
-                </button>
-            </div>
-        </div>
     </div>
+    <script language="JavaScript">
+        function displayProducts(products) {
+            const products_box = document.getElementById("categories");
+            var products_inner_html = "";
+            if (products.length > 0) {
+                for (var i = 0; i < products.length; i++) {
+                    products_inner_html +=
+                        '<!-- PRODUCT CARD -->' +
+                        '<div class="products shadow-lg mb-5 bg-body rounded">' +
+                        '   <div class="card">' +
+                        '      <div class="product-image">' +
+                        '           <img id="product-image" src="' + products[i][3] + '" alt="product image">' +
+                        '       </div>' +
+                        '       <h1 class="product-name">' + products[i][0] +
+                        '       </h1>' +
+                        '       <p>Here\'s some description...</p>' +
+                        '       <div class="product-price">' +
+                        '           <span class="txt">Price : </span><span class="txt" id="base-price"' +
+                        '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {style: "currency", currency: "USD"}).format(products[i][2]) + '</span>' +
+                        '       </div>' +
+                        '       <div class="product-stock">' +
+                        '           <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">' + products[i][1] + '</span>' +
+                        '       </div>' +
+                        '       <button class="addToCart btn btn-warning">' +
+                        '           <img src="../res/img/cart.ico" alt="">' +
+                        '       </button>' +
+                        '   </div>' +
+                        '</div> ';
+                }
+                products_box.innerHTML = products_inner_html;
+            }
+        }
+
+        function loadProducts(filterOpt, sortOpt) {
+            if (!filterOpt && !sortOpt) {
+                <?php
+                $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
+                loadProducts($con, $query);
+                ?>
+                displayProducts(products);
+            } else if (!filterOpt) {
+                switch (sortOpt) {
+                    case 1 :
+                        <?php
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        loadProducts($con, $query);
+                        ?>
+                        break;
+
+                    case 2 :
+                        <?php
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        loadProducts($con, $query);
+                        ?>
+                        break;
+
+                    case 3 :
+                        <?php
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        loadProducts($con, $query);
+                        ?>
+                        break;
+
+                    case 4 :
+                        <?php
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        loadProducts($con, $query);
+                        ?>
+                        break;
+                }
+                displayProducts(products);
+            } else if (!sortOpt) {
+                var category_name = categories[filterOpt - 1];
+                var productsAfterFilter = products.filter(product => {
+                    return (product[5].localeCompare(category_name) === 0);
+                });
+                displayProducts(productsAfterFilter);
+            } else {
+                switch (sortOpt) {
+                    case 1 :
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                    loadProducts($con, $query);
+                    ?>
+                        break;
+
+                    case 2 :
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                    loadProducts($con, $query);
+                    ?>
+                        break;
+
+                    case 3 :
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                    loadProducts($con, $query);
+                    ?>
+                        break;
+
+                    case 4 :
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                    loadProducts($con, $query);
+                    ?>
+                        break;
+                }
+                var category_name = categories[filterOpt - 1];
+                var productsAfterFilter = products.filter(product => {
+                    return (product[5].localeCompare(category_name) === 0);
+                });
+                displayProducts(productsAfterFilter);
+            }
+        }
+        loadProducts();
+    </script>
 </main>
 
 <!-- ALL POP UPS MODALS -->
@@ -327,6 +339,7 @@ if (mysqli_num_rows($result) > 0) {
     function showLogOut() {
         document.getElementById("log-out-pop").classList.toggle("hidden");
     }
+
 </script>
 <?php
 if ($user_data !== null) {
