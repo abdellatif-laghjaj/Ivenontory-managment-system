@@ -1,28 +1,17 @@
 <?php
-    include '../db/connection.php';
 
-    $query = "SELECT * FROM `category` WHERE `products_total` > 0 ORDER BY `category`.`category_name` ASC";
-    $result = mysqli_query($con, $query);
+$query = "SELECT * FROM `category` WHERE `products_total` > 0 ORDER BY `category`.`category_name` ASC";
+$result = mysqli_query($con, $query);
 
-    echo '<script language="JavaScript">var categories = [];</script>';
+echo '<script language="JavaScript">var categories = [];</script>';
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($categories = mysqli_fetch_assoc($result)) {
-            $category_name = $categories["category_name"];
-            echo '<script language="JavaScript">categories.push("'.$category_name.'");</script>';
-        }
+if (mysqli_num_rows($result) > 0) {
+    while ($categories = mysqli_fetch_assoc($result)) {
+        $category_name = $categories["category_name"];
+        echo '<script language="JavaScript">categories.push("' . $category_name . '");</script>';
     }
+}
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mt-5 shadow p-2 mb-5 bg-body rounded" id="products-all">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold">Products</a>
@@ -41,14 +30,14 @@
                     </ul>
                     <script language="JavaScript">
                         const dropdown_menu = document.getElementById('dropdown-menu');
-                        var dropdown_menu_html = "<li><a class='dropdown-item' onclick='filterBy("+false+");'>All</a></li>";
+                        var dropdown_menu_html = "<li><a class='dropdown-item' onclick='filterBy(" + false + ");'>All</a></li>";
                         if (categories.length == 0) {
                             dropdown_menu.innerHTML = "";
-                        } else if(categories.length == 1) {
-                            dropdown_menu.innerHTML = '<li><a class="dropdown-item">'+categories[0]+'</a></li>';
+                        } else if (categories.length == 1) {
+                            dropdown_menu.innerHTML = '<li><a class="dropdown-item">' + categories[0] + '</a></li>';
                         } else {
                             for (var i = 0; i < categories.length; i++) {
-                                dropdown_menu_html += "<li><a class='dropdown-item' onclick='filterBy("+(i+1)+");'>"+categories[i]+"</a></li>";
+                                dropdown_menu_html += "<li><a class='dropdown-item' onclick='filterBy(" + (i + 1) + ");'>" + categories[i] + "</a></li>";
                             }
                             dropdown_menu.innerHTML = dropdown_menu_html;
                         }
@@ -68,17 +57,17 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-1" type="search" placeholder="Search..." aria-label="Search">
-                <button class="btn btn-primary" type="submit">
+            <form class="d-flex" method="GET" action="index.php">
+                <input class="form-control me-1" autocomplete="off" list="search-results" type="search" id="search" name="search"
+                       placeholder="Search..." aria-label="Search">
+                <button type="submit" class="btn btn-primary" style="height: 100%;" name="search-button" value="1">
                     <i class="fa fa-search"></i>
                 </button>
+                <datalist id="search-results"></datalist>
             </form>
         </div>
     </div>
 </nav>
-</body>
-</html>
 <script language="JavaScript">
     function filterBy(category) {
         filterOpt = category;
@@ -89,4 +78,19 @@
         sortOpt = option;
         loadProducts(filterOpt, sortOpt);
     }
+
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            $.ajax({
+                type: "GET",
+                url: '../client/search.php',
+                data: {
+                    search: $("#search").val(),
+                },
+                success: function (data) {
+                    $("#search-results").html(data);
+                }
+            })
+        })
+    })
 </script>

@@ -19,6 +19,8 @@ if (isset($_SESSION['customerID'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/index.css">
@@ -215,7 +217,10 @@ if (isset($_SESSION['customerID'])) {
                         '       <p>Here\'s some description...</p>' +
                         '       <div class="product-price">' +
                         '           <span class="txt">Price : </span><span class="txt" id="base-price"' +
-                        '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {style: "currency", currency: "USD"}).format(products[i][2]) + '</span>' +
+                        '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {
+                            style: "currency",
+                            currency: "USD"
+                        }).format(products[i][2]) + '</span>' +
                         '       </div>' +
                         '       <div class="product-stock">' +
                         '           <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">' + products[i][1] + '</span>' +
@@ -240,31 +245,31 @@ if (isset($_SESSION['customerID'])) {
             } else if (!filterOpt) {
                 switch (sortOpt) {
                     case 1 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
 
                     case 2 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
 
                     case 3 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
 
                     case 4 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
                 }
                 displayProducts(products);
@@ -311,8 +316,21 @@ if (isset($_SESSION['customerID'])) {
                 displayProducts(productsAfterFilter);
             }
         }
+
         loadProducts();
     </script>
+    <?php
+    if (isset($_GET)) {
+        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`category` LIKE '%" . $_GET["search"] . "%')";
+        $result = mysqli_query($con, $sql);
+        echo '<script>';
+        while ($row = mysqli_fetch_assoc($result)) {
+            loadProducts($con, $sql);
+        }
+        echo 'displayProducts(products);';
+        echo '</script>';
+    }
+    ?>
 </main>
 
 <!-- ALL POP UPS MODALS -->
