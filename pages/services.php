@@ -64,7 +64,7 @@
     .settings:hover {
         box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
         cursor: pointer;
-        background-image: linear-gradient(-45deg, #34b5bf 0%, #210c59 100%)
+        background-image: linear-gradient(-45deg, #d048ff 0%, #de87ff 100%)
     }
 
     .privacy:hover {
@@ -90,7 +90,8 @@
         cursor: pointer;
         background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%)
     }
-    .database{
+
+    .database {
         margin-bottom: 24px;
     }
 </style>

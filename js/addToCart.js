@@ -128,20 +128,23 @@ function loadCartElements() {
     } else {
         for (let i = 0; i < cartContent.length; i++) {
             data += '<tr>' +
-                        '<th>' +
-                            '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' +
-                        '</th>' +
-                        '<th>' + cartContent[i].name + '</th>' +
-                        '<th class="full-input-qnt">' +
-                            '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' +
-                            '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' +
-                            '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' +
-                        '</th>' +
-                        '<th>' + Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(cartContent[i].basePrice) + '</th>' +
-                        '<th>' +
-                            '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' +
-                        '</th>' +
-                    '</tr>'
+                '<th>' +
+                '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' +
+                '</th>' +
+                '<th>' + cartContent[i].name + '</th>' +
+                '<th class="full-input-qnt">' +
+                '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' +
+                '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' +
+                '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' +
+                '</th>' +
+                '<th>' + Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                }).format(cartContent[i].basePrice) + '</th>' +
+                '<th>' +
+                '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' +
+                '</th>' +
+                '</tr>'
         }
         cartBody.innerHTML = data;
 

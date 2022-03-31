@@ -16,6 +16,7 @@ if (isset($_SESSION['customerID'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../res/img/logo.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -80,8 +81,15 @@ if (isset($_SESSION['customerID'])) {
         }
 
         main .banner {
-            background: linear-gradient(to right, #7ceaff, #65C7F7, #0052D4);
+            background-image: linear-gradient(68.4deg, rgba(99, 251, 215, 1) -0.4%, rgba(5, 222, 250, 1) 100.2%);
         }
+
+        @media only screen and (max-width: 650px) {
+            main .banner h1 {
+                font-size: 24px;
+            }
+        }
+
 
         @keyframes gradient {
             0% {
@@ -137,6 +145,17 @@ if (isset($_SESSION['customerID'])) {
 
         .txt {
             color: #fff;
+        }
+
+        #log-in, #register {
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+            margin-right: 12px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #log-in:hover, #register:hover {
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
+            transform: translateY(-2px);
         }
     </style>
 
@@ -215,7 +234,10 @@ if (isset($_SESSION['customerID'])) {
                         '       <p>Here\'s some description...</p>' +
                         '       <div class="product-price">' +
                         '           <span class="txt">Price : </span><span class="txt" id="base-price"' +
-                        '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {style: "currency", currency: "USD"}).format(products[i][2]) + '</span>' +
+                        '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {
+                            style: "currency",
+                            currency: "USD"
+                        }).format(products[i][2]) + '</span>' +
                         '       </div>' +
                         '       <div class="product-stock">' +
                         '           <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">' + products[i][1] + '</span>' +
@@ -240,31 +262,31 @@ if (isset($_SESSION['customerID'])) {
             } else if (!filterOpt) {
                 switch (sortOpt) {
                     case 1 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
 
                     case 2 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
 
                     case 3 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
 
                     case 4 :
-                        <?php
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
-                        loadProducts($con, $query);
-                        ?>
+                    <?php
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                    loadProducts($con, $query);
+                    ?>
                         break;
                 }
                 displayProducts(products);
@@ -311,6 +333,7 @@ if (isset($_SESSION['customerID'])) {
                 displayProducts(productsAfterFilter);
             }
         }
+
         loadProducts();
     </script>
 </main>

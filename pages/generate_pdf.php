@@ -5,24 +5,28 @@ $period = $_GET['periode'];
 $format = $_GET['format'];
 if ($period == '1') {
     // select data of last day
-    $sql = "SELECT * FROM sale WHERE sale_date = (SELECT MAX(sale_date) FROM sale)";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date = (SELECT MAX(sale_date) FROM sale)";
 } else if ($period == '2') {
     // select data of last week
-    $sql = "SELECT * FROM sale WHERE sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)) AND NOW()";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)) AND NOW()";
 } else if ($period == '3') {
     // select data of last month
-    $sql = "SELECT * FROM sale WHERE sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 MONTH)) AND NOW()";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 MONTH)) AND NOW()";
 } else {
     // select data of last year
-    $sql = "SELECT * FROM sale WHERE sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 YEAR)) AND NOW()";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 YEAR)) AND NOW()";
 }
 $result = mysqli_query($con, $sql);
 echo '<table class="table" id="sales" style="display: none">';
 echo '<thead>';
 echo '<tr>';
 echo '<th>No</th>';
-echo '<th>Customer ID</th>';
-echo '<th>Product ID</th>';
+echo '<th>Customer Name</th>';
+echo '<th>Product Name</th>';
 echo '<th>Quantity</th>';
 echo '<th>Earning</th>';
 echo '<th>Date</th>';
@@ -32,8 +36,8 @@ echo '</thead>';
 while ($row = mysqli_fetch_array($result)) {
     echo '<tr>';
     echo '<td>' . $row['saleID'] . '</td>';
-    echo '<td>' . $row['customerID'] . '</td>';
-    echo '<td>' . $row['productID'] . '</td>';
+    echo '<td>' . $row['username'] . '</td>';
+    echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['quantity'] . '</td>';
     echo '<td>' . $row['earning'] . '</td>';
     echo '<td>' . $row['sale_date'] . '</td>';
@@ -50,7 +54,8 @@ echo '</table>';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href="../res/img/logo.svg">
+    <title>Download Reports</title>
 </head>
 <style>
 
@@ -63,7 +68,7 @@ echo '</table>';
         --btn-upload-color: #ffffff;
         --btn-upload-width: 225px;
         --btn-upload-height: 80px;
-        --btn-upload-border-radius: 0.75em;
+        --btn-upload-border-radius: 0.30em;
         --btn-upload-transition-time: 50ms;
         --progress-width: 50px;
         --progress-height: 30px;
@@ -127,6 +132,10 @@ echo '</table>';
         box-shadow: 0 0.7em 1.2em rgba(25, 25, 25, 0.5);
     }
 
+    .btn-upload:hover {
+        cursor: pointer;
+    }
+
     .btn-upload:not(.btn-upload-uploading) {
         transition: box-shadow var(--btn-upload-transition-time) ease-out,
         transform var(--btn-upload-transition-time) ease-out;
@@ -141,77 +150,10 @@ echo '</table>';
         transform: translateY(0.2em);
     }
 
-    .btn-upload > svg {
-        fill: inherit;
-    }
-
     .btn-upload > span {
         color: inherit;
         margin-left: 0.3em;
     }
-
-    .progress {
-        color: var(--progress-arrow-color);
-        font-family: inherit;
-        font-size: 50%;
-        background-color: var(--progress-arrow-background-color);
-        width: var(--progress-width);
-        height: var(--progress-height);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        display: none;
-        position: absolute;
-        left: 0;
-        top: var(--progress-top);
-        border-radius: 0.5em;
-        opacity: 0;
-        transform-origin: center bottom;
-        transform: translateX(-50%);
-        filter: drop-shadow(0 0.7em 1.2em rgba(25, 25, 25, 0.5));
-    }
-
-    .progress:after {
-        content: "";
-        border-top: solid var(--progress-arrow-height) var(--progress-arrow-background-color);
-        border-bottom: 0;
-        border-left: solid calc(var(--progress-arrow-width) / 2) transparent;
-        border-right: solid calc(var(--progress-arrow-width) / 2) transparent;
-        position: absolute;
-        top: calc(100% - 1px);
-    }
-
-    .check {
-        width: var(--check-width);
-        height: var(--check-height);
-        display: none;
-        position: absolute;
-        top: calc(50% - calc(var(--check-width) / 2));
-        left: calc(50% - calc(var(--check-height) / 2));
-        transform-origin: center bottom;
-        transform: rotate(-45deg);
-    }
-
-    .check > span {
-        background-color: #ffffff;
-        display: block;
-        position: absolute;
-    }
-
-    .check > span:first-child {
-        width: var(--check-stroke);
-        height: 0;
-        top: 0;
-        left: 0;
-    }
-
-    .check > span:last-child {
-        width: 0;
-        height: var(--check-stroke);
-        bottom: 0;
-        left: 0;
-    }
-
 
     table {
         border-collapse: collapse;

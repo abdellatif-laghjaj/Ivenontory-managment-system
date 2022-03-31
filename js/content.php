@@ -14,18 +14,30 @@ if (isset($_POST['update_profile'])) {
     $full_name = $_POST['full_name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $password = $_POST['password'];
     $phone = $_POST['phone'];
 
     //check if the inputs are empty
-    if (empty($full_name) || empty($username) || empty($email) || empty($phone)) {
+    if (empty($full_name) || empty($username) || empty($email) || empty($phone) || empty($password)) {
         echo "<script>alert('Please fill all the fields')</script>";
     } else {
-        $update_profile = "UPDATE admin SET full_name = '$full_name', username = '$username', email = '$email', phone = '$phone' WHERE adminID = 1";
-        $run_profile_update = mysqli_query($con, $update_profile);
-        if ($run_profile_update) {
-            echo "<script>alert('Profile updated successfully')</script>";
+        //check if the email is valid
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>alert('Please enter a valid email')</script>";
+        }
+        if (strlen($password) < 8) {
+            echo "<script>alert('Password must be at least 8 characters')</script>";
+        }
+        if (strlen($phone) < 10) {
+            echo "<script>alert('Please enter a valid phone number')</script>";
         } else {
-            echo "<script>alert('Profile update failed')</script>";
+            $update_profile = "UPDATE admin SET full_name = '$full_name', password = '$password', username = '$username', email = '$email', phone = '$phone' WHERE adminID = 1";
+            $run_profile_update = mysqli_query($con, $update_profile);
+            if ($run_profile_update) {
+                echo "<script>alert('Profile updated successfully')</script>";
+            } else {
+                echo "<script>alert('Profile update failed')</script>";
+            }
         }
     }
 }
@@ -57,6 +69,7 @@ $upload_dir = '../uploads/'; //upload directory
 
 if (isset($_POST['add_product'])) {
     $product_name = $_POST['product_name'];
+    $description = $_POST['description'];
     $product_category = $_POST['product_category'];
     $product_quantity = $_POST['product_quantity'];
     $product_sale_price = $_POST['sale_price'];
@@ -64,6 +77,7 @@ if (isset($_POST['add_product'])) {
     $product_image = $upload_dir . basename($_FILES['product_image']['name']);
     //check if the inputs are empty
     if (empty($product_name)
+        || empty($description)
         || empty($product_category)
         || empty($product_quantity)
         || empty($product_sale_price)
@@ -77,7 +91,7 @@ if (isset($_POST['add_product'])) {
         } else {
             //upload the image
             if (move_uploaded_file($_FILES['product_image']['tmp_name'], $product_image)) {
-                $add_product = "INSERT INTO product (name, category, stock, sale_price, buy_price, product_image) VALUES ('$product_name', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$product_image')";
+                $add_product = "INSERT INTO product (name, description,category, stock, sale_price, buy_price, product_image) VALUES ('$product_name','$description', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$product_image')";
                 $run_add_product = mysqli_query($con, $add_product);
 
                 //increase number of products in the category
@@ -215,8 +229,12 @@ if (isset($_POST['add_product'])) {
                 <input type="email" name="email" placeholder="e.g: abdelatiflagjaj@gmail.com" required>
             </div>
             <div class="field">
+                <span class="label">Password</span>
+                <input type="password" name="password" placeholder="e.g: *******" required>
+            </div>
+            <div class="field">
                 <span class="label">Phone</span>
-                <input type="phone" name="phone" placeholder="e.g: 0657735082" required>
+                <input type="tel" name="phone" placeholder="e.g: 0657735082" required>
             </div>
             <div class="ActionButtons" style="margin-right: 16px;">
                 <input type="reset" value="RESET" class="reset">
@@ -229,7 +247,6 @@ if (isset($_POST['add_product'])) {
     let customers = `
         <h1>Customers</h1>
         <hr color="#FF304F" width="90%" size="4">
-        <img src="../res/img/undraw_users.svg" style="width: 300px; margin: 12px 36%; ">
         <div class="wrap" style="margin: 20px 0;">
              <form action="" method="post">
                 <div class="search">
@@ -255,7 +272,7 @@ if (isset($_POST['add_product'])) {
             <?php
     if (isset($_POST['submit-search-customers'])) {
         $search = mysqli_real_escape_string($con, $_POST['search_bar_customers']);
-        $sql = "SELECT * FROM customer WHERE CONCAT(customerID, full_name, username, email, phone, addresse) LIKE '%$search%'";
+        $sql = "SELECT * FROM customer WHERE CONCAT(customerID, full_name, username) LIKE '%$search%'";
     } else {
         $sql = "SELECT * FROM customer";
     }
@@ -413,6 +430,10 @@ if (isset($_POST['add_product'])) {
                 <div class="field">
                     <span class="label">Buy price</span>
                     <input type="number" name="buy_price" placeholder="e.g: 42" required>
+                </div>
+                <div class="field">
+                    <span class="label">Description</span>
+                    <input type="text" name="description" placeholder="Product description..." required>
                 </div>
                 <div class="field">
                     <span class="label">Image</span>

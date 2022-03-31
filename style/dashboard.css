@@ -56,6 +56,10 @@ body {
     background-color: var(--light-green);
 }
 
+.users {
+    background-color: var(--light-red);
+}
+
 .card img {
     transform: scale(0.8);
 }
