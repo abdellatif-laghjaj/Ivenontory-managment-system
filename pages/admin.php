@@ -38,10 +38,24 @@ $total_customers = mysqli_num_rows($result);
 //remove product on click
 echo '<script>
 function removeProduct(id){
-    if(confirm("Are you sure you want to remove this product?")){
-        //remove product from database
-        window.location.href = "remove_product.php?id=" + id;
-    }
+//    if(confirm("Are you sure you want to remove this product?")){
+//        //remove product from database
+//        
+//    }
+swal({
+            title: "Remove Product",
+            text: "You will not be able to recover this product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "remove_product.php?id=" + id;
+                } else {
+                    swal("Your product is safe!");
+                }
+            });
 }
 </script>';
 
@@ -390,6 +404,7 @@ $earningsTotal = 139;
 </div>
 <script src="../js/change_content.js"></script>
 <script src="../js/app.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     const modal = document.querySelector(".modal");
@@ -463,9 +478,20 @@ $earningsTotal = 139;
 
     //logout
     function logout() {
-        if (window.confirm("Are you sure you want to logout?")) {
-            window.location.href = "logout.php";
-        }
+        swal({
+            title: "Are you sure?",
+            text: "You will be logged out!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "logout.php";
+                } else {
+                    swal("Keep on working Admin!");
+                }
+            });
     }
 </script>
 </body>

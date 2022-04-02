@@ -155,7 +155,7 @@ if (isset($_SESSION['customerID'])) {
 
         #log-in:hover, #register:hover {
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
     </style>
 
@@ -207,8 +207,8 @@ if (isset($_SESSION['customerID'])) {
     <div class="banner" id="banner">
         <h1 class="">Welcome to TexGEAR: E-commerce web app</h1>
         <p class="">Enjoy a safe, convenient shopping experience</p>
-        <button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>
-        <button id="register" class="" style="width: 100px;" onclick="showRegistration()">Register</button>
+        <button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login</button>
+        <button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register</button>
     </div>
 
     <?php include '../client/categories_dropdown.php'; ?>

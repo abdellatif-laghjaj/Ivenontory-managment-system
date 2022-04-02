@@ -1,5 +1,6 @@
 <?php
 include '../db/connection.php';
+echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
 echo '
 <script>
     if ( window.history.replaceState ) {
@@ -26,17 +27,42 @@ if (isset($_POST['update_profile'])) {
             echo "<script>alert('Please enter a valid email')</script>";
         }
         if (strlen($password) < 8) {
-            echo "<script>alert('Password must be at least 8 characters')</script>";
+            echo "<script>swal({
+  title: 'Warning!',
+  text: 'Password must be at least 8 characters long',
+  icon: 'warning',
+  button: 'Ok',
+}).then();
+</script>";
         }
         if (strlen($phone) < 10) {
-            echo "<script>alert('Please enter a valid phone number')</script>";
+            echo "<script>swal({
+  title: 'Warning!',
+  text: 'Phone number must be at least 10 characters long',
+  icon: 'warning',
+  button: 'Ok',
+});
+</script>";
         } else {
             $update_profile = "UPDATE admin SET full_name = '$full_name', password = '$password', username = '$username', email = '$email', phone = '$phone' WHERE adminID = 1";
             $run_profile_update = mysqli_query($con, $update_profile);
             if ($run_profile_update) {
-                echo "<script>alert('Profile updated successfully')</script>";
+                echo "<script>
+   swal({
+  title: 'Success!',
+  text: 'Profile updated successfully',
+  icon: 'success',
+  button: 'Ok',
+});
+</script>";
             } else {
-                echo "<script>alert('Profile update failed')</script>";
+                echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Profile update failed',
+  icon: 'error',
+  button: 'Ok',
+});</script>";
             }
         }
     }
@@ -55,9 +81,23 @@ if (isset($_POST['add_category'])) {
         $add_category = "INSERT INTO category (category_name) VALUES ('$category_name')";
         $run_add_category = mysqli_query($con, $add_category);
         if ($run_add_category) {
-            echo "<script>alert('Category added successfully')</script>";
+            echo "<script>
+swal({
+  title: 'Success!',
+  text: 'Category added successfully',
+  icon: 'success',
+  button: 'Ok',
+});
+</script>";
         } else {
-            echo "<script>alert('Category add failed')</script>";
+            echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Category addition failed',
+  icon: 'error',
+  button: 'Ok',
+});
+</script>";
         }
     }
 }
@@ -93,7 +133,14 @@ if (isset($_POST['add_product'])) {
     } else {
         //check if the image is bigger than 1MB
         if ($_FILES['product_image']['size'] > 1000000) {
-            echo "<script>alert('Image is bigger then 1M')</script>";
+            echo "<script>
+swal({
+  title: 'Warning!',
+  text: 'Image size must be less than 1MB',
+  icon: 'warning',
+  button: 'Ok',
+});
+</script>";
         } else {
             //upload the image
             if (move_uploaded_file($_FILES['product_image']['tmp_name'], $newFileName)) {
@@ -104,9 +151,23 @@ if (isset($_POST['add_product'])) {
                 $sql = "UPDATE category SET products_total = products_total + 1 WHERE category_name = '$product_category'";
                 $run_sql = mysqli_query($con, $sql);
                 if ($run_add_product) {
-                    echo "<script>alert('Product added successfully')</script>";
+                    echo "<script>
+swal({
+  title: 'Success!',
+  text: 'Product added successfully',
+  icon: 'success',
+  button: 'Ok',
+});
+</script>";
                 } else {
-                    echo "<script>alert('Product add failed')</script>";
+                    echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Product addition failed',
+  icon: 'error',
+  button: 'Ok',
+});
+</script>";
                 }
             }
         }
@@ -551,7 +612,12 @@ if (isset($_POST['add_product'])) {
         } else if (customers_checkbox) {
             url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=customers";
         } else {
-            alert("Please select a report");
+            swal({
+                title: 'Warning',
+                text: 'Please select a report',
+                icon: 'warning',
+                button: 'Ok',
+            });
         }
 
         window.open(url, "_blank");
