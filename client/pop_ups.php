@@ -214,7 +214,7 @@
                     </legend>
                     <label>Are you sure you want log out?</label>
                     <div class="field">
-                        <input type="submit" onclick="clearSessionStorage()" value="LOG OUT" class="button">
+                        <input type="submit" onclick="logOutFunc()" value="LOG OUT" class="button">
                         <input type="reset" onclick="showLogOut()" value="CANCEL" class="button">
                     </div>
                 </form>
@@ -284,7 +284,7 @@
                         <img src="../res/img/close.png">
                     </a>
                 </legend>
-                <form action="../pages/payment.php">
+                <form action="../pages/payment.php"  onsubmit="return checkCartItems()">
                     <div id="total-price">
                         <span>total :</span>
                         <input class="total-input-cart" type="text" name="total" value="0" disabled>
@@ -369,10 +369,19 @@
         }, 3000);
     }
 
-    function clearSessionStorage() {
+    function logOutFunc() {
         sessionStorage.clear();
     }
 
-    //add scroll bar to pop-ups
+    function checkCartItems() {
+        var ItemsInCart = JSON.parse(sessionStorage.getItem('Items'));
+        if(isLogin != true) {
+            alert('You have to sign in/up first!');
+            return false;
+        } else if(ItemsInCart == null) {
+            return false;
+        } else
+            return true;
+    }
 
 </script>

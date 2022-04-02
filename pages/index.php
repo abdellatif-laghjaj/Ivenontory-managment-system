@@ -3,12 +3,6 @@ session_start();
 include '../db/connection.php';
 include '../client/functions.php';
 
-$user_data = null;
-
-if (isset($_SESSION['customerID'])) {
-    $user_data = $_SESSION;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,7 +138,17 @@ if (isset($_SESSION['customerID'])) {
 
 </head>
 <body>
-
+<?php
+if (isset($_SESSION['customerID'])) {
+    echo '<script defer>
+        isLogin = true;
+ </script>';
+} else {
+    echo '<script defer>
+          isLogin = false; 
+ </script>';
+}
+?>
 <!-- bootstrap navbar  -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg bg-dark">
@@ -188,12 +192,27 @@ if (isset($_SESSION['customerID'])) {
 
 <main>
     <div class="banner" id="banner">
-        <h1 class="">Welcome to TexGEAR: E-commerce web app</h1>
-        <p class="">Enjoy a safe, convenient shopping experience</p>
-        <button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>
-        <button id="register" class="" style="width: 100px;" onclick="showRegistration()">Register</button>
-    </div>
 
+    </div>
+    <script defer>
+        const banner = document.getElementById('banner');
+        if (isLogin == true) {
+            banner.innerHTML =
+                '<h1 class="">Welcome <?php
+                    echo $_SESSION['full_name'];
+                    ?></h1>' +
+                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
+            ;
+        } else {
+            banner.innerHTML =
+                '<h1 class="">Welcome to TexGEAR: E-commerce web app</h1>' +
+                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '<button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>' +
+                '<button id="register" class="" style="width: 100px;" onclick="showRegistration()">Register</button>'
+            ;
+        }
+    </script>
     <?php include '../client/categories_dropdown.php'; ?>
 
     <div class="categories" id="categories">
@@ -238,37 +257,81 @@ if (isset($_SESSION['customerID'])) {
         function loadProducts(filterOpt, sortOpt) {
             if (!filterOpt && !sortOpt) {
                 <?php
-                $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
-                loadProducts($con, $query);
+                if (isset($_GET["search-button"])) {
+                    $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`category` ASC";
+                    $result = mysqli_query($con, $sql);
+                    loadProducts($con, $sql);
+                } else {
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
+                    loadProducts($con, $query);
+                }
+
                 ?>
                 displayProducts(products);
             } else if (!filterOpt) {
                 switch (sortOpt) {
                     case 1 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
 
                     case 2 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
 
                     case 3 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
 
                     case 4 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        loadProducts($con, $query);
+                    }
+                    ?>
+                        break;
+
+                    case 5 :
+                    <?php
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
                 }
@@ -283,29 +346,66 @@ if (isset($_SESSION['customerID'])) {
                 switch (sortOpt) {
                     case 1 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
 
                     case 2 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
 
                     case 3 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
 
                     case 4 :
                     <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
-                    loadProducts($con, $query);
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        loadProducts($con, $query);
+                    }
+                    ?>
+                        break;
+
+                    case 5 :
+                    <?php
+                    if (isset($_GET["search-button"])) {
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        $result = mysqli_query($con, $sql);
+                        loadProducts($con, $sql);
+                    } else {
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        loadProducts($con, $query);
+                    }
                     ?>
                         break;
                 }
@@ -319,18 +419,6 @@ if (isset($_SESSION['customerID'])) {
 
         loadProducts();
     </script>
-    <?php
-    if (isset($_GET)) {
-        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`category` LIKE '%" . $_GET["search"] . "%')";
-        $result = mysqli_query($con, $sql);
-        echo '<script>';
-        while ($row = mysqli_fetch_assoc($result)) {
-            loadProducts($con, $sql);
-        }
-        echo 'displayProducts(products);';
-        echo '</script>';
-    }
-    ?>
 </main>
 
 <!-- ALL POP UPS MODALS -->
@@ -340,34 +428,9 @@ if (isset($_SESSION['customerID'])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/addToCart.js"></script>
 <script language="JavaScript">
-    function logedInBanner() {
-        const banner = document.getElementById('banner');
-        banner.innerHTML =
-            '<h1 class="">Welcome <?php
-                if ($user_data !== null)
-                    echo $user_data['full_name'];
-                else
-                    echo "NULL";
-                ?></h1>' +
-            '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-            '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
-        ;
-    }
-
     function showLogOut() {
         document.getElementById("log-out-pop").classList.toggle("hidden");
     }
-
 </script>
-<?php
-if ($user_data !== null) {
-    echo
-    '
-                <script type="text/JavaScript">
-                    logedInBanner();
-                </script>
-            ';
-}
-?>
 </body>
 </html>

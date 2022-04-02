@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['orders'] = "<script>sessionStorage.getItem('Items');</script>";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +9,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TexGear - Payment Checkout</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/PaymentCard.css">
@@ -226,33 +232,38 @@
                         </dl>
                     </div>
                 </div>
-                <div class="card_form">
-                    <div class="content">
-                        <ul class="card_box">
-                            <li class="number"><input type="text" placeholder="1234 5678 1234 5678" maxlength="16"
-                                                      onkeypress="return onlyNumberKey(event)" id="card-number-input"/>
-                            </li>
-                            <li class="expiration" id="expiration-input">
-                                <ul>
-                                    <li id="month"><input type="text" placeholder="MM" maxlength="2"
-                                                          onkeypress="return onlyNumberKey(event)" id="month-input"/>
-                                    </li>
-                                    <li id="separator">/</li>
-                                    <li id="year"><input type="text" placeholder="YYYY" maxlength="4"
-                                                         onkeypress="return onlyNumberKey(event)" id="year-input"/></li>
-                                </ul>
-                            </li>
-                            <li class="cvc"><input type="text" placeholder="123" maxlength="3"
-                                                   onkeypress="return onlyNumberKey(event)" id="cvv-input"/></li>
-                        </ul>
+                <form action="payment_success.php" method="post">
+                    <div class="card_form">
+                        <div class="content">
+                            <ul class="card_box">
+                                <li class="number"><input type="text" placeholder="1234 5678 1234 5678" maxlength="16"
+                                                          onkeypress="return onlyNumberKey(event)" id="card-number-input"/>
+                                </li>
+                                <li class="expiration" id="expiration-input">
+                                    <ul>
+                                        <li id="month"><input type="text" placeholder="MM" maxlength="2"
+                                                              onkeypress="return onlyNumberKey(event)" id="month-input"/>
+                                        </li>
+                                        <li id="separator">/</li>
+                                        <li id="year"><input type="text" placeholder="YYYY" maxlength="4"
+                                                             onkeypress="return onlyNumberKey(event)" id="year-input"/></li>
+                                    </ul>
+                                </li>
+                                <li class="cvc"><input type="text" placeholder="123" maxlength="3"
+                                                       onkeypress="return onlyNumberKey(event)" id="cvv-input"/></li>
+                            </ul>
+                        </div>
+                        <div style="display: none;">
+                            <textarea name="orders" id="orders" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="footer">
+                            <ul class="bar_tool">
+                                <li class="cancel"><a href="index.php">Cancel</a></li>
+                                <li><input type="submit" class="ui_btn b_lg b_primary" name="Checkout" value="Checkout" /></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="footer">
-                        <ul class="bar_tool">
-                            <li class="cancel"><a href="index.php">Cancel</a></li>
-                            <li><span class="ui_btn b_lg b_primary">Checkout</span></li>
-                        </ul>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="foot">
@@ -289,6 +300,10 @@
             x.className = x.className.replace("show", "");
         }, 3000);
     }
+
+    //send data to payment_success.php
+    const text = document.getElementById('orders');
+    text.innerHTML = sessionStorage.getItem("Items");
 </script>
 </body>
 

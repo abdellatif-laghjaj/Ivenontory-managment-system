@@ -50,10 +50,11 @@ if (mysqli_num_rows($result) > 0) {
                         Sort by
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" onclick="sortBy(1)">Price ⬇</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(2)">Price ⬆</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(3)">Newest</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(4)">Oldest</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(1)">Most expensive</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(2)">Most cheapest</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(3)">Most recent</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(4)">The oldest</a></li>
+                        <li><a class="dropdown-item" onclick="sortBy(5)">Most selling</a></li>
                     </ul>
                 </li>
             </ul>

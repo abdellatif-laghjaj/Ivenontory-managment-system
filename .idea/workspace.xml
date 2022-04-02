@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
-      <change afterPath="$PROJECT_DIR$/client/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/categories_dropdown.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/categories_dropdown.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/logOut.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/logOut.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pop_ups.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/pop_ups.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment_success.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +72,7 @@
     <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
@@ -141,7 +146,8 @@
       <workItem from="1648496000943" duration="556000" />
       <workItem from="1648540271575" duration="15911000" />
       <workItem from="1648586203909" duration="650000" />
-      <workItem from="1648587134264" duration="23496000" />
+      <workItem from="1648587134264" duration="26935000" />
+      <workItem from="1648761091593" duration="24644000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
