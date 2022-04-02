@@ -1,4 +1,4 @@
 *.vscode
 *.iml
 *.xml
-.idea/
+.idea/*

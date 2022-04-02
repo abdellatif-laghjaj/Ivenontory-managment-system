@@ -21,9 +21,27 @@
     font-family: Cairo;
 }
 
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+}
+
 body {
     height: 100vh;
     background-color: var(--light-grey);
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: darkgrey;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #6d6d6d;
 }
 
 .hidden {
@@ -276,16 +294,16 @@ main .categories .products .card button:hover {
     padding: 10px;
 }
 
-.pop-up .log-in-pop .pop-content form legend button {
+.pop-up .log-in-pop .pop-content form legend a {
     background: none;
     border: none;
 }
 
-.pop-up .log-in-pop .pop-content form legend button:hover {
+.pop-up .log-in-pop .pop-content form legend a:hover {
     cursor: pointer
 }
 
-.pop-up .log-in-pop .pop-content form legend button img {
+.pop-up .log-in-pop .pop-content form legend a img {
     width: 24px;
     height: 24px;
 }
@@ -339,12 +357,32 @@ main .categories .products .card button:hover {
 .pop-up .register-pop .pop-content {
     background-color: white;
     border-radius: 4px;
-    display: flex;
+    display: block;
     flex-direction: column;
     z-index: 101;
-    width: 500px;
-    overflow: auto;
+    min-width: 500px;
+    max-height: 90vh;
+}
+
+.pop-up .register-pop .pop-content form .fbody {
+    max-height: 72vh;
+    overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-highlight-color: #6d6d6d;
+}
+
+.pop-up .register-pop .pop-content form .fbody::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pop-up .register-pop .pop-content form .fbody::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: darkgrey;
+}
+
+.pop-up .register-pop .pop-content form .fbody::-webkit-scrollbar-thumb:hover {
+    background-color: #6d6d6d;
 }
 
 .pop-up .register-pop .pop-content form legend {
@@ -354,18 +392,19 @@ main .categories .products .card button:hover {
     justify-content: space-between;
     border-radius: 4px 4px 0 0;
     padding: 10px;
+    max-height: 10vh;
 }
 
-.pop-up .register-pop .pop-content form legend button {
+.pop-up .register-pop .pop-content form legend a {
     background: none;
     border: none;
 }
 
-.pop-up .register-pop .pop-content form legend button:hover {
+.pop-up .register-pop .pop-content form legend a:hover {
     cursor: pointer
 }
 
-.pop-up .register-pop .pop-content form legend button img {
+.pop-up .register-pop .pop-content form legend a img {
     width: 24px;
     height: 24px;
 }
@@ -417,13 +456,13 @@ main .categories .products .card button:hover {
 /**************************************/
 
 .pop-up .cart-pop .pop-content {
+    display: flex;
     background-color: white;
     border-radius: 4px;
-    display: flex;
     flex-direction: column;
     z-index: 101;
-    overflow: auto;
-    overflow-x: hidden;
+    min-width: 500px;
+    max-height: 90vh;
 }
 
 .pop-up .cart-pop .pop-content legend {
@@ -432,8 +471,9 @@ main .categories .products .card button:hover {
     display: flex;
     justify-content: space-between;
     border-radius: 4px 4px 0 0;
-    padding: 8px;
+    padding: 10px;
     margin-right: 24px;
+    max-height: 10vh;
 }
 
 .pop-up .cart-pop .pop-content legend h5 {
@@ -441,7 +481,7 @@ main .categories .products .card button:hover {
     font: 20px Cairo;
 }
 
-.pop-up .cart-pop .pop-content legend button {
+.pop-up .cart-pop .pop-content legend a {
     background: none;
     border: none;
 }
@@ -478,27 +518,47 @@ main .categories .products .card button:hover {
     margin: 0 12px;
 }
 
-.pop-up .cart-pop .pop-content button:hover {
+.pop-up .cart-pop .pop-content legend a:hover {
     cursor: pointer;
 }
 
-.pop-up .cart-pop .pop-content legend button img {
+.pop-up .cart-pop .pop-content legend a img {
     width: 24px;
     height: 24px;
 }
 
-.pop-up .cart-pop .pop-content .cart-products {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+.pop-up .cart-pop .pop-content #total-price {
+    max-height: 10vh;
 }
 
-.pop-up .cart-pop .pop-content .cart-products table {
-    display: table;
+.pop-up .cart-pop .pop-content table {
+    display: block;
     color: #212529;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-highlight-color: #6d6d6d;
 }
 
-.pop-up .cart-pop .pop-content .cart-products table thead {
+.pop-up .cart-pop .pop-content table::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pop-up .cart-pop .pop-content table::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: darkgrey;
+}
+
+.pop-up .cart-pop .pop-content table::-webkit-scrollbar-thumb:hover {
+    background-color: #6d6d6d;
+}
+
+.pop-up .cart-pop .pop-content table::-webkit-scrollbar-button {
+    display: none;
+}
+
+.pop-up .cart-pop .pop-content table thead {
     font-weight: bold;
 }
 
@@ -506,8 +566,9 @@ main .categories .products .card button:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 10px;
     color: white;
+    max-height: 10vh;
 }
 
 .pop-up .cart-pop .pop-content .actionbtn #close {
