@@ -75,6 +75,12 @@ if (isset($_POST['add_product'])) {
     $product_sale_price = $_POST['sale_price'];
     $product_buy_price = $_POST['buy_price'];
     $product_image = $upload_dir . basename($_FILES['product_image']['name']);
+    //change product image name and get last product id plus 1
+    $latest_id = "SELECT productID FROM product ORDER BY productID DESC LIMIT 1";
+    $run_latest_id = mysqli_query($con, $latest_id);
+    $row_latest_id = mysqli_fetch_array($run_latest_id);
+    $product_id = $row_latest_id['productID'] + 1;
+    $newFileName = $upload_dir . 'img_' . $product_id . '.' . pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION);
     //check if the inputs are empty
     if (empty($product_name)
         || empty($description)
@@ -90,7 +96,7 @@ if (isset($_POST['add_product'])) {
             echo "<script>alert('Image is bigger then 1M')</script>";
         } else {
             //upload the image
-            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $product_image)) {
+            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $newFileName)) {
                 $add_product = "INSERT INTO product (name, description,category, stock, sale_price, buy_price, product_image) VALUES ('$product_name','$description', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$product_image')";
                 $run_add_product = mysqli_query($con, $add_product);
 
@@ -421,15 +427,15 @@ if (isset($_POST['add_product'])) {
                 </div>
                 <div class="field">
                     <span class="label">Quantity</span>
-                    <input type="number" name="product_quantity" placeholder="e.g: 10" required>
+                    <input type="number" name="product_quantity" placeholder="e.g: 10" required min="1">
                 </div>
                 <div class="field">
                     <span class="label">Sale price</span>
-                    <input type="number" name="sale_price" placeholder="e.g: 59" required>
+                    <input type="number" name="sale_price" placeholder="e.g: 59" required min="1">
                 </div>
                 <div class="field">
                     <span class="label">Buy price</span>
-                    <input type="number" name="buy_price" placeholder="e.g: 42" required>
+                    <input type="number" name="buy_price" placeholder="e.g: 42" required min="1">
                 </div>
                 <div class="field">
                     <span class="label">Description</span>
@@ -452,6 +458,14 @@ if (isset($_POST['add_product'])) {
     <h1>Reports</h1>
     <hr color="#FF304F" width="90%" size="4">
     <p>Download your reports and data as PDF, CSV or JSON format:</p>
+    <div class="report-type-radio" style="display: flex; flex-direction: row; justify-content: center; margin-top: 16px;">
+            <input type="radio" id="report1" name="report1" value="sales" checked style="margin: 0 12px;">
+            <label for="report1">Sales</label><br>
+            <input type="radio" id="report2" name="report1" value="products" style="margin: 0 12px;">
+            <label for="report2">Products</label><br>
+            <input type="radio" id="report3" name="report1" value="customers" style="margin: 0 12px;">
+            <label for="report3">Customers</label><br>
+    </div>
     <div class="reports-container">
         <div class="SelectBox">
             <label for="Term">Select periode: </label>
@@ -525,7 +539,21 @@ if (isset($_POST['add_product'])) {
     //send periode to generate_pdf.php on click
     function sendData(format) {
         let periode = document.querySelector(".reports-periode").value;
-        let url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format;
+
+        let sales_checkbox = document.querySelector("#report1").checked;
+        let products_checkbox = document.querySelector("#report2").checked;
+        let customers_checkbox = document.querySelector("#report3").checked;
+        let url = "";
+        if (sales_checkbox) {
+            url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=sales";
+        } else if (products_checkbox) {
+            url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=products";
+        } else if (customers_checkbox) {
+            url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=customers";
+        } else {
+            alert("Please select a report");
+        }
+
         window.open(url, "_blank");
     }
 

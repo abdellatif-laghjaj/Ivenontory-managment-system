@@ -69,6 +69,7 @@
     <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/generate_pdf.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -137,6 +138,9 @@
       <workItem from="1648671450885" duration="2627000" />
       <workItem from="1648758088736" duration="119000" />
       <workItem from="1648758239294" duration="7224000" />
+      <workItem from="1648814592072" duration="3094000" />
+      <workItem from="1648847468286" duration="7739000" />
+      <workItem from="1648855778412" duration="3852000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
