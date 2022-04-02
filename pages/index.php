@@ -3,6 +3,22 @@ session_start();
 include '../db/connection.php';
 include '../client/functions.php';
 
+
+$currentPage = 1;
+
+if (isset($_POST['page'])) {
+    $currentPage = $_POST['page'];
+}
+
+$totalProducts = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `product` WHERE `stock` > 0"));
+$nbProductsInPage = 16;
+$nbPages = ceil($totalProducts / $nbProductsInPage);
+$limit = 0;
+
+if ($currentPage > 1) {
+    $limit = ($currentPage - 1) * $nbProductsInPage + ($currentPage - 2);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,9 +231,88 @@ if (isset($_SESSION['customerID'])) {
     </script>
     <?php include '../client/categories_dropdown.php'; ?>
 
-    <div class="categories" id="categories">
+    <div class="products">
+        <div class="categories" id="categories"></div>
+        <div class="pages">
+            <form action="index.php" method="post" id="pages">
+                <style>
+                    #slider {
+                        margin: 2em auto;
+                        width: 100%;
+                        overflow: hidden;
+                    }
 
+                    #slider-nav {
+                        margin: 1em 0;
+                        text-align: center;
+                    }
+
+                    #slider-nav label {
+                        display: inline-block;
+                        width: 2em;
+                        height: 2em;
+                        border: 1px solid #ccc;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #000;
+                        display: inline-block;
+                        line-height: 2;
+                        margin: 0.5em;
+                    }
+
+                    #slider-nav label:hover {
+                        cursor: pointer;
+                    }
+
+                    #slider-nav input[type="radio"] {
+                        display: none;
+                    }
+
+                    #slider-nav input[type="radio"]:checked + label {
+                        border-color: #307cff;
+                        color: white;
+                        background-color: #59adff;
+                    }
+                </style>
+                <div id="slider">
+                    <div id="slider-nav"></div>
+                </div>
+                <script>
+                    var pages_form = document.getElementById('pages');
+                    var slider_nav = document.getElementById('slider-nav');
+                    var nbPages = <?php echo $nbPages; ?>;
+                    var currPage = <?php echo $currentPage; ?>;
+                    var buttons = "";
+
+                    if (nbPages > 1) {
+                        for (let i = 0; i < nbPages; i++) {
+                            if (i == currPage - 1) {
+                                buttons += '<input type="radio" class="pages_radios" name="page" id="' + (i+1) + '" value="' + (i+1) + '" checked>' +
+                                    '<label for="' + (i+1) + '" class="page_link">' + (i+1) + '</label>'
+                                ;
+                            } else {
+                                buttons += '<input type="radio" class="pages_radios" name="page" id="' + (i+1) + '" value="' + (i+1) + '">' +
+                                    '<label for="' + (i+1) + '" class="page_link">' + (i+1) + '</label>'
+                                ;
+                            }
+                        }
+                        slider_nav.innerHTML = buttons;
+                    }
+
+                    var pages_links = slider_nav.querySelectorAll('label');
+                    var pages_radios = document.getElementsByClassName('pages_radios');
+
+                    for (let i = 0; i < pages_links.length; i++) {
+                        pages_links[i].addEventListener("click", function (e) {
+                            pages_radios[i].checked = true;
+                            pages_form.submit();
+                        })
+                    }
+                </script>
+            </form>
+        </div>
     </div>
+
     <script language="JavaScript">
         function displayProducts(products) {
             const products_box = document.getElementById("categories");
@@ -258,11 +353,11 @@ if (isset($_SESSION['customerID'])) {
             if (!filterOpt && !sortOpt) {
                 <?php
                 if (isset($_GET["search-button"])) {
-                    $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`category` ASC";
+                    $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`category` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                     $result = mysqli_query($con, $sql);
                     loadProducts($con, $sql);
                 } else {
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                     loadProducts($con, $query);
                 }
 
@@ -273,11 +368,11 @@ if (isset($_SESSION['customerID'])) {
                     case 1 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -286,11 +381,11 @@ if (isset($_SESSION['customerID'])) {
                     case 2 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -299,11 +394,11 @@ if (isset($_SESSION['customerID'])) {
                     case 3 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -312,11 +407,11 @@ if (isset($_SESSION['customerID'])) {
                     case 4 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -325,11 +420,11 @@ if (isset($_SESSION['customerID'])) {
                     case 5 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -347,11 +442,11 @@ if (isset($_SESSION['customerID'])) {
                     case 1 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -360,11 +455,11 @@ if (isset($_SESSION['customerID'])) {
                     case 2 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -373,11 +468,11 @@ if (isset($_SESSION['customerID'])) {
                     case 3 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -386,11 +481,11 @@ if (isset($_SESSION['customerID'])) {
                     case 4 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>
@@ -399,11 +494,11 @@ if (isset($_SESSION['customerID'])) {
                     case 5 :
                     <?php
                     if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         $result = mysqli_query($con, $sql);
                         loadProducts($con, $sql);
                     } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC";
+                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
                         loadProducts($con, $query);
                     }
                     ?>

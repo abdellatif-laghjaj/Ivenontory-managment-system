@@ -1,5 +1,4 @@
 <?php
-$query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
 function loadProducts($con, $query) {
 
     $result = mysqli_query($con, $query);

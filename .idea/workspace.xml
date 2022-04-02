@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/categories_dropdown.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/categories_dropdown.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/logOut.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/logOut.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pop_ups.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/pop_ups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/payment_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment_success.php" afterDir="false" />
-    </list>
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +138,7 @@
       <workItem from="1648540271575" duration="15911000" />
       <workItem from="1648586203909" duration="650000" />
       <workItem from="1648587134264" duration="26935000" />
-      <workItem from="1648761091593" duration="24644000" />
+      <workItem from="1648761091593" duration="39944000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
