@@ -1,4 +1,4 @@
-# TexGEAR, and online shopping web app
+# TexGEAR, and online shopping website
 Web technologies mini project <br>
 <ul>
   <li>HTML</li>
