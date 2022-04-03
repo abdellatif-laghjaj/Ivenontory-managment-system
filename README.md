@@ -1,5 +1,5 @@
 # TexGEAR, and online shopping website
-Web technologies mini project <br>
+used technologies<br>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
