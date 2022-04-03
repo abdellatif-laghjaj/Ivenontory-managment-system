@@ -3,20 +3,10 @@ session_start();
 include '../db/connection.php';
 include '../client/functions.php';
 
+$user_data = null;
 
-$currentPage = 1;
-
-if (isset($_POST['page'])) {
-    $currentPage = $_POST['page'];
-}
-
-$totalProducts = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `product` WHERE `stock` > 0"));
-$nbProductsInPage = 16;
-$nbPages = ceil($totalProducts / $nbProductsInPage);
-$limit = 0;
-
-if ($currentPage > 1) {
-    $limit = ($currentPage - 1) * $nbProductsInPage + ($currentPage - 2);
+if (isset($_SESSION['customerID'])) {
+    $user_data = $_SESSION;
 }
 
 ?>
@@ -30,8 +20,6 @@ if ($currentPage > 1) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
-            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/index.css">
@@ -173,17 +161,7 @@ if ($currentPage > 1) {
 
 </head>
 <body>
-<?php
-if (isset($_SESSION['customerID'])) {
-    echo '<script defer>
-        isLogin = true;
- </script>';
-} else {
-    echo '<script defer>
-          isLogin = false; 
- </script>';
-}
-?>
+
 <!-- bootstrap navbar  -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg bg-dark">
@@ -233,110 +211,11 @@ if (isset($_SESSION['customerID'])) {
         <button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register</button>
     </div>
 
-    </div>
-    <script defer>
-        const banner = document.getElementById('banner');
-        if (isLogin == true) {
-            banner.innerHTML =
-                '<h1 class="">Welcome <?php
-                    echo $_SESSION['full_name'];
-                    ?></h1>' +
-                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
-            ;
-        } else {
-            banner.innerHTML =
-                '<h1 class="">Welcome to TexGEAR: E-commerce web app</h1>' +
-                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>' +
-                '<button id="register" class="" style="width: 100px;" onclick="showRegistration()">Register</button>'
-            ;
-        }
-    </script>
     <?php include '../client/categories_dropdown.php'; ?>
 
-    <div class="products">
-        <div class="categories" id="categories"></div>
-        <div class="pages">
-            <form action="index.php" method="post" id="pages">
-                <style>
-                    #slider {
-                        margin: 2em auto;
-                        width: 100%;
-                        overflow: hidden;
-                    }
+    <div class="categories" id="categories">
 
-                    #slider-nav {
-                        margin: 1em 0;
-                        text-align: center;
-                    }
-
-                    #slider-nav label {
-                        display: inline-block;
-                        width: 2em;
-                        height: 2em;
-                        border: 1px solid #ccc;
-                        text-align: center;
-                        text-decoration: none;
-                        color: #000;
-                        display: inline-block;
-                        line-height: 2;
-                        margin: 0.5em;
-                    }
-
-                    #slider-nav label:hover {
-                        cursor: pointer;
-                    }
-
-                    #slider-nav input[type="radio"] {
-                        display: none;
-                    }
-
-                    #slider-nav input[type="radio"]:checked + label {
-                        border-color: #307cff;
-                        color: white;
-                        background-color: #59adff;
-                    }
-                </style>
-                <div id="slider">
-                    <div id="slider-nav"></div>
-                </div>
-                <script>
-                    var pages_form = document.getElementById('pages');
-                    var slider_nav = document.getElementById('slider-nav');
-                    var nbPages = <?php echo $nbPages; ?>;
-                    var currPage = <?php echo $currentPage; ?>;
-                    var buttons = "";
-
-                    if (nbPages > 1) {
-                        for (let i = 0; i < nbPages; i++) {
-                            if (i == currPage - 1) {
-                                buttons += '<input type="radio" class="pages_radios" name="page" id="' + (i+1) + '" value="' + (i+1) + '" checked>' +
-                                    '<label for="' + (i+1) + '" class="page_link">' + (i+1) + '</label>'
-                                ;
-                            } else {
-                                buttons += '<input type="radio" class="pages_radios" name="page" id="' + (i+1) + '" value="' + (i+1) + '">' +
-                                    '<label for="' + (i+1) + '" class="page_link">' + (i+1) + '</label>'
-                                ;
-                            }
-                        }
-                        slider_nav.innerHTML = buttons;
-                    }
-
-                    var pages_links = slider_nav.querySelectorAll('label');
-                    var pages_radios = document.getElementsByClassName('pages_radios');
-
-                    for (let i = 0; i < pages_links.length; i++) {
-                        pages_links[i].addEventListener("click", function (e) {
-                            pages_radios[i].checked = true;
-                            pages_form.submit();
-                        })
-                    }
-                </script>
-            </form>
-        </div>
     </div>
-
     <script language="JavaScript">
         function displayProducts(products) {
             const products_box = document.getElementById("categories");
@@ -376,15 +255,8 @@ if (isset($_SESSION['customerID'])) {
         function loadProducts(filterOpt, sortOpt) {
             if (!filterOpt && !sortOpt) {
                 <?php
-                if (isset($_GET["search-button"])) {
-                    $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`category` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
-                    $result = mysqli_query($con, $sql);
-                    loadProducts($con, $sql);
-                } else {
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
-                    loadProducts($con, $query);
-                }
-
+                $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
+                loadProducts($con, $query);
                 ?>
                 displayProducts(products);
             } else if (!filterOpt) {
@@ -428,66 +300,29 @@ if (isset($_SESSION['customerID'])) {
                 switch (sortOpt) {
                     case 1 :
                     <?php
-                    if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        $result = mysqli_query($con, $sql);
-                        loadProducts($con, $sql);
-                    } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        loadProducts($con, $query);
-                    }
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
+                    loadProducts($con, $query);
                     ?>
                         break;
 
                     case 2 :
                     <?php
-                    if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sale_price`  ASC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        $result = mysqli_query($con, $sql);
-                        loadProducts($con, $sql);
-                    } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        loadProducts($con, $query);
-                    }
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
+                    loadProducts($con, $query);
                     ?>
                         break;
 
                     case 3 :
                     <?php
-                    if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        $result = mysqli_query($con, $sql);
-                        loadProducts($con, $sql);
-                    } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        loadProducts($con, $query);
-                    }
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
+                    loadProducts($con, $query);
                     ?>
                         break;
 
                     case 4 :
                     <?php
-                    if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`add_date` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        $result = mysqli_query($con, $sql);
-                        loadProducts($con, $sql);
-                    } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        loadProducts($con, $query);
-                    }
-                    ?>
-                        break;
-
-                    case 5 :
-                    <?php
-                    if (isset($_GET["search-button"])) {
-                        $sql = "SELECT * FROM `product` WHERE (`name` LIKE '%" . $_GET["search"] . "%') OR (`description` LIKE '%" . $_GET["search"] . "%') AND `stock` > 0 ORDER BY `product`.`sales` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        $result = mysqli_query($con, $sql);
-                        loadProducts($con, $sql);
-                    } else {
-                        $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sales` DESC LIMIT " . $limit . ", " . $nbProductsInPage;
-                        loadProducts($con, $query);
-                    }
+                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
+                    loadProducts($con, $query);
                     ?>
                         break;
                 }
@@ -510,9 +345,34 @@ if (isset($_SESSION['customerID'])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/addToCart.js"></script>
 <script language="JavaScript">
+    function logedInBanner() {
+        const banner = document.getElementById('banner');
+        banner.innerHTML =
+            '<h1 class="">Welcome <?php
+                if ($user_data !== null)
+                    echo $user_data['full_name'];
+                else
+                    echo "NULL";
+                ?></h1>' +
+            '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+            '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
+        ;
+    }
+
     function showLogOut() {
         document.getElementById("log-out-pop").classList.toggle("hidden");
     }
+
 </script>
+<?php
+if ($user_data !== null) {
+    echo
+    '
+                <script type="text/JavaScript">
+                    logedInBanner();
+                </script>
+            ';
+}
+?>
 </body>
 </html>
