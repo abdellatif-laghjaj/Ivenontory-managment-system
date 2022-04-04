@@ -10,7 +10,14 @@ $sale = "UPDATE sale SET productID = NULL WHERE productID = '$id'";
 $run_sale = mysqli_query($con, $sale);
 $result = mysqli_query($con, $sql);
 if (!$result) {
-    echo "Error deleting record: " . mysqli_error($con);
+    echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Something went wrong, please try again.',
+  icon: 'error',
+  button: 'Ok',
+});
+</script>";
 }
 ?>
 
@@ -21,6 +28,7 @@ if (!$result) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../res/img/logo.svg">
     <title>Remove Product</title>
 </head>
 <style>
@@ -239,6 +247,8 @@ if (!$result) {
     </ul>
 </div>
 
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     const progressbar = document.querySelector(".progress");
     const doneText = document.querySelector(".done-text");

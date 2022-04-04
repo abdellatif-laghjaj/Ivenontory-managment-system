@@ -1,5 +1,9 @@
 <?php
 include '../db/connection.php';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('location: login.php');
+}
 //get the total number of products
 $sql = "SELECT * FROM product";
 $result = mysqli_query($con, $sql);
@@ -26,13 +30,32 @@ while ($row = mysqli_fetch_array($result)) {
     $total_earnings += $row['earning'];
 }
 
+//get the total number of users
+$sql = "SELECT * FROM customer";
+$result = mysqli_query($con, $sql);
+$total_customers = mysqli_num_rows($result);
+
 //remove product on click
 echo '<script>
 function removeProduct(id){
-    if(confirm("Are you sure you want to remove this product?")){
-        //remove product from database
-        window.location.href = "remove_product.php?id=" + id;
-    }
+//    if(confirm("Are you sure you want to remove this product?")){
+//        //remove product from database
+//        
+//    }
+swal({
+            title: "Remove Product",
+            text: "You will not be able to recover this product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "remove_product.php?id=" + id;
+                } else {
+                    swal("Your product is safe!");
+                }
+            });
 }
 </script>';
 
@@ -47,6 +70,7 @@ $earningsTotal = 139;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../res/img/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="../style/sidebar.css">
@@ -154,6 +178,10 @@ $earningsTotal = 139;
             transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
         }
 
+        .users {
+            background-color: var(--light-red);
+        }
+
         .card {
             width: 100%;
             height: 100%;
@@ -172,7 +200,10 @@ $earningsTotal = 139;
             .nav-link img {
                 width: 1.5rem;
             }
+        }
 
+        .profile-container .ActionButtons .submit {
+            grid-area: auto;
         }
     </style>
 
@@ -250,8 +281,8 @@ $earningsTotal = 139;
         </li>
 
         <li class="nav-item">
-            <a href="login.php" class="nav-link" onmouseover="mouseEnter()" onmouseout="mouseOut()">
-                <img class="nav-icon" src="../res/img/logout.png" alt="">
+            <a class="nav-link" onclick="logout()" onmouseover="mouseEnter()" onmouseout="mouseOut()">
+                <img class="nav-icon" src="../res/img/logout.png">
                 <span class="link-text">Logout</span>
             </a>
         </li>
@@ -267,10 +298,18 @@ $earningsTotal = 139;
 
     <div class="cards-container">
         <div class="card">
-            <img src="../res/img/box.png" alt="box icon">
+            <img src="../res/img/product.png" alt="box icon" style="width: 90px;">
             <div class="info">
                 <h3><?php echo $total_products ?></h3>
                 <p>Products</p>
+            </div>
+        </div>
+
+        <div class="card users">
+            <img src="../res/img/users.png" alt="box icon" style="width: 90px;">
+            <div class="info">
+                <h3><?php echo $total_customers ?></h3>
+                <p>Customers</p>
             </div>
         </div>
 
@@ -278,7 +317,7 @@ $earningsTotal = 139;
             <img src="../res/img/sales.png" alt="box icon">
             <div class="info">
                 <h3><?php echo $total_sales ?></h3>
-                <p>Sales</p>
+                <p>Orders</p>
             </div>
         </div>
 
@@ -365,6 +404,7 @@ $earningsTotal = 139;
 </div>
 <script src="../js/change_content.js"></script>
 <script src="../js/app.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     const modal = document.querySelector(".modal");
@@ -387,22 +427,18 @@ $earningsTotal = 139;
                                     <td style="color: #292929; font-weight: bold">Product Name : &#160;</td>
                                     <td class="namep">${this.children[2].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Category : </td>
                                     <td class="categp">${this.children[3].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Quantity : </td>
                                     <td class="qntp">${this.children[4].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Buy Price : </td>
                                     <td>$${this.children[5].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Sale Price : </td>
                                     <td class="pricep">$${this.children[6].textContent}</td>
@@ -434,6 +470,24 @@ $earningsTotal = 139;
         if (event.target === modal) {
             modal.classList.remove("show-modal");
         }
+    }
+
+    //logout
+    function logout() {
+        swal({
+            title: "Are you sure?",
+            text: "You will be logged out!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "logout.php";
+                } else {
+                    swal("Keep on working Admin!");
+                }
+            });
     }
 </script>
 </body>

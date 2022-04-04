@@ -1,5 +1,6 @@
 <?php
 include '../db/connection.php';
+echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
 echo '
 <script>
     if ( window.history.replaceState ) {
@@ -14,18 +15,55 @@ if (isset($_POST['update_profile'])) {
     $full_name = $_POST['full_name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $password = $_POST['password'];
     $phone = $_POST['phone'];
 
     //check if the inputs are empty
-    if (empty($full_name) || empty($username) || empty($email) || empty($phone)) {
+    if (empty($full_name) || empty($username) || empty($email) || empty($phone) || empty($password)) {
         echo "<script>alert('Please fill all the fields')</script>";
     } else {
-        $update_profile = "UPDATE admin SET full_name = '$full_name', username = '$username', email = '$email', phone = '$phone' WHERE adminID = 1";
-        $run_profile_update = mysqli_query($con, $update_profile);
-        if ($run_profile_update) {
-            echo "<script>alert('Profile updated successfully')</script>";
+        //check if the email is valid
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>alert('Please enter a valid email')</script>";
+        }
+        if (strlen($password) < 8) {
+            echo "<script>swal({
+  title: 'Warning!',
+  text: 'Password must be at least 8 characters long',
+  icon: 'warning',
+  button: 'Ok',
+}).then();
+</script>";
+        }
+        if (strlen($phone) < 10) {
+            echo "<script>swal({
+  title: 'Warning!',
+  text: 'Phone number must be at least 10 characters long',
+  icon: 'warning',
+  button: 'Ok',
+});
+</script>";
         } else {
-            echo "<script>alert('Profile update failed')</script>";
+            $update_profile = "UPDATE admin SET full_name = '$full_name', password = '$password', username = '$username', email = '$email', phone = '$phone' WHERE adminID = 1";
+            $run_profile_update = mysqli_query($con, $update_profile);
+            if ($run_profile_update) {
+                echo "<script>
+   swal({
+  title: 'Success!',
+  text: 'Profile updated successfully',
+  icon: 'success',
+  button: 'Ok',
+});
+</script>";
+            } else {
+                echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Profile update failed',
+  icon: 'error',
+  button: 'Ok',
+});</script>";
+            }
         }
     }
 }
@@ -43,9 +81,23 @@ if (isset($_POST['add_category'])) {
         $add_category = "INSERT INTO category (category_name) VALUES ('$category_name')";
         $run_add_category = mysqli_query($con, $add_category);
         if ($run_add_category) {
-            echo "<script>alert('Category added successfully')</script>";
+            echo "<script>
+swal({
+  title: 'Success!',
+  text: 'Category added successfully',
+  icon: 'success',
+  button: 'Ok',
+});
+</script>";
         } else {
-            echo "<script>alert('Category add failed')</script>";
+            echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Category addition failed',
+  icon: 'error',
+  button: 'Ok',
+});
+</script>";
         }
     }
 }
@@ -57,13 +109,21 @@ $upload_dir = '../uploads/'; //upload directory
 
 if (isset($_POST['add_product'])) {
     $product_name = $_POST['product_name'];
+    $description = $_POST['description'];
     $product_category = $_POST['product_category'];
     $product_quantity = $_POST['product_quantity'];
     $product_sale_price = $_POST['sale_price'];
     $product_buy_price = $_POST['buy_price'];
     $product_image = $upload_dir . basename($_FILES['product_image']['name']);
+    //change product image name and get last product id plus 1
+    $latest_id = "SELECT productID FROM product ORDER BY productID DESC LIMIT 1";
+    $run_latest_id = mysqli_query($con, $latest_id);
+    $row_latest_id = mysqli_fetch_array($run_latest_id);
+    $product_id = $row_latest_id['productID'] + 1;
+    $newFileName = $upload_dir . 'img_' . $product_id . '.' . pathinfo($_FILES["product_image"]["name"], PATHINFO_EXTENSION);
     //check if the inputs are empty
     if (empty($product_name)
+        || empty($description)
         || empty($product_category)
         || empty($product_quantity)
         || empty($product_sale_price)
@@ -73,20 +133,41 @@ if (isset($_POST['add_product'])) {
     } else {
         //check if the image is bigger than 1MB
         if ($_FILES['product_image']['size'] > 1000000) {
-            echo "<script>alert('Image is bigger then 1M')</script>";
+            echo "<script>
+swal({
+  title: 'Warning!',
+  text: 'Image size must be less than 1MB',
+  icon: 'warning',
+  button: 'Ok',
+});
+</script>";
         } else {
             //upload the image
-            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $product_image)) {
-                $add_product = "INSERT INTO product (name, category, stock, sale_price, buy_price, product_image) VALUES ('$product_name', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$product_image')";
+            if (move_uploaded_file($_FILES['product_image']['tmp_name'], $newFileName)) {
+                $add_product = "INSERT INTO product (name, description,category, stock, sale_price, buy_price, product_image) VALUES ('$product_name','$description', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$product_image')";
                 $run_add_product = mysqli_query($con, $add_product);
 
                 //increase number of products in the category
                 $sql = "UPDATE category SET products_total = products_total + 1 WHERE category_name = '$product_category'";
                 $run_sql = mysqli_query($con, $sql);
                 if ($run_add_product) {
-                    echo "<script>alert('Product added successfully')</script>";
+                    echo "<script>
+swal({
+  title: 'Success!',
+  text: 'Product added successfully',
+  icon: 'success',
+  button: 'Ok',
+});
+</script>";
                 } else {
-                    echo "<script>alert('Product add failed')</script>";
+                    echo "<script>
+swal({
+  title: 'Error!',
+  text: 'Product addition failed',
+  icon: 'error',
+  button: 'Ok',
+});
+</script>";
                 }
             }
         }
@@ -215,8 +296,12 @@ if (isset($_POST['add_product'])) {
                 <input type="email" name="email" placeholder="e.g: abdelatiflagjaj@gmail.com" required>
             </div>
             <div class="field">
+                <span class="label">Password</span>
+                <input type="password" name="password" placeholder="e.g: *******" required>
+            </div>
+            <div class="field">
                 <span class="label">Phone</span>
-                <input type="phone" name="phone" placeholder="e.g: 0657735082" required>
+                <input type="tel" name="phone" placeholder="e.g: 0657735082" required>
             </div>
             <div class="ActionButtons" style="margin-right: 16px;">
                 <input type="reset" value="RESET" class="reset">
@@ -229,7 +314,6 @@ if (isset($_POST['add_product'])) {
     let customers = `
         <h1>Customers</h1>
         <hr color="#FF304F" width="90%" size="4">
-        <img src="../res/img/undraw_users.svg" style="width: 300px; margin: 12px 36%; ">
         <div class="wrap" style="margin: 20px 0;">
              <form action="" method="post">
                 <div class="search">
@@ -255,7 +339,7 @@ if (isset($_POST['add_product'])) {
             <?php
     if (isset($_POST['submit-search-customers'])) {
         $search = mysqli_real_escape_string($con, $_POST['search_bar_customers']);
-        $sql = "SELECT * FROM customer WHERE CONCAT(customerID, full_name, username, email, phone, addresse) LIKE '%$search%'";
+        $sql = "SELECT * FROM customer WHERE CONCAT(customerID, full_name, username) LIKE '%$search%'";
     } else {
         $sql = "SELECT * FROM customer";
     }
@@ -404,15 +488,19 @@ if (isset($_POST['add_product'])) {
                 </div>
                 <div class="field">
                     <span class="label">Quantity</span>
-                    <input type="number" name="product_quantity" placeholder="e.g: 10" required>
+                    <input type="number" name="product_quantity" placeholder="e.g: 10" required min="1">
                 </div>
                 <div class="field">
                     <span class="label">Sale price</span>
-                    <input type="number" name="sale_price" placeholder="e.g: 59" required>
+                    <input type="number" name="sale_price" placeholder="e.g: 59" required min="1">
                 </div>
                 <div class="field">
                     <span class="label">Buy price</span>
-                    <input type="number" name="buy_price" placeholder="e.g: 42" required>
+                    <input type="number" name="buy_price" placeholder="e.g: 42" required min="1">
+                </div>
+                <div class="field">
+                    <span class="label">Description</span>
+                    <input type="text" name="description" placeholder="Product description..." required>
                 </div>
                 <div class="field">
                     <span class="label">Image</span>
@@ -431,6 +519,14 @@ if (isset($_POST['add_product'])) {
     <h1>Reports</h1>
     <hr color="#FF304F" width="90%" size="4">
     <p>Download your reports and data as PDF, CSV or JSON format:</p>
+    <div class="report-type-radio" style="display: flex; flex-direction: row; justify-content: center; margin-top: 16px;">
+            <input type="radio" id="report1" name="report1" value="sales" checked style="margin: 0 12px;">
+            <label for="report1">Sales</label><br>
+            <input type="radio" id="report2" name="report1" value="products" style="margin: 0 12px;">
+            <label for="report2">Products</label><br>
+            <input type="radio" id="report3" name="report1" value="customers" style="margin: 0 12px;">
+            <label for="report3">Customers</label><br>
+    </div>
     <div class="reports-container">
         <div class="SelectBox">
             <label for="Term">Select periode: </label>
@@ -504,7 +600,26 @@ if (isset($_POST['add_product'])) {
     //send periode to generate_pdf.php on click
     function sendData(format) {
         let periode = document.querySelector(".reports-periode").value;
-        let url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format;
+
+        let sales_checkbox = document.querySelector("#report1").checked;
+        let products_checkbox = document.querySelector("#report2").checked;
+        let customers_checkbox = document.querySelector("#report3").checked;
+        let url = "";
+        if (sales_checkbox) {
+            url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=sales";
+        } else if (products_checkbox) {
+            url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=products";
+        } else if (customers_checkbox) {
+            url = "../pages/generate_pdf.php?periode=" + periode + "&format=" + format + "&report=customers";
+        } else {
+            swal({
+                title: 'Warning',
+                text: 'Please select a report',
+                icon: 'warning',
+                button: 'Ok',
+            });
+        }
+
         window.open(url, "_blank");
     }
 

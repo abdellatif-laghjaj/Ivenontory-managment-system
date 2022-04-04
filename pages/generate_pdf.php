@@ -5,24 +5,29 @@ $period = $_GET['periode'];
 $format = $_GET['format'];
 if ($period == '1') {
     // select data of last day
-    $sql = "SELECT * FROM sale WHERE sale_date = (SELECT MAX(sale_date) FROM sale)";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date = (SELECT MAX(sale_date) FROM sale)";
 } else if ($period == '2') {
     // select data of last week
-    $sql = "SELECT * FROM sale WHERE sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)) AND NOW()";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)) AND NOW()";
 } else if ($period == '3') {
     // select data of last month
-    $sql = "SELECT * FROM sale WHERE sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 MONTH)) AND NOW()";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 MONTH)) AND NOW()";
 } else {
     // select data of last year
-    $sql = "SELECT * FROM sale WHERE sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 YEAR)) AND NOW()";
+    $sql = "SELECT s.saleID, c.username, p.name, s.quantity, s.earning, s.sale_date FROM sale s, customer c, product p 
+    WHERE s.customerID = c.customerID AND s.productID = p.productID AND s.sale_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 YEAR)) AND NOW()";
 }
 $result = mysqli_query($con, $sql);
+//sales table
 echo '<table class="table" id="sales" style="display: none">';
 echo '<thead>';
 echo '<tr>';
 echo '<th>No</th>';
-echo '<th>Customer ID</th>';
-echo '<th>Product ID</th>';
+echo '<th>Customer Name</th>';
+echo '<th>Product Name</th>';
 echo '<th>Quantity</th>';
 echo '<th>Earning</th>';
 echo '<th>Date</th>';
@@ -32,8 +37,8 @@ echo '</thead>';
 while ($row = mysqli_fetch_array($result)) {
     echo '<tr>';
     echo '<td>' . $row['saleID'] . '</td>';
-    echo '<td>' . $row['customerID'] . '</td>';
-    echo '<td>' . $row['productID'] . '</td>';
+    echo '<td>' . $row['username'] . '</td>';
+    echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['quantity'] . '</td>';
     echo '<td>' . $row['earning'] . '</td>';
     echo '<td>' . $row['sale_date'] . '</td>';
@@ -41,6 +46,73 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo '</table>';
 
+//products sql
+if ($period == '1') {
+    $p_sql = "SELECT * FROM product WHERE add_date = (SELECT MAX(add_date) FROM product)";
+} else if ($period == '2') {
+    $p_sql = "SELECT * FROM product WHERE add_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)) AND NOW()";
+} else if ($period == '3') {
+    $p_sql = "SELECT * FROM product WHERE add_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 MONTH)) AND NOW()";
+} else {
+    $p_sql = "SELECT * FROM product WHERE add_date BETWEEN (SELECT DATE_SUB(NOW(), INTERVAL 1 YEAR)) AND NOW()";
+}
+$result_products = mysqli_query($con, $p_sql);
+
+//products table
+echo '<table class="table" id="products" style="display: none">';
+echo '<thead>';
+echo '<tr>';
+echo '<th>No</th>';
+echo '<th>Product Name</th>';
+echo '<th>Description</th>';
+echo '<th>Category</th>';
+echo '<th>Stock</th>';
+echo '<th>Sale Price</th>';
+echo '<th>Buy Price</th>';
+echo '<th>Date</th>';
+echo '</tr>';
+echo '</thead>';
+while ($row = mysqli_fetch_array($result_products)) {
+    echo '<tr>';
+    echo '<td>' . $row['productID'] . '</td>';
+    echo '<td>' . $row['name'] . '</td>';
+    echo '<td>' . $row['description'] . '</td>';
+    echo '<td>' . $row['category'] . '</td>';
+    echo '<td>' . $row['stock'] . '</td>';
+    echo '<td>' . $row['sale_price'] . '</td>';
+    echo '<td>' . $row['buy_price'] . '</td>';
+    echo '<td>' . $row['add_date'] . '</td>';
+    echo '</tr>';
+}
+echo '</table>';
+
+//customers sql
+$c_sql = "SELECT * FROM customer";
+$result_customers = mysqli_query($con, $c_sql);
+
+//customers table
+echo '<table class="table" id="customers" style="display: none">';
+echo '<thead>';
+echo '<tr>';
+echo '<th>No</th>';
+echo '<th>Customer Name</th>';
+echo '<th>Username</th>';
+echo '<th>Email</th>';
+echo '<th>Address</th>';
+echo '<th>Phone</th>';
+echo '<tr>';
+echo '</thead>';
+while ($row = mysqli_fetch_array($result_customers)) {
+    echo '<tr>';
+    echo '<td>' . $row['customerID'] . '</td>';
+    echo '<td>' . $row['full_name'] . '</td>';
+    echo '<td>' . $row['userName'] . '</td>';
+    echo '<td>' . $row['email'] . '</td>';
+    echo '<td>' . $row['addresse'] . '</td>';
+    echo '<td>' . $row['phone'] . '</td>';
+    echo '</tr>';
+}
+echo '</table>';
 ?>
 
 <!doctype html>
@@ -50,7 +122,8 @@ echo '</table>';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href="../res/img/logo.svg">
+    <title>Download Reports</title>
 </head>
 <style>
 
@@ -63,7 +136,7 @@ echo '</table>';
         --btn-upload-color: #ffffff;
         --btn-upload-width: 225px;
         --btn-upload-height: 80px;
-        --btn-upload-border-radius: 0.75em;
+        --btn-upload-border-radius: 0.30em;
         --btn-upload-transition-time: 50ms;
         --progress-width: 50px;
         --progress-height: 30px;
@@ -127,6 +200,10 @@ echo '</table>';
         box-shadow: 0 0.7em 1.2em rgba(25, 25, 25, 0.5);
     }
 
+    .btn-upload:hover {
+        cursor: pointer;
+    }
+
     .btn-upload:not(.btn-upload-uploading) {
         transition: box-shadow var(--btn-upload-transition-time) ease-out,
         transform var(--btn-upload-transition-time) ease-out;
@@ -141,77 +218,10 @@ echo '</table>';
         transform: translateY(0.2em);
     }
 
-    .btn-upload > svg {
-        fill: inherit;
-    }
-
     .btn-upload > span {
         color: inherit;
         margin-left: 0.3em;
     }
-
-    .progress {
-        color: var(--progress-arrow-color);
-        font-family: inherit;
-        font-size: 50%;
-        background-color: var(--progress-arrow-background-color);
-        width: var(--progress-width);
-        height: var(--progress-height);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        display: none;
-        position: absolute;
-        left: 0;
-        top: var(--progress-top);
-        border-radius: 0.5em;
-        opacity: 0;
-        transform-origin: center bottom;
-        transform: translateX(-50%);
-        filter: drop-shadow(0 0.7em 1.2em rgba(25, 25, 25, 0.5));
-    }
-
-    .progress:after {
-        content: "";
-        border-top: solid var(--progress-arrow-height) var(--progress-arrow-background-color);
-        border-bottom: 0;
-        border-left: solid calc(var(--progress-arrow-width) / 2) transparent;
-        border-right: solid calc(var(--progress-arrow-width) / 2) transparent;
-        position: absolute;
-        top: calc(100% - 1px);
-    }
-
-    .check {
-        width: var(--check-width);
-        height: var(--check-height);
-        display: none;
-        position: absolute;
-        top: calc(50% - calc(var(--check-width) / 2));
-        left: calc(50% - calc(var(--check-height) / 2));
-        transform-origin: center bottom;
-        transform: rotate(-45deg);
-    }
-
-    .check > span {
-        background-color: #ffffff;
-        display: block;
-        position: absolute;
-    }
-
-    .check > span:first-child {
-        width: var(--check-stroke);
-        height: 0;
-        top: 0;
-        left: 0;
-    }
-
-    .check > span:last-child {
-        width: 0;
-        height: var(--check-stroke);
-        bottom: 0;
-        left: 0;
-    }
-
 
     table {
         border-collapse: collapse;
@@ -256,32 +266,40 @@ echo '</table>';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
 <script>
-    let url = window.location.href;
-    //get format from url
-    let format = url.substring(url.lastIndexOf('=') + 1);
+    const url = new URLSearchParams(window.location.search);
+    const format = url.get('format');
+    const reportType = url.get('report');
     let download_btn = document.getElementById('btn_upload');
 
     download_btn.addEventListener('click', function () {
         if (format === 'pdf') {
-            generatePDF()
+            if (reportType === 'sales') {
+                generateSalesPDF();
+            } else if (reportType === 'products') {
+                generateProductsPDF();
+            } else {
+                generateCustomersPDF();
+            }
         } else if (format === 'csv') {
-            $("#sales").tableHTMLExport({
-                // csv, txt, json, pdf
-                type: "csv",
-                // file name
-                filename: "sales_reports.csv"
-            });
+            if (reportType === 'sales') {
+                generateCsvOrJson("#sales", "sales_reports.csv", "csv");
+            } else if (reportType === 'products') {
+                generateCsvOrJson("#products", "products_reports.csv", "csv");
+            } else {
+                generateCsvOrJson("#customers", "customers_reports.csv", "csv");
+            }
         } else {
-            $("#sales").tableHTMLExport({
-                // csv, txt, json, pdf
-                type: "json",
-                // file name
-                filename: "sales_reports.json"
-            });
+            if (reportType === 'sales') {
+                generateCsvOrJson("#sales", "sales_reports.json", "json");
+            } else if (reportType === 'products') {
+                generateCsvOrJson("#products", "products_reports.json", "json");
+            } else {
+                generateCsvOrJson("#customers", "customers_reports.json", "json");
+            }
         }
     });
 
-    function generatePDF() {
+    function generateSalesPDF() {
         const doc = new jsPDF('p', 'pt', 'letter');
         const htmlstring = '';
         const tempVarToCheckPageHeight = 0;
@@ -339,7 +357,140 @@ echo '</table>';
         })
         doc.save('sales_reports.pdf');
     }
+
+    function generateProductsPDF() {
+        const doc = new jsPDF('p', 'pt', 'letter');
+        const htmlstring = '';
+        const tempVarToCheckPageHeight = 0;
+        let pageHeight = 0;
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        let y = 20;
+        doc.setLineWidth(2);
+        doc.text(300, y = y + 25, "PRODUCTS REPORT", {
+            align: "center",
+            fontSize: 20
+        });
+
+        doc.autoTable({
+            html: '#products',
+            startY: 70,
+            theme: 'grid',
+            columnStyles: {
+                0: {
+                    cellWidth: 64
+                },
+                1: {
+                    cellWidth: 64
+                },
+                2: {
+                    cellWidth: 64
+                },
+                3: {
+                    cellWidth: 64
+                },
+                4: {
+                    cellWidth: 64
+                },
+                5: {
+                    cellWidth: 64
+                },
+                6: {
+                    cellWidth: 64
+                },
+                7: {
+                    cellWidth: 64
+                },
+                8: {
+                    cellWidth: 64
+                },
+            },
+            styles: {
+                minCellHeight: 40
+            }
+        })
+        doc.save('products_reports.pdf');
+    }
+
+    function generateCustomersPDF() {
+        const doc = new jsPDF('p', 'pt', 'letter');
+        const htmlstring = '';
+        const tempVarToCheckPageHeight = 0;
+        let pageHeight = 0;
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 150,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        let y = 20;
+        doc.setLineWidth(2);
+        doc.text(300, y = y + 25, "CUSTOMERS REPORT", {
+            align: "center",
+            fontSize: 20
+        });
+
+        doc.autoTable({
+            html: '#customers',
+            startY: 70,
+            theme: 'grid',
+            columnStyles: {
+                0: {
+                    cellWidth: 80
+                },
+                1: {
+                    cellWidth: 80
+                },
+                2: {
+                    cellWidth: 80
+                },
+                3: {
+                    cellWidth: 80
+                },
+                4: {
+                    cellWidth: 80
+                },
+                5: {
+                    cellWidth: 80
+                },
+            },
+            styles: {
+                minCellHeight: 40
+            }
+        })
+        doc.save('customers_reports.pdf');
+    }
+
+    function generateCsvOrJson(table, filename, type) {
+        $(table).tableHTMLExport({
+            // csv, txt, json, pdf
+            type: type,
+            // file name
+            filename: filename
+        });
+    }
 </script>
 </body>
-
 </html>

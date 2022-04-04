@@ -1,11 +1,13 @@
 <?php
 include '../db/connection.php';
+session_start();
 $username = "";
 $password = "";
 
 if (isset($_POST['login'])) {
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
+    $_SESSION['admin'] = false;
 
     if (empty($username) || empty($password)) {
         echo "<script>alert('Please fill in all the fields')</script>";
@@ -16,6 +18,8 @@ if (isset($_POST['login'])) {
 
         //check if username and password match
         if ($username == $row['username'] && $password == $row['password']) {
+            $_SESSION['admin'] = true;
+            $_SESSION['username'] = $username;
             header("Location: admin.php");
         } else {
             echo "<script>alert('Username or password is incorrect')</script>";
@@ -29,6 +33,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../res/img/logo.svg">
     <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="../style/loading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

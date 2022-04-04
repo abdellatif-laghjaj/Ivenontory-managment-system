@@ -21,47 +21,117 @@ if (mysqli_num_rows($result) > 0) {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        categories
-                    </a>
-                    <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdown">
-                    </ul>
-                    <script language="JavaScript">
-                        const dropdown_menu = document.getElementById('dropdown-menu');
-                        var dropdown_menu_html = "<li><a class='dropdown-item' onclick='filterBy(" + false + ");'>All</a></li>";
-                        if (categories.length == 0) {
-                            dropdown_menu.innerHTML = "";
-                        } else if (categories.length == 1) {
-                            dropdown_menu.innerHTML = '<li><a class="dropdown-item">' + categories[0] + '</a></li>';
-                        } else {
-                            for (var i = 0; i < categories.length; i++) {
-                                dropdown_menu_html += "<li><a class='dropdown-item' onclick='filterBy(" + (i + 1) + ");'>" + categories[i] + "</a></li>";
-                            }
-                            dropdown_menu.innerHTML = dropdown_menu_html;
-                        }
-                    </script>
+                <li>
+                    <form style="margin-right: 12px;">
+                        <select id="categories_list" name="filter_by" class="form-select form-select-sm"
+                                aria-label=".form-select-sm example">
+                        </select>
+                    </form>
+
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Sort by
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" onclick="sortBy(1)">Most expensive</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(2)">Most cheapest</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(3)">Most recent</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(4)">The oldest</a></li>
-                        <li><a class="dropdown-item" onclick="sortBy(5)">Most selling</a></li>
-                    </ul>
+                <li>
+                    <form style="margin-right: 12px;">
+                        <select id="sort_selector" name="sort_by" class="form-select form-select-sm" aria-label=".form-select-sm example">
+
+                        </select>
+                    </form>
                 </li>
+
+                <li>
+                    <form style="margin-right: 12px;">
+                        <select id="per_page_selector" name="per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option selected value="0">Per page</option>
+                            <option class="per_page_option" value="8">8</option>
+                            <option class="per_page_option" value="16">16</option>
+                            <option class="per_page_option" value="24">24</option>
+                            <option class="per_page_option" value="32">32</option>
+                        </select>
+                    </form>
+                </li>
+                <script language="JavaScript">
+                    const dropdown_menu = document.getElementById('categories_list');
+                    var dropdown_menu_html = "";
+                    var currCategory = <?php echo $filterDefaultValue; ?>;
+                    if (categories.length >= 2) {
+                        if (currCategory == 0) {
+                            dropdown_menu_html += "<option class='category_option' selected value='0'>All</option>";
+                        } else {
+                            dropdown_menu_html += "<option class='category_option' value='0'>All</option>";
+                        }
+                        for (var i = 0; i < categories.length; i++) {
+                            if (currCategory != 0) {
+                                if (categories[i] == currCategory) {
+                                    dropdown_menu_html += "<option class='category_option' selected value='" + categories[i] + "'>" + categories[i] + "</option>";
+                                } else {
+                                    dropdown_menu_html += "<option class='category_option' value='" + categories[i] + "'>" + categories[i] + "</option>";
+                                }
+                            } else {
+                                dropdown_menu_html += "<option class='category_option' value='" + categories[i] + "'>" + categories[i] + "</option>";
+                            }
+                        }
+                    } else {
+                        dropdown_menu_html = "<option selected>Filter by</option>";
+                    }
+                    dropdown_menu.innerHTML = dropdown_menu_html;
+
+                    var sort_menu = document.getElementById("sort_selector");
+                    var sort_menu_Html = "";
+                    var currSort = <?php echo $sortDefaultValue; ?>;
+                    switch (currSort) {
+                        case 1 :
+                            sort_menu_Html = "<option>Sort by</option>" +
+                                "<option class='sort_option' selected value='1'>Most expensive</option>" +
+                                "<option class='sort_option' value='2'>Most cheapest</option>" +
+                                "<option class='sort_option' value='3'>Most recent</option>" +
+                                "<option class='sort_option' value='4'>The oldest</option>" +
+                                "<option class='sort_option' value='5'>Most selling</option>"
+                            break;
+
+                        case 2 :
+                            sort_menu_Html = "<option>Sort by</option>" +
+                                "<option class='sort_option' value='1'>Most expensive</option>" +
+                                "<option class='sort_option' selected value='2'>Most cheapest</option>" +
+                                "<option class='sort_option' value='3'>Most recent</option>" +
+                                "<option class='sort_option' value='4'>The oldest</option>" +
+                                "<option class='sort_option' value='5'>Most selling</option>"
+                            break;
+
+                        case 3 :
+                            sort_menu_Html = "<option>Sort by</option>" +
+                                "<option class='sort_option' value='1'>Most expensive</option>" +
+                                "<option class='sort_option' value='2'>Most cheapest</option>" +
+                                "<option class='sort_option' selected value='3'>Most recent</option>" +
+                                "<option class='sort_option' value='4'>The oldest</option>" +
+                                "<option class='sort_option' value='5'>Most selling</option>"
+                            break;
+
+                        case 4 :
+                            sort_menu_Html = "<option>Sort by</option>" +
+                                "<option class='sort_option' value='1'>Most expensive</option>" +
+                                "<option class='sort_option' value='2'>Most cheapest</option>" +
+                                "<option class='sort_option' value='3'>Most recent</option>" +
+                                "<option class='sort_option' selected value='4'>The oldest</option>" +
+                                "<option class='sort_option' value='5'>Most selling</option>"
+                            break;
+
+                        case 5 :
+                            sort_menu_Html = "<option>Sort by</option>" +
+                                "<option class='sort_option' value='1'>Most expensive</option>" +
+                                "<option class='sort_option' value='2'>Most cheapest</option>" +
+                                "<option class='sort_option' value='3'>Most recent</option>" +
+                                "<option class='sort_option' value='4'>The oldest</option>" +
+                                "<option class='sort_option' selected value='5'>Most selling</option>"
+                            break;
+                    }
+                    sort_menu.innerHTML = sort_menu_Html;
+                </script>
             </ul>
-            <form class="d-flex" method="GET" action="index.php">
-                <input class="form-control me-1" autocomplete="off" list="search-results" type="search" id="search" name="search"
+            <form class="d-flex" id="search-form">
+                <input class="form-control me-1" autocomplete="off" list="search-results" type="search" id="search-input"
+                       name="search"
                        placeholder="Search..." aria-label="Search">
-                <button type="submit" class="btn btn-primary" style="height: 100%;" name="search-button" value="1">
+                <button type="submit" class="btn btn-primary" style="height: 100%;" id="search-button" value="1">
                     <i class="fa fa-search"></i>
                 </button>
                 <datalist id="search-results"></datalist>
@@ -70,28 +140,21 @@ if (mysqli_num_rows($result) > 0) {
     </div>
 </nav>
 <script language="JavaScript">
-    function filterBy(category) {
-        filterOpt = category;
-        loadProducts(filterOpt, sortOpt);
-    }
 
-    function sortBy(option) {
-        sortOpt = option;
-        loadProducts(filterOpt, sortOpt);
-    }
-
-    $(document).ready(function () {
-        $("#search").keyup(function () {
-            $.ajax({
-                type: "GET",
-                url: '../client/search.php',
-                data: {
-                    search: $("#search").val(),
-                },
-                success: function (data) {
-                    $("#search-results").html(data);
-                }
-            })
+    //live search
+    $("#search").keyup(function () {
+        $.ajax({
+            type: "GET",
+            url: '../client/search.php',
+            data: {
+                search: $("#search").val(),
+            },
+            success: function (data) {
+                $("#search-results").html(data);
+            },
+            error: function () {
+                $("#search-results").html("<option value='No suggestions'>");
+            }
         })
     })
 </script>
