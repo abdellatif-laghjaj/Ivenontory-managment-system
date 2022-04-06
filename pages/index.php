@@ -175,7 +175,7 @@ if ($isSearching) {
 
 $productsToShow = mysqli_num_rows(mysqli_query($con, $loadQuery));
 
-$loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage
+$loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
 
 ?>
 <!DOCTYPE html>
