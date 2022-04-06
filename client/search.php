@@ -12,6 +12,4 @@ if (!empty($_GET["search"])) {
     } else {
         echo "<option value='No suggestions'>";
     }
-} else {
-    echo "<option value='No suggestions'>";
 }

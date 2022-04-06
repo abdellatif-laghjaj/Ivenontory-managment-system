@@ -12,53 +12,171 @@ $filterDefaultValue = 0;
 $pagingDefaultValue = 1;
 $perPageDefaultValue = 8;
 
-if (isset($_GET["page"])) {
-    if ($_GET["page"] != 0) {
-        $pagingDefaultValue = $_GET["page"];
-    }
-}
-
-if (isset($_GET["search"]))
-    $isSearching = true;
-
-if (isset($_GET["filter_by"])) {
-    if ($_GET["filter_by"] != 0) {
-        $isFiltering = true;
-        $filterDefaultValue = $_GET['filter_by'];
-    }
-}
-
-if (isset($_GET["sort_by"])) {
-    $isSorting = true;
-    $sortDefaultValue = $_GET['sort_by'];
-}
-
-if (isset($_GET["per_page"])) {
-    if ($_GET["per_page"] != 0)
-        $perPageDefaultValue = $_GET["per_page"];
-}
-
 //content parameters
+$searchQuery = "";
 $nbProductsInPage = $perPageDefaultValue;
 $currentPage = $pagingDefaultValue;
 $sort_by = $sortDefaultValue;
 $filter_by = $filterDefaultValue;
 $totalProducts = mysqli_num_rows(mysqli_query($con, "SELECT * FROM product WHERE stock > 0"));
+$productsToShow = $totalProducts;
 
-$full_name = "";
+if (isset($_GET["page"])) {
+    if (($_GET["page"] > 0) || (!empty($_GET["page"]))) {
+        $currentPage = $_GET["page"];
+    }
+}
 
-if (isset($_SESSION['customerID']))
-    $full_name = $_SESSION['full_name'];
+if (isset($_GET["search"])) {
+    if (!empty($_GET["search"])) {
+        $isSearching = true;
+        $searchQuery = $_GET["search"];
+    }
+}
 
-echo "<script>
-    console.log('isSearching = $isSearching');
-    console.log('false = " . false . "');
-    console.log('true = " . true . "');
-    console.log('isSorting = " . $_GET["sort_by"] . "');
-    console.log('isFiltering = " . $_GET["filter_by"] . "');
-    console.log('currentPage = " . $_GET["page"] . "');
-    console.log('perPage = " . $_GET["per_page"] . "');
-</script>";
+if (isset($_GET["filter_by"])) {
+    if (($_GET["filter_by"] != 0) || (!empty($_GET["filter_by"]))) {
+        $isFiltering = true;
+        $filter_by = $_GET['filter_by'];
+    }
+}
+
+if (isset($_GET["sort_by"])) {
+    if (!empty($_GET["sort_by"])) {
+        $isSorting = true;
+        $sort_by = $_GET['sort_by'];
+    }
+}
+
+if (isset($_GET["per_page"])) {
+    if (($_GET["per_page"] != 0) || (!empty($_GET["per_page"])))
+        $nbProductsInPage = $_GET["per_page"];
+}
+
+$loadQuery = "SELECT * FROM product WHERE stock > 0";
+
+//content parameters
+$nbPages = ceil($totalProducts / $nbProductsInPage);
+$bound = ($currentPage - 1) * $nbProductsInPage;
+
+if ($isSearching) {
+    $search = $searchQuery;
+    if ($isFiltering) {
+        $filter = $filter_by;
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+        }
+    } else {
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+        }
+    }
+} else {
+    if ($isFiltering) {
+        $filter = $filter_by;
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "')";
+        }
+
+    } else {
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product";
+        }
+    }
+}
+
+$productsToShow = mysqli_num_rows(mysqli_query($con, $loadQuery));
+
+$loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,7 +314,11 @@ echo "<script>
 </head>
 <body>
 <?php
+
+$full_name = "";
+
 if (isset($_SESSION['customerID'])) {
+    $full_name = $_SESSION['full_name'];
     echo '<script defer>
         isLogin = true;
  </script>';
@@ -320,11 +442,10 @@ if (isset($_SESSION['customerID'])) {
                     <div id="slider-nav"></div>
                 </div>
                 <script>
-                    function loadPagingButtons() {
+                    function loadPagingButtons(totalProducts) {
                         var pages_form = document.getElementById('pages');
                         var slider_nav = document.getElementById('slider-nav');
                         var nbProductsInPage = <?php echo $nbProductsInPage; ?>;
-                        var totalProducts = <?php echo $totalProducts; ?>;
                         var nbPages = Math.ceil(totalProducts / nbProductsInPage);
                         var currPage = <?php echo $currentPage; ?>;
                         var buttons = "";
@@ -353,7 +474,7 @@ if (isset($_SESSION['customerID'])) {
 
     <script language="JavaScript">
         function displayProducts() {
-            <?php loadProducts($con, $nbProductsInPage, $totalProducts, $currentPage, $isSearching, $isFiltering, $isSorting, $filterDefaultValue, $sortDefaultValue); ?>
+            <?php loadProducts($con, $loadQuery); ?>
             const products_box = document.getElementById("categories");
             var products_inner_html = "";
             if (products.length > 0) {
@@ -386,7 +507,7 @@ if (isset($_SESSION['customerID'])) {
                 }
                 products_box.innerHTML = products_inner_html;
             }
-            loadPagingButtons();
+            loadPagingButtons(<?php echo $productsToShow; ?>);
         }
 
         displayProducts();
@@ -394,10 +515,11 @@ if (isset($_SESSION['customerID'])) {
 </main>
 
 <form action="index.php" id="reload" method="get" style="display: none;">
-    <input type="number" id="per_page_hidden" name="per_page" value="<?php echo $pagingDefaultValue; ?>">
+    <input type="number" id="per_page_hidden" name="per_page" value="<?php echo $nbProductsInPage; ?>">
     <input type="number" id="page_h" name="page" value="<?php echo $currentPage; ?>>">
-    <input type="number" id="sort_by_h" name="sort_by" value="<?php echo $sortDefaultValue; ?>">
-    <input type="text" id="filter_by_h" name="filter_by" value="<?php echo $filterDefaultValue; ?>">
+    <input type="number" id="sort_by_h" name="sort_by" value="<?php echo $sort_by; ?>">
+    <input type="text" id="filter_by_h" name="filter_by" value="<?php echo $filter_by; ?>">
+    <input type="search" id="search_h" name="search" value="<?php echo $searchQuery; ?>">
 </form>
 
 <!-- ALL POP UPS MODALS -->
@@ -417,26 +539,26 @@ if (isset($_SESSION['customerID'])) {
     var page_hidden = document.getElementById("page_h");
     var sort_hidden = document.getElementById("sort_by_h");
     var filter_hidden = document.getElementById("filter_by_h");
+    var search_hidden = document.getElementById("search_h");
 
     const category_menu = document.getElementById('categories_list');
     var sort_menu = document.getElementById("sort_selector");
     var per_page_menu = document.getElementById("per_page_selector");
 
-    function setParmeters()  {
+    function setParmeters() {
         filter_hidden.value = category_menu.value;
         sort_hidden.value = sort_menu.value;
         per_page_hidden.value = per_page_menu.value;
     }
 
-    //var search_hidden = document.getElementById("search");
-
-    /*//submit search value
+    //submit search value
     const searchButton = document.getElementById('search-button');
     const searchBar = document.getElementById('search-input');
-    searchButton.onclick = function () {
+    searchButton.onclick = function (e) {
+        e.preventDefault();
         search_hidden.value = searchBar.value
         document.forms["reload"].submit();
-    }*/
+    }
 
     //submit filter value
     const category_link = document.getElementsByClassName("category_option");
@@ -464,7 +586,7 @@ if (isset($_SESSION['customerID'])) {
     var pages_radios = document.getElementsByClassName('pages_radios');
 
     for (let i = 0; i < pages_links.length; i++) {
-        pages_links[i].setAttribute('index', (i + 1));
+        pages_links[i].setAttribute('index', i);
         pages_links[i].addEventListener("click", function (e) {
             var index = pages_links[i].getAttribute('index')
             pages_radios[index].checked = true;
