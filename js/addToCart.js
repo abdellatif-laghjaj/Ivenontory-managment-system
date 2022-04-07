@@ -51,7 +51,12 @@ window.addEventListener("DOMContentLoaded", (evt) => {
                     //check if the product is not out of stock
                     if (exist(product).quantity >= exist(product).stock) {
                         errorSound.play();
-                        alert('product out of stock');
+                        swal({
+                            title: "Error",
+                            text: "This product is out of stock",
+                            icon: "error",
+                            button: "Ok",
+                        });
                     } else {
                         exist(product).quantity += 1;
                         exist(product).price = exist(product).basePrice * exist(product).quantity;
@@ -124,24 +129,27 @@ function loadCartElements() {
     if (cartContent.length === 0) {
         updateTotalPrice();
         updateBadge();
-        cartBody.innerHTML = '<div style="width: 100%; height: 375px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 370px;" src="../res/img/ufo_empty_cart.gif" ></div>';
+        cartBody.innerHTML = '<div style="width: 100%; height: 320px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 315px;" src="../res/img/ufo_empty_cart.gif" ></div>';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
             data += '<tr>' +
-                        '<th>' +
-                            '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' +
-                        '</th>' +
-                        '<th>' + cartContent[i].name + '</th>' +
-                        '<th class="full-input-qnt">' +
-                            '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' +
-                            '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' +
-                            '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' +
-                        '</th>' +
-                        '<th>' + Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(cartContent[i].basePrice) + '</th>' +
-                        '<th>' +
-                            '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' +
-                        '</th>' +
-                    '</tr>'
+                '<th>' +
+                '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' +
+                '</th>' +
+                '<th>' + cartContent[i].name + '</th>' +
+                '<th class="full-input-qnt">' +
+                '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' +
+                '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' +
+                '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' +
+                '</th>' +
+                '<th>' + Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                }).format(cartContent[i].basePrice) + '</th>' +
+                '<th>' +
+                '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' +
+                '</th>' +
+                '</tr>'
         }
         cartBody.innerHTML = data;
 
@@ -180,7 +188,12 @@ function loadCartElements() {
                     updateTotalPrice();
                     updateBadge();
                     errorSound.play();
-                    alert('product out of stock');
+                    swal({
+                        title: "Error!",
+                        text: "You can't buy more than " + productsInStock + " items!",
+                        icon: "error",
+                        button: "OK",
+                    });
                 }
             })
         }
@@ -214,7 +227,12 @@ function loadCartElements() {
                     updateTotalPrice();
                     updateBadge();
                     errorSound.play();
-                    alert('product out of stock');
+                    swal({
+                        title: "Error!",
+                        text: "You can't buy more than " + productsInStock + " items!",
+                        icon: "error",
+                        button: "OK",
+                    });
                 }
             })
         }

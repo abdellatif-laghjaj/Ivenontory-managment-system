@@ -6,35 +6,76 @@ session_start();
 
 $ordersJSON = "NULL";
 
-if (isset($_POST['orders'])) {
-    $ordersJSON = $_POST['orders'];
-    $ordersArr = json_decode($_POST['orders'], true);
-    $payment_success = true;
-    foreach ($ordersArr as $key => $value) {
-        //UPDATE SALES & STOCK OF EACH  PRODUCT
-        $sql = "UPDATE `product` SET `sales` = (SELECT `sales` FROM `product` WHERE `product`.`productID` = " . $value['id'] . ") + " . $value['quantity'] . ", `stock` = (SELECT `stock` FROM `product` WHERE `product`.`productID` = " . $value['id'] . ") - " . $value['quantity'] . " WHERE `product`.`productID` =  " . $value['id'];
-        if(mysqli_query($con, $sql))
+if (isset($_POST['Checkout'])) {
+    //card details
+    $card_number = $_POST['card_number'] ?? "";
+    $card_month = $_POST['card_month'];
+    $card_year = $_POST['card_year'];
+    $card_cvv = $_POST['card_cvv'];
+
+    //check length of card number
+    if (strlen($card_number) < 16 || strlen($card_cvv) < 3 || strlen($card_month) < 2 || strlen($card_year) < 2) {
+        echo '
+        <html>
+        <head>
+            <title>Error</title>
+            <link rel="icon" href="../res/img/logo.svg">
+        </head>
+        <body style="font-family: Cairo;">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>
+            swal({
+            title: "Error",
+            text: "Invalid card details!",
+            icon: "error",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "../pages/payment.php";
+                } else {
+                    swal("Please try again!");
+                }
+            });
+</script>
+        </body>
+        </html>
+        ';
+    } else {
+
+        if (isset($_POST['orders'])) {
+            $ordersJSON = $_POST['orders'];
+            $ordersArr = json_decode($_POST['orders'], true);
             $payment_success = true;
-        else
-            $payment_success = false;
 
-        //ADD SALES
-        $sale_price = (float) mysqli_fetch_assoc(mysqli_query($con, "SELECT sale_price FROM product WHERE productID = " . $value['id']))['sale_price'];
-        $buy_price = (float) mysqli_fetch_assoc(mysqli_query($con, "SELECT buy_price FROM product WHERE productID = " . $value['id']))['buy_price'];
-        $earning = ($sale_price - $buy_price) * ((int) $value['quantity']);
-        if (isset($_SESSION['customerID'])) {
-            $insertQuery = "INSERT INTO `sale` (`customerID`, `productID`, `quantity`, `earning`, `sale_date`) VALUES ('" . $_SESSION['customerID'] . "', '" . $value['id'] . "', '" . $value['quantity'] . "', '" . $earning . "', CURRENT_DATE())";
-            if(mysqli_query($con, $insertQuery))
-                $payment_success = true;
-            else
-                $payment_success = false;
-        } else {
-            $payment_success = false;
-        }
+            foreach ($ordersArr as $key => $value) {
+                //UPDATE SALES & STOCK OF EACH  PRODUCT
+                $sql = "UPDATE `product` SET `sales` = (SELECT `sales` FROM `product` WHERE `product`.`productID` = " . $value['id'] . ") + " . $value['quantity'] . ", `stock` = (SELECT `stock` FROM `product` WHERE `product`.`productID` = " . $value['id'] . ") - " . $value['quantity'] . " WHERE `product`.`productID` =  " . $value['id'];
+                if (mysqli_query($con, $sql))
+                    $payment_success = true;
+                else
+                    $payment_success = false;
 
-        if($payment_success) {
-            echo "<script>sessionStorage.clear();</script>";
-            echo '
+                //ADD SALES
+                $sale_price = (float)mysqli_fetch_assoc(mysqli_query($con, "SELECT sale_price FROM product WHERE productID = " . $value['id']))['sale_price'];
+                $buy_price = (float)mysqli_fetch_assoc(mysqli_query($con, "SELECT buy_price FROM product WHERE productID = " . $value['id']))['buy_price'];
+                $earning = ($sale_price - $buy_price) * ((int)$value['quantity']);
+                if (isset($_SESSION['customerID'])) {
+                    $insertQuery = "INSERT INTO `sale` (`customerID`, `productID`, `quantity`, `earning`, `sale_date`) VALUES ('" . $_SESSION['customerID'] . "', '" . $value['id'] . "', '" . $value['quantity'] . "', '" . $earning . "', CURRENT_DATE())";
+                    if (mysqli_query($con, $insertQuery))
+                        $payment_success = true;
+                    else
+                        $payment_success = false;
+                } else {
+                    $payment_success = false;
+                }
+            }
+
+            //if the payment is successful
+            if ($payment_success) {
+                echo "<script>sessionStorage.clear();</script>";
+                echo '
                     <!doctype html>
                     <html lang="en">
                     <head>
@@ -42,9 +83,10 @@ if (isset($_POST['orders'])) {
                         <meta name="viewport"
                               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <link rel="icon" href="../res/img/logo.svg">
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
                                 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-                        <title>Document</title>
+                        <title>Payment succes</title>
                     </head>
                     
                     <style>
@@ -244,6 +286,7 @@ if (isset($_POST['orders'])) {
                             </div>
                         </div>
                     </div>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     <script>
                         setTimeout(function () {
                             window.location.href = "index.php";
@@ -252,9 +295,11 @@ if (isset($_POST['orders'])) {
                     </body>
                     </html>
             ';
-        } else {
-            echo "<script>if(confirm('Payement failed! Please retry.')){window.location.href = 'index.php';}</script>";
+            } else {
+                echo "<script>if(confirm('Payement failed! Please retry.')){window.location.href = 'index.php';}</script>";
+            }
         }
     }
 }
 ?>
+

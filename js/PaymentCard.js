@@ -34,7 +34,6 @@ function TotalPrice() {
         style: "currency",
         currency: "USD"
     }).format(totalPrice);
-    document.getElementById('total_price').querySelector("dt").innerHTML = 'Total';
 }
 
 /*************************************************************************/

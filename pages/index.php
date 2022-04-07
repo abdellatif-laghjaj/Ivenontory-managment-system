@@ -2,7 +2,6 @@
 session_start();
 include '../db/connection.php';
 include '../client/functions.php';
-
 //loading parameters
 $isSearching = false;
 $isFiltering = false;
@@ -66,53 +65,53 @@ if ($isSearching) {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
         }
     } else {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
         }
     }
 } else {
@@ -121,54 +120,54 @@ if ($isSearching) {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "')";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "')";
         }
 
     } else {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0";
         }
     }
 }
@@ -184,6 +183,7 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../res/img/logo.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -197,7 +197,6 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
         var products = [];
         var product = [];
     </script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         body {
             background-color: rgba(255, 255, 255, 0.95);
@@ -252,7 +251,19 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
         }
 
         main .banner {
-            background: linear-gradient(to right, #7ceaff, #65C7F7, #0052D4);
+            background-image: linear-gradient( 135deg, #52bfe7 10%, #130CB7 100%);
+        }
+
+        .form-select-sm {
+            margin: 6px 0;
+        }
+
+        .pop-up .cart-pop .pop-content{
+            min-width: 400px;
+        }
+
+        .removeBtn .fa-trash{
+            margin: 0 12px;
         }
 
         @keyframes gradient {
@@ -310,6 +321,31 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
         .txt {
             color: #fff;
         }
+
+        main .banner #log-in {
+            background-color: #dc3545;
+            margin-right: 12px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            main .banner h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media only screen and (min-width: 600px) {
+            main .banner h1 {
+                font-size: 40px;
+            }
+        }
+
+        .pop-up .register-pop .pop-content form .field {
+            margin: 0 20px;
+        }
+
+        .field .button {
+            margin-top: 6px;
+        }
     </style>
 
 </head>
@@ -337,7 +373,7 @@ if (isset($_SESSION['customerID'])) {
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="#" class="logo navbar-brand fw-bold"><span>Tex</span><span style="color: #28C7FA">GEAR</span></a>
+        <a href="index.php" class="logo navbar-brand fw-bold"><span>Tex</span><span style="color: #28C7FA">GEAR</span></a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -382,14 +418,14 @@ if (isset($_SESSION['customerID'])) {
                     echo $full_name;
                     ?></h1>' +
                 '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-out" class="" style="width: 100px;" onclick="logout">Log out</button>'
+                '<button id="log-out" class="" style="width: 120px; background-color: red;">Log out</button>'
             ;
         } else {
             banner.innerHTML =
                 '<h1 class="">Welcome to TexGEAR: E-commerce web app</h1>' +
                 '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-in" class="" style="width: 100px;" onclick="showLogin()">Login</button>' +
-                '<button id="register" class="" style="width: 100px;" onclick="showRegistration()">Register</button>'
+                '<button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login <i class="fa fa-sign-in" style="margin-left: 4px; font-size: 18px;"></i></button>' +
+                '<button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register<i class="fa fa-user-plus" style="margin-left: 4px;"></i></button>'
             ;
         }
 
@@ -474,7 +510,7 @@ if (isset($_SESSION['customerID'])) {
     </div>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="../js/sweetalert.js"></script>
     <script language="JavaScript">
         function displayProducts() {
             <?php loadProducts($con, $loadQuery); ?>
@@ -533,7 +569,9 @@ if (isset($_SESSION['customerID'])) {
 <?php include 'footer.php' ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/addToCart.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script language="JavaScript">
+
     function showLogOut() {
         document.getElementById("log-out-pop").classList.toggle("hidden");
     }
@@ -610,10 +648,14 @@ if (isset($_SESSION['customerID'])) {
         })
     }
 
+    //logout button
+    const logout_button = document.getElementById('log-out');
+    logout_button.addEventListener("click", logout);
+
     function logout() {
         swal({
             title: "Are you sure?",
-            text: "You will be logged out!",
+            text: "You will be logged out",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -622,7 +664,7 @@ if (isset($_SESSION['customerID'])) {
                 if (willDelete) {
                     window.location.href = "../client/logOut.php";
                 } else {
-                    swal("Keep on working Admin!");
+                    swal("Enjoy a great shopping experience!");
                 }
             });
     }

@@ -284,7 +284,7 @@
                         <img src="../res/img/close.png">
                     </a>
                 </legend>
-                <form action="../pages/payment.php"  onsubmit="return checkCartItems()">
+                <form action="../pages/payment.php" onsubmit="return checkCartItems()">
                     <div id="total-price">
                         <span>total :</span>
                         <input class="total-input-cart" type="text" name="total" value="0" disabled>
@@ -338,35 +338,39 @@
     }
 
     function launch_toast() {
-        const x = document.getElementById("toast");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Please fill all the fields",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function usernameAlreadyTaken() {
-        const x = document.getElementById("toast4");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Username already taken",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function passwordLessThan6() {
-        const x = document.getElementById("toast2");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Password must be at least 6 characters",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function passwordDontMatch() {
-        const x = document.getElementById("toast3");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Passwords don't match",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function logOutFunc() {
@@ -375,10 +379,15 @@
 
     function checkCartItems() {
         var ItemsInCart = JSON.parse(sessionStorage.getItem('Items'));
-        if(isLogin != true) {
-            alert('You have to sign in/up first!');
+        if (isLogin != true) {
+            swal({
+                title: "Error",
+                text: "You must be logged in to buy",
+                icon: "error",
+                button: "OK",
+            });
             return false;
-        } else if(ItemsInCart == null) {
+        } else if (ItemsInCart == null) {
             return false;
         } else
             return true;

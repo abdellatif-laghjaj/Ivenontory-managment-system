@@ -8,6 +8,7 @@ $_SESSION['orders'] = "<script>sessionStorage.getItem('Items');</script>";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../res/img/logo.svg">
     <title>TexGear - Payment Checkout</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
             integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
@@ -237,20 +238,27 @@ $_SESSION['orders'] = "<script>sessionStorage.getItem('Items');</script>";
                         <div class="content">
                             <ul class="card_box">
                                 <li class="number"><input type="text" placeholder="1234 5678 1234 5678" maxlength="16"
-                                                          onkeypress="return onlyNumberKey(event)" id="card-number-input"/>
+                                                          onkeypress="return onlyNumberKey(event)"
+                                                          id="card-number-input"
+                                                          name="card_number"/>
                                 </li>
                                 <li class="expiration" id="expiration-input">
                                     <ul>
                                         <li id="month"><input type="text" placeholder="MM" maxlength="2"
-                                                              onkeypress="return onlyNumberKey(event)" id="month-input"/>
+                                                              onkeypress="return onlyNumberKey(event)"
+                                                              id="month-input"
+                                                              name="card_month"/>
                                         </li>
                                         <li id="separator">/</li>
                                         <li id="year"><input type="text" placeholder="YYYY" maxlength="4"
-                                                             onkeypress="return onlyNumberKey(event)" id="year-input"/></li>
+                                                             onkeypress="return onlyNumberKey(event)" id="year-input"
+                                                             name="card_year"/>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="cvc"><input type="text" placeholder="123" maxlength="3"
-                                                       onkeypress="return onlyNumberKey(event)" id="cvv-input"/></li>
+                                                       onkeypress="return onlyNumberKey(event)" id="cvv-input"
+                                                       name="card_cvv"/></li>
                             </ul>
                         </div>
                         <div style="display: none;">
@@ -259,7 +267,8 @@ $_SESSION['orders'] = "<script>sessionStorage.getItem('Items');</script>";
                         <div class="footer">
                             <ul class="bar_tool">
                                 <li class="cancel"><a href="index.php">Cancel</a></li>
-                                <li><input type="submit" class="ui_btn b_lg b_primary" name="Checkout" value="Checkout" /></li>
+                                <li><input type="submit" class="ui_btn b_lg b_primary" name="Checkout"
+                                           value="Checkout"/></li>
                             </ul>
                         </div>
                     </div>
@@ -273,34 +282,6 @@ $_SESSION['orders'] = "<script>sessionStorage.getItem('Items');</script>";
 </div>
 <script src="../js/PaymentCard.js"></script>
 <script>
-
-    const check_out_btn = document.querySelector('.ui_btn');
-
-    check_out_btn.addEventListener('click', function () {
-
-        const errorSound = new Audio('../res/sounds/errorSound.wav');
-
-        const card_number_input = document.querySelector('#card-number-input').value;
-        const month_input = document.querySelector('#month-input').value;
-        const year_input = document.querySelector('#year-input').value;
-        const cvv_input = document.querySelector('#cvv-input').value;
-
-        if (card_number_input === '' || month_input === '' || year_input === '' || cvv_input === '') {
-            launch_toast();
-            errorSound.play();
-        } else {
-            window.location.href = 'payment_success.php';
-        }
-    })
-
-    function launch_toast() {
-        const x = document.getElementById("toast");
-        x.className = "show";
-        setTimeout(function () {
-            x.className = x.className.replace("show", "");
-        }, 3000);
-    }
-
     //send data to payment_success.php
     const text = document.getElementById('orders');
     text.innerHTML = sessionStorage.getItem("Items");
