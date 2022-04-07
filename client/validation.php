@@ -23,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $checkPasswordResult = mysqli_query($con, $checkPasswordQuery);
                 $user_data = mysqli_fetch_assoc($checkPasswordResult);
 
-                if (password_verify($password, $user_data['password'])) {
+                $decodedPassword = base64_decode($user_data['password']);
+
+                if ($password == $decodedPassword) {
                     $_SESSION = $user_data;
                     header("location: ../pages/index.php");
                     die();

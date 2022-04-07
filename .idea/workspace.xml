@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters" />
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/details.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/diff-details.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/diff.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/diff.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/diff.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/results.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/results.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.VSCodeCounter/2022-04-06_01-16-33/results.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/img/ufo_empty_cart.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/addToCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/addToCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/contact.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
@@ -142,7 +161,7 @@
       <workItem from="1648761091593" duration="49470000" />
       <workItem from="1648980397667" duration="4934000" />
       <workItem from="1648989965282" duration="40232000" />
-      <workItem from="1649149463235" duration="15071000" />
+      <workItem from="1649149463235" duration="21318000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>

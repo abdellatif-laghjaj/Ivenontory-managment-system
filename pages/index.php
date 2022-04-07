@@ -197,6 +197,7 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
         var products = [];
         var product = [];
     </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         body {
             background-color: rgba(255, 255, 255, 0.95);
@@ -381,7 +382,7 @@ if (isset($_SESSION['customerID'])) {
                     echo $full_name;
                     ?></h1>' +
                 '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
+                '<button id="log-out" class="" style="width: 100px;" onclick="logout">Log out</button>'
             ;
         } else {
             banner.innerHTML =
@@ -472,6 +473,8 @@ if (isset($_SESSION['customerID'])) {
         </div>
     </div>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script language="JavaScript">
         function displayProducts() {
             <?php loadProducts($con, $loadQuery); ?>
@@ -506,8 +509,10 @@ if (isset($_SESSION['customerID'])) {
                         '</div>';
                 }
                 products_box.innerHTML = products_inner_html;
+                loadPagingButtons(<?php echo $productsToShow; ?>);
+            } else {
+                products_box.innerHTML = '<div style="width: 100%; height: 600px; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif" ></div>';
             }
-            loadPagingButtons(<?php echo $productsToShow; ?>);
         }
 
         displayProducts();
@@ -603,6 +608,23 @@ if (isset($_SESSION['customerID'])) {
             setParmeters();
             document.forms["reload"].submit();
         })
+    }
+
+    function logout() {
+        swal({
+            title: "Are you sure?",
+            text: "You will be logged out!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "../client/logOut.php";
+                } else {
+                    swal("Keep on working Admin!");
+                }
+            });
     }
 </script>
 </body>

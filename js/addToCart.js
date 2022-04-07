@@ -124,7 +124,7 @@ function loadCartElements() {
     if (cartContent.length === 0) {
         updateTotalPrice();
         updateBadge();
-        cartBody.innerHTML = '<img src="../res/img/empty_cart.png" alt="loading" style="width: 80px; margin-top: 20px; margin-left: 80px;">';
+        cartBody.innerHTML = '<div style="width: 100%; height: 375px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 370px;" src="../res/img/ufo_empty_cart.gif" ></div>';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
             data += '<tr>' +
@@ -256,10 +256,10 @@ function loadCartElements() {
 window.onload = function () {
     if (JSON.parse(sessionStorage.getItem("Items")) !== null) {
         cartItems = JSON.parse(sessionStorage.getItem("Items"));
-        loadCartElements();
         updateTotalPrice();
         updateBadge();
     }
+    loadCartElements();
 }
 
 function Delete(element) {

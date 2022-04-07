@@ -21,7 +21,7 @@
             if ($rows >= 1) {
                 header("location: ../pages/");
             } else {
-                $hash = password_hash($password, PASSWORD_DEFAULT);
+                $hash = base64_encode($password);
                 $insertQuery = "INSERT INTO `customer` (`customerID`, `full_name`, `userName`, `password`, `addresse`, `email`, `phone`) VALUES (NULL, '$full_name', '$username', '$hash', '$adresse', '$email', '$phone')";
                 mysqli_query($con, $insertQuery);
                 $_SESSION = mysqli_fetch_assoc($searchResult);
