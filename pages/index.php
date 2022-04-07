@@ -65,53 +65,53 @@ if ($isSearching) {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
         }
     } else {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0 AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
         }
     }
 } else {
@@ -120,54 +120,54 @@ if ($isSearching) {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "')";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "')";
         }
 
     } else {
         if ($isSorting) {
             switch ($sort_by) {
                 case 1:
-                    $loadQuery = "SELECT * FROM product ORDER BY sale_price DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY sale_price DESC";
                     break;
 
                 case 2:
-                    $loadQuery = "SELECT * FROM product ORDER BY sale_price ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY sale_price ASC";
                     break;
 
                 case 3:
-                    $loadQuery = "SELECT * FROM product ORDER BY add_date DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY add_date DESC";
                     break;
 
                 case 4:
-                    $loadQuery = "SELECT * FROM product ORDER BY add_date ASC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY add_date ASC";
                     break;
 
                 case 5:
-                    $loadQuery = "SELECT * FROM product ORDER BY sales DESC";
+                    $loadQuery = "SELECT * FROM product WHERE stock > 0 ORDER BY sales DESC";
                     break;
             }
         } else {
-            $loadQuery = "SELECT * FROM product";
+            $loadQuery = "SELECT * FROM product WHERE stock > 0";
         }
     }
 }
