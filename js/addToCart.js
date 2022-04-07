@@ -51,7 +51,12 @@ window.addEventListener("DOMContentLoaded", (evt) => {
                     //check if the product is not out of stock
                     if (exist(product).quantity >= exist(product).stock) {
                         errorSound.play();
-                        alert('product out of stock');
+                        swal({
+                            title: "Error",
+                            text: "This product is out of stock",
+                            icon: "error",
+                            button: "Ok",
+                        });
                     } else {
                         exist(product).quantity += 1;
                         exist(product).price = exist(product).basePrice * exist(product).quantity;
@@ -124,7 +129,7 @@ function loadCartElements() {
     if (cartContent.length === 0) {
         updateTotalPrice();
         updateBadge();
-        cartBody.innerHTML = '<img src="../res/img/empty_cart.png" alt="loading" style="width: 80px; margin-top: 20px; margin-left: 80px;">';
+        cartBody.innerHTML = '<div style="width: 100%; height: 320px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 370px;" src="../res/img/ufo_empty_cart.gif" ></div>';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
             data += '<tr>' +
@@ -183,7 +188,12 @@ function loadCartElements() {
                     updateTotalPrice();
                     updateBadge();
                     errorSound.play();
-                    alert('product out of stock');
+                    swal({
+                        title: "Error!",
+                        text: "You can't buy more than " + productsInStock + " items!",
+                        icon: "error",
+                        button: "OK",
+                    });
                 }
             })
         }
@@ -217,7 +227,12 @@ function loadCartElements() {
                     updateTotalPrice();
                     updateBadge();
                     errorSound.play();
-                    alert('product out of stock');
+                    swal({
+                        title: "Error!",
+                        text: "You can't buy more than " + productsInStock + " items!",
+                        icon: "error",
+                        button: "OK",
+                    });
                 }
             })
         }
@@ -259,10 +274,10 @@ function loadCartElements() {
 window.onload = function () {
     if (JSON.parse(sessionStorage.getItem("Items")) !== null) {
         cartItems = JSON.parse(sessionStorage.getItem("Items"));
-        loadCartElements();
         updateTotalPrice();
         updateBadge();
     }
+    loadCartElements();
 }
 
 function Delete(element) {
@@ -281,4 +296,21 @@ function onlyNumberKey(event) {
     var ASCIIcode = (event.wich) ? event.wich : event.keyCode;
     if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57)) return false;
     return true;
+}
+
+//hide pop-up when click outside
+const overlays = document.getElementsByClassName('overlay');
+const PopupsContent = document.getElementsByClassName('pop-content');
+
+for (var i = 0; i < PopupsContent.length; i++) {
+    PopupsContent[i].addEventListener("click", e => {
+        e.stopPropagation();
+    })
+}
+
+for (var i = 0; i < overlays.length; i++) {
+    overlays[i].addEventListener("click", e => {
+        var currentPopUp = e.target.parentElement;
+        currentPopUp.classList.add("hidden");
+    })
 }

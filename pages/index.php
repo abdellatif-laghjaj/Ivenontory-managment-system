@@ -2,12 +2,179 @@
 session_start();
 include '../db/connection.php';
 include '../client/functions.php';
+//loading parameters
+$isSearching = false;
+$isFiltering = false;
+$isSorting = false;
+$sortDefaultValue = 1;
+$filterDefaultValue = 0;
+$pagingDefaultValue = 1;
+$perPageDefaultValue = 8;
 
-$user_data = null;
+//content parameters
+$searchQuery = "";
+$nbProductsInPage = $perPageDefaultValue;
+$currentPage = $pagingDefaultValue;
+$sort_by = $sortDefaultValue;
+$filter_by = $filterDefaultValue;
+$totalProducts = mysqli_num_rows(mysqli_query($con, "SELECT * FROM product WHERE stock > 0"));
+$productsToShow = $totalProducts;
 
-if (isset($_SESSION['customerID'])) {
-    $user_data = $_SESSION;
+if (isset($_GET["page"])) {
+    if (($_GET["page"] > 0) || (!empty($_GET["page"]))) {
+        $currentPage = $_GET["page"];
+    }
 }
+
+if (isset($_GET["search"])) {
+    if (!empty($_GET["search"])) {
+        $isSearching = true;
+        $searchQuery = $_GET["search"];
+    }
+}
+
+if (isset($_GET["filter_by"])) {
+    if (($_GET["filter_by"] != 0) || (!empty($_GET["filter_by"]))) {
+        $isFiltering = true;
+        $filter_by = $_GET['filter_by'];
+    }
+}
+
+if (isset($_GET["sort_by"])) {
+    if (!empty($_GET["sort_by"])) {
+        $isSorting = true;
+        $sort_by = $_GET['sort_by'];
+    }
+}
+
+if (isset($_GET["per_page"])) {
+    if (($_GET["per_page"] != 0) || (!empty($_GET["per_page"])))
+        $nbProductsInPage = $_GET["per_page"];
+}
+
+$loadQuery = "SELECT * FROM product WHERE stock > 0";
+
+//content parameters
+$nbPages = ceil($totalProducts / $nbProductsInPage);
+$bound = ($currentPage - 1) * $nbProductsInPage;
+
+if ($isSearching) {
+    $search = $searchQuery;
+    if ($isFiltering) {
+        $filter = $filter_by;
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+        }
+    } else {
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product WHERE ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%'))";
+        }
+    }
+} else {
+    if ($isFiltering) {
+        $filter = $filter_by;
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "') ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product WHERE (category = '" . $filter . "')";
+        }
+
+    } else {
+        if ($isSorting) {
+            switch ($sort_by) {
+                case 1:
+                    $loadQuery = "SELECT * FROM product ORDER BY sale_price DESC";
+                    break;
+
+                case 2:
+                    $loadQuery = "SELECT * FROM product ORDER BY sale_price ASC";
+                    break;
+
+                case 3:
+                    $loadQuery = "SELECT * FROM product ORDER BY add_date DESC";
+                    break;
+
+                case 4:
+                    $loadQuery = "SELECT * FROM product ORDER BY add_date ASC";
+                    break;
+
+                case 5:
+                    $loadQuery = "SELECT * FROM product ORDER BY sales DESC";
+                    break;
+            }
+        } else {
+            $loadQuery = "SELECT * FROM product";
+        }
+    }
+}
+
+$productsToShow = mysqli_num_rows(mysqli_query($con, $loadQuery));
+
+$loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
 
 ?>
 <!DOCTYPE html>
@@ -20,13 +187,16 @@ if (isset($_SESSION['customerID'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/index.css">
     <title>TexGear</title>
-    <?php
-    echo "<script language='JavaScript'>var products = [];\n var product = [];\n filterOpt = false; sortOpt = false</script>";
-    ?>
+    <script language='JavaScript'>
+        var products = [];
+        var product = [];
+    </script>
     <style>
         body {
             background-color: rgba(255, 255, 255, 0.95);
@@ -81,15 +251,20 @@ if (isset($_SESSION['customerID'])) {
         }
 
         main .banner {
-            background-image: linear-gradient(68.4deg, rgba(99, 251, 215, 1) -0.4%, rgba(5, 222, 250, 1) 100.2%);
+            background-image: linear-gradient( 135deg, #52bfe7 10%, #130CB7 100%);
         }
 
-        @media only screen and (max-width: 650px) {
-            main .banner h1 {
-                font-size: 24px;
-            }
+        .form-select-sm {
+            margin: 6px 0;
         }
 
+        .pop-up .cart-pop .pop-content{
+            min-width: 400px;
+        }
+
+        .removeBtn .fa-trash{
+            margin: 0 12px;
+        }
 
         @keyframes gradient {
             0% {
@@ -147,21 +322,49 @@ if (isset($_SESSION['customerID'])) {
             color: #fff;
         }
 
-        #log-in, #register {
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+        main .banner #log-in {
+            background-color: #dc3545;
             margin-right: 12px;
-            transition: all 0.3s ease-in-out;
         }
 
-        #log-in:hover, #register:hover {
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
-            transform: translateY(-1px);
+        @media only screen and (max-width: 600px) {
+            main .banner h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media only screen and (min-width: 600px) {
+            main .banner h1 {
+                font-size: 40px;
+            }
+        }
+
+        .pop-up .register-pop .pop-content form .field {
+            margin: 0 20px;
+        }
+
+        .field .button {
+            margin-top: 6px;
         }
     </style>
 
 </head>
 <body>
+<?php
 
+$full_name = "";
+
+if (isset($_SESSION['customerID'])) {
+    $full_name = $_SESSION['full_name'];
+    echo '<script defer>
+        isLogin = true;
+ </script>';
+} else {
+    echo '<script defer>
+          isLogin = false; 
+ </script>';
+}
+?>
 <!-- bootstrap navbar  -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg bg-dark">
@@ -170,7 +373,7 @@ if (isset($_SESSION['customerID'])) {
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="#" class="logo navbar-brand fw-bold"><span>Tex</span><span style="color: #28C7FA">GEAR</span></a>
+        <a href="index.php" class="logo navbar-brand fw-bold"><span>Tex</span><span style="color: #28C7FA">GEAR</span></a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -205,19 +408,112 @@ if (isset($_SESSION['customerID'])) {
 
 <main>
     <div class="banner" id="banner">
-        <h1 class="">Welcome to TexGEAR: E-commerce web app</h1>
-        <p class="">Enjoy a safe, convenient shopping experience</p>
-        <button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login</button>
-        <button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register</button>
-    </div>
 
+    </div>
+    <script defer>
+        const banner = document.getElementById('banner');
+        if (isLogin == true) {
+            banner.innerHTML =
+                '<h1 class="">Welcome <?php
+                    echo $full_name;
+                    ?></h1>' +
+                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '<button id="log-out" class="" style="width: 120px; background-color: red;">Log out</button>'
+            ;
+        } else {
+            banner.innerHTML =
+                '<h1 class="">Welcome to TexGEAR: E-commerce web app</h1>' +
+                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '<button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login <i class="fa fa-sign-in" style="margin-left: 4px; font-size: 18px;"></i></button>' +
+                '<button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register<i class="fa fa-user-plus" style="margin-left: 4px;"></i></button>'
+            ;
+        }
+
+    </script>
     <?php include '../client/categories_dropdown.php'; ?>
 
-    <div class="categories" id="categories">
+    <div class="products">
+        <div class="categories" id="categories"></div>
+        <div class="pages">
+            <form id="pages">
+                <style>
+                    #slider {
+                        margin: 2em auto;
+                        width: 100%;
+                        overflow: hidden;
+                    }
 
+                    #slider-nav {
+                        margin: 1em 0;
+                        text-align: center;
+                    }
+
+                    #slider-nav label {
+                        display: inline-block;
+                        width: 2em;
+                        height: 2em;
+                        border: 1px solid #ccc;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #000;
+                        display: inline-block;
+                        line-height: 2;
+                        margin: 0.5em;
+                    }
+
+                    #slider-nav label:hover {
+                        cursor: pointer;
+                    }
+
+                    #slider-nav input[type="radio"] {
+                        display: none;
+                    }
+
+                    #slider-nav input[type="radio"]:checked + label {
+                        border-color: #307cff;
+                        color: white;
+                        background-color: #59adff;
+                    }
+                </style>
+                <div id="slider">
+                    <div id="slider-nav"></div>
+                </div>
+                <script>
+                    function loadPagingButtons(totalProducts) {
+                        var pages_form = document.getElementById('pages');
+                        var slider_nav = document.getElementById('slider-nav');
+                        var nbProductsInPage = <?php echo $nbProductsInPage; ?>;
+                        var nbPages = Math.ceil(totalProducts / nbProductsInPage);
+                        var currPage = <?php echo $currentPage; ?>;
+                        var buttons = "";
+
+                        if (nbPages > 1) {
+                            for (let i = 0; i < nbPages; i++) {
+                                if (i == currPage - 1) {
+                                    buttons += '<input type="radio" class="pages_radios" name="page" id="' + (i + 1) + '" value="' + (i + 1) + '" checked>' +
+                                        '<label for="' + (i + 1) + '" class="page_link">' + (i + 1) + '</label>'
+                                    ;
+                                } else {
+                                    buttons += '<input type="radio" class="pages_radios" name="page" id="' + (i + 1) + '" value="' + (i + 1) + '">' +
+                                        '<label for="' + (i + 1) + '" class="page_link">' + (i + 1) + '</label>'
+                                    ;
+                                }
+                            }
+                        }
+
+                        slider_nav.innerHTML = buttons;
+
+                    }
+                </script>
+            </form>
+        </div>
     </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/sweetalert.js"></script>
     <script language="JavaScript">
-        function displayProducts(products) {
+        function displayProducts() {
+            <?php loadProducts($con, $loadQuery); ?>
             const products_box = document.getElementById("categories");
             var products_inner_html = "";
             if (products.length > 0) {
@@ -246,97 +542,26 @@ if (isset($_SESSION['customerID'])) {
                         '           <img src="../res/img/cart.ico" alt="">' +
                         '       </button>' +
                         '   </div>' +
-                        '</div> ';
+                        '</div>';
                 }
                 products_box.innerHTML = products_inner_html;
-            }
-        }
-
-        function loadProducts(filterOpt, sortOpt) {
-            if (!filterOpt && !sortOpt) {
-                <?php
-                $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`category` ASC";
-                loadProducts($con, $query);
-                ?>
-                displayProducts(products);
-            } else if (!filterOpt) {
-                switch (sortOpt) {
-                    case 1 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-
-                    case 2 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-
-                    case 3 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-
-                    case 4 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-                }
-                displayProducts(products);
-            } else if (!sortOpt) {
-                var category_name = categories[filterOpt - 1];
-                var productsAfterFilter = products.filter(product => {
-                    return (product[5].localeCompare(category_name) === 0);
-                });
-                displayProducts(productsAfterFilter);
+                loadPagingButtons(<?php echo $productsToShow; ?>);
             } else {
-                switch (sortOpt) {
-                    case 1 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price` DESC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-
-                    case 2 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`sale_price`  ASC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-
-                    case 3 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` DESC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-
-                    case 4 :
-                    <?php
-                    $query = "SELECT * FROM `product` WHERE `stock` > 0 ORDER BY `product`.`add_date` ASC";
-                    loadProducts($con, $query);
-                    ?>
-                        break;
-                }
-                var category_name = categories[filterOpt - 1];
-                var productsAfterFilter = products.filter(product => {
-                    return (product[5].localeCompare(category_name) === 0);
-                });
-                displayProducts(productsAfterFilter);
+                products_box.innerHTML = '<div style="width: 100%; height: 600px; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif" ></div>';
             }
         }
 
-        loadProducts();
+        displayProducts();
     </script>
 </main>
+
+<form action="index.php" id="reload" method="get" style="display: none;">
+    <input type="number" id="per_page_hidden" name="per_page" value="<?php echo $nbProductsInPage; ?>">
+    <input type="number" id="page_h" name="page" value="<?php echo $currentPage; ?>>">
+    <input type="number" id="sort_by_h" name="sort_by" value="<?php echo $sort_by; ?>">
+    <input type="text" id="filter_by_h" name="filter_by" value="<?php echo $filter_by; ?>">
+    <input type="search" id="search_h" name="search" value="<?php echo $searchQuery; ?>">
+</form>
 
 <!-- ALL POP UPS MODALS -->
 <?php include '../client/pop_ups.php' ?>
@@ -344,35 +569,105 @@ if (isset($_SESSION['customerID'])) {
 <?php include 'footer.php' ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/addToCart.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script language="JavaScript">
-    function logedInBanner() {
-        const banner = document.getElementById('banner');
-        banner.innerHTML =
-            '<h1 class="">Welcome <?php
-                if ($user_data !== null)
-                    echo $user_data['full_name'];
-                else
-                    echo "NULL";
-                ?></h1>' +
-            '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-            '<button id="log-out" class="" style="width: 100px;" onclick="showLogOut()">Log out</button>'
-        ;
-    }
 
     function showLogOut() {
         document.getElementById("log-out-pop").classList.toggle("hidden");
     }
 
+    var hidden_form = document.forms["reload"];
+
+    var per_page_hidden = document.getElementById("per_page_hidden");
+    var page_hidden = document.getElementById("page_h");
+    var sort_hidden = document.getElementById("sort_by_h");
+    var filter_hidden = document.getElementById("filter_by_h");
+    var search_hidden = document.getElementById("search_h");
+
+    const category_menu = document.getElementById('categories_list');
+    var sort_menu = document.getElementById("sort_selector");
+    var per_page_menu = document.getElementById("per_page_selector");
+
+    function setParmeters() {
+        filter_hidden.value = category_menu.value;
+        sort_hidden.value = sort_menu.value;
+        per_page_hidden.value = per_page_menu.value;
+    }
+
+    //submit search value
+    const searchButton = document.getElementById('search-button');
+    const searchBar = document.getElementById('search-input');
+    searchButton.onclick = function (e) {
+        e.preventDefault();
+        search_hidden.value = searchBar.value
+        document.forms["reload"].submit();
+    }
+
+    //submit filter value
+    const category_link = document.getElementsByClassName("category_option");
+
+    for (let i = 0; i < category_link.length; i++) {
+        category_link[i].addEventListener("click", function (evt) {
+            setParmeters();
+            document.forms["reload"].submit();
+        })
+    }
+
+    //submit sort value
+    const sort_link = document.getElementsByClassName("sort_option");
+
+    for (let i = 0; i < sort_link.length; i++) {
+        sort_link[i].addEventListener("click", function (evt) {
+            setParmeters();
+            document.forms["reload"].submit();
+        })
+    }
+
+    //submit page number
+    var slider_nav = document.getElementById('slider-nav');
+    var pages_links = slider_nav.querySelectorAll('label');
+    var pages_radios = document.getElementsByClassName('pages_radios');
+
+    for (let i = 0; i < pages_links.length; i++) {
+        pages_links[i].setAttribute('index', i);
+        pages_links[i].addEventListener("click", function (e) {
+            var index = pages_links[i].getAttribute('index')
+            pages_radios[index].checked = true;
+            page_hidden.value = pages_radios[index].value;
+            document.forms["reload"].submit();
+        })
+    }
+
+    //submit per page value
+    const per_page_link = document.getElementsByClassName("per_page_option");
+
+    for (let i = 0; i < per_page_link.length; i++) {
+        per_page_link[i].addEventListener("click", function (evt) {
+            setParmeters();
+            document.forms["reload"].submit();
+        })
+    }
+
+    //logout button
+    const logout_button = document.getElementById('log-out');
+    logout_button.addEventListener("click", logout);
+
+    function logout() {
+        swal({
+            title: "Are you sure?",
+            text: "You will be logged out",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "../client/logOut.php";
+                } else {
+                    swal("Enjoy a great shopping experience!");
+                }
+            });
+    }
 </script>
-<?php
-if ($user_data !== null) {
-    echo
-    '
-                <script type="text/JavaScript">
-                    logedInBanner();
-                </script>
-            ';
-}
-?>
 </body>
 </html>

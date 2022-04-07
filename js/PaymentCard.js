@@ -5,9 +5,19 @@ window.addEventListener("DOMContentLoaded", evt => {
     var cartContent = JSON.parse(sessionStorage.getItem('Items'));
     if (cartContent !== null) {
         for (var i = 0; i < cartContent.length; i++) {
-            data += '<li>' + '<figure class="prod_img">' + '<img src="' + cartContent[i].image + '" style="height: 60px; width: 60px"/>' + '</figure>' + '<div class="quantity">' + cartContent[i].quantity + '</div>' + '<div class="prod_info">' + '<div class="name">' + cartContent[i].name + '</div>' + '<div class="price">' + Intl.NumberFormat('en-US', {
-                style: "currency", currency: "USD"
-            }).format(cartContent[i].basePrice) + '</div>' + '</div>' + '</li>';
+            data += '<li>' +
+                '<figure class="prod_img">' +
+                '<img src="' + cartContent[i].image + '" style="height: 60px; width: 60px"/>' +
+                '</figure>' +
+                '<div class="quantity">' + cartContent[i].quantity + '</div>' +
+                '<div class="prod_info">' +
+                '<div class="name">' + cartContent[i].name + '</div>' +
+                '<div class="price">' + Intl.NumberFormat('en-US', {
+                    style: "currency",
+                    currency: "USD"
+                }).format(cartContent[i].basePrice) + '</div>' +
+                '</div>' +
+                '</li>';
         }
         ordersList.innerHTML = data;
         TotalPrice();
@@ -21,9 +31,9 @@ function TotalPrice() {
         totalPrice += cartContent[k].price;
     }
     document.getElementById('total_price').querySelector("dd").innerHTML = Intl.NumberFormat('en-US', {
-        style: "currency", currency: "USD"
+        style: "currency",
+        currency: "USD"
     }).format(totalPrice);
-    //document.getElementById('total_price').querySelector("dt").innerHTML = 'Total';
 }
 
 /*************************************************************************/
@@ -294,6 +304,7 @@ yearInput.addEventListener("keyup", function (e) {
 //force inputs to accept integer values only
 function onlyNumberKey(event) {
     var ASCIIcode = (event.wich) ? event.wich : event.keyCode;
-    if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57)) return false;
+    if (ASCIIcode > 31 && (ASCIIcode < 48 || ASCIIcode > 57))
+        return false;
     return true;
 }

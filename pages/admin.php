@@ -427,22 +427,18 @@ $earningsTotal = 139;
                                     <td style="color: #292929; font-weight: bold">Product Name : &#160;</td>
                                     <td class="namep">${this.children[2].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Category : </td>
                                     <td class="categp">${this.children[3].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Quantity : </td>
                                     <td class="qntp">${this.children[4].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Buy Price : </td>
                                     <td>$${this.children[5].textContent}</td>
                                 </tr>
-
                                 <tr class="product-row">
                                     <td style="color: #292929; font-weight: bold">Sale Price : </td>
                                     <td class="pricep">$${this.children[6].textContent}</td>

@@ -181,9 +181,9 @@
                 <form name="login" onsubmit="return checkLoginForm()" action="../client/validation.php" method="post">
                     <legend>
                         <span>Login</span>
-                        <button onclick="showLogin()">
+                        <a onclick="showLogin()">
                             <img src="../res/img/close.png">
-                        </button>
+                        </a>
                     </legend>
                     <div class="field">
                         <label>Username</label>
@@ -209,12 +209,12 @@
                     <legend>
                         <span>LogOut</span>
                         <a onclick="showLogOut()">
-                            <img src="../res/img/close.png"  style="cursor: pointer;">
+                            <img src="../res/img/close.png" style="cursor: pointer;">
                         </a>
                     </legend>
                     <label>Are you sure you want log out?</label>
                     <div class="field">
-                        <input type="submit" onclick="clearSessionStorage()" value="LOG OUT" class="button">
+                        <input type="submit" onclick="logOutFunc()" value="LOG OUT" class="button">
                         <input type="reset" onclick="showLogOut()" value="CANCEL" class="button">
                     </div>
                 </form>
@@ -226,40 +226,43 @@
     <div id="register-pop" class="register-pop hidden">
         <div class="overlay">
             <div class="pop-content">
-                <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php" method="post">
+                <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php"
+                      method="post">
                     <legend>
                         <span>Register</span>
-                        <button onclick="showRegistration()">
+                        <a onclick="showRegistration()">
                             <img src="../res/img/close.png">
-                        </button>
+                        </a>
                     </legend>
-                    <div class="field">
-                        <label>Full name</label>
-                        <input type="text" placeholder="Full name" name="full_name">
-                    </div>
-                    <div class="field">
-                        <label>Username</label>
-                        <input type="text" placeholder="username" name="username">
-                    </div>
-                    <div class="field">
-                        <label>Phone</label>
-                        <input type="tel" placeholder="Phone" name="phone">
-                    </div>
-                    <div class="field">
-                        <label>Email</label>
-                        <input type="Email" placeholder="Email" name="email">
-                    </div>
-                    <div class="field">
-                        <label>Adresse</label>
-                        <input type="text" placeholder="Adresse" name="adresse">
-                    </div>
-                    <div class="field">
-                        <label>Password</label>
-                        <input type="password" placeholder="Password" name="password">
-                    </div>
-                    <div class="field">
-                        <label>Confirm password</label>
-                        <input type="password" placeholder="Confirm password" name="confirm_password">
+                    <div class="fbody">
+                        <div class="field">
+                            <label>Full name</label>
+                            <input type="text" placeholder="Full name" name="full_name">
+                        </div>
+                        <div class="field">
+                            <label>Username</label>
+                            <input type="text" placeholder="username" name="username">
+                        </div>
+                        <div class="field">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="Phone" name="phone">
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="Email" placeholder="Email" name="email">
+                        </div>
+                        <div class="field">
+                            <label>Adresse</label>
+                            <input type="text" placeholder="Adresse" name="adresse">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" placeholder="Password" name="password">
+                        </div>
+                        <div class="field">
+                            <label>Confirm password</label>
+                            <input type="password" placeholder="Confirm password" name="confirm_password">
+                        </div>
                     </div>
                     <div class="field">
                         <input type="submit" value="REGISTER" class="button">
@@ -277,11 +280,11 @@
                     <h5 class="fw-bold" id="">
                         Your Shopping Cart
                     </h5>
-                    <button class="closebtn" onclick="showCart()">
+                    <a class="closebtn" onclick="showCart()">
                         <img src="../res/img/close.png">
-                    </button>
+                    </a>
                 </legend>
-                <form action="../pages/payment.php">
+                <form action="../pages/payment.php" onsubmit="return checkCartItems()">
                     <div id="total-price">
                         <span>total :</span>
                         <input class="total-input-cart" type="text" name="total" value="0" disabled>
@@ -312,10 +315,10 @@
         if ((full_name === "") || (username === "") || (password === "") || (confirm_password === "") || (adresse === "") || (email === "") || (phone === "")) {
             launch_toast();
             return false;
-        } else if(Array.from(password).length < 6) {
+        } else if (Array.from(password).length < 6) {
             passwordLessThan6();
             return false;
-        } else if(password !== confirm_password) {
+        } else if (password !== confirm_password) {
             passwordDontMatch();
             return false;
         } else {
@@ -335,38 +338,59 @@
     }
 
     function launch_toast() {
-        const x = document.getElementById("toast");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Please fill all the fields",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function usernameAlreadyTaken() {
-        const x = document.getElementById("toast4");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Username already taken",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function passwordLessThan6() {
-        const x = document.getElementById("toast2");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Password must be at least 6 characters",
+            icon: "error",
+            button: "OK",
+        });
     }
 
     function passwordDontMatch() {
-        const x = document.getElementById("toast3");
-        x.classList.toggle("show");
-        setTimeout(function () {
-            x.classList.toggle("show");
-        }, 3000);
+        swal({
+            title: "Error",
+            text: "Passwords don't match",
+            icon: "error",
+            button: "OK",
+        });
     }
 
-    function clearSessionStorage() {
+    function logOutFunc() {
         sessionStorage.clear();
     }
+
+    function checkCartItems() {
+        var ItemsInCart = JSON.parse(sessionStorage.getItem('Items'));
+        if (isLogin != true) {
+            swal({
+                title: "Error",
+                text: "You must be logged in to buy",
+                icon: "error",
+                button: "OK",
+            });
+            return false;
+        } else if (ItemsInCart == null) {
+            return false;
+        } else
+            return true;
+    }
+
 </script>

@@ -55,21 +55,25 @@
     <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/generate_pdf.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -88,7 +92,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -96,6 +100,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\IMS\js" />
       <recent name="C:\xampp\htdocs\IMS\res\img" />
     </key>
   </component>
@@ -133,19 +138,14 @@
       <workItem from="1648315179144" duration="45833000" />
       <workItem from="1648483910383" duration="2164000" />
       <workItem from="1648496000943" duration="556000" />
-      <workItem from="1648540271575" duration="13715000" />
-      <workItem from="1648586425194" duration="6993000" />
-      <workItem from="1648671450885" duration="2627000" />
-      <workItem from="1648758088736" duration="119000" />
-      <workItem from="1648758239294" duration="7224000" />
-      <workItem from="1648814592072" duration="3094000" />
-      <workItem from="1648847468286" duration="7739000" />
-      <workItem from="1648855778412" duration="4061000" />
-      <workItem from="1648914830549" duration="2386000" />
-      <workItem from="1648919764072" duration="623000" />
-      <workItem from="1648926926777" duration="3262000" />
-      <workItem from="1648937168264" duration="3016000" />
-      <workItem from="1648977917419" duration="624000" />
+      <workItem from="1648540271575" duration="15911000" />
+      <workItem from="1648586203909" duration="650000" />
+      <workItem from="1648587134264" duration="26935000" />
+      <workItem from="1648761091593" duration="49470000" />
+      <workItem from="1648980397667" duration="4934000" />
+      <workItem from="1648989965282" duration="40232000" />
+      <workItem from="1649149463235" duration="21318000" />
+      <workItem from="1649340578006" duration="10735000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
