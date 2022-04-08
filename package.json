@@ -4,6 +4,7 @@
     "mysql": "^2.18.1",
     "postmark": "^3.0.1",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.4.7"
+    "sweetalert2": "^11.4.7",
+    "zooming": "^2.1.1"
   }
 }

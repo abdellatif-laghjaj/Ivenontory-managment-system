@@ -251,18 +251,18 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
         }
 
         main .banner {
-            background-image: linear-gradient( 135deg, #52bfe7 10%, #130CB7 100%);
+            background-image: linear-gradient(135deg, #52bfe7 10%, #130CB7 100%);
         }
 
         .form-select-sm {
             margin: 6px 0;
         }
 
-        .pop-up .cart-pop .pop-content{
+        .pop-up .cart-pop .pop-content {
             min-width: 400px;
         }
 
-        .removeBtn .fa-trash{
+        .removeBtn .fa-trash {
             margin: 0 12px;
         }
 
@@ -373,7 +373,8 @@ if (isset($_SESSION['customerID'])) {
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="index.php" class="logo navbar-brand fw-bold"><span>Tex</span><span style="color: #28C7FA">GEAR</span></a>
+        <a href="index.php" class="logo navbar-brand fw-bold"><span>Tex</span><span
+                    style="color: #28C7FA">GEAR</span></a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -668,6 +669,8 @@ if (isset($_SESSION['customerID'])) {
                 }
             });
     }
+
+    //view product details
 </script>
 </body>
 </html>

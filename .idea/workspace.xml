@@ -13,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -56,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
@@ -146,6 +147,11 @@
       <workItem from="1648989965282" duration="40232000" />
       <workItem from="1649149463235" duration="21318000" />
       <workItem from="1649340578006" duration="11825000" />
+      <workItem from="1649353032419" duration="32000" />
+      <workItem from="1649369882333" duration="6278000" />
+      <workItem from="1649407805543" duration="1267000" />
+      <workItem from="1649436683212" duration="1702000" />
+      <workItem from="1649438695407" duration="37000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
