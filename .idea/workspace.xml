@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
-      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
-    </list>
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -54,28 +52,29 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -148,7 +147,11 @@
       <workItem from="1648989965282" duration="40232000" />
       <workItem from="1649149463235" duration="21318000" />
       <workItem from="1649340578006" duration="11825000" />
-      <workItem from="1649364019142" duration="215000" />
+      <workItem from="1649353032419" duration="32000" />
+      <workItem from="1649369882333" duration="6278000" />
+      <workItem from="1649407805543" duration="1267000" />
+      <workItem from="1649436683212" duration="1702000" />
+      <workItem from="1649438695407" duration="37000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
