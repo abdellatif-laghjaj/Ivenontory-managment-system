@@ -29,7 +29,7 @@ if (isset($_GET["page"])) {
 if (isset($_GET["search"])) {
     if (!empty($_GET["search"])) {
         $isSearching = true;
-        $searchQuery = $_GET["search"];
+        $searchQuery = addslashes($_GET["search"]);
     }
 }
 
@@ -518,6 +518,8 @@ if (isset($_SESSION['customerID'])) {
             var products_inner_html = "";
             if (products.length > 0) {
                 for (var i = 0; i < products.length; i++) {
+                    var product_description = products[i][6];
+                    if (product_description.length > 60) product_description = product_description.substring(0, 57) ;
                     products_inner_html +=
                         '<!-- PRODUCT CARD -->' +
                         '<div class="products shadow-lg mb-5 bg-body rounded">' +
@@ -527,7 +529,9 @@ if (isset($_SESSION['customerID'])) {
                         '       </div>' +
                         '       <h1 class="product-name">' + products[i][0] +
                         '       </h1>' +
-                        '       <p>Here\'s some description...</p>' +
+                        '       <div class="description" style="width: 220px; height: 48px;">' +
+                        '       ' + product_description +
+                        '       </div>' +
                         '       <div class="product-price">' +
                         '           <span class="txt">Price : </span><span class="txt" id="base-price"' +
                         '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {
