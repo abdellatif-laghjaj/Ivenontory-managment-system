@@ -357,33 +357,43 @@
         var phone = document.register.phone.value;
 
         var full_name_ex = /^[a-zA-Z ]+$/;
-        var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]+${6,}/;
+        var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]{6,}$/;
         var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
         var email_ex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})/;
         var phone_ex = /^[+]?[(]?[0-9]{1,4}[)]?[+]?[0-9]{6,10}$/;
 
+        console.log("check start");
+
         if (full_name_ex.test(full_name) != false) {
+            console.log("check full_name");
             document.getElementById("full_name").classList.replace("input", "error");
             return false;
         } else if (username_password_ex.test(username) != false) {
+            console.log("check start");
             document.getElementById("username").classList.replace("input", "error");
             return false;
         } else if (username_password_ex.test(password) != false) {
+            console.log("check password");
             document.getElementById("password").classList.replace("input", "error");
             return false;
-        } else if (adresse_ex.test(adress) != false) {
+        } else if (adresse_ex.test(adresse) != false) {
+            console.log("check adresse");
             document.getElementById("adresse").classList.replace("input", "error");
             return false;
         } else if (email_ex.test(email) != false) {
+            console.log("check email");
             document.getElementById("email").classList.replace("input", "error");
             return false;
         } else if (phone_ex.test(phone) != false) {
+            console.log("check phone");
             document.getElementById("phone").classList.replace("input", "error");
             return false;
         } else if (password !== confirm_password) {
+            console.log("check confirm_password");
             document.getElementById("confirm_password").classList.replace("input", "error");
             return false;
         } else {
+            console.log("check end");
             return true;
         }
     }

@@ -30,8 +30,7 @@ $product_category = $row['category'];
 
     @font-face {
         font-family: 'cairo';
-        src: url('../res/fonts/Cairo.ttf')
-        format('ttf');
+        src: url('../res/fonts/Cairo.ttf') format('ttf');
     }
 
     * {
