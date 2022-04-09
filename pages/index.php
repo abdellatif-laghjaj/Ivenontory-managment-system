@@ -520,7 +520,14 @@ if (isset($_SESSION['customerID'])) {
             if (products.length > 0) {
                 for (var i = 0; i < products.length; i++) {
                     var product_description = products[i][6];
-                    if (product_description.length > 60) product_description = product_description.substring(0, 57) ;
+                    if (product_description.length >= 45) {
+                        product_description = product_description.substring(0, 45);
+                        product_description = product_description + ".. " + '<a href="view_product.php?id=' + products[i][4] + '">read more</a>';
+                    } else if(product_description.length > 0 && product_description.length < 45) {
+                        product_description = product_description + ' <a href="view_product.php?id=' + products[i][4] + '">read more</a>';
+                    } else {
+                        product_description = '<a href="view_product.php?id=' + products[i][4] + '">read more</a>';
+                    }
                     products_inner_html +=
                         '<!-- PRODUCT CARD -->' +
                         '<div class="products shadow-lg mb-5 bg-body rounded">' +
@@ -562,10 +569,10 @@ if (isset($_SESSION['customerID'])) {
 
 <form action="index.php" id="reload" method="get" style="display: none;">
     <input type="number" id="per_page_hidden" name="per_page" value="<?php echo $nbProductsInPage; ?>">
-    <input type="number" id="page_h" name="page" value="<?php echo $currentPage; ?>>">
+    <input type="number" id="page_h" name="page" value="<?php echo $currentPage; ?>">
     <input type="number" id="sort_by_h" name="sort_by" value="<?php echo $sort_by; ?>">
     <input type="text" id="filter_by_h" name="filter_by" value="<?php echo $filter_by; ?>">
-    <input type="search" id="search_h" name="search" value="<?php echo $searchQuery; ?>">
+    <input type="search" id="search_h" name="search">
 </form>
 
 <!-- ALL POP UPS MODALS -->
@@ -604,7 +611,7 @@ if (isset($_SESSION['customerID'])) {
     const searchBar = document.getElementById('search-input');
     searchButton.onclick = function (e) {
         e.preventDefault();
-        search_hidden.value = searchBar.value
+        search_hidden.value = searchBar.value;
         document.forms["reload"].submit();
     }
 
@@ -645,7 +652,6 @@ if (isset($_SESSION['customerID'])) {
 
     //submit per page value
     const per_page_link = document.getElementsByClassName("per_page_option");
-
     for (let i = 0; i < per_page_link.length; i++) {
         per_page_link[i].addEventListener("click", function (evt) {
             setParmeters();

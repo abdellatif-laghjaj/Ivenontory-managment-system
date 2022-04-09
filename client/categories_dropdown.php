@@ -196,7 +196,7 @@ if (mysqli_num_rows($result) > 0) {
 <script language="JavaScript">
 
     //live search
-    $("#search").keyup(function () {
+    $("#search-input").keyup(function () {
         $.ajax({
             type: "GET",
             url: '../client/search.php',
@@ -204,6 +204,7 @@ if (mysqli_num_rows($result) > 0) {
                 search: $("#search").val(),
             },
             success: function (data) {
+                console.log(data);
                 $("#search-results").html(data);
             },
             error: function () {

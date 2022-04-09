@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/addToCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/addToCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/categories_dropdown.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/categories_dropdown.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pop_ups.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/pop_ups.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/view_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/view_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
   </component>
@@ -149,6 +154,9 @@
       <workItem from="1648980397667" duration="4934000" />
       <workItem from="1648989965282" duration="40232000" />
       <workItem from="1649149463235" duration="21318000" />
+      <workItem from="1649451672574" duration="13245000" />
+      <workItem from="1649494780349" duration="344000" />
+      <workItem from="1649496235579" duration="4368000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>

@@ -27,6 +27,13 @@ $product_category = $row['category'];
     <link rel="stylesheet" href="../style/select_text.css"/>
 </head>
 <style>
+
+    @font-face {
+        font-family: 'cairo';
+        src: url('../res/fonts/Cairo.ttf')
+        format('ttf');
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -159,7 +166,7 @@ $product_category = $row['category'];
                 </p>
             </div>
         </div>
-        <button class="btn" onclick="goBack()"><i class="fa fa-arrow-left"></i>Back Home</button>
+        <button class="btn" onclick="history.back()"><i class="fa fa-arrow-left"></i>Back Home</button>
     </div>
 </div>
 <script src="../node_modules/zooming/build/zooming.min.js"></script>

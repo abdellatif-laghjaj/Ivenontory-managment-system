@@ -235,33 +235,76 @@
                         </a>
                     </legend>
                     <div class="fbody">
+                        <style>
+                            .pop-up .register-pop .pop-content form .field .input {
+                                display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                            }
+
+                            .pop-up .register-pop .pop-content form .field .error {
+                                display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                                animation: shake 0.2s ease-in-out 0s 2;
+                                box-shadow: 0 0 0.5rem red;
+                            }
+
+                            @keyframes shake {
+                                0% { margin-left: 0rem; }
+                                25% { margin-left: 0.5rem; }
+                                75% { margin-left: -0.5rem; }
+                                100% { margin-left: 0rem; }
+                            }
+
+                            .pop-up .register-pop .pop-content form .field .input:focus {
+                                outline: none;
+                                border: 1px solid #007bff;
+                            }
+                        </style>
                         <div class="field">
                             <label>Full name</label>
-                            <input type="text" placeholder="Full name" name="full_name">
+                            <input type="text" class="input" placeholder="Full name" name="full_name" id="full_name" onchange="removeError('full_name');">
                         </div>
                         <div class="field">
                             <label>Username</label>
-                            <input type="text" placeholder="username" name="username">
+                            <input type="text" class="input" placeholder="username" name="username" id="username" onchange="removeError('username');">
                         </div>
                         <div class="field">
                             <label>Phone</label>
-                            <input type="tel" placeholder="Phone" name="phone">
+                            <input type="tel" class="input" placeholder="Phone" name="phone" id="phone" onchange="removeError('phone');">
                         </div>
                         <div class="field">
                             <label>Email</label>
-                            <input type="Email" placeholder="Email" name="email">
+                            <input type="Email" class="input" placeholder="Email" name="email" id="email" onchange="removeError('email');">
                         </div>
                         <div class="field">
                             <label>Adresse</label>
-                            <input type="text" placeholder="Adresse" name="adresse">
+                            <input type="text" class="input" placeholder="Adresse" name="adresse" id="adresse" onchange="removeError('adresse');">
                         </div>
                         <div class="field">
                             <label>Password</label>
-                            <input type="password" placeholder="Password" name="password">
+                            <input type="password" class="input" placeholder="Password" name="password" id="password" onchange="removeError('password');">
                         </div>
                         <div class="field">
                             <label>Confirm password</label>
-                            <input type="password" placeholder="Confirm password" name="confirm_password">
+                            <input type="password" class="input" placeholder="Confirm password" name="confirm_password" id="confirm_password" onchange="removeError('confirm_password');">
                         </div>
                     </div>
                     <div class="field">
@@ -312,14 +355,33 @@
         var adresse = document.register.adresse.value;
         var email = document.register.email.value;
         var phone = document.register.phone.value;
-        if ((full_name === "") || (username === "") || (password === "") || (confirm_password === "") || (adresse === "") || (email === "") || (phone === "")) {
-            launch_toast();
+
+        var full_name_ex = /^[a-zA-Z ]+$/;
+        var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]+${6,}/;
+        var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
+        var email_ex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})/;
+        var phone_ex = /^[+]?[(]?[0-9]{1,4}[)]?[+]?[0-9]{6,10}$/;
+
+        if (full_name_ex.test(full_name) != false) {
+            document.getElementById("full_name").classList.replace("input", "error");
             return false;
-        } else if (Array.from(password).length < 6) {
-            passwordLessThan6();
+        } else if (username_password_ex.test(username) != false) {
+            document.getElementById("username").classList.replace("input", "error");
+            return false;
+        } else if (username_password_ex.test(password) != false) {
+            document.getElementById("password").classList.replace("input", "error");
+            return false;
+        } else if (adresse_ex.test(adress) != false) {
+            document.getElementById("adresse").classList.replace("input", "error");
+            return false;
+        } else if (email_ex.test(email) != false) {
+            document.getElementById("email").classList.replace("input", "error");
+            return false;
+        } else if (phone_ex.test(phone) != false) {
+            document.getElementById("phone").classList.replace("input", "error");
             return false;
         } else if (password !== confirm_password) {
-            passwordDontMatch();
+            document.getElementById("confirm_password").classList.replace("input", "error");
             return false;
         } else {
             return true;
@@ -393,4 +455,7 @@
             return true;
     }
 
+    function removeError(inputId) {
+        document.getElementById(inputId).classList.replace("error", "input");
+    }
 </script>

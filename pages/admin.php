@@ -324,7 +324,7 @@ $earningsTotal = 139;
         <div class="card earnings">
             <img src="../res/img/dollar.png" alt="box icon">
             <div class="info">
-                <h3>$ <?php echo $total_earnings ?></h3>
+                <h3>$ <?php echo number_format($total_earnings) ?></h3>
                 <p>Earnings</p>
             </div>
         </div>
