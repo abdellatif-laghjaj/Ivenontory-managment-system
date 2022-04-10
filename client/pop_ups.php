@@ -59,6 +59,7 @@
             bottom: 0;
             opacity: 0;
         }
+
         to {
             bottom: 30px;
             opacity: 1;
@@ -70,6 +71,7 @@
             bottom: 0;
             opacity: 0;
         }
+
         to {
             bottom: 30px;
             opacity: 1;
@@ -80,6 +82,7 @@
         from {
             min-width: 50px
         }
+
         to {
             min-width: 350px
         }
@@ -89,6 +92,7 @@
         from {
             min-width: 50px
         }
+
         to {
             min-width: 350px
         }
@@ -98,6 +102,7 @@
         from {
             min-width: 350px
         }
+
         to {
             min-width: 350px
         }
@@ -107,6 +112,7 @@
         from {
             min-width: 350px
         }
+
         to {
             min-width: 350px
         }
@@ -116,6 +122,7 @@
         from {
             min-width: 350px;
         }
+
         to {
             min-width: 50px;
         }
@@ -125,6 +132,7 @@
         from {
             min-width: 350px;
         }
+
         to {
             min-width: 50px;
         }
@@ -135,6 +143,7 @@
             bottom: 30px;
             opacity: 1;
         }
+
         to {
             bottom: 60px;
             opacity: 0;
@@ -146,6 +155,7 @@
             bottom: 30px;
             opacity: 1;
         }
+
         to {
             bottom: 60px;
             opacity: 0;
@@ -226,8 +236,7 @@
     <div id="register-pop" class="register-pop hidden">
         <div class="overlay">
             <div class="pop-content">
-                <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php"
-                      method="post">
+                <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php" method="post">
                     <legend>
                         <span>Register</span>
                         <a onclick="showRegistration()">
@@ -267,10 +276,21 @@
                             }
 
                             @keyframes shake {
-                                0% { margin-left: 0rem; }
-                                25% { margin-left: 0.5rem; }
-                                75% { margin-left: -0.5rem; }
-                                100% { margin-left: 0rem; }
+                                0% {
+                                    margin-left: 0rem;
+                                }
+
+                                25% {
+                                    margin-left: 0.5rem;
+                                }
+
+                                75% {
+                                    margin-left: -0.5rem;
+                                }
+
+                                100% {
+                                    margin-left: 0rem;
+                                }
                             }
 
                             .pop-up .register-pop .pop-content form .field .input:focus {
@@ -356,7 +376,7 @@
         var email = document.register.email.value;
         var phone = document.register.phone.value;
 
-        var full_name_ex = /^[a-zA-Z ]+$/;
+        var full_name_ex = /^[a-zA-Z]+$/;
         var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]{6,}$/;
         var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
         var email_ex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})/;
@@ -364,33 +384,34 @@
 
         console.log("check start");
 
-        if (full_name_ex.test(full_name) != false) {
-            console.log("check full_name");
+        //check if full name match with regex
+        if (!full_name.match(full_name_ex)) {
+            console.log("full name not match");
             document.getElementById("full_name").classList.replace("input", "error");
             return false;
-        } else if (username_password_ex.test(username) != false) {
-            console.log("check start");
+        } else if (!username.match(username_password_ex)) {
+            console.log("username not match");
             document.getElementById("username").classList.replace("input", "error");
             return false;
-        } else if (username_password_ex.test(password) != false) {
-            console.log("check password");
+        } else if (!password.match(username_password_ex)) {
+            console.log("password not match");
             document.getElementById("password").classList.replace("input", "error");
             return false;
-        } else if (adresse_ex.test(adresse) != false) {
-            console.log("check adresse");
+        } else if (password != confirm_password) {
+            console.log("password not match");
+            document.getElementById("confirm_password").classList.replace("input", "error");
+            return false;
+        } else if (!adresse.match(adresse_ex)) {
+            console.log("adresse not match");
             document.getElementById("adresse").classList.replace("input", "error");
             return false;
-        } else if (email_ex.test(email) != false) {
-            console.log("check email");
+        } else if (!email.match(email_ex)) {
+            console.log("email not match");
             document.getElementById("email").classList.replace("input", "error");
             return false;
-        } else if (phone_ex.test(phone) != false) {
-            console.log("check phone");
+        } else if (!phone.match(phone_ex)) {
+            console.log("phone not match");
             document.getElementById("phone").classList.replace("input", "error");
-            return false;
-        } else if (password !== confirm_password) {
-            console.log("check confirm_password");
-            document.getElementById("confirm_password").classList.replace("input", "error");
             return false;
         } else {
             console.log("check end");
@@ -467,5 +488,14 @@
 
     function removeError(inputId) {
         document.getElementById(inputId).classList.replace("error", "input");
+    }
+
+    function showSweetAlert(title, text, icon) {
+        swal({
+            title: title,
+            text: text,
+            icon: icon,
+            button: "OK",
+        });
     }
 </script>
