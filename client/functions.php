@@ -3,8 +3,6 @@
 function loadProducts($con, $query)
 {
 
-    echo 'console.log("query is => ' . $query . '");';
-
     echo '
                 products = [];
                 product = [];
