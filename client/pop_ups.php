@@ -349,7 +349,7 @@
     function usernameAlreadyTaken() {
         swal({
             title: "Error",
-            text: "Username already taken",
+            text: "Username already taken !",
             icon: "error",
             button: "OK",
         });
