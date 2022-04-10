@@ -356,7 +356,7 @@
         var email = document.register.email.value;
         var phone = document.register.phone.value;
 
-        var full_name_ex = /^[a-zA-Z ]+$/;
+        var full_name_ex = /^[a-zA-Z ]{2,30}$/;
         var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]{6,}$/;
         var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
         var email_ex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})/;
@@ -364,35 +364,35 @@
 
         console.log("check start");
 
-        if (full_name_ex.test(full_name) != false) {
+        if (!full_name.match(full_name_ex)) {
             console.log("check full_name");
             document.getElementById("full_name").classList.replace("input", "error");
             return false;
-        } else if (username_password_ex.test(username) != false) {
-            console.log("check start");
+        }else if (!username.match(username_password_ex)) {
+            console.log("check username");
             document.getElementById("username").classList.replace("input", "error");
             return false;
-        } else if (username_password_ex.test(password) != false) {
+        }else if (!password.match(username_password_ex)) {
             console.log("check password");
             document.getElementById("password").classList.replace("input", "error");
             return false;
-        } else if (adresse_ex.test(adresse) != false) {
-            console.log("check adresse");
-            document.getElementById("adresse").classList.replace("input", "error");
-            return false;
-        } else if (email_ex.test(email) != false) {
-            console.log("check email");
-            document.getElementById("email").classList.replace("input", "error");
-            return false;
-        } else if (phone_ex.test(phone) != false) {
-            console.log("check phone");
-            document.getElementById("phone").classList.replace("input", "error");
-            return false;
-        } else if (password !== confirm_password) {
+        }else if (!confirm_password.match(username_password_ex)) {
             console.log("check confirm_password");
             document.getElementById("confirm_password").classList.replace("input", "error");
             return false;
-        } else {
+        }else if (!adresse.match(adresse_ex)) {
+            console.log("check adresse");
+            document.getElementById("adresse").classList.replace("input", "error");
+            return false;
+        }else if (!email.match(email_ex)) {
+            console.log("check email");
+            document.getElementById("email").classList.replace("input", "error");
+            return false;
+        }else if (!phone.match(phone_ex)) {
+            console.log("check phone");
+            document.getElementById("phone").classList.replace("input", "error");
+            return false;
+        }else {
             console.log("check end");
             return true;
         }
