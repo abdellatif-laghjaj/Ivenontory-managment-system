@@ -670,7 +670,7 @@ if (isset($_SESSION['customerID'])) {
             });
     }
 
-    //view product details
+    //view the product details
 </script>
 </body>
 </html>
