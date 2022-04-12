@@ -258,7 +258,6 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
 
         main .banner {
             background-image: linear-gradient(135deg, #52bfe7 10%, #130CB7 100%);
-            max-height: 500px;
             display: flex;
         }
 
@@ -275,6 +274,12 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
         }
 
         @media all and (min-width: 1024px) {
+            main .banner {
+                background-image: linear-gradient(135deg, #52bfe7 10%, #130CB7 100%);
+                max-height: 500px;
+                display: flex;
+            }
+            
             main .banner .content {
                 position: relative;
             }
