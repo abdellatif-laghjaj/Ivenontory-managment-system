@@ -20,6 +20,7 @@ if (isset($_POST['Checkout'])) {
         <head>
             <title>Error</title>
             <link rel="icon" href="../res/img/logo.svg">
+            <link rel="stylesheet" href="../style/select_text.css">
         </head>
         <body style="font-family: Cairo;">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -35,7 +36,7 @@ if (isset($_POST['Checkout'])) {
                 if (willDelete) {
                     window.location.href = "../pages/payment.php";
                 } else {
-                    swal("Please try again!");
+                    window.location.href = "../pages/payment.php";
                 }
             });
 </script>
@@ -84,6 +85,7 @@ if (isset($_POST['Checkout'])) {
                               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
                         <link rel="icon" href="../res/img/logo.svg">
+                        <link rel="stylesheet" href="../style/select_text.css">
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
                                 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
                         <title>Payment succes</title>

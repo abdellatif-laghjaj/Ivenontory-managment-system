@@ -96,18 +96,18 @@ while ($row = mysqli_fetch_array($run_december)) {
 //################################################################
 
 //get total earnings of each month
-$january = "SELECT earning FROM sale WHERE MONTH(sale_date) = 1";
-$february = "SELECT earning FROM sale WHERE MONTH(sale_date) = 2";
-$march = "SELECT earning FROM sale WHERE MONTH(sale_date) = 3";
-$april = "SELECT earning FROM sale WHERE MONTH(sale_date) = 4";
-$may = "SELECT earning FROM sale WHERE MONTH(sale_date) = 5";
-$june = "SELECT earning FROM sale WHERE MONTH(sale_date) = 6";
-$july = "SELECT earning FROM sale WHERE MONTH(sale_date) = 7";
-$august = "SELECT earning FROM sale WHERE MONTH(sale_date) = 8";
-$september = "SELECT earning FROM sale WHERE MONTH(sale_date) = 9";
-$october = "SELECT earning FROM sale WHERE MONTH(sale_date) = 10";
-$november = "SELECT earning FROM sale WHERE MONTH(sale_date) = 11";
-$december = "SELECT earning FROM sale WHERE MONTH(sale_date) = 12";
+$january = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 1";
+$february = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 2";
+$march = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 3";
+$april = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 4";
+$may = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 5";
+$june = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 6";
+$july = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 7";
+$august = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 8";
+$september = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 9";
+$october = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 10";
+$november = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 11";
+$december = "SELECT SUM(earning) earning FROM sale WHERE MONTH(sale_date) = 12";
 
 $run_january = mysqli_query($con, $january);
 $run_february = mysqli_query($con, $february);

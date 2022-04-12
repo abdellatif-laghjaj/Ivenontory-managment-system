@@ -3,9 +3,56 @@
   <component name="ChangeListManager">
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/charts.php" beforeDir="false" afterPath="$PROJECT_DIR$/js/charts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/js/content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment_success.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/remove_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/remove_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reset_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reset_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/update_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/update_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/verification.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/view_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/view_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/01_QN55S95BAFXZA_013_L-Perspective2_Space-Carbon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/1648817079.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/31DJln+KBhL._AC_SY780_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41LkRMOxAuL._AC_SY1000_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41Uqi+l3EiL._AC_SY580_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41XhQ6BpejS._AC_SY580_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41k4HIVgojL._AC_SY780_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41uD2Df0lwL._AC_SY1000_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41x6M8sd69L._AC_SY580_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/41y0yqZPU8L._AC_SY400_[1].jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/5335569.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/Asus Laptop Gaming-i7 11370H.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/IPhone 11 Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/IPhone 13 Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/IPhone 13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/Motospeed CK62.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/Royal Kludge RK G-87 Mechanical Keyboard.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/S22U-Recommendation-Card-400x300_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/Samsung 50 inch Smart TV 4K.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/Samsung Galaxy S22 ultra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/Visio TV 32 Inch HD.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/c07983243.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/frame-gal_001_Front1_Black.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_34.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_38.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_39.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_40.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_41.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_42.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_43.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img_44.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/zenitsu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/⇣≡   Personagens de….jpg" beforePathEscaped="$PROJECT_DIR$/uploads/⇣≡ 𝘈𝘕𝘐𝘔𝘌 𝘐𝘊𝘖𝘕𝘚 Personagens de….jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,30 +104,30 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/services.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/services.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -155,6 +202,11 @@
       <workItem from="1649494780349" duration="344000" />
       <workItem from="1649496235579" duration="11167000" />
       <workItem from="1649589918991" duration="6556000" />
+      <workItem from="1649676317835" duration="74000" />
+      <workItem from="1649755049550" duration="723000" />
+      <workItem from="1649755919679" duration="661000" />
+      <workItem from="1649778627556" duration="40000" />
+      <workItem from="1649778696606" duration="362000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
