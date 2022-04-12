@@ -236,7 +236,8 @@
     <div id="register-pop" class="register-pop hidden">
         <div class="overlay">
             <div class="pop-content">
-                <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php" method="post">
+                <form name="register" onsubmit="return checkRegistrationForm()" action="../client/registration.php"
+                      method="post">
                     <legend>
                         <span>Register</span>
                         <a onclick="showRegistration()">
@@ -300,31 +301,38 @@
                         </style>
                         <div class="field">
                             <label>Full name</label>
-                            <input type="text" class="input" placeholder="Full name" name="full_name" id="full_name" onchange="removeError('full_name');">
+                            <input type="text" class="input" placeholder="Full name" name="full_name" id="full_name"
+                                   onchange="removeError('full_name');">
                         </div>
                         <div class="field">
                             <label>Username</label>
-                            <input type="text" class="input" placeholder="username" name="username" id="username" onchange="removeError('username');">
+                            <input type="text" class="input" placeholder="username" name="username" id="username"
+                                   onchange="removeError('username');">
                         </div>
                         <div class="field">
                             <label>Phone</label>
-                            <input type="tel" class="input" placeholder="Phone" name="phone" id="phone" onchange="removeError('phone');">
+                            <input type="tel" class="input" placeholder="Phone" name="phone" id="phone"
+                                   onchange="removeError('phone');">
                         </div>
                         <div class="field">
                             <label>Email</label>
-                            <input type="Email" class="input" placeholder="Email" name="email" id="email" onchange="removeError('email');">
+                            <input type="Email" class="input" placeholder="Email" name="email" id="email"
+                                   onchange="removeError('email');">
                         </div>
                         <div class="field">
                             <label>Adresse</label>
-                            <input type="text" class="input" placeholder="Adresse" name="adresse" id="adresse" onchange="removeError('adresse');">
+                            <input type="text" class="input" placeholder="Adresse" name="adresse" id="adresse"
+                                   onchange="removeError('adresse');">
                         </div>
                         <div class="field">
                             <label>Password</label>
-                            <input type="password" class="input" placeholder="Password" name="password" id="password" onchange="removeError('password');">
+                            <input type="password" class="input" placeholder="Password" name="password" id="password"
+                                   onchange="removeError('password');">
                         </div>
                         <div class="field">
                             <label>Confirm password</label>
-                            <input type="password" class="input" placeholder="Confirm password" name="confirm_password" id="confirm_password" onchange="removeError('confirm_password');">
+                            <input type="password" class="input" placeholder="Confirm password" name="confirm_password"
+                                   id="confirm_password" onchange="removeError('confirm_password');">
                         </div>
                     </div>
                     <div class="field">
@@ -376,7 +384,8 @@
         var email = document.register.email.value;
         var phone = document.register.phone.value;
 
-        var full_name_ex = /^[a-zA-Z]+$/;
+        //full name regex
+        var full_name_ex = /^[a-zA-Z ]{2,30}$/;
         var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]{6,}$/;
         var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
         var email_ex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})/;

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="add some products to database">
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="fix some cards bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pop_ups.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/pop_ups.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/validation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649779573208</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix some cards bugs">
+      <created>1649784534304</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1649784534304</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +365,7 @@
     <MESSAGE value="fix footer issue" />
     <MESSAGE value="add some products to databse" />
     <MESSAGE value="add some products to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="add some products to database" />
+    <MESSAGE value="fix some cards bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some cards bugs" />
   </component>
 </project>
