@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/services.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +152,7 @@
       <workItem from="1649451672574" duration="13245000" />
       <workItem from="1649494780349" duration="344000" />
       <workItem from="1649496235579" duration="11167000" />
-      <workItem from="1649589918991" duration="6556000" />
+      <workItem from="1649589918991" duration="8347000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
