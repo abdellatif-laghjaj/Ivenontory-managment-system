@@ -1,15 +1,15 @@
 <?php
-
 function loadProducts($con, $query)
 {
 
-    echo '
+    echo "
                 products = [];
                 product = [];
-      ';
+      ";
 
-    if ($result = mysqli_query($con, $query)) {
-        if (mysqli_num_rows($result) > 0) {
+    try {
+        $result = mysqli_query($con, $query);
+        if (mysqli_num_rows($result) > 0 && $result) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $product_name = addslashes($row["name"]); // 0
                 $product_stock = addslashes($row["stock"]); // 1
@@ -23,8 +23,9 @@ function loadProducts($con, $query)
                 echo "            products.push(product);\n            product = [];\n";
             }
         }
-    }
 
-    echo "\n";
+        echo "\n";
+    } catch (Exception $e) {
+    }
 
 }

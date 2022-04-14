@@ -652,8 +652,8 @@ if (isset($_SESSION['customerID'])) {
                 }
                 products_box.innerHTML = products_inner_html;
                 loadPagingButtons(<?php echo $productsToShow; ?>);
-            } else {
-                products_box.innerHTML = '<div style="width: 100%; height: 600px; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif" ></div>';
+            } else if (products.length == 0) {
+                products_box.innerHTML = '<div style="width: 100%; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif"></div>';
             }
         }
 
