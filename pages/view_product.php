@@ -136,11 +136,11 @@ $product_category = $row['category'];
         <h1><?php echo $product_name ?></h1>
         <div class="container__text__star">
             <!-- you can add this class="fa fa-star-o checked" to span -->
-            <span>&#9734;</span>
-            <span>&#9734;</span>
-            <span>&#9734;</span>
-            <span>&#9734;</span>
-            <span>&#9734;</span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
         </div>
         <p>
             <?php echo $product_description ?>
