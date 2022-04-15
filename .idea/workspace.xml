@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="fix some bugs in functions.php">
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/comments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/database_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/database_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/remove_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/remove_product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/view_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/view_product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +72,7 @@
     <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/comments.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
@@ -152,7 +156,9 @@
       <workItem from="1649943707285" duration="6528000" />
       <workItem from="1649950397504" duration="670000" />
       <workItem from="1649952229417" duration="3055000" />
-      <workItem from="1649974940006" duration="3289000" />
+      <workItem from="1649974940006" duration="9491000" />
+      <workItem from="1650015798462" duration="8171000" />
+      <workItem from="1650029231692" duration="3703000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -357,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649949559777</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="add dark mode to admin page">
+      <created>1649978270605</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1649978270605</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,6 +400,7 @@
     <MESSAGE value="fix some cards bugs" />
     <MESSAGE value="fix some bugs related to regex" />
     <MESSAGE value="fix some bugs in functions.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs in functions.php" />
+    <MESSAGE value="add dark mode to admin page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dark mode to admin page" />
   </component>
 </project>
