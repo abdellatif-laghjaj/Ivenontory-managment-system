@@ -5,6 +5,7 @@ $comment_body = "";
 $customer_id = "";
 $product_id = "";
 
+
 if (isset($_SESSION['customerID'])) {
     $comment_body = $_GET['comment_body'];
     $customer_id = $_SESSION['customerID'];
@@ -26,13 +27,13 @@ if (empty($comment_body)) {
 </script > ';
 } else {
     //insert comment
-    $sql = "INSERT INTO comment (comment_body, customer_id, product_id, comment_likes) VALUES ('$comment_body', '$customer_id' , '$product_id', 0)";
+    $sql = "INSERT INTO comment (comment_body, customer_id, product_id) VALUES ('$comment_body', '$customer_id' , '$product_id')";
     $result = mysqli_query($con, $sql);
     if ($result) {
         header("Location: view_product.php?id=$product_id");
     } else {
         echo ' <script>
-        window . location . href = "view_product.php?id=$product_id";
+        window.location.href = "view_product.php?id=$product_id";
         alert("Error" + mysqli_error($con));
     </script > ';
     }

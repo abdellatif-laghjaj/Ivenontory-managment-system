@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/comments.php" afterDir="false" />
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="customers can review th products">
+      <change afterPath="$PROJECT_DIR$/uploads/img_111.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/database_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/database_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/remove_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/remove_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/comments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/view_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/view_product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +157,8 @@
       <workItem from="1649952229417" duration="3055000" />
       <workItem from="1649974940006" duration="9491000" />
       <workItem from="1650015798462" duration="8171000" />
-      <workItem from="1650029231692" duration="3703000" />
+      <workItem from="1650029231692" duration="5314000" />
+      <workItem from="1650109918414" duration="401000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -370,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649978270605</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="customers can review th products">
+      <created>1650038492545</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1650038492545</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,6 +408,7 @@
     <MESSAGE value="fix some bugs related to regex" />
     <MESSAGE value="fix some bugs in functions.php" />
     <MESSAGE value="add dark mode to admin page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dark mode to admin page" />
+    <MESSAGE value="customers can review th products" />
+    <option name="LAST_COMMIT_MESSAGE" value="customers can review th products" />
   </component>
 </project>

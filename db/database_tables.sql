@@ -59,12 +59,11 @@ CREATE TABLE Sale
 
 CREATE TABLE comment
 (
-    comment_id    int PRIMARY KEY AUTO_INCREMENT,
-    customer_id   int,
-    product_id    int,
+    comment_id   int PRIMARY KEY AUTO_INCREMENT,
+    customer_id  int,
+    product_id   int,
     CONSTRAINT FK_CustomerC FOREIGN KEY (customer_id) REFERENCES Customer (customerID),
     CONSTRAINT FK_ProductC FOREIGN KEY (product_id) REFERENCES Product (productID),
-    comment_body  varchar(255),
-    comment_date  datetime,
-    comment_likes int
+    comment_body varchar(255),
+    comment_date datetime
 );

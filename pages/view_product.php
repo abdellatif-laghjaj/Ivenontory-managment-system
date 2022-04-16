@@ -150,7 +150,7 @@ $result_comment = mysqli_query($con, $sql_comment);
         padding: 0;
     }
 
-    section h1{
+    section h1 {
         color: #fff;
         font-size: 2rem;
         font-weight: bold;
@@ -229,13 +229,13 @@ $result_comment = mysqli_query($con, $sql_comment);
         width: 100%;
     }
 
-    .comment-section h2 {
+    .comment-section h3 {
         color: #fff;
-        padding: 12px 0;
+        padding: 8px 0;
         width: 300px;
     }
 
-    .comment-section hr{
+    .comment-section hr {
         width: 800px;
         border: 1px solid #fff;
     }
@@ -305,7 +305,6 @@ $result_comment = mysqli_query($con, $sql_comment);
             $comment_id = $row['comment_id'];
             $comment_body = $row['comment_body'];
             $comment_date = $row['comment_date'];
-            $comment_likes = $row['comment_likes'];
             $customer_id = $row['customer_id'];
 
             //get customer name from customer id
@@ -325,15 +324,6 @@ $result_comment = mysqli_query($con, $sql_comment);
                 </div>
 
                 <p>' . $comment_body . '</p>
-                <ul class="list-inline d-sm-flex my-0">
-                    <li class="list-inline-item g-mr-20">
-                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover like-btn" href="#!" isLiked="false">
-                            <ion-icon class="like-icon" name="heart-outline"></ion-icon>
-                             <span class="like-counter">' . $comment_likes . '</span>
-                             <span class="hidden-comment-id" hidden>' . $comment_id . '</span>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
@@ -344,7 +334,7 @@ $result_comment = mysqli_query($con, $sql_comment);
 
     <div class="comment-section">
         <hr>
-        <h2>Leave a comment :)</h2>
+        <h3>Leave a comment</h3>
         <form action="comments.php" method="get">
             <div class="form-group">
                 <input name="productID" value="<?php echo $product_id; ?>" hidden>
@@ -366,52 +356,6 @@ $result_comment = mysqli_query($con, $sql_comment);
     function goBack() {
         window.location.href = "index.php";
     }
-</script>
-
-<script>
-    //like buttons
-    const likeBtns = document.querySelectorAll('.like-btn');
-
-    likeBtns.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            //get like icon and counter
-            const likeIcon = e.target.querySelector('.like-icon');
-            const likeCounter = e.target.querySelector('.like-counter');
-            if (btn.getAttribute('isLiked') === 'false') {
-                likeIcon.classList.toggle('active');
-                likeCounter.innerText = parseInt(likeCounter.innerText) + 1;
-                btn.setAttribute('isLiked', 'true');
-
-                //save likes counter to local storage
-                const commentID = e.target.querySelector('.hidden-comment-id').innerText;
-                const commentLikes = parseInt(likeCounter.innerText);
-
-                const likes = [];
-                const like = {
-                    commentID: commentID,
-                    commentLikes: commentLikes
-                };
-
-                // if (localStorage.getItem('likes') === null) {
-                //     likes.push(like);
-                //     localStorage.setItem('likes', JSON.stringify(likes));
-                // } else {
-                //     const localLikes = JSON.parse(localStorage.getItem('likes'));
-                //     localLikes.push(like);
-                //     localStorage.setItem('likes', JSON.stringify(localLikes));
-                // }
-            } else if (btn.getAttribute('isLiked') === 'true') {
-                //remove like
-                e.preventDefault();
-                likeIcon.classList.toggle('active');
-                likeCounter.innerText = parseInt(likeCounter.innerText) - 1;
-                btn.setAttribute('isLiked', 'false');
-            } else {
-                alert('Something went wrong');
-            }
-        });
-    });
 </script>
 </body>
 </html>
