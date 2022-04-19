@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+=======
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="full project">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +154,7 @@
       <workItem from="1648980397667" duration="4934000" />
       <workItem from="1648989965282" duration="40232000" />
       <workItem from="1649149463235" duration="21318000" />
+<<<<<<< Updated upstream
       <workItem from="1649340578006" duration="11825000" />
       <workItem from="1649353032419" duration="32000" />
       <workItem from="1649369882333" duration="6278000" />
@@ -156,6 +162,24 @@
       <workItem from="1649436683212" duration="1702000" />
       <workItem from="1649438695407" duration="37000" />
       <workItem from="1649676423364" duration="101000" />
+=======
+      <workItem from="1649451672574" duration="13245000" />
+      <workItem from="1649494780349" duration="344000" />
+      <workItem from="1649496235579" duration="11167000" />
+      <workItem from="1649589918991" duration="6556000" />
+      <workItem from="1649943707285" duration="6528000" />
+      <workItem from="1649950397504" duration="670000" />
+      <workItem from="1649952229417" duration="3055000" />
+      <workItem from="1649974940006" duration="9491000" />
+      <workItem from="1650015798462" duration="8171000" />
+      <workItem from="1650029231692" duration="5314000" />
+      <workItem from="1650109918414" duration="401000" />
+      <workItem from="1650111316806" duration="173000" />
+      <workItem from="1650111926307" duration="707000" />
+      <workItem from="1650327060439" duration="510000" />
+      <workItem from="1650369065159" duration="1766000" />
+      <workItem from="1650373768421" duration="766000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -325,7 +349,88 @@
       <option name="project" value="LOCAL" />
       <updated>1647615626114</updated>
     </task>
+<<<<<<< Updated upstream
     <option name="localTasksCounter" value="25" />
+=======
+    <task id="LOCAL-00025" summary="add some products to database">
+      <created>1649779573208</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1649779573208</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fix some cards bugs">
+      <created>1649784534304</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1649784534304</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fix some bugs related to regex">
+      <created>1649785973515</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1649785973515</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fix some bugs in functions.php">
+      <created>1649949371566</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1649949371566</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix some bugs in functions.php">
+      <created>1649949559777</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1649949559777</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add dark mode to admin page">
+      <created>1649978270605</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1649978270605</updated>
+    </task>
+    <task id="LOCAL-00031" summary="customers can review th products">
+      <created>1650038492545</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1650038492545</updated>
+    </task>
+    <task id="LOCAL-00032" summary="customers can post comments on a product">
+      <created>1650111384024</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1650111384024</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fix banner design and finishing the project">
+      <created>1650112620186</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1650112620186</updated>
+    </task>
+    <task id="LOCAL-00034" summary="finishing the project">
+      <created>1650327505190</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1650327505190</updated>
+    </task>
+    <task id="LOCAL-00035" summary="full project">
+      <created>1650373929431</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1650373929431</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
+>>>>>>> Stashed changes
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,6 +455,21 @@
     <MESSAGE value="contact us fully functional" />
     <MESSAGE value="contact us - services section" />
     <MESSAGE value="fix footer issue" />
+<<<<<<< Updated upstream
     <option name="LAST_COMMIT_MESSAGE" value="fix footer issue" />
+=======
+    <MESSAGE value="add some products to databse" />
+    <MESSAGE value="add some products to database" />
+    <MESSAGE value="fix some cards bugs" />
+    <MESSAGE value="fix some bugs related to regex" />
+    <MESSAGE value="fix some bugs in functions.php" />
+    <MESSAGE value="add dark mode to admin page" />
+    <MESSAGE value="customers can review th products" />
+    <MESSAGE value="customers can post comments on a product" />
+    <MESSAGE value="fix banner design and finishing the project" />
+    <MESSAGE value="finishing the project" />
+    <MESSAGE value="full project" />
+    <option name="LAST_COMMIT_MESSAGE" value="full project" />
+>>>>>>> Stashed changes
   </component>
 </project>
