@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="customers can post comments on a product">
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="fix banner design and finishing the project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +157,8 @@
       <workItem from="1650029231692" duration="5314000" />
       <workItem from="1650109918414" duration="401000" />
       <workItem from="1650111316806" duration="173000" />
-      <workItem from="1650111926307" duration="646000" />
+      <workItem from="1650111926307" duration="707000" />
+      <workItem from="1650327060439" duration="424000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -383,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650111384024</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="fix banner design and finishing the project">
+      <created>1650112620186</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1650112620186</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +424,7 @@
     <MESSAGE value="add dark mode to admin page" />
     <MESSAGE value="customers can review th products" />
     <MESSAGE value="customers can post comments on a product" />
-    <option name="LAST_COMMIT_MESSAGE" value="customers can post comments on a product" />
+    <MESSAGE value="fix banner design and finishing the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix banner design and finishing the project" />
   </component>
 </project>
