@@ -12,11 +12,11 @@ echo '
 //for updating admin profile
 //###############################################################################
 if (isset($_POST['update_profile'])) {
-    $full_name = $_POST['full_name'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $phone = $_POST['phone'];
+    $full_name = htmlspecialchars($_POST['full_name']);
+    $username = htmlspecialchars($_POST['username']);
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+    $phone = htmlspecialchars($_POST['phone']);
 
     //check if the inputs are empty
     if (empty($full_name) || empty($username) || empty($email) || empty($phone) || empty($password)) {
@@ -72,7 +72,7 @@ swal({
 //for adding new category
 //###############################################################################
 if (isset($_POST['add_category'])) {
-    $category_name = $_POST['category_name'];
+    $category_name = htmlspecialchars($_POST['category_name']);
 
     //check if the inputs are empty
     if (empty($category_name)) {

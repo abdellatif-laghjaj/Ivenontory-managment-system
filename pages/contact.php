@@ -144,7 +144,7 @@
                                     </div>
                                     <div class="text pl-3">
                                         <p><span>Website</span>
-                                            <a href="https://devx1.netlify.app/"
+                                            <a href="index.php"
                                                target="_blank">TexGear.com</a>
                                         </p>
                                     </div>

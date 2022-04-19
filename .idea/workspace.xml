@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="fix banner design and finishing the project">
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="finishing the project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/js/content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +159,9 @@
       <workItem from="1650109918414" duration="401000" />
       <workItem from="1650111316806" duration="173000" />
       <workItem from="1650111926307" duration="707000" />
-      <workItem from="1650327060439" duration="424000" />
+      <workItem from="1650327060439" duration="510000" />
+      <workItem from="1650369065159" duration="1766000" />
+      <workItem from="1650373768421" duration="121000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -391,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650112620186</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="finishing the project">
+      <created>1650327505190</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1650327505190</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,6 +435,7 @@
     <MESSAGE value="customers can review th products" />
     <MESSAGE value="customers can post comments on a product" />
     <MESSAGE value="fix banner design and finishing the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix banner design and finishing the project" />
+    <MESSAGE value="finishing the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="finishing the project" />
   </component>
 </project>
