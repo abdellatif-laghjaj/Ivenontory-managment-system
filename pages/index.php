@@ -373,10 +373,15 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
             margin-right: 12px;
         }
 
+        main .banner h1 {
+            margin-top: 110px;
+        }
+
         @media only screen and (max-width: 600px) {
             main .banner h1 {
                 font-size: 30px;
                 padding: 0;
+                margin-top: 20px;
             }
         }
 
@@ -499,7 +504,7 @@ if (isset($_SESSION['customerID'])) {
         } else {
             banner.innerHTML =
                 '<div class="content">' +
-                '   <h1 class="">Welcome to TexGEAR: E-commerce web app</h1>' +
+                '   <h1 class="">Welcome to TexGEAR: Tech store</h1>' +
                 '   <p class="">Enjoy a safe, convenient shopping experience</p>' +
                 '   <div class="actionbtn">' +
                 '      <button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login <i class="fa fa-sign-in" style="margin-left: 4px; font-size: 18px;"></i></button>' +
@@ -652,8 +657,8 @@ if (isset($_SESSION['customerID'])) {
                 }
                 products_box.innerHTML = products_inner_html;
                 loadPagingButtons(<?php echo $productsToShow; ?>);
-            } else {
-                products_box.innerHTML = '<div style="width: 100%; height: 600px; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif" ></div>';
+            } else if (products.length == 0) {
+                products_box.innerHTML = '<div style="width: 100%; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif"></div>';
             }
         }
 

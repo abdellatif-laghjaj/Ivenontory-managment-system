@@ -188,6 +188,7 @@ $earningsTotal = 139;
             border-radius: 0;
             box-shadow: 0 0 0 0;
             border: 0;
+            isolation: isolate;
         }
 
         @media only screen and (max-width: 600px) {
@@ -204,6 +205,53 @@ $earningsTotal = 139;
 
         .profile-container .ActionButtons .submit {
             grid-area: auto;
+        }
+
+        /
+        /
+        style pagination buttons
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .pagination button {
+            background-color: #2e75e0;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.5rem 0.8rem;
+            font-size: 1rem;
+            margin: 0 0.2rem;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        <!--
+        keep some styles in dark mode
+
+        -->
+
+        main hr, .p-table th, .profile-container legend, .field .label {
+            isolation: isolate;
+        }
+
+        .products-container .legend, .field .label {
+            isolation: isolate;
+        }
+
+        .profile-container legend {
+            isolation: isolate;
+        }
+
+        #customers th {
+            isolation: isolate;
+        }
+
+        .reports-container .btn {
+            isolation: isolate;
         }
     </style>
 
@@ -377,9 +425,9 @@ $earningsTotal = 139;
         <?php
         if (isset($_POST['submit-search'])) {
             $search = mysqli_real_escape_string($con, $_POST['search_bar']);
-            $sql = "SELECT * FROM product WHERE CONCAT(productID, name, category, stock, sale_price, buy_price) LIKE '%$search%'";
+            $sql = "SELECT * FROM product WHERE name LIKE '%$search%' ORDER BY productID DESC";
         } else {
-            $sql = "SELECT * FROM product";
+            $sql = "SELECT * FROM product ORDER BY productID DESC";
         }
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -490,6 +538,31 @@ $earningsTotal = 139;
             });
     }
 </script>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>-->
+<!--<script>-->
+<!--    const options = {-->
+<!--        bottom: '32px', // default: '32px'-->
+<!--        right: '32px', // default: '32px'-->
+<!--        left: 'unset', // default: 'unset'-->
+<!--        time: '0.5s', // default: '0.3s'-->
+<!--        mixColor: '#fff', // default: '#fff'-->
+<!--        backgroundColor: '#fff',  // default: '#fff'-->
+<!--        buttonColorDark: '#29292f',  // default: '#100f2c'-->
+<!--        buttonColorLight: '#fff', // default: '#fff'-->
+<!--        saveInCookies: true, // default: true,-->
+<!--        label: '🌓', // default: ''-->
+<!--        autoMatchOsTheme: true // default: true-->
+<!--    }-->
+<!---->
+<!--    const darkmode = new Darkmode(options);-->
+<!---->
+<!--    function addDarkmodeWidget() {-->
+<!--        darkmode.showWidget();-->
+<!--    }-->
+<!---->
+<!--    window.addEventListener('load', addDarkmodeWidget);-->
+<!--</script>-->
 </body>
 
 </html>

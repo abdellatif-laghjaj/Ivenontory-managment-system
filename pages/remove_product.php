@@ -7,7 +7,10 @@ $id = $_GET['id'];
 $sql = "DELETE FROM product WHERE productID = '$id'";
 //set null to productID in sales table
 $sale = "UPDATE sale SET productID = NULL WHERE productID = '$id'";
+//delete comment
+$comment = "DELETE FROM comment WHERE product_id = '$id'";
 $run_sale = mysqli_query($con, $sale);
+$run_comment = mysqli_query($con, $comment);
 $result = mysqli_query($con, $sql);
 if (!$result) {
     echo "<script>
@@ -259,7 +262,7 @@ swal({
         doneText.innerText = `${progress}%`;
         if (progress >= 100) {
             doneText.innerHTML = "Done";
-            window.location.href = "admin.php";
+            window.location.href = "../pages/admin.php";
         }
     };
 
