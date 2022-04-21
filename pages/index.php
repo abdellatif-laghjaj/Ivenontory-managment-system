@@ -173,7 +173,7 @@ $productsToShow = mysqli_num_rows(mysqli_query($con, $loadQuery));
 
 $nbPages = ceil($productsToShow / $nbProductsInPage);
 
-if($currentPage > $nbPages) {
+if ($currentPage > $nbPages) {
     $currentPage = $nbPages;
 }
 
@@ -197,6 +197,7 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/select_text.css">
     <title>TexGear</title>
     <script language='JavaScript'>
         var products = [];
@@ -278,7 +279,7 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
                 max-height: 500px;
                 display: flex;
             }
-            
+
             main .banner .content {
                 position: relative;
             }
@@ -483,8 +484,8 @@ if (isset($_SESSION['customerID'])) {
             banner.innerHTML =
                 '<div class="content">' +
                 '   <h1 class="">Welcome <?php
-                        echo $full_name;
-                        ?></h1>' +
+                    echo $full_name;
+                    ?></h1>' +
                 '   <p class="">Enjoy a safe, convenient shopping experience</p>' +
                 '   <div class="actionbtn">' +
                 '       <button id="log-out" class="" style="width: 120px; background-color: red;">Log out</button>' +
@@ -601,14 +602,25 @@ if (isset($_SESSION['customerID'])) {
             var products_inner_html = "";
             if (products.length > 0) {
                 for (var i = 0; i < products.length; i++) {
+                    //format description
                     var product_description = products[i][6];
-                    if (product_description.length >= 45) {
-                        product_description = product_description.substring(0, 45);
+                    if (product_description.length >= 30) {
+                        product_description = product_description.substring(0, 30) + ".";
                         product_description = product_description + ".. " + '<a href="view_product.php?id=' + products[i][4] + '" class="read-more">read more</a>';
-                    } else if(product_description.length > 0 && product_description.length < 45) {
+                    } else if (product_description.length > 0 && product_description.length < 30) {
                         product_description = product_description + ' <a href="view_product.php?id=' + products[i][4] + '" class="read-more">read more</a>';
                     } else {
                         product_description = '<a href="view_product.php?id=' + products[i][4] + '" class="read-more">read more</a>';
+                    }
+
+                    //format product name
+                    var product_name = products[i][0];
+                    if (product_name.length > 20) {
+                        product_name = product_name.substring(0, 20) + "...";
+                    } else if (product_name.length == 0) {
+                        product_name = "No name";
+                    } else {
+                        product_name = product_name;
                     }
                     products_inner_html +=
                         '<!-- PRODUCT CARD -->' +
@@ -617,7 +629,7 @@ if (isset($_SESSION['customerID'])) {
                         '      <div class="product-image">' +
                         '           <img id="product-image" src="' + products[i][3] + '" alt="product image">' +
                         '       </div>' +
-                        '       <h1 class="product-name">' + products[i][0] +
+                        '       <h1 class="product-name">' + product_name +
                         '       </h1>' +
                         '       <div class="description" style="width: 220px; height: 48px; color: rgba(255, 255, 255, 0.6);">' +
                         '       ' + product_description +
@@ -699,12 +711,13 @@ if (isset($_SESSION['customerID'])) {
 
     //submit filter value
     const category_link = document.getElementsByClassName("category_option");
-
     for (let i = 0; i < category_link.length; i++) {
-        category_link[i].addEventListener("click", function (evt) {
+        console.log(category_link[i]);
+        category_link[i].onclick = function () {
+            console.log("sdfghjk");
             setParmeters();
             document.forms["reload"].submit();
-        })
+        }
     }
 
     //submit sort value

@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
+    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="fix some bugs related to regex">
+      <change afterPath="$PROJECT_DIR$/uploads/img_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_100.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_101.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_102.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_103.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_104.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_105.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_106.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_108.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_109.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_110.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_52.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_53.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_54.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_55.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_56.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_57.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_58.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_59.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_60.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_61.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_62.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_64.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_65.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_66.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_67.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_68.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_69.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_70.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_72.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_73.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_74.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_75.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_76.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_77.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_78.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_79.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_81.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_82.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_83.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_84.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_85.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_86.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_87.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_88.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_89.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_90.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_91.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_92.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_93.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_94.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_95.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_96.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_97.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_98.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/img_99.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pop_ups.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/pop_ups.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pop_ups2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/client/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/charts.php" beforeDir="false" afterPath="$PROJECT_DIR$/js/charts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/js/content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment_success.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/remove_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/remove_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reset_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reset_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/update_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/update_product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/verification.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/view_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/view_product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,27 +132,28 @@
     <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/services.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/res/libs/fpdf.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -152,7 +227,9 @@
       <workItem from="1649451672574" duration="13245000" />
       <workItem from="1649494780349" duration="344000" />
       <workItem from="1649496235579" duration="11167000" />
-      <workItem from="1649589918991" duration="8347000" />
+      <workItem from="1649589918991" duration="6556000" />
+      <workItem from="1649945103268" duration="3111000" />
+      <workItem from="1650290834453" duration="5478000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -322,7 +399,28 @@
       <option name="project" value="LOCAL" />
       <updated>1647615626114</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="add some products to database">
+      <created>1649779573208</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1649779573208</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fix some cards bugs">
+      <created>1649784534304</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1649784534304</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fix some bugs related to regex">
+      <created>1649785973515</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1649785973515</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,6 +445,10 @@
     <MESSAGE value="contact us fully functional" />
     <MESSAGE value="contact us - services section" />
     <MESSAGE value="fix footer issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix footer issue" />
+    <MESSAGE value="add some products to databse" />
+    <MESSAGE value="add some products to database" />
+    <MESSAGE value="fix some cards bugs" />
+    <MESSAGE value="fix some bugs related to regex" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs related to regex" />
   </component>
 </project>

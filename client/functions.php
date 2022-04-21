@@ -3,10 +3,11 @@
 function loadProducts($con, $query)
 {
 
-    echo '
+    echo "
                 products = [];
                 product = [];
-      ';
+                
+      ";
 
     if ($result = mysqli_query($con, $query)) {
         if (mysqli_num_rows($result) > 0) {

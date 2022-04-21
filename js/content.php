@@ -108,12 +108,12 @@ swal({
 $upload_dir = '../uploads/'; //upload directory
 
 if (isset($_POST['add_product'])) {
-    $product_name = $_POST['product_name'];
-    $description = $_POST['description'];
-    $product_category = $_POST['product_category'];
-    $product_quantity = $_POST['product_quantity'];
-    $product_sale_price = $_POST['sale_price'];
-    $product_buy_price = $_POST['buy_price'];
+    $product_name = addslashes($_POST['product_name']);
+    $description = addslashes($_POST['description']);
+    $product_category = addslashes($_POST['product_category']);
+    $product_quantity = addslashes($_POST['product_quantity']);
+    $product_sale_price = addslashes($_POST['sale_price']);
+    $product_buy_price = addslashes($_POST['buy_price']);
     $product_image = $upload_dir . basename($_FILES['product_image']['name']);
     //change product image name and get last product id plus 1
     $latest_id = "SELECT productID FROM product ORDER BY productID DESC LIMIT 1";
@@ -144,7 +144,7 @@ swal({
         } else {
             //upload the image
             if (move_uploaded_file($_FILES['product_image']['tmp_name'], $newFileName)) {
-                $add_product = "INSERT INTO product (name, description,category, stock, sale_price, buy_price, product_image) VALUES ('$product_name','$description', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$product_image')";
+                $add_product = "INSERT INTO product (name, description,category, stock, sale_price, buy_price, product_image) VALUES ('$product_name','$description', '$product_category', '$product_quantity', '$product_sale_price', '$product_buy_price', '$newFileName')";
                 $run_add_product = mysqli_query($con, $add_product);
 
                 //increase number of products in the category

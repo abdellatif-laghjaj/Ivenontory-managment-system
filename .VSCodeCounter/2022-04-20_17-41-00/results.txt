@@ -1,0 +1,112 @@
+Date : 2022-04-20 17:41:00
+Directory : c:\xampp\htdocs\Ivenontory-managment-system
+Total : 74 files,  12971 codes, 714 comments, 1779 blanks, all 15464 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| PHP        |         38 |      6,960 |        457 |        752 |      8,169 |
+| CSS        |         18 |      4,707 |         75 |        870 |      5,652 |
+| JavaScript |          6 |        902 |        182 |        148 |      1,232 |
+| JSON       |          2 |        312 |          0 |          2 |        314 |
+| SQL        |          1 |         50 |          0 |          6 |         56 |
+| XML        |          8 |         30 |          0 |          0 |         30 |
+| Markdown   |          1 |         10 |          0 |          1 |         11 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         74 |     12,971 |        714 |      1,779 |     15,464 |
+| client                                                                      |         11 |        873 |          4 |        115 |        992 |
+| db                                                                          |          2 |         59 |          0 |          9 |         68 |
+| js                                                                          |          8 |      1,589 |        344 |        202 |      2,135 |
+| pages                                                                       |         24 |      3,867 |        125 |        483 |      4,475 |
+| res                                                                         |          9 |      1,554 |        166 |         98 |      1,818 |
+| res\img                                                                     |          8 |         30 |          0 |          0 |         30 |
+| res\libs                                                                    |          1 |      1,524 |        166 |         98 |      1,788 |
+| style                                                                       |         17 |      4,707 |         75 |        869 |      5,651 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                    | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\Ivenontory-managment-system\README.md                       | Markdown   |         10 |          0 |          1 |         11 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\categories_dropdown.php  | PHP        |        195 |          1 |         19 |        215 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\functions.php            | PHP        |         25 |          0 |          6 |         31 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\logOut.php               | PHP        |          7 |          0 |          2 |          9 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\pop_ups.php              | PHP        |        446 |          3 |         61 |        510 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\registration.php         | PHP        |         28 |          0 |          6 |         34 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\search.php               | PHP        |         16 |          0 |          1 |         17 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\shopping_cart.css        | CSS        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\shopping_cart.php        | PHP        |         50 |          0 |          4 |         54 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\user_login.php           | PHP        |         37 |          0 |          3 |         40 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\user_register.php        | PHP        |         39 |          0 |          3 |         42 |
+| c:\xampp\htdocs\Ivenontory-managment-system\client\validation.php           | PHP        |         30 |          0 |          9 |         39 |
+| c:\xampp\htdocs\Ivenontory-managment-system\db\connection.php               | PHP        |          9 |          0 |          3 |         12 |
+| c:\xampp\htdocs\Ivenontory-managment-system\db\database_tables.sql          | SQL        |         50 |          0 |          6 |         56 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\PaymentCard.js               | JavaScript |        248 |         14 |         48 |        310 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\addToCart.js                 | JavaScript |        292 |         10 |         20 |        322 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\app.js                       | JavaScript |         44 |          7 |         10 |         61 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\change_content.js            | JavaScript |        193 |        114 |         17 |        324 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\charts.php                   | PHP        |        230 |         20 |         24 |        274 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\content.php                  | PHP        |        457 |        142 |         30 |        629 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\sweetalert.js                | JavaScript |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\js\tableHTMLExport.js           | JavaScript |        124 |         37 |         53 |        214 |
+| c:\xampp\htdocs\Ivenontory-managment-system\package-lock.json               | JSON       |        302 |          0 |          1 |        303 |
+| c:\xampp\htdocs\Ivenontory-managment-system\package.json                    | JSON       |         10 |          0 |          1 |         11 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\admin.php                 | PHP        |        416 |         16 |         63 |        495 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\categories.php            | PHP        |         59 |          0 |          3 |         62 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\contact.php               | PHP        |        185 |          1 |         17 |        203 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\dashboard.php             | PHP        |         66 |          0 |         13 |         79 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\error_message.php         | PHP        |          5 |          0 |          0 |          5 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\footer.php                | PHP        |        109 |          0 |         11 |        120 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\generate_pdf.php          | PHP        |        445 |         18 |         33 |        496 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\index.php                 | PHP        |        661 |         17 |        105 |        783 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\loading.php               | PHP        |         10 |          0 |          0 |         10 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\login.php                 | PHP        |        221 |          3 |         38 |        262 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\logout.php                | PHP        |          5 |          0 |          1 |          6 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\payment.php               | PHP        |        262 |          2 |         28 |        292 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\payment_success.php       | PHP        |        266 |          6 |         36 |        308 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\products.php              | PHP        |         37 |         48 |          0 |         85 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\profile.php               | PHP        |         29 |          0 |          1 |         30 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\remove_product.php        | PHP        |        228 |          4 |         42 |        274 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\reports.php               | PHP        |         36 |          0 |          1 |         37 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\reset_password.php        | PHP        |         65 |          2 |         11 |         78 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\sales.php                 | PHP        |         25 |          0 |          0 |         25 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\services.php              | PHP        |        153 |          0 |         13 |        166 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\update_product.php        | PHP        |        317 |          4 |         39 |        360 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\users.php                 | PHP        |         28 |          0 |          0 |         28 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\verification.php          | PHP        |         74 |          3 |         11 |         88 |
+| c:\xampp\htdocs\Ivenontory-managment-system\pages\view_product.php          | PHP        |        165 |          1 |         17 |        183 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\bg.svg                  | XML        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\downarrow.svg           | XML        |          7 |          0 |          0 |          7 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\homepage.svg            | XML        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\logo.svg                | XML        |         11 |          0 |          0 |         11 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\undraw_data_reports.svg | XML        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\undraw_users.svg        | XML        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\uparrow.svg             | XML        |          7 |          0 |          0 |          7 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\img\wave.svg                | XML        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\res\libs\fpdf.php               | PHP        |      1,524 |        166 |         98 |      1,788 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\PaymentCard.css           | CSS        |        252 |         16 |         32 |        300 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\alert.css                 | CSS        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\animate.css               | CSS        |      2,825 |         30 |        522 |      3,377 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\bootstrap.min.css         | CSS        |          2 |          5 |          0 |          7 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\dashboard.css             | CSS        |        130 |          6 |         45 |        181 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\filters.css               | CSS        |         45 |          0 |          9 |         54 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\forms.css                 | CSS        |        140 |          0 |         24 |        164 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\home.css                  | CSS        |        141 |          1 |          9 |        151 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\index.css                 | CSS        |        476 |          8 |         93 |        577 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\loading.css               | CSS        |         25 |          0 |          7 |         32 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\login.css                 | CSS        |        146 |          3 |         27 |        176 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\product.css               | CSS        |        234 |          2 |         42 |        278 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\product_details_modal.css | CSS        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\report.css                | CSS        |        105 |          0 |         18 |        123 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\select_text.css           | CSS        |          8 |          0 |          1 |          9 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\sidebar.css               | CSS        |        138 |          1 |         30 |        169 |
+| c:\xampp\htdocs\Ivenontory-managment-system\style\style.css                 | CSS        |         40 |          3 |          8 |         51 |
+| Total                                                                       |            |     12,971 |        714 |      1,779 |     15,464 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+

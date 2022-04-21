@@ -29,8 +29,8 @@ $product_category = $row['category'];
 <style>
 
     @font-face {
-        font-family: 'cairo';
-        src: url('../res/fonts/Cairo.ttf') format('ttf');
+        font-family: 'Cairo';
+        src: url('../res/fonts/Cairo.ttf');
     }
 
     * {

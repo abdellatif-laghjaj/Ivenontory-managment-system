@@ -59,6 +59,7 @@
             bottom: 0;
             opacity: 0;
         }
+
         to {
             bottom: 30px;
             opacity: 1;
@@ -70,6 +71,7 @@
             bottom: 0;
             opacity: 0;
         }
+
         to {
             bottom: 30px;
             opacity: 1;
@@ -80,6 +82,7 @@
         from {
             min-width: 50px
         }
+
         to {
             min-width: 350px
         }
@@ -89,6 +92,7 @@
         from {
             min-width: 50px
         }
+
         to {
             min-width: 350px
         }
@@ -98,6 +102,7 @@
         from {
             min-width: 350px
         }
+
         to {
             min-width: 350px
         }
@@ -107,6 +112,7 @@
         from {
             min-width: 350px
         }
+
         to {
             min-width: 350px
         }
@@ -116,6 +122,7 @@
         from {
             min-width: 350px;
         }
+
         to {
             min-width: 50px;
         }
@@ -125,6 +132,7 @@
         from {
             min-width: 350px;
         }
+
         to {
             min-width: 50px;
         }
@@ -135,6 +143,7 @@
             bottom: 30px;
             opacity: 1;
         }
+
         to {
             bottom: 60px;
             opacity: 0;
@@ -146,6 +155,7 @@
             bottom: 30px;
             opacity: 1;
         }
+
         to {
             bottom: 60px;
             opacity: 0;
@@ -267,10 +277,21 @@
                             }
 
                             @keyframes shake {
-                                0% { margin-left: 0rem; }
-                                25% { margin-left: 0.5rem; }
-                                75% { margin-left: -0.5rem; }
-                                100% { margin-left: 0rem; }
+                                0% {
+                                    margin-left: 0rem;
+                                }
+
+                                25% {
+                                    margin-left: 0.5rem;
+                                }
+
+                                75% {
+                                    margin-left: -0.5rem;
+                                }
+
+                                100% {
+                                    margin-left: 0rem;
+                                }
                             }
 
                             .pop-up .register-pop .pop-content form .field .input:focus {
@@ -280,31 +301,38 @@
                         </style>
                         <div class="field">
                             <label>Full name</label>
-                            <input type="text" class="input" placeholder="Full name" name="full_name" id="full_name" onchange="removeError('full_name');">
+                            <input type="text" class="input" placeholder="Full name" name="full_name" id="full_name"
+                                   onchange="removeError('full_name');">
                         </div>
                         <div class="field">
                             <label>Username</label>
-                            <input type="text" class="input" placeholder="username" name="username" id="username" onchange="removeError('username');">
+                            <input type="text" class="input" placeholder="username" name="username" id="username"
+                                   onchange="removeError('username');">
                         </div>
                         <div class="field">
                             <label>Phone</label>
-                            <input type="tel" class="input" placeholder="Phone" name="phone" id="phone" onchange="removeError('phone');">
+                            <input type="tel" class="input" placeholder="Phone" name="phone" id="phone"
+                                   onchange="removeError('phone');">
                         </div>
                         <div class="field">
                             <label>Email</label>
-                            <input type="Email" class="input" placeholder="Email" name="email" id="email" onchange="removeError('email');">
+                            <input type="Email" class="input" placeholder="Email" name="email" id="email"
+                                   onchange="removeError('email');">
                         </div>
                         <div class="field">
                             <label>Adresse</label>
-                            <input type="text" class="input" placeholder="Adresse" name="adresse" id="adresse" onchange="removeError('adresse');">
+                            <input type="text" class="input" placeholder="Adresse" name="adresse" id="adresse"
+                                   onchange="removeError('adresse');">
                         </div>
                         <div class="field">
                             <label>Password</label>
-                            <input type="password" class="input" placeholder="Password" name="password" id="password" onchange="removeError('password');">
+                            <input type="password" class="input" placeholder="Password" name="password" id="password"
+                                   onchange="removeError('password');">
                         </div>
                         <div class="field">
                             <label>Confirm password</label>
-                            <input type="password" class="input" placeholder="Confirm password" name="confirm_password" id="confirm_password" onchange="removeError('confirm_password');">
+                            <input type="password" class="input" placeholder="Confirm password" name="confirm_password"
+                                   id="confirm_password" onchange="removeError('confirm_password');">
                         </div>
                     </div>
                     <div class="field">
@@ -356,6 +384,7 @@
         var email = document.register.email.value;
         var phone = document.register.phone.value;
 
+        //full name regex
         var full_name_ex = /^[a-zA-Z ]{2,30}$/;
         var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]{6,}$/;
         var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
@@ -364,35 +393,36 @@
 
         console.log("check start");
 
+        //check if full name match with regex
         if (!full_name.match(full_name_ex)) {
-            console.log("check full_name");
+            console.log("full name not match");
             document.getElementById("full_name").classList.replace("input", "error");
             return false;
-        }else if (!username.match(username_password_ex)) {
-            console.log("check username");
+        } else if (!username.match(username_password_ex)) {
+            console.log("username not match");
             document.getElementById("username").classList.replace("input", "error");
             return false;
-        }else if (!password.match(username_password_ex)) {
-            console.log("check password");
+        } else if (!password.match(username_password_ex)) {
+            console.log("password not match");
             document.getElementById("password").classList.replace("input", "error");
             return false;
-        }else if (!confirm_password.match(username_password_ex)) {
-            console.log("check confirm_password");
+        } else if (password != confirm_password) {
+            console.log("password not match");
             document.getElementById("confirm_password").classList.replace("input", "error");
             return false;
-        }else if (!adresse.match(adresse_ex)) {
-            console.log("check adresse");
+        } else if (!adresse.match(adresse_ex)) {
+            console.log("adresse not match");
             document.getElementById("adresse").classList.replace("input", "error");
             return false;
-        }else if (!email.match(email_ex)) {
-            console.log("check email");
+        } else if (!email.match(email_ex)) {
+            console.log("email not match");
             document.getElementById("email").classList.replace("input", "error");
             return false;
-        }else if (!phone.match(phone_ex)) {
-            console.log("check phone");
+        } else if (!phone.match(phone_ex)) {
+            console.log("phone not match");
             document.getElementById("phone").classList.replace("input", "error");
             return false;
-        }else {
+        } else {
             console.log("check end");
             return true;
         }
@@ -467,5 +497,14 @@
 
     function removeError(inputId) {
         document.getElementById(inputId).classList.replace("error", "input");
+    }
+
+    function showSweetAlert(title, text, icon) {
+        swal({
+            title: title,
+            text: text,
+            icon: icon,
+            button: "OK",
+        });
     }
 </script>
