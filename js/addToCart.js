@@ -16,10 +16,7 @@ window.addEventListener("DOMContentLoaded", (evt) => {
         clickedButton.addEventListener("click", function (e) {
             var currentButton;
 
-            if (e.target.tagName.toUpperCase() == 'BUTTON')
-                currentButton = e.target;
-            else
-                currentButton = e.target.parentElement;
+            if (e.target.tagName.toUpperCase() == 'BUTTON') currentButton = e.target; else currentButton = e.target.parentElement;
 
             var currentIndex = currentButton.getAttribute('rank');
             var currentProduct = products[currentIndex];
@@ -52,10 +49,7 @@ window.addEventListener("DOMContentLoaded", (evt) => {
                     if (exist(product).quantity >= exist(product).stock) {
                         errorSound.play();
                         swal({
-                            title: "Error",
-                            text: "This product is out of stock",
-                            icon: "error",
-                            button: "Ok",
+                            title: "Error", text: "This product is out of stock", icon: "error", button: "Ok",
                         });
                     } else {
                         exist(product).quantity += 1;
@@ -137,24 +131,9 @@ function loadCartElements() {
         total_price.style.display = 'none';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
-            data += '<tr>' +
-                '<th>' +
-                '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' +
-                '</th>' +
-                '<th>' + cartContent[i].name + '</th>' +
-                '<th class="full-input-qnt">' +
-                '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' +
-                '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' +
-                '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' +
-                '</th>' +
-                '<th>' + Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD'
-                }).format(cartContent[i].basePrice) + '</th>' +
-                '<th>' +
-                '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' +
-                '</th>' +
-                '</tr>'
+            data += '<tr>' + '<th>' + '<img class="shopping-cart-img" src="' + cartContent[i].image + '">' + '</th>' + '<th>' + cartContent[i].name + '</th>' + '<th class="full-input-qnt">' + '<div class="dec" style="font-weight: bold; font-size: 20px;">-</div>' + '<input class="product-qnt" type="text" value="' + cartContent[i].quantity + '" onkeypress="return onlyNumberKey(event)">' + '<div class="inc" style="font-weight: bold; font-size: 20px;">+</div>' + '</th>' + '<th>' + Intl.NumberFormat('en-US', {
+                style: 'currency', currency: 'USD'
+            }).format(cartContent[i].basePrice) + '</th>' + '<th>' + '<a href="#" class="removeBtn" onclick=Delete(this);><i class="fa fa-trash"></i></a>' + '</th>' + '</tr>'
         }
         cartBody.innerHTML = data;
         total_price.style.display = 'block';
