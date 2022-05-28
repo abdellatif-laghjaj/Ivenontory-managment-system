@@ -11,3 +11,4 @@ Web technologies mini project <br>
 
 <h2>Here is a demo for the project:</h2>
 <a href="https://youtu.be/C8KoiWlh0bk" target="_blank">Online Tech Store Demo</a>
+<h2>Screenshots:</h2>
