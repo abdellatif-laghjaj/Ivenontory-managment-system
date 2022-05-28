@@ -12,9 +12,6 @@ Web technologies mini project <br>
 <h2>Here is a demo for the project:</h2>
 <a href="https://youtu.be/C8KoiWlh0bk" target="_blank">Online Tech Store Demo</a>
 <h2>Screenshots:</h2>
-<a href="https://ibb.co/xjMRx08"><img src="https://i.ibb.co/J7zMD4F/image021.png" alt="image021" border="0"></a>
-<h2>Here is a demo for the project:</h2>
-
 <img src="https://i.postimg.cc/phmJPCqV/image001.png" alt="image001"/><br>
 <img src="https://i.postimg.cc/rKXNLSWc/image002.png" alt="image002"/><br>
 <img src="https://i.postimg.cc/LqXzVvdk/image003.png" alt="image003"/><br>
