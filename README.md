@@ -12,7 +12,7 @@ Web technologies mini project <br>
 <h2>Here is a demo for the project:</h2>
 <a href="https://youtu.be/C8KoiWlh0bk" target="_blank">Online Tech Store Demo</a>
 <h2>Screenshots:</h2>
-![Screenshot 2022-04-22 234735](https://user-images.githubusercontent.com/79521157/170834415-0d6d5452-be53-4d4e-a9db-4b43b05c345b.png)<br>
+![1](https://user-images.githubusercontent.com/79521157/170834415-0d6d5452-be53-4d4e-a9db-4b43b05c345b.png)<br>
 ![Screenshot 2022-04-22 231502](https://user-images.githubusercontent.com/79521157/170834417-d814b842-ebee-4242-b054-91fb093becfa.png)<br>
 ![Screenshot 2022-04-22 232050](https://user-images.githubusercontent.com/79521157/170834420-e8c98656-4cd1-467e-9ad9-c9b6b38ba50f.png)<br>
 ![Screenshot 2022-04-22 232336](https://user-images.githubusercontent.com/79521157/170834421-ebb9c0d5-b31d-4c6d-99d6-5a710bc2ab58.png)<br>
