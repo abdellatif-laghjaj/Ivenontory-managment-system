@@ -12,6 +12,8 @@ Web technologies mini project <br>
 <h2>Here is a demo for the project:</h2>
 <a href="https://youtu.be/C8KoiWlh0bk" target="_blank">Online Tech Store Demo</a>
 <h2>Screenshots:</h2>
+<img src="https://user-images.githubusercontent.com/79521157/173815604-0fb35b47-687f-475e-aee3-4b47f37dc0d1.png" width="80%">
+<img src="https://user-images.githubusercontent.com/79521157/173815608-2cc9a2fe-b054-4300-9e81-f1e9b51cb4a7.png" width="80%">
 <img src="https://user-images.githubusercontent.com/79521157/173815536-c89fcd16-ba04-47b6-b0c7-0ea423ba9367.png" width="80%">
 <img src="https://user-images.githubusercontent.com/79521157/173815545-35ed4303-79e4-4670-9f79-28b6a382a59f.png" width="80%">
 <img src="https://user-images.githubusercontent.com/79521157/173815548-b8d1a8f6-308c-4d6c-9472-7f4261401f3c.png" width="80%">
@@ -32,5 +34,3 @@ Web technologies mini project <br>
 <img src="https://user-images.githubusercontent.com/79521157/173815600-de716ac7-c33e-4551-957b-cfd84cea877c.png" width="80%">
 <img src="https://user-images.githubusercontent.com/79521157/173815602-55b5cb4b-4816-4b68-83d6-be8ba08b15ff.png" width="80%">
 <img src="https://user-images.githubusercontent.com/79521157/173815603-e5cf0fab-6c07-4fea-8dcb-0cae1d141ed8.png" width="80%">
-<img src="https://user-images.githubusercontent.com/79521157/173815604-0fb35b47-687f-475e-aee3-4b47f37dc0d1.png" width="80%">
-<img src="https://user-images.githubusercontent.com/79521157/173815608-2cc9a2fe-b054-4300-9e81-f1e9b51cb4a7.png" width="80%">
