@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="filters">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
-=======
     <list default="true" id="6a2df2a7-5e27-4def-82da-71353bd78548" name="Changes" comment="full project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> Stashed changes
+      <change beforePath="$PROJECT_DIR$/db/database_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/database_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/verification.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verification.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -60,29 +56,31 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/connection.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/db/database_tables.sql" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/search.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/logOut.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/categories_dropdown.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/PaymentCard.js" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/pop_ups.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/validation.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/registration.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/client/functions.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/js/addToCart.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/js/content.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/admin.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/comments.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/contact.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/index.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pages/login.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/payment_success.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/services.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/view_product.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/PaymentCard.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/contact.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/forms.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/style/index.css" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,21 +93,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\IMS\js" />
       <recent name="C:\xampp\htdocs\IMS\res\img" />
     </key>
   </component>
@@ -154,15 +146,6 @@
       <workItem from="1648980397667" duration="4934000" />
       <workItem from="1648989965282" duration="40232000" />
       <workItem from="1649149463235" duration="21318000" />
-<<<<<<< Updated upstream
-      <workItem from="1649340578006" duration="11825000" />
-      <workItem from="1649353032419" duration="32000" />
-      <workItem from="1649369882333" duration="6278000" />
-      <workItem from="1649407805543" duration="1267000" />
-      <workItem from="1649436683212" duration="1702000" />
-      <workItem from="1649438695407" duration="37000" />
-      <workItem from="1649676423364" duration="101000" />
-=======
       <workItem from="1649451672574" duration="13245000" />
       <workItem from="1649494780349" duration="344000" />
       <workItem from="1649496235579" duration="11167000" />
@@ -179,7 +162,10 @@
       <workItem from="1650327060439" duration="510000" />
       <workItem from="1650369065159" duration="1766000" />
       <workItem from="1650373768421" duration="766000" />
->>>>>>> Stashed changes
+      <workItem from="1650670793129" duration="647000" />
+      <workItem from="1650673420039" duration="23000" />
+      <workItem from="1653609240466" duration="30000" />
+      <workItem from="1654988719056" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="remove and edit action buttons">
       <created>1646940632706</created>
@@ -349,9 +335,6 @@
       <option name="project" value="LOCAL" />
       <updated>1647615626114</updated>
     </task>
-<<<<<<< Updated upstream
-    <option name="localTasksCounter" value="25" />
-=======
     <task id="LOCAL-00025" summary="add some products to database">
       <created>1649779573208</created>
       <option name="number" value="00025" />
@@ -430,7 +413,6 @@
       <updated>1650373929431</updated>
     </task>
     <option name="localTasksCounter" value="36" />
->>>>>>> Stashed changes
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,9 +437,6 @@
     <MESSAGE value="contact us fully functional" />
     <MESSAGE value="contact us - services section" />
     <MESSAGE value="fix footer issue" />
-<<<<<<< Updated upstream
-    <option name="LAST_COMMIT_MESSAGE" value="fix footer issue" />
-=======
     <MESSAGE value="add some products to databse" />
     <MESSAGE value="add some products to database" />
     <MESSAGE value="fix some cards bugs" />
@@ -470,6 +449,5 @@
     <MESSAGE value="finishing the project" />
     <MESSAGE value="full project" />
     <option name="LAST_COMMIT_MESSAGE" value="full project" />
->>>>>>> Stashed changes
   </component>
 </project>

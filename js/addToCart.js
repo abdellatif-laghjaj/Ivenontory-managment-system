@@ -126,10 +126,15 @@ function updateTotalPrice() {
 function loadCartElements() {
     data = '';
     var cartContent = JSON.parse(sessionStorage.getItem('Items'));
-    if (cartContent.length === 0) {
+    var total_price = document.getElementById('total-price');
+    if (cartContent === null) {
+        cartBody.innerHTML = '<div style="width: 100%; height: 320px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 315px;" src="../res/img/ufo_empty_cart.gif" ></div>';
+        total_price.style.display = 'none';
+    } else if (cartContent.length === 0) {
         updateTotalPrice();
         updateBadge();
-        cartBody.innerHTML = '<div style="width: 100%; height: 320px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 370px;" src="../res/img/ufo_empty_cart.gif" ></div>';
+        cartBody.innerHTML = '<div style="width: 100%; height: 320px; display: flex; justify-content: center; align-items: center;"><img  style="width: 495px; height: 315px;" src="../res/img/ufo_empty_cart.gif" ></div>';
+        total_price.style.display = 'none';
     } else {
         for (let i = 0; i < cartContent.length; i++) {
             data += '<tr>' +
@@ -152,6 +157,7 @@ function loadCartElements() {
                 '</tr>'
         }
         cartBody.innerHTML = data;
+        total_price.style.display = 'block';
 
         //change quantity input
         var cartContent = JSON.parse(sessionStorage.getItem("Items"));

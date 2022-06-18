@@ -15,10 +15,10 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($con, $query);
         $row = mysqli_fetch_assoc($result);
 
-        $db_full_name = $row['full_name'];
-        $db_username = $row['username'];
-        $db_email = $row['email'];
-        $db_phone = $row['phone'];
+        $db_full_name = $row['full_name'] ?? '';
+        $db_username = $row['username'] ?? '';
+        $db_email = $row['email'] ?? '';
+        $db_phone = $row['phone'] ?? '';
 
         //check if the data is correct
         if ($full_name == $db_full_name && $username == $db_username && $email == $db_email && $phone == $db_phone) {
@@ -40,6 +40,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/select_text.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <title>Verification</title>
 </head>

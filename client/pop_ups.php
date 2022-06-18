@@ -59,6 +59,7 @@
             bottom: 0;
             opacity: 0;
         }
+
         to {
             bottom: 30px;
             opacity: 1;
@@ -70,6 +71,7 @@
             bottom: 0;
             opacity: 0;
         }
+
         to {
             bottom: 30px;
             opacity: 1;
@@ -80,6 +82,7 @@
         from {
             min-width: 50px
         }
+
         to {
             min-width: 350px
         }
@@ -89,6 +92,7 @@
         from {
             min-width: 50px
         }
+
         to {
             min-width: 350px
         }
@@ -98,6 +102,7 @@
         from {
             min-width: 350px
         }
+
         to {
             min-width: 350px
         }
@@ -107,6 +112,7 @@
         from {
             min-width: 350px
         }
+
         to {
             min-width: 350px
         }
@@ -116,6 +122,7 @@
         from {
             min-width: 350px;
         }
+
         to {
             min-width: 50px;
         }
@@ -125,6 +132,7 @@
         from {
             min-width: 350px;
         }
+
         to {
             min-width: 50px;
         }
@@ -135,6 +143,7 @@
             bottom: 30px;
             opacity: 1;
         }
+
         to {
             bottom: 60px;
             opacity: 0;
@@ -146,6 +155,7 @@
             bottom: 30px;
             opacity: 1;
         }
+
         to {
             bottom: 60px;
             opacity: 0;
@@ -235,33 +245,94 @@
                         </a>
                     </legend>
                     <div class="fbody">
+                        <style>
+                            .pop-up .register-pop .pop-content form .field .input {
+                                display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                            }
+
+                            .pop-up .register-pop .pop-content form .field .error {
+                                display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                                animation: shake 0.2s ease-in-out 0s 2;
+                                box-shadow: 0 0 0.5rem red;
+                            }
+
+                            @keyframes shake {
+                                0% {
+                                    margin-left: 0rem;
+                                }
+
+                                25% {
+                                    margin-left: 0.5rem;
+                                }
+
+                                75% {
+                                    margin-left: -0.5rem;
+                                }
+
+                                100% {
+                                    margin-left: 0rem;
+                                }
+                            }
+
+                            .pop-up .register-pop .pop-content form .field .input:focus {
+                                outline: none;
+                                border: 1px solid #007bff;
+                            }
+                        </style>
                         <div class="field">
                             <label>Full name</label>
-                            <input type="text" placeholder="Full name" name="full_name">
+                            <input type="text" class="input" placeholder="Full name" name="full_name" id="full_name"
+                                   onchange="removeError('full_name');">
                         </div>
                         <div class="field">
                             <label>Username</label>
-                            <input type="text" placeholder="username" name="username">
+                            <input type="text" class="input" placeholder="username" name="username" id="username"
+                                   onchange="removeError('username');">
                         </div>
                         <div class="field">
                             <label>Phone</label>
-                            <input type="tel" placeholder="Phone" name="phone">
+                            <input type="tel" class="input" placeholder="Phone" name="phone" id="phone"
+                                   onchange="removeError('phone');">
                         </div>
                         <div class="field">
                             <label>Email</label>
-                            <input type="Email" placeholder="Email" name="email">
+                            <input type="Email" class="input" placeholder="Email" name="email" id="email"
+                                   onchange="removeError('email');">
                         </div>
                         <div class="field">
                             <label>Adresse</label>
-                            <input type="text" placeholder="Adresse" name="adresse">
+                            <input type="text" class="input" placeholder="Adresse" name="adresse" id="adresse"
+                                   onchange="removeError('adresse');">
                         </div>
                         <div class="field">
                             <label>Password</label>
-                            <input type="password" placeholder="Password" name="password">
+                            <input type="password" class="input" placeholder="Password" name="password" id="password"
+                                   onchange="removeError('password');">
                         </div>
                         <div class="field">
                             <label>Confirm password</label>
-                            <input type="password" placeholder="Confirm password" name="confirm_password">
+                            <input type="password" class="input" placeholder="Confirm password" name="confirm_password"
+                                   id="confirm_password" onchange="removeError('confirm_password');">
                         </div>
                     </div>
                     <div class="field">
@@ -312,16 +383,47 @@
         var adresse = document.register.adresse.value;
         var email = document.register.email.value;
         var phone = document.register.phone.value;
-        if ((full_name === "") || (username === "") || (password === "") || (confirm_password === "") || (adresse === "") || (email === "") || (phone === "")) {
-            launch_toast();
+
+        //full name regex
+        var full_name_ex = /^[a-zA-Z ]{2,30}$/;
+        var username_password_ex = /^[a-zA-Z0-9.@*&$#_ ]{6,}$/;
+        var adresse_ex = /^[a-zA-Z.,;:_ ]+$/;
+        var email_ex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})/;
+        var phone_ex = /^[+]?[(]?[0-9]{1,4}[)]?[+]?[0-9]{6,10}$/;
+
+        console.log("check start");
+
+        //check if full name match with regex
+        if (!full_name.match(full_name_ex)) {
+            console.log("full name not match");
+            document.getElementById("full_name").classList.replace("input", "error");
             return false;
-        } else if (Array.from(password).length < 6) {
-            passwordLessThan6();
+        } else if (!username.match(username_password_ex)) {
+            console.log("username not match");
+            document.getElementById("username").classList.replace("input", "error");
             return false;
-        } else if (password !== confirm_password) {
-            passwordDontMatch();
+        } else if (!password.match(username_password_ex)) {
+            console.log("password not match");
+            document.getElementById("password").classList.replace("input", "error");
+            return false;
+        } else if (password != confirm_password) {
+            console.log("password not match");
+            document.getElementById("confirm_password").classList.replace("input", "error");
+            return false;
+        } else if (!adresse.match(adresse_ex)) {
+            console.log("adresse not match");
+            document.getElementById("adresse").classList.replace("input", "error");
+            return false;
+        } else if (!email.match(email_ex)) {
+            console.log("email not match");
+            document.getElementById("email").classList.replace("input", "error");
+            return false;
+        } else if (!phone.match(phone_ex)) {
+            console.log("phone not match");
+            document.getElementById("phone").classList.replace("input", "error");
             return false;
         } else {
+            console.log("check end");
             return true;
         }
     }
@@ -349,7 +451,7 @@
     function usernameAlreadyTaken() {
         swal({
             title: "Error",
-            text: "Username already taken !",
+            text: "Username already taken",
             icon: "error",
             button: "OK",
         });
@@ -393,4 +495,16 @@
             return true;
     }
 
+    function removeError(inputId) {
+        document.getElementById(inputId).classList.replace("error", "input");
+    }
+
+    function showSweetAlert(title, text, icon) {
+        swal({
+            title: title,
+            text: text,
+            icon: icon,
+            button: "OK",
+        });
+    }
 </script>

@@ -64,7 +64,7 @@
     .settings:hover {
         box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
         cursor: pointer;
-        background-image: linear-gradient(-45deg, #34b5bf 0%, #210c59 100%)
+        background-image: linear-gradient(-45deg, #be50dc 0%, #dc7afc 100%);
     }
 
     .privacy:hover {

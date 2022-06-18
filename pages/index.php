@@ -17,8 +17,7 @@ $nbProductsInPage = $perPageDefaultValue;
 $currentPage = $pagingDefaultValue;
 $sort_by = $sortDefaultValue;
 $filter_by = $filterDefaultValue;
-$totalProducts = mysqli_num_rows(mysqli_query($con, "SELECT * FROM product WHERE stock > 0"));
-$productsToShow = $totalProducts;
+$productsToShow = mysqli_num_rows(mysqli_query($con, "SELECT * FROM product WHERE stock > 0"));
 
 if (isset($_GET["page"])) {
     if (($_GET["page"] > 0) || (!empty($_GET["page"]))) {
@@ -29,7 +28,7 @@ if (isset($_GET["page"])) {
 if (isset($_GET["search"])) {
     if (!empty($_GET["search"])) {
         $isSearching = true;
-        $searchQuery = $_GET["search"];
+        $searchQuery = addslashes($_GET["search"]);
     }
 }
 
@@ -55,8 +54,6 @@ if (isset($_GET["per_page"])) {
 $loadQuery = "SELECT * FROM product WHERE stock > 0";
 
 //content parameters
-$nbPages = ceil($totalProducts / $nbProductsInPage);
-$bound = ($currentPage - 1) * $nbProductsInPage;
 
 if ($isSearching) {
     $search = $searchQuery;
@@ -174,6 +171,14 @@ if ($isSearching) {
 
 $productsToShow = mysqli_num_rows(mysqli_query($con, $loadQuery));
 
+$nbPages = ceil($productsToShow / $nbProductsInPage);
+
+if ($currentPage > $nbPages) {
+    $currentPage = $nbPages;
+}
+
+$bound = ($currentPage - 1) * $nbProductsInPage;
+
 $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
 
 ?>
@@ -192,6 +197,7 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/select_text.css">
     <title>TexGear</title>
     <script language='JavaScript'>
         var products = [];
@@ -252,6 +258,46 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
 
         main .banner {
             background-image: linear-gradient(135deg, #52bfe7 10%, #130CB7 100%);
+            display: flex;
+        }
+
+        main .banner .image-container {
+            max-height: 500px;
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        @media all and (max-width: 1024px) {
+            main .banner .image-container {
+                display: none;
+            }
+        }
+
+        @media all and (min-width: 1024px) {
+            main .banner {
+                background-image: linear-gradient(135deg, #52bfe7 10%, #130CB7 100%);
+                max-height: 500px;
+                display: flex;
+            }
+
+            main .banner .content {
+                position: relative;
+            }
+
+            main .banner .content .actionbtn {
+                margin-bottom: 0;
+                margin-top: auto;
+                position: absolute;
+                bottom: 0;
+            }
+
+            main .banner .image-container {
+                display: block;
+            }
+
+            main .banner .image-container img {
+                height: 395px;
+            }
         }
 
         .form-select-sm {
@@ -327,15 +373,22 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
             margin-right: 12px;
         }
 
+        main .banner h1 {
+            margin-top: 110px;
+        }
+
         @media only screen and (max-width: 600px) {
             main .banner h1 {
                 font-size: 30px;
+                padding: 0;
+                margin-top: 20px;
             }
         }
 
         @media only screen and (min-width: 600px) {
             main .banner h1 {
                 font-size: 40px;
+                padding: 0;
             }
         }
 
@@ -345,6 +398,25 @@ $loadQuery = $loadQuery . " LIMIT " . $bound . ", " . $nbProductsInPage;
 
         .field .button {
             margin-top: 6px;
+        }
+
+        main .categories .products .card .product-name {
+            padding: 0;
+        }
+
+        main .categories .products .card .product-price,
+        main .categories .products .card .product-stock {
+            display: inline;
+        }
+
+        main .categories .products .card .read-more {
+            color: #ffc107;
+            transition: 0.2s ease all;
+            text-decoration: none;
+        }
+
+        main .categories .products .card .read-more:hover {
+            text-decoration: underline;
         }
     </style>
 
@@ -415,18 +487,34 @@ if (isset($_SESSION['customerID'])) {
         const banner = document.getElementById('banner');
         if (isLogin == true) {
             banner.innerHTML =
-                '<h1 class="">Welcome <?php
+                '<div class="content">' +
+                '   <h1 class="">Welcome <?php
                     echo $full_name;
                     ?></h1>' +
-                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-out" class="" style="width: 120px; background-color: red;">Log out</button>'
+                '   <p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '   <div class="actionbtn">' +
+                '       <button id="log-out" class="" style="width: 120px; background-color: red;">Log out</button>' +
+                '   </div>' +
+                '</div>' +
+                '<div class="image-container">' +
+                '   <div class="image-overlay"></div>' +
+                '   <img src="../res/img/Picture1.png">' +
+                '</div>'
             ;
         } else {
             banner.innerHTML =
-                '<h1 class="">Welcome to TexGEAR: E-commerce web app</h1>' +
-                '<p class="">Enjoy a safe, convenient shopping experience</p>' +
-                '<button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login <i class="fa fa-sign-in" style="margin-left: 4px; font-size: 18px;"></i></button>' +
-                '<button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register<i class="fa fa-user-plus" style="margin-left: 4px;"></i></button>'
+                '<div class="content">' +
+                '   <h1 class="">Welcome to TexGEAR: Tech store</h1>' +
+                '   <p class="">Enjoy a safe, convenient shopping experience</p>' +
+                '   <div class="actionbtn">' +
+                '      <button id="log-in" class="" style="width: 120px;" onclick="showLogin()">Login <i class="fa fa-sign-in" style="margin-left: 4px; font-size: 18px;"></i></button>' +
+                '      <button id="register" class="" style="width: 120px;" onclick="showRegistration()">Register<i class="fa fa-user-plus" style="margin-left: 4px;"></i></button>' +
+                '   </div>' +
+                '</div>' +
+                '<div class="image-container">' +
+                '   <div class="image-overlay"></div>' +
+                '   <img src="../res/img/Picture1.png">' +
+                '</div>'
             ;
         }
 
@@ -519,6 +607,26 @@ if (isset($_SESSION['customerID'])) {
             var products_inner_html = "";
             if (products.length > 0) {
                 for (var i = 0; i < products.length; i++) {
+                    //format description
+                    var product_description = products[i][6];
+                    if (product_description.length >= 30) {
+                        product_description = product_description.substring(0, 30) + ".";
+                        product_description = product_description + ".. " + '<a href="view_product.php?id=' + products[i][4] + '" class="read-more">read more</a>';
+                    } else if (product_description.length > 0 && product_description.length < 30) {
+                        product_description = product_description + ' <a href="view_product.php?id=' + products[i][4] + '" class="read-more">read more</a>';
+                    } else {
+                        product_description = '<a href="view_product.php?id=' + products[i][4] + '" class="read-more">read more</a>';
+                    }
+
+                    //format product name
+                    var product_name = products[i][0];
+                    if (product_name.length > 20) {
+                        product_name = product_name.substring(0, 20) + "...";
+                    } else if (product_name.length == 0) {
+                        product_name = "No name";
+                    } else {
+                        product_name = product_name;
+                    }
                     products_inner_html +=
                         '<!-- PRODUCT CARD -->' +
                         '<div class="products shadow-lg mb-5 bg-body rounded">' +
@@ -526,18 +634,20 @@ if (isset($_SESSION['customerID'])) {
                         '      <div class="product-image">' +
                         '           <img id="product-image" src="' + products[i][3] + '" alt="product image">' +
                         '       </div>' +
-                        '       <h1 class="product-name">' + products[i][0] +
+                        '       <h1 class="product-name">' + product_name +
                         '       </h1>' +
-                        '       <p>Here\'s some description...</p>' +
+                        '       <div class="description" style="width: 220px; height: 48px; color: rgba(255, 255, 255, 0.6);">' +
+                        '       ' + product_description +
+                        '       </div>' +
                         '       <div class="product-price">' +
                         '           <span class="txt">Price : </span><span class="txt" id="base-price"' +
-                        '                                           style="font-weight: bold">' + Intl.NumberFormat("en-US", {
+                        '                                           style="font-weight: bold; margin: 16px;">' + Intl.NumberFormat("en-US", {
                             style: "currency",
                             currency: "USD"
                         }).format(products[i][2]) + '</span>' +
                         '       </div>' +
                         '       <div class="product-stock">' +
-                        '           <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold">' + products[i][1] + '</span>' +
+                        '           <span class="txt">In Stock : </span><span class="txt" style="font-weight: bold; margin: 16px;">' + products[i][1] + '</span>' +
                         '       </div>' +
                         '       <button class="addToCart btn btn-warning">' +
                         '           <img src="../res/img/cart.ico" alt="">' +
@@ -547,8 +657,8 @@ if (isset($_SESSION['customerID'])) {
                 }
                 products_box.innerHTML = products_inner_html;
                 loadPagingButtons(<?php echo $productsToShow; ?>);
-            } else {
-                products_box.innerHTML = '<div style="width: 100%; height: 600px; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif" ></div>';
+            } else if (products.length == 0) {
+                products_box.innerHTML = '<div style="width: 100%; display: flex; justify-content: center; align-items: center;"><img src="../res/img/no-result.gif"></div>';
             }
         }
 
@@ -558,7 +668,7 @@ if (isset($_SESSION['customerID'])) {
 
 <form action="index.php" id="reload" method="get" style="display: none;">
     <input type="number" id="per_page_hidden" name="per_page" value="<?php echo $nbProductsInPage; ?>">
-    <input type="number" id="page_h" name="page" value="<?php echo $currentPage; ?>>">
+    <input type="number" id="page_h" name="page" value="<?php echo $currentPage; ?>">
     <input type="number" id="sort_by_h" name="sort_by" value="<?php echo $sort_by; ?>">
     <input type="text" id="filter_by_h" name="filter_by" value="<?php echo $filter_by; ?>">
     <input type="search" id="search_h" name="search" value="<?php echo $searchQuery; ?>">
@@ -600,7 +710,7 @@ if (isset($_SESSION['customerID'])) {
     const searchBar = document.getElementById('search-input');
     searchButton.onclick = function (e) {
         e.preventDefault();
-        search_hidden.value = searchBar.value
+        search_hidden.value = searchBar.value;
         document.forms["reload"].submit();
     }
 
@@ -641,7 +751,6 @@ if (isset($_SESSION['customerID'])) {
 
     //submit per page value
     const per_page_link = document.getElementsByClassName("per_page_option");
-
     for (let i = 0; i < per_page_link.length; i++) {
         per_page_link[i].addEventListener("click", function (evt) {
             setParmeters();
@@ -650,8 +759,10 @@ if (isset($_SESSION['customerID'])) {
     }
 
     //logout button
-    const logout_button = document.getElementById('log-out');
-    logout_button.addEventListener("click", logout);
+    if (isLogin) {
+        const logout_button = document.getElementById('log-out');
+        logout_button.addEventListener("click", logout);
+    }
 
     function logout() {
         swal({
@@ -670,7 +781,7 @@ if (isset($_SESSION['customerID'])) {
             });
     }
 
-    //view the product details
+    //view product details
 </script>
 </body>
 </html>
