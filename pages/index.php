@@ -68,7 +68,9 @@ if ($isSearching) {
                 case 2:
                     $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY sale_price ASC";
                     break;
+'_çàp^$
 
+)à)çà_ç_è-('"a
                 case 3:
                     $loadQuery = "SELECT * FROM product WHERE stock > 0 AND (category = '" . $filter . "') AND ((name LIKE '%" . $search . "%') OR (description LIKE '%" . $search . "%')) ORDER BY add_date DESC";
                     break;
